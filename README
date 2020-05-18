@@ -30,6 +30,7 @@ Version
 Patches
 -------
 dmenu-lineheight-4.9.diff
+dmenu-highlight-4.9.diff
 
 Last implemented commit
 -----------------------
