@@ -26,6 +26,8 @@ static const unsigned int alphas[SchemeLast][2] = {
 	/*               fgalpha  bgalpha */
 	[SchemeNorm] = { fgalpha, bgalpha },
 	[SchemeSel] = { fgalpha, bgalpha },
+	[SchemeSelHighlight] = { fgalpha, bgalpha },
+	[SchemeNormHighlight] = { fgalpha, bgalpha },
 	[SchemeOut] = { fgalpha, bgalpha },
 };
 
