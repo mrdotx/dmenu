@@ -22,3 +22,15 @@ Afterwards enter the following command to build and install dmenu
 Running dmenu
 -------------
 See the man page for details.
+
+Version
+-------
+0.4.9
+
+Patches
+-------
+dmenu-lineheight-4.9.diff
+
+Last implemented commit
+-----------------------
+2019-03-03 12:08	revert IME support	Hiltjo Posthuma
