@@ -82,7 +82,7 @@ calcoffsets(void)
 	if (lines > 0)
 		n = lines * bh;
 	else
-		n = mw - (promptw + inputw + TEXTW("<") + TEXTW(">"));
+		n = mw - (promptw + inputw + TEXTW(symbol_1) + TEXTW(symbol_2));
 	/* calculate which items will begin the next page and previous page */
 	for (i = 0, next = curr; next; next = next->right)
 		if ((i += (lines > 0) ? bh : MIN(TEXTW(next->text), n)) > n)
@@ -230,18 +230,18 @@ drawmenu(void)
 	} else if (matches) {
 		/* draw horizontal list */
 		x += inputw;
-		w = TEXTW("<");
+		w = TEXTW(symbol_1);
 		if (curr->left) {
 			drw_setscheme(drw, scheme[SchemeNorm]);
-			drw_text(drw, x, 0, w, bh, lrpad / 2, "<", 0);
+			drw_text(drw, x, 0, w, bh, lrpad / 2, symbol_1, 0);
 		}
 		x += w;
 		for (item = curr; item != next; item = item->right)
-			x = drawitem(item, x, 0, MIN(TEXTW(item->text), mw - x - TEXTW(">") - TEXTW(numbers)));
+			x = drawitem(item, x, 0, MIN(TEXTW(item->text), mw - x - TEXTW(symbol_1) - TEXTW(numbers)));
 		if (next) {
-			w = TEXTW(">");
+			w = TEXTW(symbol_2);
 			drw_setscheme(drw, scheme[SchemeNorm]);
-			drw_text(drw, mw - w - TEXTW(numbers), 0, w, bh, lrpad / 2, ">", 0);
+			drw_text(drw, mw - w - TEXTW(numbers), 0, w, bh, lrpad / 2, symbol_2, 0);
 		}
 	}
 	drw_setscheme(drw, scheme[SchemeNorm]);
