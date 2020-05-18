@@ -1,0 +1,58 @@
+From 6d0751e2eed6bfbed3cab0c87c8cb01e0b066be8 Mon Sep 17 00:00:00 2001
+From: aleks <aleks.stier@icloud.com>
+Date: Sun, 11 Aug 2019 02:01:11 +0200
+Subject: [PATCH] Add settings to define symbols for too many options
+
+Add the settings *symbol_1* and *symbol_2* to config.def.h. These enable
+to define the symbols which are printed in dmenu to indicate that either
+the input is too long or there are too many options to be shown in dmenu
+in one line.
+---
+ config.def.h | 2 ++
+ dmenu.c      | 8 ++++----
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 1edb647..f58a50c 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -7,6 +7,8 @@ static const char *fonts[] = {
+ 	"monospace:size=10"
+ };
+ static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
++static const char *symbol_1 = "<";
++static const char *symbol_2 = ">";
+ static const char *colors[SchemeLast][2] = {
+ 	/*     fg         bg       */
+ 	[SchemeNorm] = { "#bbbbbb", "#222222" },
+diff --git a/dmenu.c b/dmenu.c
+index 6b8f51b..ff398a7 100644
+--- a/dmenu.c
++++ b/dmenu.c
+@@ -79,7 +79,7 @@ calcoffsets(void)
+ 	if (lines > 0)
+ 		n = lines * bh;
+ 	else
+-		n = mw - (promptw + inputw + TEXTW("<") + TEXTW(">"));
++		n = mw - (promptw + inputw + TEXTW(symbol_1) + TEXTW(symbol_2));
+ 	/* calculate which items will begin the next page and previous page */
+ 	for (i = 0, next = curr; next; next = next->right)
+ 		if ((i += (lines > 0) ? bh : MIN(TEXTW(next->text), n)) > n)
+@@ -165,11 +165,11 @@ drawmenu(void)
+ 		}
+ 		x += w;
+ 		for (item = curr; item != next; item = item->right)
+-			x = drawitem(item, x, 0, MIN(TEXTW(item->text), mw - x - TEXTW(">")));
++			x = drawitem(item, x, 0, MIN(TEXTW(item->text), mw - x - TEXTW(symbol_2)));
+ 		if (next) {
+-			w = TEXTW(">");
++			w = TEXTW(symbol_2);
+ 			drw_setscheme(drw, scheme[SchemeNorm]);
+-			drw_text(drw, mw - w, 0, w, bh, lrpad / 2, ">", 0);
++			drw_text(drw, mw - w, 0, w, bh, lrpad / 2, symbol_2, 0);
+ 		}
+ 	}
+ 	drw_map(drw, win, 0, 0, mw, mh);
+-- 
+2.22.0
+
