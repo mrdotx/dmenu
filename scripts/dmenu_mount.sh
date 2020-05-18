@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-18T19:23:21+0200
+# date:       2020-05-18T20:17:23+0200
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
@@ -34,7 +34,7 @@ remote_mnt() {
         "pi" \
         "pi2" \
         "prinzipal" \
-        "web.de" | dmenu -r -i -p "mount:") in
+        "web.de" | dmenu -l 14 -c -bw 2 -r -i -p "mount:") in
         dropbox)
             rcl "dropbox" "/"
             ;;
@@ -83,7 +83,7 @@ remote_mnt() {
 # remote unmount
 remote_unmnt() {
     if grep -E "/tmp/media/.*fuse" /etc/mtab; then
-        chosen=$(awk '/\/tmp\/media\/.*fuse/ {print $2}' /etc/mtab | sort | dmenu -r -i -p "unmount:")
+        chosen=$(awk '/\/tmp\/media\/.*fuse/ {print $2}' /etc/mtab | sort | dmenu -l 5 -c -bw 2 -r -i -p "unmount:")
         [ -z "$chosen" ] && exit
         fusermount -u "$chosen" \
             && notify-send "Remote Unmount" "$chosen unmounted"
@@ -94,7 +94,7 @@ remote_unmnt() {
 
 # usb mount
 usb_mnt() {
-    chosen="$(lsblk -rpo "name,type,size,mountpoint" | awk '{ if ($2=="part"&&$4=="" || $2=="rom"&&$4=="" || $3=="1,4M"&&$4=="") printf "%s (%s)\n",$1,$3}' | dmenu -r -i -p "mount:" | awk '{print $1}')"
+    chosen="$(lsblk -rpo "name,type,size,mountpoint" | awk '{ if ($2=="part"&&$4=="" || $2=="rom"&&$4=="" || $3=="1,4M"&&$4=="") printf "%s (%s)\n",$1,$3}' | dmenu -l 5 -c -bw 2 -r -i -p "mount:" | awk '{print $1}')"
     [ -z "$chosen" ] && exit
     mnt_point="/tmp/media/$(basename "$chosen")"
     part_typ="$(lsblk -no "fstype" "$chosen")"
@@ -115,7 +115,7 @@ usb_mnt() {
 usb_unmnt() {
     mounts=$(lsblk -nrpo "name,type,size,mountpoint" | awk '{if ($2=="part"&&$4!~/\/boot|\/tmp\/media\/disk1|\/home$|SWAP/&&length($4)>1 || $2=="rom"&&length($4)>1 || $3=="1,4M"&&length($4)>1) printf "%s (%s)\n",$4,$3}')
     [ -z "$mounts" ] && exit
-    chosen=$(printf "%s\n" "$mounts" | dmenu -r -i -p "unmount:" | awk '{print $1}')
+    chosen=$(printf "%s\n" "$mounts" | dmenu -l 5 -c -bw 2 -r -i -p "unmount:" | awk '{print $1}')
     [ -z "$chosen" ] && exit
     $auth umount "$chosen" \
         && notify-send "USB Unmount" "$chosen unmounted"
@@ -123,7 +123,7 @@ usb_unmnt() {
 
 # iso mount
 iso_mnt() {
-    chosen=$(find /tmp/media/disk1/downloads -type f -iname "*.iso" | cut -d / -f 6 | sed "s/.iso//g" | sort | dmenu -r -i -p "mount:")
+    chosen=$(find /tmp/media/disk1/downloads -type f -iname "*.iso" | cut -d / -f 6 | sed "s/.iso//g" | sort | dmenu -l 5 -c -bw 2 -r -i -p "mount:")
     [ -z "$chosen" ] && exit
     mnt_point="/tmp/media/$chosen"
     [ ! -d "$mnt_point" ] && mkdir "$mnt_point" \
@@ -135,7 +135,7 @@ iso_mnt() {
 iso_unmnt() {
     mounts=$(lsblk -npo "name,type,size,mountpoint" | awk '{if ($2=="loop") printf "%s (%s)\n",$4,$3}')
     [ -z "$mounts" ] && exit
-    chosen=$(printf "%s\n" "$mounts" | dmenu -r -i -p "unmount:" | awk '{print $1}')
+    chosen=$(printf "%s\n" "$mounts" | dmenu -l 5 -c -bw 2 -r -i -p "unmount:" | awk '{print $1}')
     [ -z "$chosen" ] && exit
     $auth umount "$chosen" \
         && notify-send "ISO Unmount" "$chosen unmounted"
@@ -143,7 +143,7 @@ iso_unmnt() {
 
 # android mount
 android_mnt() {
-    chosen=$(simple-mtpfs -l 2>/dev/null | dmenu -r -i -p "mount:" | cut -d : -f 1)
+    chosen=$(simple-mtpfs -l 2>/dev/null | dmenu -l 5 -c -bw 2 -r -i -p "mount:" | cut -d : -f 1)
     [ -z "$chosen" ] && exit
     mnt_point="/tmp/media/$chosen"
     [ ! -d "$mnt_point" ] && mkdir "$mnt_point" \
@@ -154,7 +154,7 @@ android_mnt() {
 # android unmount
 android_unmnt() {
     if grep simple-mtpfs /etc/mtab; then
-        chosen=$(awk '/simple-mtpfs/ {print $2}' /etc/mtab | sort | dmenu -r -i -p "unmount:")
+        chosen=$(awk '/simple-mtpfs/ {print $2}' /etc/mtab | sort | dmenu -l 5 -c -bw 2 -r -i -p "unmount:")
         [ -z "$chosen" ] && exit
         fusermount -u "$chosen" \
             && notify-send "Android Unmount" "$chosen unmounted"
@@ -167,7 +167,7 @@ android_unmnt() {
 dvd_eject() {
     mounts=$(lsblk -nrpo "name,type,size,mountpoint" | awk '$2=="rom"{printf "%s (%s)\n",$1,$3}')
     [ -z "$mounts" ] && exit
-    chosen=$(printf "%s\n" "$mounts" | dmenu -r -i -p "eject:" | awk '{print $1}')
+    chosen=$(printf "%s\n" "$mounts" | dmenu -l 5 -c -bw 2 -r -i -p "eject:" | awk '{print $1}')
     [ -z "$chosen" ] && exit
     $auth eject "$chosen" \
         && notify-send "DVD Eject" "$chosen ejected"
@@ -183,7 +183,7 @@ case $(printf "%s\n" \
     "ISO Unmount" \
     "Android Mount" \
     "Android Unmount" \
-    "DVD Eject" | dmenu -r -i -p "un-/mount:") in
+    "DVD Eject" | dmenu -l 9 -c -bw 2 -r -i -p "un-/mount:") in
     Remote?Mount)
         remote_mnt
         ;;
