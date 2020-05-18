@@ -32,6 +32,7 @@ Patches
 dmenu-lineheight-4.9.diff
 dmenu-highlight-4.9.diff
 dmenu-numbers-4.9.diff
+dmenu-center-20200111-8cd37e1.diff
 
 Last implemented commit
 -----------------------
