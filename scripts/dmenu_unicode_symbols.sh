@@ -3,11 +3,14 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-19T19:04:47+0200
+# date:       2020-05-19T20:39:40+0200
+
+# get active window id
+win_id=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
 
 # symbols file
-# chosen=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols-unicode" dmenu -l 15 -r -i -p "symbol:")
-chosen=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols" dmenu -l 15 -r -i -p "symbol:")
+# chosen=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols-unicode" dmenu -l 15 -r -i -p "symbol:" -w "$win_id")
+chosen=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols" dmenu -b -l 15 -r -i -p "symbol:" -w "$win_id")
 [ -n "$chosen" ] || exit
 
 # copy symbol to clipboard
