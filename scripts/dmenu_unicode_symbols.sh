@@ -3,14 +3,11 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-19T16:20:30+0200
-
-# identify focused window
-windowid=$(printf "0x%x\n" "$(xdotool search --pid "$(xdotool getwindowfocus getwindowpid)" | tail -n 1)")
+# date:       2020-05-19T19:04:47+0200
 
 # symbols file
 # chosen=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols-unicode" dmenu -l 15 -r -i -p "symbol:")
-chosen=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols" dmenu -b -l 15 -r -i -p "symbol:" -w "$windowid")
+chosen=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols" dmenu -l 15 -r -i -p "symbol:")
 [ -n "$chosen" ] || exit
 
 # copy symbol to clipboard

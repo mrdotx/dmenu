@@ -3,13 +3,10 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-19T16:19:36+0200
-
-# identify focused window
-windowid=$(printf "0x%x\n" "$(xdotool search --pid "$(xdotool getwindowfocus getwindowpid)" | tail -n 1)")
+# date:       2020-05-19T19:04:12+0200
 
 # use bc for calculations
-menu="dmenu -b -l 3 -w $windowid"
+menu="dmenu -l 3"
 result=$(printf "%s\n" "$@" | bc -l | sed '/\./ s/\.\{0,1\}0\{1,\}$//')
 chosen=$(printf "Copy to clipboard\nClear\nClose" | $menu -p "= $result")
 case $chosen in
