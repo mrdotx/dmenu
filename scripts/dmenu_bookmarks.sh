@@ -3,13 +3,13 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-18T19:22:52+0200
+# date:       2020-05-19T11:00:07+0200
 
 # bookmark files (format: {title; url} per row)
-bookmarks=$(grep -v "$HOME/.local/share/repos/dmenu/data/bookmarks" -e "^#" -e "^\s*$")
-browser=$(grep -v "$HOME/.config/qutebrowser/bookmarks/urls" -e "^#" -e "^\s*$" | awk '{print $0" [/b]; "$0}')
+bookmarks=$(grep -v "$HOME/.local/share/repos/dmenu/scripts/data/bookmarks" -e "^#" -e "^\s*$")
+browser=$(awk '{print $0" [/b]; "$0}' "$HOME/.config/qutebrowser/bookmarks/urls")
 if [ -n "$browser" ]; then
-    bookmarks="$bookmarks"+"$browser"
+    bookmarks=$(printf "%s\n%s" "$bookmarks" "$browser")
 fi
 
 # chose bookmark or enter manual a url
