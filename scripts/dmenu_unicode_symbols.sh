@@ -3,11 +3,11 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-18T19:29:12+0200
+# date:       2020-05-19T11:00:35+0200
 
 # symbols file
-# chosen=$(< "$HOME/.local/share/repos/dmenu/unicode-symbols" dmenu -l 15 -r -i -p "symbol:")
-chosen=$(cut -d ';' -f1 "$HOME/.local/share/repos/dmenu/data/unicode-symbols" | dmenu -l 15 -r -i -p "symbol:")
+# chosen=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols-unicode" dmenu -l 15 -r -i -p "symbol:")
+chosen=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols" dmenu -l 15 -r -i -p "symbol:")
 [ -n "$chosen" ] || exit
 
 # copy symbol to clipboard
