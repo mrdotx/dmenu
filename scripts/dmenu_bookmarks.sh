@@ -3,21 +3,21 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-19T11:00:07+0200
+# date:       2020-05-21T10:39:18+0200
 
 # bookmark files (format: {title; url} per row)
-bookmarks=$(grep -v "$HOME/.local/share/repos/dmenu/scripts/data/bookmarks" -e "^#" -e "^\s*$")
-browser=$(awk '{print $0" [/b]; "$0}' "$HOME/.config/qutebrowser/bookmarks/urls")
-if [ -n "$browser" ]; then
-    bookmarks=$(printf "%s\n%s" "$bookmarks" "$browser")
+bms=$(grep -v "$HOME/.local/share/repos/dmenu/scripts/data/bookmarks" -e "^#" -e "^\s*$")
+bws=$(awk '{print $0" [/b]; "$0}' "$HOME/.config/qutebrowser/bookmarks/urls")
+if [ -n "$bws" ]; then
+    bms=$(printf "%s\n%s" "$bms" "$bws")
 fi
 
-# chose bookmark or enter manual a url
-title=$(printf "%s\n" "$bookmarks" | awk -F '; ' '{print $1}')
-chosen=$(printf "%s" "$title" | dmenu -l 20 -c -bw 2 -i -p "bookmark:")
-[ -z "${chosen##*[/*]*}" ] \
-    && open=$(printf "%s" "$bookmarks" | grep -F "$chosen" | awk -F '; ' '{print $2}') \
-    || open="$chosen"
+# select bookmark or enter manual a url
+ti=$(printf "%s\n" "$bms" | awk -F '; ' '{print $1}')
+sel=$(printf "%s" "$ti" | dmenu -l 20 -c -bw 2 -i -p "bookmark:")
+[ -z "${sel##*[/*]*}" ] \
+    && open=$(printf "%s" "$bms" | grep -F "$sel" | awk -F '; ' '{print $2}') \
+    || open="$sel"
 
 # open bookmark
 case "$open" in

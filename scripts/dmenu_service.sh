@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_service.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-18T19:23:27+0200
+# date:       2020-05-21T12:04:20+0200
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
@@ -11,34 +11,36 @@ auth="doas --"
 polkit="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 gestures="/usr/bin/libinput-gestures"
 vpn_name="hades"
+up="-up-"
+down="down"
 
 # app status
-app_status() {
+app_stat() {
     [ "$(pgrep -f "$1")" ] \
-        && printf "%s" " up " \
-        || printf "%s" "down"
+        && printf "%s" "$up" \
+        || printf "%s" "$down"
 }
 
 # systemd status
-status() {
+sys_stat() {
     [ "$(systemctl is-active "$1")" = "active" ] \
-        && printf "%s" " up " \
-        || printf "%s" "down"
+        && printf "%s" "$up" \
+        || printf "%s" "$down"
 }
 
 # status
-stat_polkit=$(app_status $polkit)
-stat_printer=$(status org.cups.cupsd.service)
-stat_avahi=$(status avahi-daemon.service)
-stat_bluetooth=$(status bluetooth.service)
-stat_gestures=$(app_status $gestures)
-stat_firewall=$(status ufw.service)
-stat_vpn=$(app_status "vpnc $vpn_name")
-stat_resolver=$(status systemd-resolved.service)
-stat_conky=$(app_status conky)
+stat_polkit=$(app_stat $polkit)
+stat_printer=$(sys_stat org.cups.cupsd.service)
+stat_avahi=$(sys_stat avahi-daemon.service)
+stat_bluetooth=$(sys_stat bluetooth.service)
+stat_gestures=$(app_stat $gestures)
+stat_firewall=$(sys_stat ufw.service)
+stat_vpn=$(app_stat "vpnc $vpn_name")
+stat_resolver=$(sys_stat systemd-resolved.service)
+stat_conky=$(app_stat conky)
 
 # systemd service
-service() {
+svc() {
     if [ "$(systemctl is-active "$1")" != "active"  ]; then
         $auth systemctl start "$1" \
             && notify-send "Service started!" "$1"
@@ -60,7 +62,7 @@ case $(printf "%s\n" \
     "[$stat_resolver] Resolver" \
     "[$stat_conky] Conky" | dmenu -l 9 -c -bw 2 -r -i -p "service:") in
     *Polkit)
-    if [ "$stat_polkit" != " up " ]; then
+    if [ "$stat_polkit" != "$up" ]; then
             $polkit >/dev/null 2>&1 &
             notify-send "Application started!" "$polkit"
         else
@@ -69,21 +71,21 @@ case $(printf "%s\n" \
         fi
         ;;
     *Printer)
-        service "org.cups.cupsd.service"
+        svc "org.cups.cupsd.service"
         ;;
     *Avahi)
-        if [ "$stat_avahi" != " up " ]; then
-            service "avahi-daemon.service"
+        if [ "$stat_avahi" != "$up" ]; then
+            svc "avahi-daemon.service"
         else
-            service "avahi-daemon.service" >/dev/null 2>&1
-            service "avahi-daemon.socket"
+            svc "avahi-daemon.service" >/dev/null 2>&1
+            svc "avahi-daemon.socket"
         fi
         ;;
     *Bluetooth)
-        service "bluetooth.service"
+        svc "bluetooth.service"
         ;;
     *Gestures)
-        if [ "$stat_gestures" != " up " ]; then
+        if [ "$stat_gestures" != "$up" ]; then
             libinput-gestures-setup start >/dev/null 2>&1 \
                 && notify-send "Application started!" "$gestures"
         else
@@ -92,10 +94,10 @@ case $(printf "%s\n" \
         fi
         ;;
     *Firewall)
-        service "ufw.service"
+        svc "ufw.service"
         ;;
     *VPN*)
-        if [ "$stat_vpn" != " up " ]; then
+        if [ "$stat_vpn" != "$up" ]; then
             $auth vpnc $vpn_name >/dev/null 2>&1 \
                 && notify-send "VPN connected!" "$vpn_name"
         else
@@ -104,7 +106,7 @@ case $(printf "%s\n" \
         fi
         ;;
     *Resolver)
-        service "systemd-resolved.service"
+        svc "systemd-resolved.service"
         ;;
     *Conky)
         conky.sh
