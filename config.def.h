@@ -17,9 +17,9 @@ static const char *symbol_2 = "»";
 static const char *colors[SchemeLast][2] = {
 	/*                fg         bg       */
 	[SchemeNorm] = { "#cccccc", "#000000" },
-	[SchemeSel] = { "#cccccc", "#4084d6" },
-	[SchemeSelHighlight] = { "#ffffff", "#4084d6" },
-	[SchemeNormHighlight] = { "#4185d7", "#000000" },
+	[SchemeSel] = { "#cccccc", "#4185d7" },
+	[SchemeSelHighlight] = { "#ffffff", "#4185d7" },
+	[SchemeNormHighlight] = { "#3476a4", "#000000" },
 	[SchemeOut] = { "#000000", "#009698" },
 };
 static const unsigned int alphas[SchemeLast][2] = {
