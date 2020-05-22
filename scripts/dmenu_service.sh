@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_service.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-21T12:04:20+0200
+# date:       2020-05-22T19:47:29+0200
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
@@ -11,7 +11,7 @@ auth="doas --"
 polkit="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 gestures="/usr/bin/libinput-gestures"
 vpn_name="hades"
-up="-up-"
+up="up"
 down="down"
 
 # app status
