@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-23T14:12:50+0200
+# date:       2020-05-23T19:28:14+0200
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
@@ -14,7 +14,8 @@ unmnt() {
     sel=$(awk '/\/tmp\/media\/.*/ {print $2}' /proc/self/mounts \
         | grep -v "/tmp/media/disk1" \
         | sort \
-        | dmenu -l 5 -c -bw 2 -r -i -p "unmount:")
+        | dmenu -l 5 -c -bw 2 -r -i -p "unmount:" \
+    )
 
     [ -z "$sel" ] && exit
 
@@ -52,14 +53,16 @@ rmt_mnt() {
         | grep -v -e "#" -e "^\s*$" \
         | cut -d ";" -f1 \
         | tr -d ' ' \
-        | dmenu -l 20 -c -bw 2 -r -i -p "mount:")
+        | dmenu -l 20 -c -bw 2 -r -i -p "mount:" \
+    )
 
     [ -z "$sel" ] && exit
 
     rmt_dir=$(printf "%s" "$rmt_cfg" \
         | grep "$sel;" \
         | cut -d ";" -f2 \
-        | tr -d ' ')
+        | tr -d ' ' \
+    )
 
     rcl_mnt=/tmp/media/$sel
 
@@ -100,7 +103,8 @@ iso_mnt() {
         | cut -d / -f 6 \
         | sed "s/.iso//g" \
         | sort \
-        | dmenu -l 5 -c -bw 2 -r -i -p "mount:")
+        | dmenu -l 5 -c -bw 2 -r -i -p "mount:" \
+    )
 
     [ -z "$sel" ] && exit
 
@@ -115,7 +119,8 @@ iso_mnt() {
 adr_mnt() {
     sel=$(simple-mtpfs -l 2>/dev/null \
         | dmenu -l 5 -c -bw 2 -r -i -p "mount:" \
-        | cut -d : -f 1)
+        | cut -d : -f 1 \
+    )
 
     [ -z "$sel" ] && exit
 
@@ -129,13 +134,15 @@ adr_mnt() {
 # dvd eject
 dvd_eject() {
     mounts=$(lsblk -nrpo "name,type,size,mountpoint" \
-        | awk '$2=="rom"{printf "%s (%s)\n",$1,$3}')
+        | awk '$2=="rom"{printf "%s (%s)\n",$1,$3}' \
+    )
 
     [ -z "$mounts" ] && exit
 
     sel=$(printf "%s\n" "$mounts" \
         | dmenu -l 5 -c -bw 2 -r -i -p "eject:" \
-        | awk '{print $1}')
+        | awk '{print $1}' \
+    )
 
     [ -z "$sel" ] && exit
 
@@ -150,7 +157,9 @@ case $(printf "%s\n" \
     "mount usb" \
     "mount iso" \
     "mount android" \
-    "eject dvd" | dmenu -l 9 -c -bw 2 -r -i -p "un-/mount:") in
+    "eject dvd" \
+    | dmenu -l 9 -c -bw 2 -r -i -p "un-/mount:" \
+    ) in
     unmount)
         unmnt
         ;;

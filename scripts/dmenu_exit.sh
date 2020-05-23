@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_exit.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-21T11:22:31+0200
+# date:       2020-05-23T19:30:08+0200
 
 sel=$(printf "%s\n" \
     "lock simple" \
@@ -13,7 +13,9 @@ sel=$(printf "%s\n" \
     "suspend" \
     "logout" \
     "reboot" \
-    "shutdown" | dmenu -m 0 -l 8 -c -bw 2 -r -i -p "exit:")
+    "shutdown" \
+    | dmenu -m 0 -l 8 -c -bw 2 -r -i -p "exit:" \
+)
 
 [ -n "$sel" ] || exit
 

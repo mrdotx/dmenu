@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-18T20:10:15+0200
+# date:       2020-05-23T19:09:58+0200
 
 openssh() {
     $TERMINAL -e vim scp://"$1"/ -c ":call ToggleNetrw()"
@@ -28,7 +28,9 @@ case $(printf "%s\n" \
     "pi" \
     "pi2" \
     "p9" \
-    "m3" | dmenu -l 10 -c -bw 2 -r -i -p "vim:") in
+    "m3" \
+    | dmenu -l 10 -c -bw 2 -r -i -p "vim:" \
+    ) in
     new)
         $TERMINAL -e vim
         ;;

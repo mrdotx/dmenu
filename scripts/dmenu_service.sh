@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_service.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-22T19:47:29+0200
+# date:       2020-05-23T19:20:40+0200
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
@@ -60,7 +60,9 @@ case $(printf "%s\n" \
     "[$stat_firewall] Firewall" \
     "[$stat_vpn] VPN $vpn_name" \
     "[$stat_resolver] Resolver" \
-    "[$stat_conky] Conky" | dmenu -l 9 -c -bw 2 -r -i -p "service:") in
+    "[$stat_conky] Conky" \
+    | dmenu -l 9 -c -bw 2 -r -i -p "service:"\
+    ) in
     *Polkit)
     if [ "$stat_polkit" != "$up" ]; then
             $polkit >/dev/null 2>&1 &
