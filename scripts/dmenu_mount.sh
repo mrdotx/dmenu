@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-21T16:41:23+0200
+# date:       2020-05-23T14:12:50+0200
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
@@ -26,24 +26,30 @@ unmnt() {
 # remote mount
 rmt_mnt() {
     rmt_cfg="
-        dropbox;        /
-        firetv;         /storage/emulated/0
-        firetv4k;       /storage/emulated/0
-        gmx;            /
-        googledrive;    /
-        klassiker;      /
-        m3;             /storage/7EB3-34D3
-        marcus;         /
-        middlefinger;   /
-        p9;             /storage/1B0C-F276
+        # devices
         pi;             /home/alarm
         pi2;            /home/alarm
+        firetv;         /storage/emulated/0
+        firetv4k;       /storage/emulated/0
+        p9;             /storage/1B0C-F276
+        m3;             /storage/7EB3-34D3
+
+        # websites
+        middlefinger;   /
         prinzipal;      /
-        web.de;         /
+        klassiker;      /
+        marcus;         /
+
+        # storage
+        webde;          /
+        dropbox;        /
+        gmx;            /
+        googledrive;    /
+        onedrive;       /
     "
 
     sel=$(printf "%s" "$rmt_cfg" \
-        | grep -v -e "^#" -e "^\s*$" \
+        | grep -v -e "#" -e "^\s*$" \
         | cut -d ";" -f1 \
         | tr -d ' ' \
         | dmenu -l 20 -c -bw 2 -r -i -p "mount:")
