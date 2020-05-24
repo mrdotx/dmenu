@@ -11,7 +11,7 @@ static const char *fonts[] = {
 };
 static const unsigned int bgalpha = 0xe5;
 static const unsigned int fgalpha = OPAQUE;
-static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+static const char *prompt      = "cmd:";      /* -p  option; prompt to the left of input field */
 static const char *symbol_1 = "«";
 static const char *symbol_2 = "»";
 static const char *colors[SchemeLast][2] = {
