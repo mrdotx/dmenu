@@ -3,16 +3,66 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-23T19:48:06+0200
+# date:       2020-05-26T02:10:21+0200
+
+script=$(basename "$0")
+help="$script [-h/--help] -- script to manage displays with arandr/xrandr
+  Usage:
+    depending on how the script is named,
+    it will be executed either with dmenu or with rofi
+
+  Examples:
+    dmenu_display.sh
+    rofi_display.sh"
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    printf "%s\n" "$help"
+    exit 0
+fi
+
+case $script in
+    dmenu_*)
+        label="display:"
+        menu="dmenu -l 8 -c -bw 2 -r -i"
+        label_mir="mirroring?"
+        menu_mir="dmenu -l 2 -c -bw 2 -r -i"
+        label_ext="resolution from:"
+        menu_ext="dmenu -l 4 -c -bw 2 -r -i"
+        label_prim="primary:"
+        menu_prim="dmenu -l 4 -c -bw 2 -r -i"
+        label_ori="side of"
+        menu_ori="dmenu -l 2 -c -bw 2 -r -i"
+        label_sav_set="display:"
+        menu_sav_set="dmenu -l 10 -c -bw 2 -r -i"
+        ;;
+    rofi_*)
+        label=""
+        menu="rofi -m -1 -l 3 -columns 2 -theme klassiker-center -dmenu -i"
+        label_mir="mirroring?"
+        menu_mir="rofi -m -1 -l 1 -columns 2 -theme klassiker-center -dmenu -i"
+        label_ext="resolution from:"
+        menu_ext="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
+        label_prim="primary:"
+        menu_prim="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
+        label_ori="side of"
+        menu_ori="rofi -m -1 -l 1 -columns 2 -theme klassiker-center -dmenu -i"
+        label_sav_set=""
+        menu_sav_set="rofi -m -1 -l 3 -columns 2 -theme klassiker-center -dmenu -i"
+        ;;
+    *)
+        printf "%s\n" "$help"
+        exit 1
+        ;;
+esac
 
 # second display
 sec_disp() {
     mir=$(printf "no\\nyes" \
-        | dmenu -l 2 -c -bw 2 -r -i -p "mirroring?" \
+        | $menu_mir -p "$label_mir" \
     )
     if [ "$mir" = "yes" ]; then
         ext=$(printf "%s" "$disp" \
-            | dmenu -l 4 -c -bw 2 -r -i -p "resolution from:" \
+            | $menu_ext -p "$label_ext" \
         )
         int=$(printf "%s" "$disp" \
             | grep -v "$ext" \
@@ -52,13 +102,13 @@ sec_disp() {
         xrandr --output "$ext" --auto --scale 1.0x1.0 --output "$int" --auto --same-as "$ext" --scale "$sc_x"x"$sc_y"
     else
         prim=$(printf "%s" "$disp" \
-            | dmenu -l 4 -c -bw 2 -i -p "primary:" \
+            | $menu_prim -p "$label_prim" \
         )
         sec=$(printf "%s" "$disp" \
             | grep -v "$prim" \
         )
         ori=$(printf "right\\nleft" \
-            | dmenu -l 2 -c -bw 2 -r -i -p "side of $sec?" \
+            | $menu_ori -p "$label_ori $sec?" \
         )
         xrandr --output "$prim" --auto --scale 1.0x1.0 --output "$sec" --"$ori"-of "$prim" --auto --scale 1.0x1.0
     fi
@@ -70,7 +120,7 @@ sav_set() {
         | cut -d / -f 9 \
         | sed "s/.sh//g" \
         | sort \
-        | dmenu -l 10 -c -bw 2 -r -i -p "display:" \
+        | $menu_sav_set -p "$label_sav_set" \
     )
     "$HOME/.local/share/repos/shell/screenlayout/$sel.sh"
 }
@@ -86,7 +136,7 @@ disp=$(printf "%s" "$all" \
 
 # menu
 sel=$(printf "saved settings\\nsecond display\\n%s\\nmanual selection\\naudio toggle" "$disp" \
-    | dmenu -l 8 -c -bw 2 -r -i -p "display:" \
+    | $menu -p "$label"
     ) && \
     case "$sel" in
         saved?settings)

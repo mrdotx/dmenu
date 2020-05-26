@@ -3,7 +3,45 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-25T20:56:18+0200
+# date:       2020-05-25T23:55:42+0200
+
+script=$(basename "$0")
+help="$script [-h/--help] -- script to connect to wlan with iwd
+  Usage:
+    depending on how the script is named,
+    it will be executed either with dmenu or with rofi
+
+  Examples:
+    dmenu_iwd.sh
+    rofi_iwd.sh"
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    printf "%s\n" "$help"
+    exit 0
+fi
+
+case $script in
+    dmenu_*)
+        label_ifc="interface:"
+        menu_ifc="dmenu -l 3 -c -bw 2 -r -i"
+        label_ssid="ssid:"
+        menu_ssid="dmenu -l 10 -c -bw 2 -r -i"
+        label_psk="passphrase:"
+        menu_psk="dmenu -l 1 -c -bw 2 -i"
+        ;;
+    rofi_*)
+        label_ifc=""
+        menu_ifc="rofi -m -1 -l 3 -theme klassiker-center -dmenu -i"
+        label_ssid=""
+        menu_ssid="rofi -m -1 -l 10 -theme klassiker-center -dmenu -i"
+        label_psk=""
+        menu_psk="rofi -m -1 -l 1 -theme klassiker-center -dmenu -i"
+        ;;
+    *)
+        printf "%s\n" "$help"
+        exit 1
+        ;;
+esac
 
 cln_iwctl() {
     tail -n +5 \
@@ -15,7 +53,7 @@ get_ifc() {
     ifc=$(iwctl device list \
         | cln_iwctl \
         | awk '{print $1}' \
-        | dmenu -l 10 -c -bw 2 -r -i -p "interface:"
+        | $menu_ifc -p "$label_ifc"
     )
 }
 
@@ -30,7 +68,7 @@ scan_ssid() {
 
 get_ssid() {
     sel=$(printf "%s\nrescan" "$scan_res" \
-        | dmenu -l 10 -c -bw 2 -r -i -p "ssid:" \
+        | $menu_ssid -p "$label_ssid" \
     )
     ssid=$(printf "%s" "$sel" \
         | awk -F" -;- " '{print $2}' \
@@ -43,12 +81,12 @@ get_ssid() {
         scan_ssid && sleep 2
         get_ssid
     }
-    [ -n "$sel" ] || exit
+    [ -n "$sel" ] || exit 1
 }
 
 get_psk() {
     psk=$(printf 'press esc or enter if you had already insert a passphrase before!\n' \
-        | dmenu -l 10 -c -bw 2 -i -p "passphrase:" \
+        | $menu_psk -p "$label_psk" \
     )
 }
 
@@ -57,7 +95,7 @@ get_ifc \
     && get_ssid
 if [ "$psk" = 1 ]; then
     get_psk \
-        || exit
+        || exit 1
     iwctl station "$ifc" connect "$ssid" -P "$psk" \
     && notify-send "connected to $ssid"
 else

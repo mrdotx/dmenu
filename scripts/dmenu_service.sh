@@ -3,20 +3,57 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_service.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-23T19:20:40+0200
+# date:       2020-05-26T00:55:05+0200
+
+script=$(basename "$0")
+help="$script [-h/--help] -- script to start and stop services
+  Usage:
+    depending on how the script is named,
+    it will be executed either with dmenu or with rofi
+
+  Examples:
+    dmenu_service.sh
+    rofi_service.sh"
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    printf "%s\n" "$help"
+    exit 0
+fi
+
+case $script in
+    dmenu_*)
+        label="service:"
+        menu="dmenu -l 9 -c -bw 2 -r -i"
+        up="up"
+        down="down"
+        ;;
+    rofi_*)
+        label=""
+        menu="rofi -m -1 -l 3 -columns 3 -theme klassiker-center -dmenu -i"
+        up=""
+        down=""
+        ;;
+    *)
+        printf "%s\n" "$help"
+        exit 1
+        ;;
+esac
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
 auth="doas --"
-polkit="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-gestures="/usr/bin/libinput-gestures"
 vpn_name="hades"
-up="up"
-down="down"
 
 # app status
 app_stat() {
     [ "$(pgrep -f "$1")" ] \
+        && printf "%s" "$up" \
+        || printf "%s" "$down"
+}
+
+# systemd user status
+sys_user_stat() {
+    [ "$(systemctl --user is-active "$1")" = "active" ] \
         && printf "%s" "$up" \
         || printf "%s" "$down"
 }
@@ -29,15 +66,26 @@ sys_stat() {
 }
 
 # status
-stat_polkit=$(app_stat $polkit)
+stat_polkit=$(sys_user_stat authentication.service)
 stat_printer=$(sys_stat org.cups.cupsd.service)
 stat_avahi=$(sys_stat avahi-daemon.service)
 stat_bluetooth=$(sys_stat bluetooth.service)
-stat_gestures=$(app_stat $gestures)
+stat_gestures=$(sys_user_stat gestures.service)
 stat_firewall=$(sys_stat ufw.service)
-stat_vpn=$(app_stat "vpnc $vpn_name")
+stat_vpn=$(sys_stat vpnc@$vpn_name.service)
 stat_resolver=$(sys_stat systemd-resolved.service)
 stat_conky=$(app_stat conky)
+
+# systemd user service
+usvc() {
+    if [ "$(systemctl --user is-active "$1")" != "active"  ]; then
+        systemctl --user start "$1" \
+            && notify-send "Service started!" "$1"
+    else
+        systemctl --user stop "$1" \
+            && notify-send "Service stopped!" "$1"
+    fi
+}
 
 # systemd service
 svc() {
@@ -61,16 +109,10 @@ case $(printf "%s\n" \
     "[$stat_vpn] VPN $vpn_name" \
     "[$stat_resolver] Resolver" \
     "[$stat_conky] Conky" \
-    | dmenu -l 9 -c -bw 2 -r -i -p "service:"\
+    | $menu -p "$label"\
     ) in
     *Polkit)
-    if [ "$stat_polkit" != "$up" ]; then
-            $polkit >/dev/null 2>&1 &
-            notify-send "Application started!" "$polkit"
-        else
-            killall $polkit >/dev/null 2>&1 \
-                && notify-send "Application stopped!" "$polkit"
-        fi
+        usvc "authentication.service"
         ;;
     *Printer)
         svc "org.cups.cupsd.service"
@@ -87,25 +129,13 @@ case $(printf "%s\n" \
         svc "bluetooth.service"
         ;;
     *Gestures)
-        if [ "$stat_gestures" != "$up" ]; then
-            libinput-gestures-setup start >/dev/null 2>&1 \
-                && notify-send "Application started!" "$gestures"
-        else
-            libinput-gestures-setup stop >/dev/null 2>&1 \
-                && notify-send "Application stopped!" "$gestures"
-        fi
+        usvc "gestures.service"
         ;;
     *Firewall)
         svc "ufw.service"
         ;;
     *VPN*)
-        if [ "$stat_vpn" != "$up" ]; then
-            $auth vpnc $vpn_name >/dev/null 2>&1 \
-                && notify-send "VPN connected!" "$vpn_name"
-        else
-            $auth vpnc-disconnect >/dev/null 2>&1 \
-                && notify-send "VPN disconnected!" "$vpn_name"
-        fi
+        svc "vpnc@$vpn_name.service"
         ;;
     *Resolver)
         svc "systemd-resolved.service"
