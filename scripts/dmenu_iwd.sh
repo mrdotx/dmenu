@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-25T23:55:42+0200
+# date:       2020-05-26T10:04:29+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -53,7 +53,7 @@ get_ifc() {
     ifc=$(iwctl device list \
         | cln_iwctl \
         | awk '{print $1}' \
-        | $menu_ifc -p "$label_ifc"
+        | $menu_ifc -p "$label_ifc" \
     )
 }
 
@@ -67,6 +67,7 @@ scan_ssid() {
 }
 
 get_ssid() {
+    [ -n "$ifc" ] || exit 1
     sel=$(printf "%s\nrescan" "$scan_res" \
         | $menu_ssid -p "$label_ssid" \
     )
