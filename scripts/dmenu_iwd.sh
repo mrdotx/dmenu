@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-26T12:29:23+0200
+# date:       2020-05-26T17:21:06+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -62,7 +62,7 @@ scan_ssid(){
     scan_res=$(iwctl station "$ifc" get-networks \
         | cln_iwctl \
         | sed 's/ psk / ; [psk] ; /;s/ open / ; [open] ; /;s/\s\+/ /g' \
-        | awk -F " ; " '{print $2" -;-"$1}' \
+        | awk -F " ; " '{print $2" --"$1}' \
     )
 }
 
@@ -72,11 +72,11 @@ get_ssid(){
         | $menu_ssid -p "$label_ssid" \
     )
     ssid=$(printf "%s" "$sel" \
-        | awk -F" -;- " '{print $2}' \
+        | awk -F" -- " '{print $2}' \
         | sed 's/>//;s/^\s//g' \
     )
     [ "$(printf "%s" "$sel" \
-        | awk -F" -;- " '{print $1}')" = "[psk]" ] \
+        | awk -F" -- " '{print $1}')" = "[psk]" ] \
         && psk=1
     [ "$sel" = "rescan" ] && {
         scan_ssid && sleep 2
