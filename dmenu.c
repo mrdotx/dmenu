@@ -980,6 +980,11 @@ readxresources(void) {
 		else
 			fonts[0] = strdup(fonts[0]);
 
+		if (XrmGetResource(xdb, "dmenu.fontalt", "*", &type, &xval))
+			fonts[1] = strdup(xval.addr);
+		else
+			fonts[1] = strdup(fonts[1]);
+
         if (XrmGetResource(xdb, "dmenu.background", "*", &type, &xval))
 			colors[SchemeNorm][ColBg] = strdup(xval.addr);
 		else
