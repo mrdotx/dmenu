@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-26T10:04:29+0200
+# date:       2020-05-26T12:29:23+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -43,13 +43,13 @@ case $script in
         ;;
 esac
 
-cln_iwctl() {
+cln_iwctl(){
     tail -n +5 \
         | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" \
         | grep -v -e "^\s*$"
 }
 
-get_ifc() {
+get_ifc(){
     ifc=$(iwctl device list \
         | cln_iwctl \
         | awk '{print $1}' \
@@ -57,7 +57,7 @@ get_ifc() {
     )
 }
 
-scan_ssid() {
+scan_ssid(){
     iwctl station "$ifc" scan && sleep 1
     scan_res=$(iwctl station "$ifc" get-networks \
         | cln_iwctl \
@@ -66,7 +66,7 @@ scan_ssid() {
     )
 }
 
-get_ssid() {
+get_ssid(){
     [ -n "$ifc" ] || exit 1
     sel=$(printf "%s\nrescan" "$scan_res" \
         | $menu_ssid -p "$label_ssid" \
@@ -85,7 +85,7 @@ get_ssid() {
     [ -n "$sel" ] || exit 1
 }
 
-get_psk() {
+get_psk(){
     psk=$(printf 'press esc or enter if you had already insert a passphrase before!\n' \
         | $menu_psk -p "$label_psk" \
     )

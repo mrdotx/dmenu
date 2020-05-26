@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-26T02:10:21+0200
+# date:       2020-05-26T12:28:53+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to manage displays with arandr/xrandr
@@ -56,7 +56,7 @@ case $script in
 esac
 
 # second display
-sec_disp() {
+sec_disp(){
     mir=$(printf "no\\nyes" \
         | $menu_mir -p "$label_mir" \
     )
@@ -115,7 +115,7 @@ sec_disp() {
 }
 
 # saved settings
-sav_set() {
+sav_set(){
     sel=$(find "$HOME/.local/share/repos/shell/screenlayout/" -iname "*.sh" \
         | cut -d / -f 9 \
         | sed "s/.sh//g" \

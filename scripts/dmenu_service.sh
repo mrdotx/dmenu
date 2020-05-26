@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_service.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-26T00:55:05+0200
+# date:       2020-05-26T12:30:30+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start and stop services
@@ -45,21 +45,21 @@ auth="doas --"
 vpn_name="hades"
 
 # app status
-app_stat() {
+app_stat(){
     [ "$(pgrep -f "$1")" ] \
         && printf "%s" "$up" \
         || printf "%s" "$down"
 }
 
 # systemd user status
-sys_user_stat() {
+sys_user_stat(){
     [ "$(systemctl --user is-active "$1")" = "active" ] \
         && printf "%s" "$up" \
         || printf "%s" "$down"
 }
 
 # systemd status
-sys_stat() {
+sys_stat(){
     [ "$(systemctl is-active "$1")" = "active" ] \
         && printf "%s" "$up" \
         || printf "%s" "$down"
@@ -77,23 +77,23 @@ stat_resolver=$(sys_stat systemd-resolved.service)
 stat_conky=$(app_stat conky)
 
 # systemd user service
-usvc() {
+usvc(){
     if [ "$(systemctl --user is-active "$1")" != "active"  ]; then
-        systemctl --user start "$1" \
+        systemctl --user enable "$1" --now \
             && notify-send "Service started!" "$1"
     else
-        systemctl --user stop "$1" \
+        systemctl --user disable "$1" --now \
             && notify-send "Service stopped!" "$1"
     fi
 }
 
 # systemd service
-svc() {
+svc(){
     if [ "$(systemctl is-active "$1")" != "active"  ]; then
-        $auth systemctl start "$1" \
+        $auth systemctl enable "$1" --now \
             && notify-send "Service started!" "$1"
     else
-        $auth systemctl stop "$1" \
+        $auth systemctl enable stop "$1" --now \
             && notify-send "Service stopped!" "$1"
     fi
 }
