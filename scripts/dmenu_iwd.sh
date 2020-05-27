@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-26T17:21:06+0200
+# date:       2020-05-27T12:11:41+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -45,15 +45,15 @@ esac
 
 cln_iwctl(){
     tail -n +5 \
-        | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" \
-        | grep -v -e "^\s*$"
+        | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g;/^\s*$/d"
 }
 
 get_ifc(){
     ifc=$(iwctl device list \
         | cln_iwctl \
-        | awk '{print $1}' \
+        | awk '{print $1" == ["$2"] == ["$3"]"}' \
         | $menu_ifc -p "$label_ifc" \
+        | awk '{print $1}'
     )
 }
 
@@ -61,28 +61,30 @@ scan_ssid(){
     iwctl station "$ifc" scan && sleep 1
     scan_res=$(iwctl station "$ifc" get-networks \
         | cln_iwctl \
-        | sed 's/ psk / ; [psk] ; /;s/ open / ; [open] ; /;s/\s\+/ /g' \
-        | awk -F " ; " '{print $2" --"$1}' \
+        | sed 's/ psk / ; [psk ] ; /;s/ open / ; [open] ; /;s/\s\+/ /g' \
+        | awk -F " ; " '{print $2" =="$1}' \
     )
 }
 
 get_ssid(){
-    [ -n "$ifc" ] || exit 1
-    sel=$(printf "%s\nrescan" "$scan_res" \
+    [ -n "$ifc" ] \
+        || exit 1
+    sel=$(printf "[scan] == rescan?\n%s" "$scan_res" \
         | $menu_ssid -p "$label_ssid" \
     )
     ssid=$(printf "%s" "$sel" \
-        | awk -F" -- " '{print $2}' \
-        | sed 's/>//;s/^\s//g' \
+        | awk -F" == " '{print $2}' \
+        | sed 's/> //' \
     )
     [ "$(printf "%s" "$sel" \
-        | awk -F" -- " '{print $1}')" = "[psk]" ] \
-        && psk=1
-    [ "$sel" = "rescan" ] && {
+        | awk -F" == " '{print $1}')" = "[open]" ] \
+        && open=1
+    [ "$sel" = "[scan] == rescan?" ] && {
         scan_ssid && sleep 2
         get_ssid
     }
-    [ -n "$sel" ] || exit 1
+    [ -n "$sel" ] \
+        || exit 1
 }
 
 get_psk(){
@@ -94,9 +96,8 @@ get_psk(){
 get_ifc \
     && scan_ssid \
     && get_ssid
-if [ "$psk" = 1 ]; then
-    get_psk \
-        || exit 1
+if [ -z "$open" ]; then
+    get_psk
     iwctl station "$ifc" connect "$ssid" -P "$psk" \
     && notify-send "connected to $ssid"
 else
