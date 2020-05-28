@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-25T23:57:19+0200
+# date:       2020-05-28T13:02:42+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to copy unicode symbols with dmenu/rofi
@@ -31,7 +31,7 @@ case $script in
         ;;
     rofi_*)
         label=""
-        menu="rofi -m -2 -l 10 -columns 3 -theme klassiker-vertical -dmenu -i"
+        menu="rofi -m -2 -l 10 -columns 2 -theme klassiker-vertical -dmenu -i"
         ;;
     *)
         printf "%s\n" "$help"
