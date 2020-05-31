@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-28T12:51:15+0200
+# date:       2020-05-31T19:26:06+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks with dmenu/rofi
@@ -57,6 +57,28 @@ sel=$(printf "%s" "$ti" \
 
 # open bookmark
 case "$open" in
+    bms_sync)
+        # copy bookmarks from firefox to surf
+        # printf 'select url from moz_bookmarks, moz_places where moz_places.id=moz_bookmarks.fk;\n' \
+        #     | sqlite3 ~/.mozilla/firefox/*.default-*/places.sqlite \
+        #     | awk -F '//' '{print $2}' \
+        #     | sed '/^$/d' \
+        #     | sort > ~/.config/surf/bookmarks
+
+        # copy bookmarks from brave to surf
+        grep \"url\": ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks \
+            | awk -F '"' '{print $4}' \
+            | awk -F '//' '{print $2}' \
+            | sort > ~/.config/surf/bookmarks
+
+        # copy bookmarks from brave to qutebrowser
+        grep \"url\": ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks \
+            | awk -F '"' '{print $4}' \
+            | sort > ~/.config/qutebrowser/bookmarks/urls
+
+        notify-send "bookmarks" "synchronized"
+        dmenu_bookmarks.sh
+        ;;
     *com/channel* | *com/user*)
         link_handler.sh "$(link_parser.py "$open" \
             | grep watch \
