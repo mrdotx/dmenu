@@ -29,6 +29,7 @@ Version
 
 Patches
 -------
+dmenu-alpha-4.9.diff
 dmenu-lineheight-4.9.diff
 dmenu-highlight-4.9.diff
 dmenu-numbers-4.9.diff
