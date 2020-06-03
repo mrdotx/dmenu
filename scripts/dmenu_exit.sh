@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_exit.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-25T23:56:51+0200
+# date:       2020-06-03T22:08:03+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to shutdown/reboot/logout/suspend/lock
@@ -23,7 +23,7 @@ fi
 
 case $script in
     dmenu_*)
-        label="exit:"
+        label="exit »"
         menu="dmenu -m 0 -l 8 -c -bw 2 -r -i"
         ;;
     rofi_*)

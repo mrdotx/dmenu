@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-26T12:30:03+0200
+# date:       2020-06-03T22:09:14+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to un-/mount remote, usb and android
@@ -23,19 +23,19 @@ fi
 
 case $script in
     dmenu_*)
-        label="un-/mount:"
+        label="un-/mount »"
         menu="dmenu -l 9 -c -bw 2 -r -i"
-        label_unmnt="unmount:"
+        label_unmnt="unmount »"
         menu_unmnt="dmenu -l 5 -c -bw 2 -r -i"
-        label_rmt_mnt="mount:"
+        label_rmt_mnt="mount »"
         menu_rmt_mnt="dmenu -l 20 -c -bw 2 -r -i"
-        label_usb_mnt="mount:"
+        label_usb_mnt="mount »"
         menu_usb_mnt="dmenu -l 5 -c -bw 2 -r -i"
-        label_iso_mnt="mount:"
+        label_iso_mnt="mount »"
         menu_iso_mnt="dmenu -l 5 -c -bw 2 -r -i"
-        label_adr_mnt="mount:"
+        label_adr_mnt="mount »"
         menu_adr_mnt="dmenu -l 5 -c -bw 2 -r -i"
-        label_dvd_eject="eject:"
+        label_dvd_eject="eject »"
         menu_dvd_eject="dmenu -l 5 -c -bw 2 -r -i"
         ;;
     rofi_*)

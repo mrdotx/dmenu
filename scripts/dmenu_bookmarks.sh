@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-31T19:26:06+0200
+# date:       2020-06-03T21:59:01+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks with dmenu/rofi
@@ -22,7 +22,7 @@ fi
 
 case $script in
     dmenu_*)
-        label="bookmark:"
+        label="bookmark »"
         menu="dmenu -l 20 -c -bw 2 -i"
         ;;
     rofi_*)

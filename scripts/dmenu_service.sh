@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_service.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-26T12:30:30+0200
+# date:       2020-06-03T22:10:04+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start and stop services
@@ -22,7 +22,7 @@ fi
 
 case $script in
     dmenu_*)
-        label="service:"
+        label="service »"
         menu="dmenu -l 9 -c -bw 2 -r -i"
         up="up"
         down="down"

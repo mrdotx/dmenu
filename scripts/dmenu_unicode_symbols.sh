@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-28T13:02:42+0200
+# date:       2020-06-03T22:11:30+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to copy unicode symbols with dmenu/rofi
@@ -26,7 +26,7 @@ case $script in
         win_id=$(xprop -root \
             | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
         )
-        label="symbol:"
+        label="symbol »"
         menu="dmenu -b -l 15 -r -i -w $win_id"
         ;;
     rofi_*)

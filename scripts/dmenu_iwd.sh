@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-27T17:23:54+0200
+# date:       2020-06-03T21:59:54+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -22,11 +22,11 @@ fi
 
 case $script in
     dmenu_*)
-        label_ifc="interface:"
+        label_ifc="interface »"
         menu_ifc="dmenu -l 3 -c -bw 2 -r -i"
-        label_ssid="ssid:"
+        label_ssid="ssid »"
         menu_ssid="dmenu -l 10 -c -bw 2 -r -i"
-        label_psk="passphrase:"
+        label_psk="passphrase »"
         menu_psk="dmenu -l 1 -c -bw 2 -i"
         ;;
     rofi_*)

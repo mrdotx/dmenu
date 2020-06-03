@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_virtualbox.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-25T23:58:28+0200
+# date:       2020-06-03T22:12:54+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start a virtual machine
@@ -22,7 +22,7 @@ fi
 
 case $script in
     dmenu_*)
-        label="vm:"
+        label="vm »"
         menu="dmenu -l 5 -c -bw 2 -r -i"
         ;;
     rofi_*)
