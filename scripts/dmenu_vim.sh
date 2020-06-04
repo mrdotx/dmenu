@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-03T22:12:29+0200
+# date:       2020-06-04T09:46:23+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start vim with a few shortcuts
@@ -49,8 +49,8 @@ netrc(){
 
 # menu for vim shortcuts
 case $(printf "%s\n" \
-    "new" \
     "notes" \
+    "new" \
     "middlefinger-streetwear.com" \
     "prinzipal-kreuzberg.com" \
     "klassiker.online.de" \
@@ -61,11 +61,11 @@ case $(printf "%s\n" \
     "m3" \
     | $menu -p "$label" \
     ) in
-    new)
-        $TERMINAL -e vim
-        ;;
     notes)
         $TERMINAL -e vim -c ":VimwikiIndex"
+        ;;
+    new)
+        $TERMINAL -e vim
         ;;
     middlefinger-streetwear.com)
         openssh "middlefinger"
