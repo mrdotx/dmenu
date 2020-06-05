@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-03T22:07:25+0200
+# date:       2020-06-05T16:50:24+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to manage displays with arandr/xrandr
@@ -30,8 +30,8 @@ case $script in
         menu_ext="dmenu -l 4 -c -bw 2 -r -i"
         label_prim="primary »"
         menu_prim="dmenu -l 4 -c -bw 2 -r -i"
-        label_ori="side of »"
-        menu_ori="dmenu -l 2 -c -bw 2 -r -i"
+        label_ori="position of"
+        menu_ori="dmenu -l 4 -c -bw 2 -r -i"
         label_sav_set="display »"
         menu_sav_set="dmenu -l 10 -c -bw 2 -r -i"
         ;;
@@ -44,8 +44,8 @@ case $script in
         menu_ext="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
         label_prim="primary »"
         menu_prim="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
-        label_ori="side of »"
-        menu_ori="rofi -m -1 -l 1 -columns 2 -theme klassiker-center -dmenu -i"
+        label_ori="position of"
+        menu_ori="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
         label_sav_set=""
         menu_sav_set="rofi -m -1 -l 3 -columns 2 -theme klassiker-center -dmenu -i"
         ;;
@@ -106,9 +106,10 @@ sec_disp(){
         )
         sec=$(printf "%s" "$disp" \
             | grep -v "$prim" \
+            | sed q1 \
         )
-        ori=$(printf "right\\nleft" \
-            | $menu_ori -p "$label_ori $sec?" \
+        ori=$(printf "above\\nright\\nbelow\\nleft" \
+            | $menu_ori -p "$label_ori $sec »" \
         )
         xrandr --output "$prim" --auto --scale 1.0x1.0 --output "$sec" --"$ori"-of "$prim" --auto --scale 1.0x1.0
     fi
