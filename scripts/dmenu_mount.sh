@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-03T22:09:14+0200
+# date:       2020-06-06T09:17:27+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to un-/mount remote, usb and android
@@ -65,7 +65,7 @@ esac
 auth="doas --"
 
 # unmount
-unmnt(){
+unmnt() {
     sel=$(awk '/\/tmp\/media\/.*/ {print $2}' /proc/self/mounts \
         | grep -v "/tmp/media/disk1" \
         | sort \
@@ -80,7 +80,7 @@ unmnt(){
 }
 
 # remote mount
-rmt_mnt(){
+rmt_mnt() {
     rmt_cfg="
         # devices
         pi;             /home/alarm
@@ -127,7 +127,7 @@ rmt_mnt(){
 }
 
 # usb mount
-usb_mnt(){
+usb_mnt() {
     sel="$(lsblk -rpo "name,type,size,mountpoint" \
         | awk '{ if ($2=="part"&&$4=="" || $2=="rom"&&$4=="" || $3=="1,4M"&&$4=="") printf "%s (%s)\n",$1,$3}' \
         | $menu_usb_mnt -p "$label_usb_mnt" \
@@ -153,7 +153,7 @@ usb_mnt(){
 }
 
 # iso mount
-iso_mnt(){
+iso_mnt() {
     sel=$(find /tmp/media/disk1/downloads -type f -iname "*.iso" \
         | cut -d / -f 6 \
         | sed "s/.iso//g" \
@@ -171,7 +171,7 @@ iso_mnt(){
 }
 
 # android mount
-adr_mnt(){
+adr_mnt() {
     sel=$(simple-mtpfs -l 2>/dev/null \
         | $menu_adr_mnt -p "$label_adr_mnt" \
         | cut -d : -f 1 \
@@ -187,7 +187,7 @@ adr_mnt(){
 }
 
 # dvd eject
-dvd_eject(){
+dvd_eject() {
     mounts=$(lsblk -nrpo "name,type,size,mountpoint" \
         | awk '$2=="rom"{printf "%s (%s)\n",$1,$3}' \
     )

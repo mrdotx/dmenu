@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-04T09:46:23+0200
+# date:       2020-06-06T09:18:20+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start vim with a few shortcuts
@@ -35,11 +35,11 @@ case $script in
         ;;
 esac
 
-openssh(){
+openssh() {
     $TERMINAL -e vim scp://"$1"/ -c ":call ToggleNetrw()"
 }
 
-netrc(){
+netrc() {
     rmt_name=$1
     gpg -o "$HOME/.netrc" "$HOME/.local/share/cloud/webde/Keys/netrc.gpg" \
         && chmod 600 "$HOME/.netrc" \
