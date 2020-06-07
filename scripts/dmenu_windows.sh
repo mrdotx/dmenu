@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_windows.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-03T22:13:42+0200
+# date:       2020-06-07T08:52:11+0200
 
 desk=$(mktemp "/tmp/dmenu_windows.XXXXXX")
 win=$(mktemp "/tmp/dmenu_windows.XXXXXX")
@@ -13,9 +13,9 @@ wmctrl -l > "$win"
 
 idx=$(awk 'FNR==NR{a[$1]=$9 ;next}{ print "["a[$2]"] » ", $0 }' "$desk" "$win" \
     | cut -d " " -f1-2,8- \
-    | nl -w 3 -n rn \
-    | sed -r 's/^([ 0-9]+)[ \t]*(.*)$/\1 - \2/' \
-    | dmenu -l 10 -c -bw 2 -r -i -p "window »" \
+    | nl -w 2 -n rz \
+    | sed -r 's/^([ 0-9]+)[\t]*(.*)$/\1 - \2/' \
+    | dmenu -l 15 -c -bw 2 -r -i -p "window »" \
     | cut -d '-' -f-1 \
 )
 
