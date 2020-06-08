@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-03T22:11:30+0200
+# date:       2020-06-08T08:54:28+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to copy unicode symbols with dmenu/rofi
@@ -23,11 +23,11 @@ fi
 case $script in
     dmenu_*)
         # get active window id
-        win_id=$(xprop -root \
+        window_id=$(xprop -root \
             | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
         )
         label="symbol »"
-        menu="dmenu -b -l 15 -r -i -w $win_id"
+        menu="dmenu -b -l 15 -r -i -w $window_id"
         ;;
     rofi_*)
         label=""
@@ -39,21 +39,21 @@ case $script in
         ;;
 esac
 
-sel=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols-unicode" $menu -p "$label")
+select=$(< "$HOME/.local/share/repos/dmenu/scripts/data/symbols-unicode" $menu -p "$label")
 
-[ -n "$sel" ] || exit 1
+[ -n "$select" ] || exit 1
 
-sym=$(printf "%s\n" "$sel" \
+symbol=$(printf "%s\n" "$select" \
     | sed "s/ .*//" \
 )
-code=$(printf "%s\n" "$sel" \
+code=$(printf "%s\n" "$select" \
     | cut -d ';' -f2 \
 )
 
 # insert to cursor in active window
-xdotool type "$sym"
+xdotool type "$symbol"
 # copy symbol to clipboard
-printf "%s\n" "$sym" \
+printf "%s\n" "$symbol" \
     | tr -d '\n' \
     | xsel -b
 # copy code to primary
@@ -61,4 +61,4 @@ printf "%s\n" "$code" \
     | tr -d '\n' \
     | xsel
 
-notify-send "copied to clipboard" "clipboard: $sym\nprimary: $code"
+notify-send "copied to clipboard" "clipboard: $symbol\nprimary: $code"

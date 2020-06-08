@@ -1,14 +1,14 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/data/bookmarks
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/rofi
-# date:       2020-05-31T19:20:42+0200
+# date:       2020-06-08T08:28:02+0200
 
 # rofi search examples:
 # to only search in youtube         -> /y rocket
 # to only search in youtube videos  -> /yv cold
 
 # maintenance
-synchronize bookmarks [/m]; bms_sync
+synchronize bookmarks [/m]; bookmarks_sync
 
 # youtube streams [/ys]
 rocket beans tv [/ys]; https://www.youtube.com/user/ROCKETBEANSTV

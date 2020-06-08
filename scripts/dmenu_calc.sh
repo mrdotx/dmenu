@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-05-25T23:56:33+0200
+# date:       2020-06-08T08:41:54+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to calculate with dmenu/rofi
@@ -38,18 +38,18 @@ case $script in
 esac
 
 # use bc for calculations
-res=$(printf "%s\n" "$@" \
+result=$(printf "%s\n" "$@" \
     | bc -l \
     | sed '/\./ s/\.\{0,1\}0\{1,\}$//' \
 )
-sel=$(printf "Copy to clipboard\nClear\nClose" \
-    | $menu -p "= $res" \
+select=$(printf "Copy to clipboard\nClear\nClose" \
+    | $menu -p "= $result" \
 )
-case $sel in
+case $select in
     Copy?to?clipboard)
-        printf "%s\n" "$res" \
+        printf "%s\n" "$result" \
             | xsel -b \
-            && notify-send "Clipboard" "Result copied: $res"
+            && notify-send "Clipboard" "Result copied: $result"
         ;;
     Clear)
         $0
@@ -59,6 +59,6 @@ case $sel in
     "")
         ;;
     *)
-        $0 "$res $sel"
+        $0 "$result $select"
         ;;
 esac

@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_service.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-06T09:18:03+0200
+# date:       2020-06-08T09:34:18+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start and stop services
@@ -45,39 +45,39 @@ auth="doas --"
 vpn_name="hades"
 
 # app status
-app_stat() {
+app_status() {
     [ "$(pgrep -f "$1")" ] \
         && printf "%s" "$up" \
         || printf "%s" "$down"
 }
 
 # systemd user status
-sys_user_stat() {
+systemd_user_status() {
     [ "$(systemctl --user is-active "$1")" = "active" ] \
         && printf "%s" "$up" \
         || printf "%s" "$down"
 }
 
 # systemd status
-sys_stat() {
+systemd_status() {
     [ "$(systemctl is-active "$1")" = "active" ] \
         && printf "%s" "$up" \
         || printf "%s" "$down"
 }
 
 # status
-stat_polkit=$(sys_user_stat authentication.service)
-stat_printer=$(sys_stat org.cups.cupsd.service)
-stat_avahi=$(sys_stat avahi-daemon.service)
-stat_bluetooth=$(sys_stat bluetooth.service)
-stat_gestures=$(sys_user_stat gestures.service)
-stat_firewall=$(sys_stat ufw.service)
-stat_vpn=$(sys_stat vpnc@$vpn_name.service)
-stat_resolver=$(sys_stat systemd-resolved.service)
-stat_conky=$(app_stat conky)
+status_polkit=$(systemd_user_status authentication.service)
+status_printer=$(systemd_status org.cups.cupsd.service)
+status_avahi=$(systemd_status avahi-daemon.service)
+status_bluetooth=$(systemd_status bluetooth.service)
+status_gestures=$(systemd_user_status gestures.service)
+status_firewall=$(systemd_status ufw.service)
+status_vpn=$(systemd_status vpnc@$vpn_name.service)
+status_resolver=$(systemd_status systemd-resolved.service)
+status_conky=$(app_status conky)
 
-# systemd user service
-usvc() {
+# toggle systemd user service
+toggle_user_service() {
     if [ "$(systemctl --user is-active "$1")" != "active"  ]; then
         systemctl --user enable "$1" --now \
             && notify-send "Service started!" "$1"
@@ -87,58 +87,58 @@ usvc() {
     fi
 }
 
-# systemd service
-svc() {
+# toggle systemd service
+toggle_service() {
     if [ "$(systemctl is-active "$1")" != "active"  ]; then
         $auth systemctl enable "$1" --now \
             && notify-send "Service started!" "$1"
     else
-        $auth systemctl enable stop "$1" --now \
+        $auth systemctl disable "$1" --now \
             && notify-send "Service stopped!" "$1"
     fi
 }
 
 # menu
 case $(printf "%s\n" \
-    "[$stat_polkit] Polkit" \
-    "[$stat_printer] Printer" \
-    "[$stat_avahi] Avahi" \
-    "[$stat_bluetooth] Bluetooth" \
-    "[$stat_gestures] Gestures" \
-    "[$stat_firewall] Firewall" \
-    "[$stat_vpn] VPN $vpn_name" \
-    "[$stat_resolver] Resolver" \
-    "[$stat_conky] Conky" \
+    "[$status_polkit] Polkit" \
+    "[$status_printer] Printer" \
+    "[$status_avahi] Avahi" \
+    "[$status_bluetooth] Bluetooth" \
+    "[$status_gestures] Gestures" \
+    "[$status_firewall] Firewall" \
+    "[$status_vpn] VPN $vpn_name" \
+    "[$status_resolver] Resolver" \
+    "[$status_conky] Conky" \
     | $menu -p "$label"\
     ) in
     *Polkit)
-        usvc "authentication.service"
+        toggle_user_service "authentication.service"
         ;;
     *Printer)
-        svc "org.cups.cupsd.service"
+        toggle_service "org.cups.cupsd.service"
         ;;
     *Avahi)
-        if [ "$stat_avahi" != "$up" ]; then
-            svc "avahi-daemon.service"
+        if [ "$status_avahi" != "$up" ]; then
+            toggle_service "avahi-daemon.service"
         else
-            svc "avahi-daemon.service" >/dev/null 2>&1
-            svc "avahi-daemon.socket"
+            toggle_service "avahi-daemon.service" >/dev/null 2>&1
+            toggle_service "avahi-daemon.socket"
         fi
         ;;
     *Bluetooth)
-        svc "bluetooth.service"
+        toggle_service "bluetooth.service"
         ;;
     *Gestures)
-        usvc "gestures.service"
+        toggle_user_service "gestures.service"
         ;;
     *Firewall)
-        svc "ufw.service"
+        toggle_service "ufw.service"
         ;;
     *VPN*)
-        svc "vpnc@$vpn_name.service"
+        toggle_service "vpnc@$vpn_name.service"
         ;;
     *Resolver)
-        svc "systemd-resolved.service"
+        toggle_service "systemd-resolved.service"
         ;;
     *Conky)
         conky.sh

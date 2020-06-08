@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-06T09:16:30+0200
+# date:       2020-06-08T09:11:53+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -22,16 +22,16 @@ fi
 
 case $script in
     dmenu_*)
-        label_ifc="interface »"
-        menu_ifc="dmenu -l 3 -c -bw 2 -r -i"
+        label_interface="interface »"
+        menu_interface="dmenu -l 3 -c -bw 2 -r -i"
         label_ssid="ssid »"
         menu_ssid="dmenu -l 10 -c -bw 2 -r -i"
         label_psk="passphrase »"
         menu_psk="dmenu -l 1 -c -bw 2 -i"
         ;;
     rofi_*)
-        label_ifc=""
-        menu_ifc="rofi -m -1 -l 3 -theme klassiker-center -dmenu -i"
+        label_interface=""
+        menu_interface="rofi -m -1 -l 3 -theme klassiker-center -dmenu -i"
         label_ssid=""
         menu_ssid="rofi -m -1 -l 10 -theme klassiker-center -dmenu -i"
         label_psk=""
@@ -43,36 +43,36 @@ case $script in
         ;;
 esac
 
-cln_iwd() {
+remove_escape_sequences() {
     tail -n +5 \
         | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g;/^\s*$/d"
 }
 
-get_ifc() {
-    ifc=$(iwctl device list \
-        | cln_iwd \
+get_interface() {
+    interface=$(iwctl device list \
+        | remove_escape_sequences \
         | awk '{print $1" == ["$2"] == ["$3"]"}' \
-        | $menu_ifc -p "$label_ifc" \
+        | $menu_interface -p "$label_interface" \
         | awk '{print $1}'
     )
-    [ -n "$ifc" ] \
+    [ -n "$interface" ] \
         || exit 1
 }
 
 scan_ssid() {
-    iwctl station "$ifc" scan && sleep 1
-    scan_res=$(iwctl station "$ifc" get-networks \
-        | cln_iwd \
+    iwctl station "$interface" scan && sleep 1
+    scan_result=$(iwctl station "$interface" get-networks \
+        | remove_escape_sequences \
         | sed 's/ psk / ; [psk ] ; /;s/ open / ; [open] ; /;s/\s\+/ /g' \
         | awk -F " ; " '{print $2" =="$1}' \
     )
 }
 
 get_ssid() {
-    sel=$(printf "[scan] == rescan?\n%s" "$scan_res" \
+    select=$(printf "[scan] == rescan?\n%s" "$scan_result" \
         | $menu_ssid -p "$label_ssid" \
     )
-    ssid=$(printf "%s" "$sel" \
+    ssid=$(printf "%s" "$select" \
         | awk -F" == " '{print $2}' \
     )
     if printf "%s" "$ssid" | grep -q "^> "; then
@@ -80,14 +80,14 @@ get_ssid() {
             | sed 's/> //')\""
         exit 0
     fi
-    [ "$(printf "%s" "$sel" \
+    [ "$(printf "%s" "$select" \
         | awk -F" == " '{print $1}')" = "[open]" ] \
         && open=1
-    [ "$sel" = "[scan] == rescan?" ] && {
+    [ "$select" = "[scan] == rescan?" ] && {
         scan_ssid && sleep 2
         get_ssid
     }
-    [ -n "$sel" ] \
+    [ -n "$select" ] \
         || exit 1
 }
 
@@ -97,17 +97,17 @@ get_psk() {
     )
 }
 
-conn_iwd() {
+connect_iwd() {
     if [ -z "$open" ]; then
         get_psk
-        iwctl station "$ifc" connect "$ssid" -P "$psk"
+        iwctl station "$interface" connect "$ssid" -P "$psk"
     else
-        iwctl station "$ifc" connect "$ssid"
+        iwctl station "$interface" connect "$ssid"
     fi
     notify-send "iNet wireless daemon" "connected to \"$ssid\""
 }
 
-get_ifc \
+get_interface \
     && scan_ssid \
     && get_ssid \
-    && conn_iwd
+    && connect_iwd

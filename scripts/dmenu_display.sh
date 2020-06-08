@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-06T09:15:43+0200
+# date:       2020-06-08T10:40:24+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to manage displays with arandr/xrandr
@@ -24,30 +24,30 @@ case $script in
     dmenu_*)
         label="display »"
         menu="dmenu -l 8 -c -bw 2 -r -i"
-        label_mir="mirroring »"
-        menu_mir="dmenu -l 2 -c -bw 2 -r -i"
-        label_ext="resolution from »"
-        menu_ext="dmenu -l 4 -c -bw 2 -r -i"
-        label_prim="primary »"
-        menu_prim="dmenu -l 4 -c -bw 2 -r -i"
-        label_ori="position of"
-        menu_ori="dmenu -l 4 -c -bw 2 -r -i"
-        label_sav_set="display »"
-        menu_sav_set="dmenu -l 10 -c -bw 2 -r -i"
+        label_mirroring="mirroring »"
+        menu_mirroring="dmenu -l 2 -c -bw 2 -r -i"
+        label_external="resolution from »"
+        menu_external="dmenu -l 4 -c -bw 2 -r -i"
+        label_primary="primary »"
+        menu_primary="dmenu -l 4 -c -bw 2 -r -i"
+        label_orientation="position of"
+        menu_orientation="dmenu -l 4 -c -bw 2 -r -i"
+        label_saved_settings="display »"
+        menu_saved_settings="dmenu -l 10 -c -bw 2 -r -i"
         ;;
     rofi_*)
         label=""
         menu="rofi -m -1 -l 3 -columns 2 -theme klassiker-center -dmenu -i"
-        label_mir="mirroring »"
-        menu_mir="rofi -m -1 -l 1 -columns 2 -theme klassiker-center -dmenu -i"
-        label_ext="resolution from »"
-        menu_ext="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
-        label_prim="primary »"
-        menu_prim="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
-        label_ori="position of"
-        menu_ori="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
-        label_sav_set=""
-        menu_sav_set="rofi -m -1 -l 3 -columns 2 -theme klassiker-center -dmenu -i"
+        label_mirroring="mirroring »"
+        menu_mirroring="rofi -m -1 -l 1 -columns 2 -theme klassiker-center -dmenu -i"
+        label_external="resolution from »"
+        menu_external="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
+        label_primary="primary »"
+        menu_primary="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
+        label_orientation="position of"
+        menu_orientation="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
+        label_saved_settings=""
+        menu_saved_settings="rofi -m -1 -l 3 -columns 2 -theme klassiker-center -dmenu -i"
         ;;
     *)
         printf "%s\n" "$help"
@@ -56,95 +56,96 @@ case $script in
 esac
 
 # second display
-sec_disp() {
-    mir=$(printf "no\\nyes" \
-        | $menu_mir -p "$label_mir" \
+secondary_display() {
+    mirroring=$(printf "no\\nyes" \
+        | $menu_mirroring -p "$label_mirroring" \
     )
-    if [ "$mir" = "yes" ]; then
-        ext=$(printf "%s" "$disp" \
-            | $menu_ext -p "$label_ext" \
+    if [ "$mirroring" = "yes" ]; then
+        external=$(printf "%s" "$get_display" \
+            | $menu_external -p "$label_external" \
         )
-        int=$(printf "%s" "$disp" \
-            | grep -v "$ext" \
+        internal=$(printf "%s" "$get_display" \
+            | grep -v "$external" \
         )
 
-        res_ext=$(xrandr --query \
-            | sed -n "/^$ext/,/\+/p" \
+        resolution_external=$(xrandr --query \
+            | sed -n "/^$external/,/\+/p" \
             | tail -n 1 \
             | awk '{print $1}' \
         )
-        res_int=$(xrandr --query \
-            | sed -n "/^$int/,/\+/p" \
+        resolution_internal=$(xrandr --query \
+            | sed -n "/^$internal/,/\+/p" \
             | tail -n 1 \
             | awk '{print $1}' \
         )
 
-        res_ext_x=$(printf "%s" "$res_ext" \
+        resolution_external_x=$(printf "%s" "$resolution_external" \
             | sed 's/x.*//' \
         )
-        res_ext_y=$(printf "%s" "$res_ext" \
+        resolution_external_y=$(printf "%s" "$resolution_external" \
             | sed 's/.*x//' \
         )
-        res_int_x=$(printf "%s" "$res_int" \
+        resolution_internal_x=$(printf "%s" "$resolution_internal" \
             | sed 's/x.*//' \
         )
-        res_int_y=$(printf "%s" "$res_int" \
+        resolution_internal_y=$(printf "%s" "$resolution_internal" \
             | sed 's/.*x//' \
         )
 
-        sc_x=$(printf "%s\n" "$res_ext_x / $res_int_x" \
+        scale_x=$(printf "%s\n" "$resolution_external_x / $resolution_internal_x" \
             | bc -l \
         )
-        sc_y=$(printf "%s\n" "$res_ext_y / $res_int_y" \
+        scale_y=$(printf "%s\n" "$resolution_external_y / $resolution_internal_y" \
             | bc -l \
         )
 
-        xrandr --output "$ext" --auto --scale 1.0x1.0 --output "$int" --auto --same-as "$ext" --scale "$sc_x"x"$sc_y"
+        xrandr --output "$external" --auto --scale 1.0x1.0 --output "$internal" --auto --same-as "$external" --scale "$scale_x"x"$scale_y"
     else
-        prim=$(printf "%s" "$disp" \
-            | $menu_prim -p "$label_prim" \
+        primary=$(printf "%s" "$get_display" \
+            | $menu_primary -p "$label_primary" \
         )
-        sec=$(printf "%s" "$disp" \
-            | grep -v "$prim" \
+        secondary=$(printf "%s" "$get_display" \
+            | grep -v "$primary" \
             | sed q1 \
         )
-        ori=$(printf "above\\nright\\nbelow\\nleft" \
-            | $menu_ori -p "$label_ori $sec »" \
+        orientation=$(printf "above\\nright\\nbelow\\nleft" \
+            | $menu_orientation -p "$label_orientation $secondary »" \
+            | sed "s/left/left-of/;s/right/right-of/" \
         )
-        xrandr --output "$prim" --auto --scale 1.0x1.0 --output "$sec" --"$ori"-of "$prim" --auto --scale 1.0x1.0
+        xrandr --output "$primary" --auto --scale 1.0x1.0 --output "$secondary" --"$orientation" "$primary" --auto --scale 1.0x1.0
     fi
 }
 
 # saved settings
-sav_set() {
-    sel=$(find "$HOME/.local/share/repos/shell/screenlayout/" -iname "*.sh" \
+saved_settings() {
+    select=$(find "$HOME/.local/share/repos/shell/screenlayout/" -iname "*.sh" \
         | cut -d / -f 9 \
         | sed "s/.sh//g" \
         | sort \
-        | $menu_sav_set -p "$label_sav_set" \
+        | $menu_saved_settings -p "$label_saved_settings" \
     )
-    "$HOME/.local/share/repos/shell/screenlayout/$sel.sh"
+    "$HOME/.local/share/repos/shell/screenlayout/$select.sh"
 }
 
-# get disp
-all=$(xrandr -q \
+# get display
+display_all=$(xrandr -q \
     | grep "connected" \
 )
-disp=$(printf "%s" "$all" \
+get_display=$(printf "%s" "$display_all" \
     | grep " connected" \
     | awk '{print $1}' \
 )
 
 # menu
-sel=$(printf "saved settings\\nsecond display\\n%s\\nmanual selection\\naudio toggle" "$disp" \
+select=$(printf "saved settings\\nsecond display\\n%s\\nmanual selection\\naudio toggle" "$get_display" \
     | $menu -p "$label"
     ) && \
-    case "$sel" in
+    case "$select" in
         saved?settings)
-            sav_set
+            saved_settings
         ;;
         second?display)
-            sec_disp
+            secondary_display
         ;;
         manual?selection)
             arandr
@@ -153,9 +154,9 @@ sel=$(printf "saved settings\\nsecond display\\n%s\\nmanual selection\\naudio to
             audio.sh -tog
         ;;
     *)
-        eval xrandr --output "$sel" --auto --scale 1.0x1.0 \
-            "$(printf "%s" "$all" \
-                | grep -v "$sel" \
+        eval xrandr --output "$select" --auto --scale 1.0x1.0 \
+            "$(printf "%s" "$display_all" \
+                | grep -v "$select" \
                 | awk '{print "--output", $1, "--off"}' \
                 | tr '\n' ' ' \
             )"
@@ -163,7 +164,7 @@ sel=$(printf "saved settings\\nsecond display\\n%s\\nmanual selection\\naudio to
     esac
 
 # maintenance after setup displays
-if [ -n "$sel" ] && [ ! "$sel" = "audio toggle" ]; then
+if [ -n "$select" ] && [ ! "$select" = "audio toggle" ]; then
     systemctl --user start xwallpaper.service
     systemctl --user restart polybar.service
 fi

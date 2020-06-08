@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-03T21:59:01+0200
+# date:       2020-06-08T08:31:42+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks with dmenu/rofi
@@ -36,28 +36,28 @@ case $script in
 esac
 
 # bookmark files (format: {title; url} per row)
-bms=$(grep -v "$HOME/.local/share/repos/dmenu/scripts/data/bookmarks" -e "^#" -e "^\s*$")
-bws=$(awk '{print $0" [/b]; "$0}' "$HOME/.config/qutebrowser/bookmarks/urls")
-if [ -n "$bws" ]; then
-    bms=$(printf "%s\n%s" "$bms" "$bws")
+bookmarks=$(grep -v "$HOME/.local/share/repos/dmenu/scripts/data/bookmarks" -e "^#" -e "^\s*$")
+browser=$(awk '{print $0" [/b]; "$0}' "$HOME/.config/qutebrowser/bookmarks/urls")
+if [ -n "$browser" ]; then
+    bookmarks=$(printf "%s\n%s" "$bookmarks" "$browser")
 fi
 
 # select bookmark or enter a url manually
-ti=$(printf "%s\n" "$bms" \
+title=$(printf "%s\n" "$bookmarks" \
     | awk -F '; ' '{print $1}' \
 )
-sel=$(printf "%s" "$ti" \
+select=$(printf "%s" "$title" \
     | $menu -p "$label" \
 )
-[ -z "${sel##*[/*]*}" ] \
-    && open=$(printf "%s" "$bms" \
-        | grep -F "$sel" \
+[ -z "${select##*[/*]*}" ] \
+    && open=$(printf "%s" "$bookmarks" \
+        | grep -F "$select" \
         | awk -F '; ' '{print $2}') \
-    || open="$sel"
+    || open="$select"
 
 # open bookmark
 case "$open" in
-    bms_sync)
+    bookmarks_sync)
         # copy bookmarks from firefox to surf
         # printf 'select url from moz_bookmarks, moz_places where moz_places.id=moz_bookmarks.fk;\n' \
         #     | sqlite3 ~/.mozilla/firefox/*.default-*/places.sqlite \

@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_exit.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-03T22:08:03+0200
+# date:       2020-06-08T08:55:44+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to shutdown/reboot/logout/suspend/lock
@@ -36,7 +36,7 @@ case $script in
         ;;
 esac
 
-sel=$(printf "%s\n" \
+select=$(printf "%s\n" \
     "lock simple" \
     "suspend simple" \
     "lock blur" \
@@ -48,8 +48,8 @@ sel=$(printf "%s\n" \
     | $menu -p "$label" \
 )
 
-[ -n "$sel" ] || exit 1
+[ -n "$select" ] || exit 1
 
-notify-send "exit" "trying to $sel"
+notify-send "exit" "trying to $select"
 
-eval "i3_knockout.sh -$sel"
+eval "i3_knockout.sh -$select"

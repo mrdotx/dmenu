@@ -3,15 +3,15 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_windows.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-07T08:52:11+0200
+# date:       2020-06-08T08:45:55+0200
 
-desk=$(mktemp "/tmp/dmenu_windows.XXXXXX")
-win=$(mktemp "/tmp/dmenu_windows.XXXXXX")
+desktops=$(mktemp "/tmp/dmenu_windows.XXXXXX")
+windows=$(mktemp "/tmp/dmenu_windows.XXXXXX")
 
-wmctrl -d > "$desk"
-wmctrl -l > "$win"
+wmctrl -d > "$desktops"
+wmctrl -l > "$windows"
 
-idx=$(awk 'FNR==NR{a[$1]=$9 ;next}{ print "["a[$2]"] » ", $0 }' "$desk" "$win" \
+select=$(awk 'FNR==NR{a[$1]=$9 ;next}{ print "["a[$2]"] » ", $0 }' "$desktops" "$windows" \
     | cut -d " " -f1-2,8- \
     | nl -w 2 -n rz \
     | sed -r 's/^([ 0-9]+)[\t]*(.*)$/\1 - \2/' \
@@ -19,12 +19,12 @@ idx=$(awk 'FNR==NR{a[$1]=$9 ;next}{ print "["a[$2]"] » ", $0 }' "$desk" "$win" 
     | cut -d '-' -f-1 \
 )
 
-[ -z "$idx" ] \
-    && rm -f "$desk" "$win" \
+[ -z "$select" ] \
+    && rm -f "$desktops" "$windows" \
     && exit 1
 
-sed -n "$idx p" "$win" \
+sed -n "$select p" "$windows" \
     | cut -c -10 \
     | xargs wmctrl -i -a
 
-rm -f "$desk" "$win"
+rm -f "$desktops" "$windows"

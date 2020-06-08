@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_virtualbox.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-03T22:12:54+0200
+# date:       2020-06-08T08:46:39+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start a virtual machine
@@ -35,13 +35,13 @@ case $script in
         ;;
 esac
 
-sel=$(VBoxManage list vms \
+select=$(VBoxManage list vms \
     | cut -d '"' -f2 \
     | $menu -p "$label" \
 )
 
-[ -n "$sel" ] || exit 1
+[ -n "$select" ] || exit 1
 
-notify-send "virtualbox" "starting $sel"
+notify-send "virtualbox" "starting $select"
 
-VBoxManage startvm "$sel" >/dev/null 2>&1
+VBoxManage startvm "$select" >/dev/null 2>&1
