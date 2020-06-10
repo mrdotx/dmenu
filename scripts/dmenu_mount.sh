@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-08T09:56:20+0200
+# date:       2020-06-10T13:27:31+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to un-/mount remote, usb and android
@@ -31,8 +31,8 @@ case $script in
         menu_mount_remote="dmenu -l 20 -c -bw 2 -r -i"
         label_mount_usb="mount »"
         menu_mount_usb="dmenu -l 5 -c -bw 2 -r -i"
-        label_mount_iso="mount »"
-        menu_mount_iso="dmenu -l 5 -c -bw 2 -r -i"
+        label_mount_image="mount »"
+        menu_mount_image="dmenu -l 5 -c -bw 2 -r -i"
         label_mount_android="mount »"
         menu_mount_android="dmenu -l 5 -c -bw 2 -r -i"
         label_dvd_eject="eject »"
@@ -47,8 +47,8 @@ case $script in
         menu_mount_remote="rofi -m -1 -l 4 -columns 4 -theme klassiker-center -dmenu -i"
         label_mount_usb=""
         menu_mount_usb="rofi -m -1 -l 2 -columns 3 -theme klassiker-center -dmenu -i"
-        label_mount_iso=""
-        menu_mount_iso="rofi -m -1 -l 2 -columns 3 -theme klassiker-center -dmenu -i"
+        label_mount_image=""
+        menu_mount_image="rofi -m -1 -l 2 -columns 3 -theme klassiker-center -dmenu -i"
         label_mount_android=""
         menu_mount_android="rofi -m -1 -l 2 -columns 3 -theme klassiker-center -dmenu -i"
         label_dvd_eject="⏏️"
@@ -121,7 +121,8 @@ mount_remote() {
 
     mount_point=/tmp/media/$select
 
-    [ ! -d "$mount_point" ] && mkdir "$mount_point" \
+    [ ! -d "$mount_point" ] \
+        && mkdir "$mount_point" \
         && sleep 1 && rclone mount "$select:$remote_directory" "$mount_point" \
         & notify-send "remote mount" "$select mounted to $mount_point"
 }
@@ -138,36 +139,45 @@ mount_usb() {
     mount_point="/tmp/media/$(basename "$select")"
     partition_type="$(lsblk -no "fstype" "$select")"
 
-    [ ! -d "$mount_point" ] && mkdir "$mount_point" && case "$partition_type" in
-    "vfat") $auth mount -t vfat "$select" "$mount_point" -o rw,umask=0000 \
-        && notify-send "usb mount $partition_type" "$select mounted to $mount_point" ;;
-    *)
-        $auth mount "$select" "$mount_point" \
-            && notify-send "usb mount $partition_type" "$select mounted to $mount_point"
+    [ ! -d "$mount_point" ] \
+        && mkdir "$mount_point" \
+        && case "$partition_type" in
+            "vfat")
+                $auth mount -t vfat "$select" "$mount_point" -o rw,umask=0000 \
+                && notify-send "usb mount $partition_type" "$select mounted to $mount_point"
+                ;;
+            *)
+                $auth mount "$select" "$mount_point" \
+                && notify-send "usb mount $partition_type" "$select mounted to $mount_point"
 
-        user="$(whoami)"
-        user_group="$(groups | awk '{print $1}')"
-        $auth chown "$user":"$user_group" 741 "$mount_point"
-        ;;
+                user="$(whoami)"
+                user_group="$(groups | awk '{print $1}')"
+                $auth chown "$user":"$user_group" 741 "$mount_point"
+                ;;
     esac
 }
 
-# mount iso
-mount_iso() {
-    select=$(find /tmp/media/disk1/downloads -type f -iname "*.iso" \
+# mount image
+mount_image() {
+    search="/tmp/media/disk1/downloads"
+    select=$(find $search -type f \
+            -iname "*.iso" -o \
+            -iname "*.img" -o \
+            -iname "*.bin" -o \
+            -iname "*.mdf" -o \
+            -iname "*.nrg" \
         | cut -d / -f 6 \
-        | sed "s/.iso//g" \
-        | sort \
-        | $menu_mount_iso -p "$label_mount_iso" \
+        | $menu_mount_image -p "$label_mount_image" \
     )
 
     [ -z "$select" ] && exit 1
 
     mount_point="/tmp/media/$select"
 
-    [ ! -d "$mount_point" ] && mkdir "$mount_point" \
-        && $auth mount -o loop "/tmp/media/disk1/downloads/$select.iso" "$mount_point" \
-        && notify-send "iso mount" "$select mounted to $mount_point"
+    [ ! -d "$mount_point" ] \
+        && mkdir "$mount_point" \
+        && $auth mount -o loop "$search/$select" "$mount_point" \
+        && notify-send "image mount" "$select mounted to $mount_point"
 }
 
 # mount android
@@ -181,7 +191,8 @@ mount_android() {
 
     mount_point="/tmp/media/$select"
 
-    [ ! -d "$mount_point" ] && mkdir "$mount_point" \
+    [ ! -d "$mount_point" ] \
+        && mkdir "$mount_point" \
         && simple-mtpfs --device "$select" "$mount_point" \
         && notify-send "android mount" "$select mounted to $mount_point"
 }
@@ -208,7 +219,7 @@ case $(printf "%s\n" \
     "unmount" \
     "mount remote" \
     "mount usb" \
-    "mount iso" \
+    "mount image" \
     "mount android" \
     "eject dvd" \
     | $menu -p "$label" \
@@ -222,8 +233,8 @@ case $(printf "%s\n" \
     mount?usb)
         mount_usb
         ;;
-    mount?iso)
-        mount_iso
+    mount?image)
+        mount_image
         ;;
     mount?android)
         mount_android
