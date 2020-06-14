@@ -980,7 +980,7 @@ readxresources(void) {
 		else
 			fonts[0] = strdup(fonts[0]);
 
-		if (XrmGetResource(xdb, "dmenu.fontalt", "*", &type, &xval))
+		if (XrmGetResource(xdb, "dmenu.fontemoji", "*", &type, &xval))
 			fonts[1] = strdup(xval.addr);
 		else
 			fonts[1] = strdup(fonts[1]);
