@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-10T13:27:31+0200
+# date:       2020-06-26T17:44:47+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to un-/mount remote, usb and android
@@ -66,8 +66,7 @@ auth="doas --"
 
 # unmount
 unmount() {
-    select=$(awk '/\/tmp\/media\/.*/ {print $2}' /proc/self/mounts \
-        | grep -v "/tmp/media/disk1" \
+    select=$(awk '/\/mnt\/.*/ {print $2}' /proc/self/mounts \
         | sort \
         | $menu_unmount -p "$label_unmount" \
     )
@@ -119,7 +118,7 @@ mount_remote() {
         | tr -d ' ' \
     )
 
-    mount_point=/tmp/media/$select
+    mount_point=/mnt/$select
 
     [ ! -d "$mount_point" ] \
         && mkdir "$mount_point" \
@@ -136,7 +135,7 @@ mount_usb() {
 
     [ -z "$select" ] && exit 1
 
-    mount_point="/tmp/media/$(basename "$select")"
+    mount_point="/mnt/$(basename "$select")"
     partition_type="$(lsblk -no "fstype" "$select")"
 
     [ ! -d "$mount_point" ] \
@@ -159,20 +158,20 @@ mount_usb() {
 
 # mount image
 mount_image() {
-    search="/tmp/media/disk1/downloads"
-    select=$(find $search -type f \
+    search="$HOME/Downloads"
+    select=$(find "$search" -type f \
             -iname "*.iso" -o \
             -iname "*.img" -o \
             -iname "*.bin" -o \
             -iname "*.mdf" -o \
             -iname "*.nrg" \
-        | cut -d / -f 6 \
+        | cut -d / -f 5 \
         | $menu_mount_image -p "$label_mount_image" \
     )
 
     [ -z "$select" ] && exit 1
 
-    mount_point="/tmp/media/$select"
+    mount_point="/mnt/$select"
 
     [ ! -d "$mount_point" ] \
         && mkdir "$mount_point" \
@@ -189,7 +188,7 @@ mount_android() {
 
     [ -z "$select" ] && exit 1
 
-    mount_point="/tmp/media/$select"
+    mount_point="/mnt/$select"
 
     [ ! -d "$mount_point" ] \
         && mkdir "$mount_point" \
