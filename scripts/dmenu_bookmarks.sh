@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-07-05T11:58:04+0200
+# date:       2020-07-06T12:56:30+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks with dmenu/rofi
@@ -79,7 +79,7 @@ case "$open" in
 
         firefox_to_surf() {
             printf 'select url from moz_bookmarks, moz_places where moz_places.id=moz_bookmarks.fk;\n' \
-                | sqlite3 ~/.mozilla/firefox/*-default*/places.sqlite \
+                | sqlite3 ~/.mozilla/firefox/*dev-edition-default/places.sqlite \
                 | awk -F '//' '{print $2}' \
                 | sed '/^$/d' \
                 | sort > ~/.config/surf/bookmarks
@@ -87,7 +87,7 @@ case "$open" in
 
         firefox_to_qutebrowser() {
             printf 'select url from moz_bookmarks, moz_places where moz_places.id=moz_bookmarks.fk;\n' \
-                | sqlite3 ~/.mozilla/firefox/*-default*/places.sqlite \
+                | sqlite3 ~/.mozilla/firefox/*dev-edition-default/places.sqlite \
                 | sort > ~/.config/qutebrowser/bookmarks/urls
         }
 
