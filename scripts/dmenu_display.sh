@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-08T10:40:24+0200
+# date:       2020-07-07T20:32:34+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to manage displays with arandr/xrandr
@@ -165,6 +165,6 @@ select=$(printf "saved settings\\nsecond display\\n%s\\nmanual selection\\naudio
 
 # maintenance after setup displays
 if [ -n "$select" ] && [ ! "$select" = "audio toggle" ]; then
-    systemctl --user start xwallpaper.service
+    systemctl --user restart xwallpaper.service
     systemctl --user restart polybar.service
 fi
