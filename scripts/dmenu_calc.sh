@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-08T08:41:54+0200
+# date:       2020-07-11T20:32:01+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to calculate with dmenu/rofi
@@ -42,19 +42,19 @@ result=$(printf "%s\n" "$@" \
     | bc -l \
     | sed '/\./ s/\.\{0,1\}0\{1,\}$//' \
 )
-select=$(printf "Copy to clipboard\nClear\nClose" \
+select=$(printf "copy to clipboard\nclear\nclose" \
     | $menu -p "= $result" \
 )
 case $select in
-    Copy?to?clipboard)
+    copy?to?clipboard)
         printf "%s\n" "$result" \
             | xsel -b \
             && notify-send "Clipboard" "Result copied: $result"
         ;;
-    Clear)
+    clear)
         $0
         ;;
-    Close)
+    close)
         ;;
     "")
         ;;
