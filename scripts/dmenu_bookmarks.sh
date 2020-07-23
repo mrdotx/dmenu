@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-07-06T12:56:30+0200
+# date:       2020-07-23T20:10:03+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks with dmenu/rofi
@@ -49,6 +49,9 @@ title=$(printf "%s\n" "$bookmarks" \
 select=$(printf "%s" "$title" \
     | $menu -p "$label" \
 )
+[ -n "$select" ] \
+    || exit 1
+
 [ -z "${select##*[/*]*}" ] \
     && open=$(printf "%s" "$bookmarks" \
         | grep -F "$select" \
