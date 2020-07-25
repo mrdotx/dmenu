@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_man.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-07-12T12:17:18+0200
+# date:       2020-07-25T10:07:53+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search man pages
@@ -38,11 +38,11 @@ case $script in
         ;;
 esac
 
-select=$(apropos -s '' '' \
-    | grep -v -E '^.+ \(0\)' \
+select=$(apropos -l '' \
     | sort \
     | $menu -p "$label" \
-    | cut -d ' ' -f1)
+    | awk '{print $1, $2}' \
+    | tr -d ' ')
 
 if [ -n "$select" ]; then
     $TERMINAL -T "man floating" -e man "$select" &
