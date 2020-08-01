@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-07-23T20:10:03+0200
+# date:       2020-08-01T11:43:12+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks with dmenu/rofi
@@ -107,12 +107,6 @@ case "$open" in
 
         notify-send "bookmarks" "synchronized"
         dmenu_bookmarks.sh
-        ;;
-    *com/channel* | *com/user*)
-        link_handler.sh "$(link_parser.py "$open" \
-            | grep watch \
-            | sed "q1" \
-            )"
         ;;
     *)
         link_handler.sh "$open"

@@ -1,7 +1,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/data/bookmarks
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/rofi
-# date:       2020-06-08T08:28:02+0200
+# date:       2020-08-01T11:43:33+0200
 
 # rofi search examples:
 # to only search in youtube         -> /y rocket
@@ -11,11 +11,11 @@
 synchronize bookmarks [/m]; bookmarks_sync
 
 # youtube streams [/ys]
-rocket beans tv [/ys]; https://www.youtube.com/user/ROCKETBEANSTV
-roylab stats [/ys]; https://www.youtube.com/channel/UCDGiCfCZIV5phsoGiPwIcyQ
-chilledcow [/ys]; https://www.youtube.com/channel/UCSJ4gkVC6NrvII8umztf0Ow
-future house radio [/ys]; https://www.youtube.com/channel/UCE7gceSq79z8uW7cTe86UaA
-space videos [/ys]; https://www.youtube.com/user/ouramazingspace
+rocket beans tv [/ys]; https://www.youtube.com/watch?v=C_k5GM1BMHk
+roylab stats [/ys]; https://www.youtube.com/watch?v=NMre6IAAAiU
+chilledcow [/ys]; https://www.youtube.com/watch?v=5qap5aO4i9A
+future house radio [/ys]; https://www.youtube.com/watch?v=PtYe4GwOlNs
+space videos [/ys]; https://www.youtube.com/watch?v=EEIk7gwjgIM
 
 # youtube videos [/yv]
 dave not dave - cold blood [/yv]; https://www.youtube.com/watch?v=0RrWzQhb38Q
