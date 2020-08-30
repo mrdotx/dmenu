@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-08-30T09:47:15+0200
+# date:       2020-08-30T16:12:13+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks with dmenu/rofi
@@ -35,16 +35,18 @@ case $script in
         ;;
 esac
 
-# bookmark files (format: {title; url} per row)
-bookmarks=$(grep -v "$HOME/.local/share/repos/dmenu/scripts/data/bookmarks" -e "^#" -e "^\s*$")
-browser=$(awk '{print $0" [/b]; "$0}' "$HOME/.config/qutebrowser/bookmarks/urls")
-if [ -n "$browser" ]; then
-    bookmarks=$(printf "%s\n%s" "$bookmarks" "$browser")
-fi
+bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
+w3m_file="$HOME/.w3m/bookmark.html"
+surf_file="$HOME/.config/surf/bookmarks"
+qutebrowser_file="$HOME/.config/qutebrowser/bookmarks/urls"
+
+menu_sync="== Sync Bookmarks ==;bookmarks_sync"
+menu_bookmarks=$(cat "$bookmarks_file")
+bookmarks=$(printf "%s\n%s" "$menu_sync" "$menu_bookmarks")
 
 # select bookmark or enter a url manually
 title=$(printf "%s\n" "$bookmarks" \
-    | awk -F '; ' '{print $1}' \
+    | awk -F ';' '{print $1}' \
 )
 select=$(printf "%s" "$title" \
     | $menu -p "$label" \
@@ -52,49 +54,39 @@ select=$(printf "%s" "$title" \
 [ -n "$select" ] \
     || exit 1
 
-[ -z "${select##*[/*]*}" ] \
-    && open=$(printf "%s" "$bookmarks" \
+open=$(printf "%s" "$bookmarks" \
         | grep -F "$select" \
-        | awk -F '; ' '{print $2}') \
+        | awk -F ';' '{print $2}') \
     || open="$select"
 
 # open bookmark
 case "$open" in
     bookmarks_sync)
-        brave_to_surf() {
-            grep \"url\": ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks \
-                | awk -F '"' '{print $4}' \
-                | awk -F '//' '{print $2}' \
-                | sort > ~/.config/surf/bookmarks
-        }
-
-        brave_to_qutebrowser() {
-            grep \"url\": ~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks \
-                | awk -F '"' '{print $4}' \
-                | sort > ~/.config/qutebrowser/bookmarks/urls
-        }
-
         firefox_close() {
             killall -q /usr/lib/firefox-developer-edition/firefox \
                 && firefox=1 \
                 && sleep 0.1
         }
 
-        firefox_to_surf() {
-            printf 'select mp.url from moz_bookmarks mb, moz_places mp where mp.id=mb.fk;\n' \
+        create_bookmarks() {
+            printf 'select mp.url, mb.title from moz_bookmarks mb, moz_places mp where mp.id=mb.fk;\n' \
                 | sqlite3 ~/.mozilla/firefox/*dev-edition-default/places.sqlite \
-                | awk -F '//' '{print $2}' \
+                | awk -F '|' '{print $2"\;"$1}' \
+                | sort > "$bookmarks_file"
+         }
+
+        bookmarks_to_surf() {
+            awk -F ';' '{print $2}' < "$bookmarks_file" \
                 | sed '/^$/d' \
-                | sort > ~/.config/surf/bookmarks
+                | sort > "$surf_file"
         }
 
-        firefox_to_qutebrowser() {
-            printf 'select mp.url from moz_bookmarks mb, moz_places mp where mp.id=mb.fk;\n' \
-                | sqlite3 ~/.mozilla/firefox/*dev-edition-default/places.sqlite \
-                | sort > ~/.config/qutebrowser/bookmarks/urls
+        bookmarks_to_qutebrowser() {
+            awk -F ';' '{print $2}' < "$bookmarks_file" \
+                | sort > "$qutebrowser_file"
         }
 
-        firefox_to_w3m() {
+        bookmarks_to_w3m() {
             header="<html><head><title>Bookmarks</title></head>
 <body>
 <h1>Bookmarks</h1>
@@ -105,25 +97,19 @@ case "$open" in
 </body>
 </html>
 "
-            printf "%s" "$header" > ~/.w3m/bookmark.html
-            printf 'select mp.url, mb.title from moz_bookmarks mb, moz_places mp where mp.id=mb.fk;\n' \
-                | sqlite3 ~/.mozilla/firefox/*dev-edition-default/places.sqlite \
-                | awk -F '|' '{print "<li><a href=\""$1"\">"$2"</a>"}' \
-                | sort >> ~/.w3m/bookmark.html
-            printf "%s" "$footer" >> ~/.w3m/bookmark.html
+            printf "%s\n" "$header" > "$w3m_file"
+            awk -F ';' '{print "<li><a href=\""$2"\">"$1"</a>"}' < "$bookmarks_file" \
+                | sort >> "$w3m_file"
+            printf "%s" "$footer" >> "$w3m_file"
         }
 
-        # firefox functions
         firefox_close
-        firefox_to_surf
-        firefox_to_qutebrowser
-        firefox_to_w3m
+        create_bookmarks
+        bookmarks_to_surf
+        bookmarks_to_qutebrowser
+        bookmarks_to_w3m
         [ $firefox = 1 ] \
             && firefox-developer-edition &
-
-        # brave functions
-        # brave_to_surf
-        # brave_to_qutebrowser
 
         notify-send "bookmarks" "synchronized"
         dmenu_bookmarks.sh
