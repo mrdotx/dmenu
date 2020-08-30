@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-08-30T16:12:13+0200
+# date:       2020-08-30T17:41:13+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks with dmenu/rofi
@@ -59,35 +59,33 @@ open=$(printf "%s" "$bookmarks" \
         | awk -F ';' '{print $2}') \
     || open="$select"
 
-# open bookmark
-case "$open" in
-    bookmarks_sync)
-        firefox_close() {
-            killall -q /usr/lib/firefox-developer-edition/firefox \
-                && firefox=1 \
-                && sleep 0.1
-        }
 
-        create_bookmarks() {
-            printf 'select mp.url, mb.title from moz_bookmarks mb, moz_places mp where mp.id=mb.fk;\n' \
-                | sqlite3 ~/.mozilla/firefox/*dev-edition-default/places.sqlite \
-                | awk -F '|' '{print $2"\;"$1}' \
-                | sort > "$bookmarks_file"
-         }
+# data functions
+firefox_close() {
+    killall -q /usr/lib/firefox-developer-edition/firefox \
+        && firefox=1 \
+        && sleep 0.1
+}
 
-        bookmarks_to_surf() {
-            awk -F ';' '{print $2}' < "$bookmarks_file" \
-                | sed '/^$/d' \
-                | sort > "$surf_file"
-        }
+create_bookmarks() {
+    printf 'select mp.url, mb.title from moz_bookmarks mb, moz_places mp where mp.id=mb.fk;\n' \
+        | sqlite3 ~/.mozilla/firefox/*dev-edition-default/places.sqlite \
+        | awk -F '|' '{print $2"\;"$1}' \
+        | sort > "$bookmarks_file"
+}
 
-        bookmarks_to_qutebrowser() {
-            awk -F ';' '{print $2}' < "$bookmarks_file" \
-                | sort > "$qutebrowser_file"
-        }
+bookmarks_to_surf() {
+    awk -F ';' '{print $2}' < "$bookmarks_file" \
+        | awk -F '//' '{print $2}' \
+        | sed '/^$/d' > "$surf_file"
+}
 
-        bookmarks_to_w3m() {
-            header="<html><head><title>Bookmarks</title></head>
+bookmarks_to_qutebrowser() {
+    awk -F ';' '{print $2}' < "$bookmarks_file" > "$qutebrowser_file"
+}
+
+bookmarks_to_w3m() {
+    header="<html><head><title>Bookmarks</title></head>
 <body>
 <h1>Bookmarks</h1>
 <h2>Firefox</h2>
@@ -97,12 +95,14 @@ case "$open" in
 </body>
 </html>
 "
-            printf "%s\n" "$header" > "$w3m_file"
-            awk -F ';' '{print "<li><a href=\""$2"\">"$1"</a>"}' < "$bookmarks_file" \
-                | sort >> "$w3m_file"
-            printf "%s" "$footer" >> "$w3m_file"
-        }
+    printf "%s\n" "$header" > "$w3m_file"
+    awk -F ';' '{print "<li><a href=\""$2"\">"$1"</a>"}' < "$bookmarks_file" >> "$w3m_file"
+    printf "%s" "$footer" >> "$w3m_file"
+}
 
+# open bookmark
+case "$open" in
+    bookmarks_sync)
         firefox_close
         create_bookmarks
         bookmarks_to_surf
