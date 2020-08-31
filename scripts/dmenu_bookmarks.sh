@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-08-31T01:10:51+0200
+# date:       2020-08-31T09:24:51+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks from firefox with dmenu/rofi
@@ -61,7 +61,7 @@ close_firefox() {
 
 create_bookmarks() {
     printf 'select mb.title, mp.url from moz_bookmarks mb, moz_places mp where mp.id=mb.fk;\n' \
-        | sqlite3 -separator ';' ~/.mozilla/firefox/*dev-edition-default*/places.sqlite \
+        | sqlite3 -separator ';' ~/.mozilla/firefox/*default*/places.sqlite \
         | sort > "$bookmarks_file"
 }
 
