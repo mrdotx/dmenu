@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-08-31T09:24:51+0200
+# date:       2020-09-01T20:14:25+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks from firefox with dmenu/rofi
@@ -36,9 +36,9 @@ case $script in
 esac
 
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
-bookmarks=$(printf "== Sync Bookmarks ==;bookmarks_sync\n%s" "$(cat "$bookmarks_file")")
+bookmarks=$(printf "== Sync Bookmarks ==;sync_bookmarks\n%s" "$(cat "$bookmarks_file")")
 
-# select bookmark or enter a url manually
+# select bookmark or search with duckduckgo
 select=$(printf "%s\n" "$bookmarks" \
     | awk -F ';' '{print $1}' \
     | $menu -p "$label" \
@@ -49,19 +49,25 @@ select=$(printf "%s\n" "$bookmarks" \
 
 open=$(printf "%s" "$bookmarks" \
         | grep -F "$select" \
-        | awk -F ';' '{print $2}') \
-    || open="$select"
+        | awk -F ';' '{print $2}' \
+)
+
+[ -n "$open" ] \
+    || open=$(printf "%s" "https://lite.duckduckgo.com/lite/?q=$select" \
+        | sed 's/ /\%20/g' \
+    )
 
 # data functions
 close_firefox() {
-    killall -q /usr/lib/firefox-developer-edition/firefox \
+    killall -q "/usr/lib/firefox-developer-edition/firefox" \
         && firefox=1 \
         && sleep 0.1
 }
 
 create_bookmarks() {
+    firefox_file=$(find "$HOME"/.mozilla/firefox/*default* -iname "places.sqlite")
     printf 'select mb.title, mp.url from moz_bookmarks mb, moz_places mp where mp.id=mb.fk;\n' \
-        | sqlite3 -separator ';' ~/.mozilla/firefox/*default*/places.sqlite \
+        | sqlite3 -separator ';' "$firefox_file" \
         | sort > "$bookmarks_file"
 }
 
@@ -94,9 +100,9 @@ copy_to_qutebrowser() {
     awk -F ';' '{print $2}' < "$bookmarks_file" > "$qutebrowser_file"
 }
 
-# open bookmark
+# sync/open bookmark
 case "$open" in
-    bookmarks_sync)
+    sync_bookmarks)
         close_firefox
         create_bookmarks
         copy_to_w3m
