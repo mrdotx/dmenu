@@ -1,5 +1,5 @@
 diff --git a/dmenu.c b/dmenu.c
-index 6b8f51b..8c663a9 100644
+index 65f25ce..dfa59db 100644
 --- a/dmenu.c
 +++ b/dmenu.c
 @@ -500,6 +500,119 @@ draw:
@@ -122,17 +122,17 @@ index 6b8f51b..8c663a9 100644
  static void
  paste(void)
  {
-@@ -556,6 +669,9 @@ run(void)
- 		if (XFilterEvent(&ev, None))
- 			continue;
- 		switch(ev.type) {
+@@ -561,6 +674,9 @@ run(void)
+ 				break;
+ 			cleanup();
+ 			exit(1);
 +		case ButtonPress:
 +			buttonpress(&ev);
 +			break;
  		case Expose:
  			if (ev.xexpose.count == 0)
  				drw_map(drw, win, 0, 0, mw, mh);
-@@ -653,7 +769,8 @@ setup(void)
+@@ -658,7 +774,8 @@ setup(void)
  	/* create menu window */
  	swa.override_redirect = True;
  	swa.background_pixel = scheme[SchemeNorm][ColBg].pixel;
