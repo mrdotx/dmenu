@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-08T08:50:36+0200
+# date:       2020-09-09T11:46:28+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start vim with a few shortcuts
@@ -23,11 +23,11 @@ fi
 case $script in
     dmenu_*)
         label="vim »"
-        menu="dmenu -l 10 -c -bw 2 -r -i"
+        menu="dmenu -l 11 -c -bw 2 -r -i"
         ;;
     rofi_*)
         label=""
-        menu="rofi -m -1 -l 5 -columns 2 -theme klassiker-center -dmenu -i"
+        menu="rofi -m -1 -l 6 -columns 2 -theme klassiker-center -dmenu -i"
         ;;
     *)
         printf "%s\n" "$help"
@@ -49,8 +49,9 @@ netrc() {
 
 # menu for vim shortcuts
 case $(printf "%s\n" \
-    "notes" \
-    "new" \
+    "== ideas ==" \
+    "== notes ==" \
+    "==  new  ==" \
     "middlefinger-streetwear.com" \
     "prinzipal-kreuzberg.com" \
     "klassiker.online.de" \
@@ -61,34 +62,37 @@ case $(printf "%s\n" \
     "m3" \
     | $menu -p "$label" \
     ) in
-    notes)
+    "== ideas ==")
+        $TERMINAL -e vim -c ":VimwikiIndex" -c ":VimwikiGoto ideas"
+        ;;
+    "== notes ==")
         $TERMINAL -e vim -c ":VimwikiIndex"
         ;;
-    new)
+    "==  new  ==")
         $TERMINAL -e vim
         ;;
-    middlefinger-streetwear.com)
+    "middlefinger-streetwear.com")
         openssh "middlefinger"
         ;;
-    prinzipal-kreuzberg.com)
+    "prinzipal-kreuzberg.com")
         openssh "prinzipal"
         ;;
-    klassiker.online.de)
+    "klassiker.online.de")
         netrc "ftp://klassiker.online.de/"
         ;;
-    marcusreith.de)
+    "marcusreith.de")
         netrc "ftp://marcusreith.de/"
         ;;
-    pi)
+    "pi")
         openssh "hermes"
         ;;
-    pi2)
+    "pi2")
         openssh "prometheus"
         ;;
-    p9)
+    "p9")
         openssh "p9"
         ;;
-    m3)
+    "m3")
         openssh "m3"
         ;;
 esac
