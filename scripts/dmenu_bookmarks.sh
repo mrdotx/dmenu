@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-01T20:14:25+0200
+# date:       2020-09-15T15:53:36+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks from firefox with dmenu/rofi
@@ -48,8 +48,8 @@ select=$(printf "%s\n" "$bookmarks" \
     || exit 1
 
 open=$(printf "%s" "$bookmarks" \
-        | grep -F "$select" \
-        | awk -F ';' '{print $2}' \
+    | grep -F "$select" \
+    | awk -F ';' '{print $2}' \
 )
 
 [ -n "$open" ] \
