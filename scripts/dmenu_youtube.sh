@@ -3,10 +3,11 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-15T19:26:51+0200
+# date:       2020-09-15T23:35:06+0200
 
 script=$(basename "$0")
-help="$script [-h/--help] -- script to open bookmarks from firefox with dmenu/rofi
+help="$script [-h/--help] -- script to search youtube with youtube-dl
+                                and play it with mpv
   Usage:
     depending on how the script is named,
     it will be executed either with dmenu or with rofi
@@ -46,20 +47,28 @@ search=$(printf "%s\n%s" "$(xsel -o -b)" "$(xsel -o -p)" \
 [ -z "$search" ] \
     && exit 1
 
-result=$(youtube-dl "ytsearch$search_results:$search" --get-id --get-title | \
-    sed -E 'N;s|(.*)\n(.*)|\2\;\1|')
+case "$search" in
+    *'youtube.com/watch'* \
+        | *'youtube.com/playlist'* \
+        | *'youtu.be'*)
+            open="$search"
+            ;;
+    *)
+        result=$(youtube-dl "ytsearch$search_results:$search" --get-id --get-title | \
+            sed -E 'N;s|(.*)\n(.*)|\2\;\1|')
 
-select=$(printf "%s\n" "$result" \
-    | awk -F ';' '{print $2}' \
-    | $menu_result -p "$label_result" \
-)
+        select=$(printf "%s\n" "$result" \
+            | awk -F ';' '{print $2}' \
+            | $menu_result -p "$label_result" \
+        )
 
-[ -z "$select" ] \
-    && exit 1
+        [ -z "$select" ] \
+            && exit 1
 
-open=$(printf "%s" "$result" \
-    | grep -F "$select" \
-    | awk -F ';' '{print $1}' \
-)
+        open=$(printf "%s" "$result" \
+            | grep -F "$select" \
+            | awk -F ';' '{print $1}' \
+        )
+esac
 
-mpv ytdl://"$open"
+mpv --really-quiet ytdl://"$open" >/dev/null 2>&1
