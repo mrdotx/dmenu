@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-15T19:02:39+0200
+# date:       2020-09-15T19:06:21+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks from firefox with dmenu/rofi
@@ -12,8 +12,8 @@ help="$script [-h/--help] -- script to open bookmarks from firefox with dmenu/ro
     it will be executed either with dmenu or with rofi
 
   Examples:
-    dmenu_bookmarks.sh
-    rofi_bookmarks.sh"
+    dmenu_youtube.sh
+    rofi_youtube.sh"
 
 if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     printf "%s\n" "$help"
