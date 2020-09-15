@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-15T16:13:04+0200
+# date:       2020-09-15T18:33:52+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to open bookmarks from firefox with dmenu/rofi
@@ -40,7 +40,16 @@ case $script in
 esac
 
 search_results=10
-search=$(printf "" | $menu -p "$label")
+search=$(printf "== clipboard ==\n== primary ==" | $menu -p "$label")
+
+case $search in
+    "== clipboard ==")
+        search=$(xsel -o -b | $menu -p "$label")
+        ;;
+    "== primary ==")
+        search=$(xsel -o -p | $menu -p "$label")
+        ;;
+esac
 
 [ -z "$search" ] \
     && exit 1
