@@ -3,11 +3,11 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-16T00:52:38+0200
+# date:       2020-09-16T08:48:59+0200
 
 script=$(basename "$0")
-help="$script [-h/--help] -- script to search youtube videos with youtube-dl
-                                and play them with mpv or download video/audio
+help="$script [-h/--help] -- script to search youtube with youtube-dl and play
+                                them with mpv or download video/audio
   Usage:
     depending on how the script is named,
     it will be executed either with dmenu or with rofi
@@ -73,7 +73,7 @@ case "$search" in
         )
 esac
 
-search=$(printf "1) play video\n2) download video\n3) download audio" \
+search=$(printf "1) play video\n2) play audio\n3) download video\n4) download audio" \
     | $menu_result -p "$label_result")
 
 [ -z "$search" ] \
@@ -81,12 +81,15 @@ search=$(printf "1) play video\n2) download video\n3) download audio" \
 
 case "$search" in
     "1) play video")
-        mpv --really-quiet ytdl://"$open" >/dev/null 2>&1
+        mpv --really-quiet ytdl://"$open"
         ;;
-    "2) download video")
-        youtube-dl -ciw "$open" >/dev/null 2>&1
+    "2) play audio")
+        $TERMINAL -e mpv --no-video ytdl://"$open"
         ;;
-    "3) download audio")
-        youtube-dl -ciw -x --audio-format mp3 --audio-quality 0 "$open" >/dev/null 2>&1
+    "3) download video")
+        $TERMINAL -e youtube-dl -ciw "$open"
+        ;;
+    "4) download audio")
+        $TERMINAL -e youtube-dl -ciw -x --audio-format mp3 --audio-quality 0 "$open"
         ;;
 esac
