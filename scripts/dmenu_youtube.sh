@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-16T11:21:03+0200
+# date:       2020-09-16T12:01:14+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search youtube with youtube-dl and play
@@ -73,7 +73,7 @@ case "$search" in
         )
 esac
 
-search=$(printf "1) play video\n2) play audio\n3) download video\n4) download audio" \
+search=$(printf "1) play video\n2) play audio\n3) add video to taskspooler\n4) add audio to taskspooler\n5) download video\n6) download audio" \
     | $menu_result -p "$label_result")
 
 [ -z "$search" ] \
@@ -86,10 +86,16 @@ case "$search" in
     "2) play audio")
         $TERMINAL -e mpv --no-video ytdl://"$open"
         ;;
-    "3) download video")
+    "3) add video to taskspooler")
+        tsp mpv --really-quiet ytdl://"$open"
+        ;;
+    "4) add audio to taskspooler")
+        tsp "$TERMINAL" -e mpv --no-video ytdl://"$open"
+        ;;
+    "5) download video")
         $TERMINAL -e youtube-dl -ciw "$open"
         ;;
-    "4) download audio")
+    "6) download audio")
         $TERMINAL -e youtube-dl -ciw -x --audio-format mp3 --audio-quality 0 "$open"
         ;;
 esac
