@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-16T14:25:18+0200
+# date:       2020-09-16T22:08:10+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search youtube with youtube-dl and play
@@ -54,7 +54,7 @@ search=$(printf "%s" "$search" \
 case "$search" in
     "== clear clipboard ==")
         xsel -c -b
-        $script
+        "$0"
         exit 0
         ;;
     *'youtube.com/watch'* \
@@ -80,6 +80,7 @@ case "$search" in
             | grep -F "$select" \
             | awk -F ';' '{print $1}' \
         )
+        ;;
 esac
 
 search=$(printf "1) play video\n2) play audio\n3) add video to taskspooler\n4) add audio to taskspooler\n5) download video\n6) download audio" \
@@ -90,21 +91,21 @@ search=$(printf "1) play video\n2) play audio\n3) add video to taskspooler\n4) a
 
 case "$search" in
     "1) play video")
-        mpv --really-quiet ytdl://"$open"
+        mpv --really-quiet ytdl://"$open" >/dev/null 2>&1 &
         ;;
     "2) play audio")
-        $TERMINAL -e mpv --no-video ytdl://"$open"
+        $TERMINAL -e mpv --no-video ytdl://"$open" &
         ;;
     "3) add video to taskspooler")
-        tsp mpv --really-quiet ytdl://"$open"
+        tsp mpv --really-quiet ytdl://"$open" >/dev/null 2>&1
         ;;
     "4) add audio to taskspooler")
         tsp "$TERMINAL" -e mpv --no-video ytdl://"$open"
         ;;
     "5) download video")
-        $TERMINAL -e youtube-dl -ciw "$open"
+        $TERMINAL -e youtube-dl -ciw "$open" &
         ;;
     "6) download audio")
-        $TERMINAL -e youtube-dl -ciw -x --audio-format mp3 --audio-quality 0 "$open"
+        $TERMINAL -e youtube-dl -ciw -x --audio-format mp3 --audio-quality 0 "$open" &
         ;;
 esac
