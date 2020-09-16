@@ -3,10 +3,10 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-08T08:54:28+0200
+# date:       2020-09-16T10:52:41+0200
 
 script=$(basename "$0")
-help="$script [-h/--help] -- script to copy unicode symbols with dmenu/rofi
+help="$script [-h/--help] -- script to search and copy unicode symbols
   Usage:
     depending on how the script is named,
     it will be executed either with dmenu or with rofi

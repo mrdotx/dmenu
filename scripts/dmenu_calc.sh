@@ -3,10 +3,10 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-07-11T20:32:01+0200
+# date:       2020-09-16T10:48:15+0200
 
 script=$(basename "$0")
-help="$script [-h/--help] -- script to calculate with dmenu/rofi
+help="$script [-h/--help] -- script to calculate with bc
   Usage:
     depending on how the script is named,
     it will be executed either with dmenu or with rofi

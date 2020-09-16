@@ -3,11 +3,11 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-16T08:48:59+0200
+# date:       2020-09-16T10:29:50+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search youtube with youtube-dl and play
-                                them with mpv or download video/audio
+                                video/audio with mpv or download them
   Usage:
     depending on how the script is named,
     it will be executed either with dmenu or with rofi

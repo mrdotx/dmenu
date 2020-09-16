@@ -3,11 +3,11 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_exit.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-08T08:55:44+0200
+# date:       2020-09-16T10:49:12+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to shutdown/reboot/logout/suspend/lock
-                                with dmenu/rofi
+                                the system
   Usage:
     depending on how the script is named,
     it will be executed either with dmenu or with rofi
