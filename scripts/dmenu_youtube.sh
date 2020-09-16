@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-16T13:53:18+0200
+# date:       2020-09-16T14:25:18+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search youtube with youtube-dl and play
@@ -43,7 +43,7 @@ esac
 search_results=10
 
 [ -n "$(xsel -o -b)" ] \
-    && search=$(printf "== clear clipboard ==\n%s" "$(xsel -o -b)")
+    && search=$(printf "%s\n== clear clipboard ==" "$(xsel -o -b)")
 
 search=$(printf "%s" "$search" \
     | $menu -p "$label")
