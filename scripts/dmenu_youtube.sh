@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-16T22:08:10+0200
+# date:       2020-09-17T19:38:00+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search youtube with youtube-dl and play
@@ -11,10 +11,15 @@ help="$script [-h/--help] -- script to search youtube with youtube-dl and play
   Usage:
     depending on how the script is named,
     it will be executed either with dmenu or with rofi
+    $script [-r] [quantity]
+
+  Settings:
+    [-r]       = results to query from youtube
+    [quantity] = integer (default 5)
 
   Examples:
-    dmenu_youtube.sh
-    rofi_youtube.sh"
+    $script
+    $script -r 10"
 
 if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     printf "%s\n" "$help"
@@ -40,8 +45,6 @@ case $script in
         ;;
 esac
 
-search_results=10
-
 [ -n "$(xsel -o -b)" ] \
     && search=$(printf "%s\n== clear clipboard ==" "$(xsel -o -b)")
 
@@ -65,6 +68,12 @@ case "$search" in
             open="$search"
             ;;
     *)
+        if [ "$1" = "-r" ]; then
+            search_results=$2
+        else
+            search_results=5
+        fi
+
         result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id | \
             sed -E 'N;s|(.*)\n(.*)|\2\;\1|')
 
