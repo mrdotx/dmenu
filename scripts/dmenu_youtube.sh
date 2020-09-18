@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-17T19:38:00+0200
+# date:       2020-09-18T12:28:48+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search youtube with youtube-dl and play
@@ -15,11 +15,12 @@ help="$script [-h/--help] -- script to search youtube with youtube-dl and play
 
   Settings:
     [-r]       = results to query from youtube
-    [quantity] = integer (default 5)
+    [quantity] = integer (default 10) or all (takes a long time)
 
   Examples:
     $script
-    $script -r 10"
+    $script -r 5
+    $script -r all"
 
 if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     printf "%s\n" "$help"
@@ -71,11 +72,13 @@ case "$search" in
         if [ "$1" = "-r" ]; then
             search_results=$2
         else
-            search_results=5
+            search_results=10
         fi
 
+        printf "" | $menu -p "please wait..." &
         result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id | \
             sed -E 'N;s|(.*)\n(.*)|\2\;\1|')
+        kill "$(pgrep -f "$menu -p please wait...")"
 
         select=$(printf "%s" "$result" \
             | awk -F ';' '{print $2}' \
