@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-18T12:28:48+0200
+# date:       2020-09-18T17:08:47+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search youtube with youtube-dl and play
@@ -29,16 +29,20 @@ fi
 
 case $script in
     dmenu_*)
+        # get active window id
+        window_id=$(xprop -root \
+            | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
+        )
         label="youtube »"
-        menu="dmenu -l 10 -i"
+        menu="dmenu -b -l 10 -i -w $window_id"
         label_result="youtube »"
-        menu_result="dmenu -l 10 -r -i"
+        menu_result="dmenu -b -l 10 -r -i -w $window_id"
         ;;
     rofi_*)
         label=""
-        menu="rofi -m -1 -l 10 -theme klassiker-horizontal -dmenu -i"
+        menu="rofi -m -2 -l 10 -theme klassiker-vertical -dmenu -i"
         label_result=""
-        menu_result="rofi -m -1 -l 10 -theme klassiker-center -dmenu -i"
+        menu_result="rofi -m -2 -l 10 -theme klassiker-vertical -dmenu -i"
         ;;
     *)
         printf "%s\n" "$help"
