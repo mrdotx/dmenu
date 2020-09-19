@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-18T16:36:23+0200
+# date:       2020-09-19T19:12:45+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -45,7 +45,7 @@ esac
 
 remove_escape_sequences() {
     tail -n +5 \
-        | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g;/^\s*$/d"
+        | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g;/^\s*$/d'
 }
 
 get_interface() {

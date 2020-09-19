@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-19T16:09:32+0200
+# date:       2020-09-19T19:10:38+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to manage displays with arandr/xrandr
@@ -110,7 +110,7 @@ secondary_display() {
         )
         orientation=$(printf "above\nright\nbelow\nleft" \
             | $menu_orientation -p "$label_orientation $secondary »" \
-            | sed "s/left/left-of/;s/right/right-of/" \
+            | sed 's/left/left-of/;s/right/right-of/' \
         )
         xrandr --output "$primary" --auto --scale 1.0x1.0 --output "$secondary" --"$orientation" "$primary" --auto --scale 1.0x1.0
     fi
@@ -120,7 +120,7 @@ secondary_display() {
 saved_settings() {
     select=$(find "$HOME/.local/share/repos/shell/screenlayout/" -iname "*.sh" \
         | cut -d / -f 9 \
-        | sed "s/.sh//g" \
+        | sed 's/.sh//g' \
         | sort \
         | $menu_saved_settings -p "$label_saved_settings" \
     )
