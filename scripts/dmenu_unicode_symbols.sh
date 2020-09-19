@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-18T17:28:56+0200
+# date:       2020-09-19T19:21:31+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search and copy unicode symbols
@@ -44,10 +44,7 @@ select=$(< "$HOME/.local/share/repos/dmenu/scripts/data/unicode-symbols" $menu -
 [ -n "$select" ] || exit 1
 
 symbol=$(printf "%s\n" "$select" \
-    | sed "s/ .*//" \
-)
-code=$(printf "%s\n" "$select" \
-    | cut -d ';' -f2 \
+    | sed 's/ .*//' \
 )
 
 # insert to cursor in active window
@@ -56,9 +53,5 @@ xdotool type "$symbol"
 printf "%s\n" "$symbol" \
     | tr -d '\n' \
     | xsel -b
-# copy code to primary
-printf "%s\n" "$code" \
-    | tr -d '\n' \
-    | xsel
 
-notify-send "copied to clipboard" "clipboard: $symbol\nprimary: $code"
+notify-send "copied $symbol to clipboard" "$select"
