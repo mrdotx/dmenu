@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-18T17:08:47+0200
+# date:       2020-09-19T19:08:51+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search youtube with youtube-dl and play
@@ -80,12 +80,11 @@ case "$search" in
         fi
 
         printf "" | $menu -p "please wait..." &
-        result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id | \
-            sed -E 'N;s|(.*)\n(.*)|\2\;\1|')
+        result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id)
         kill "$(pgrep -f "$menu -p please wait...")"
 
         select=$(printf "%s" "$result" \
-            | awk -F ';' '{print $2}' \
+            | sed -n '1~2p' \
             | $menu_result -p "$label_result" \
         )
 
@@ -93,8 +92,7 @@ case "$search" in
             && exit 1
 
         open=$(printf "%s" "$result" \
-            | grep -F "$select" \
-            | awk -F ';' '{print $1}' \
+            | sed -n "/$select/{n;p}"
         )
         ;;
 esac
