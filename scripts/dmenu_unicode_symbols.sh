@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-19T19:21:31+0200
+# date:       2020-09-19T19:41:23+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search and copy unicode symbols
@@ -50,8 +50,7 @@ symbol=$(printf "%s\n" "$select" \
 # insert to cursor in active window
 xdotool type "$symbol"
 # copy symbol to clipboard
-printf "%s\n" "$symbol" \
-    | tr -d '\n' \
+printf "%s" "$symbol" \
     | xsel -b
 
 notify-send "copied $symbol to clipboard" "$select"
