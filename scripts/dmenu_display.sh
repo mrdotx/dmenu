@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-07-07T20:32:34+0200
+# date:       2020-09-19T16:09:32+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to manage displays with arandr/xrandr
@@ -23,7 +23,7 @@ fi
 case $script in
     dmenu_*)
         label="display »"
-        menu="dmenu -l 8 -c -bw 2 -r -i"
+        menu="dmenu -l 5 -c -bw 2 -r -i"
         label_mirroring="mirroring »"
         menu_mirroring="dmenu -l 2 -c -bw 2 -r -i"
         label_external="resolution from »"
@@ -57,7 +57,7 @@ esac
 
 # second display
 secondary_display() {
-    mirroring=$(printf "no\\nyes" \
+    mirroring=$(printf "no\nyes" \
         | $menu_mirroring -p "$label_mirroring" \
     )
     if [ "$mirroring" = "yes" ]; then
@@ -108,7 +108,7 @@ secondary_display() {
             | grep -v "$primary" \
             | sed q1 \
         )
-        orientation=$(printf "above\\nright\\nbelow\\nleft" \
+        orientation=$(printf "above\nright\nbelow\nleft" \
             | $menu_orientation -p "$label_orientation $secondary »" \
             | sed "s/left/left-of/;s/right/right-of/" \
         )
@@ -137,7 +137,7 @@ get_display=$(printf "%s" "$display_all" \
 )
 
 # menu
-select=$(printf "saved settings\\nsecond display\\n%s\\nmanual selection\\naudio toggle" "$get_display" \
+select=$(printf "saved settings\nsecond display\n%s\naudio toggle" "$get_display" \
     | $menu -p "$label"
     ) && \
     case "$select" in
@@ -146,9 +146,6 @@ select=$(printf "saved settings\\nsecond display\\n%s\\nmanual selection\\naudio
         ;;
         second?display)
             secondary_display
-        ;;
-        manual?selection)
-            arandr
         ;;
         audio?toggle)
             audio.sh -tog
