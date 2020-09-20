@@ -3,7 +3,11 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-19T19:08:51+0200
+# date:       2020-09-20T21:48:11+0200
+
+clipboard="$(xsel -o -b)"
+clipboard_clear="$(xsel -c -b)"
+history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search youtube with youtube-dl and play
@@ -50,8 +54,11 @@ case $script in
         ;;
 esac
 
-[ -n "$(xsel -o -b)" ] \
-    && search=$(printf "%s\n== clear clipboard ==" "$(xsel -o -b)")
+if [ -n "$clipboard" ]; then \
+    search=$(printf "%s\n== clear clipboard ==\n%s" "$clipboard" "$(tac "$history_file")")
+else
+    search=$(printf "%s" "$(tac "$history_file")")
+fi
 
 search=$(printf "%s" "$search" \
     | $menu -p "$label")
@@ -61,7 +68,7 @@ search=$(printf "%s" "$search" \
 
 case "$search" in
     "== clear clipboard ==")
-        xsel -c -b
+        "$clipboard_clear"
         "$0"
         exit 0
         ;;
@@ -73,6 +80,12 @@ case "$search" in
             open="$search"
             ;;
     *)
+        printf "%s\n" "$search" >> "$history_file"
+        printf "%s\n" "$(tac "$history_file" \
+            | awk '! seen[$0]++' \
+            | tac \
+        )" > "$history_file"
+
         if [ "$1" = "-r" ]; then
             search_results=$2
         else
