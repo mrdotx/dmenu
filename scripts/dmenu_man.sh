@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_man.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-07-25T10:07:53+0200
+# date:       2020-09-21T18:30:35+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search man pages
@@ -41,7 +41,7 @@ esac
 select=$(apropos -l '' \
     | sort \
     | $menu -p "$label" \
-    | awk '{print $1, $2}' \
+    | cut -d ' ' -f1,2 \
     | tr -d ' ')
 
 if [ -n "$select" ]; then
