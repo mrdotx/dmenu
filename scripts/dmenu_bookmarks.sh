@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-16T10:40:24+0200
+# date:       2020-09-21T18:03:58+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search/sync bookmarks from firefox
@@ -41,7 +41,7 @@ bookmarks=$(printf "== Sync Bookmarks ==;sync_bookmarks\n%s" "$(cat "$bookmarks_
 
 # select bookmark or search with duckduckgo
 select=$(printf "%s\n" "$bookmarks" \
-    | awk -F ';' '{print $1}' \
+    | cut -d ';' -f1 \
     | $menu -p "$label" \
 )
 
@@ -50,7 +50,7 @@ select=$(printf "%s\n" "$bookmarks" \
 
 open=$(printf "%s" "$bookmarks" \
     | grep -F "$select" \
-    | awk -F ';' '{print $2}' \
+    | cut -d ';' -f2 \
 )
 
 [ -n "$open" ] \
@@ -91,14 +91,14 @@ copy_to_w3m() {
 
 copy_to_surf() {
     surf_file="$HOME/.config/surf/bookmarks"
-    awk -F ';' '{print $2}' < "$bookmarks_file" \
+    cut -d ';' -f2 "$bookmarks_file" \
         | awk -F '//' '{print $2}' \
         | sed '/^$/d' > "$surf_file"
 }
 
 copy_to_qutebrowser() {
     qutebrowser_file="$HOME/.config/qutebrowser/bookmarks/urls"
-    awk -F ';' '{print $2}' < "$bookmarks_file" > "$qutebrowser_file"
+    cut -d ';' -f2 "$bookmarks_file" > "$qutebrowser_file"
 }
 
 # sync/open bookmark
