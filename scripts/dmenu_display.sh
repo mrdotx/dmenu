@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-19T19:10:38+0200
+# date:       2020-09-21T18:36:01+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to manage displays with arandr/xrandr
@@ -133,7 +133,7 @@ display_all=$(xrandr -q \
 )
 get_display=$(printf "%s" "$display_all" \
     | grep " connected" \
-    | awk '{print $1}' \
+    | cut -d ' ' -f1 \
 )
 
 # menu
