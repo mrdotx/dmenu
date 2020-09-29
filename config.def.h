@@ -7,6 +7,7 @@ static int min_width = 250;                 /* minimum width when centered */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
 	"DejaVuSansMono Nerd Font:pixelsize=16:antialias=true:autohint=true",
+	"Source-Code-Pro:pixelsize=14:antialias=true:autohint=true",
 	"JoyPixels:pixelsize=14:antialias=true:autohint=true"
 };
 static const unsigned int bgalpha = 0xe6;

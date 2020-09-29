@@ -22,7 +22,7 @@
 
 /* macros */
 #define INTERSECT(x,y,w,h,r)  (MAX(0, MIN((x)+(w),(r).x_org+(r).width)  - MAX((x),(r).x_org)) \
-                             * MAX(0, MIN((y)+(h),(r).y_org+(r).height) - MAX((y),(r).y_org)))
+                            && MAX(0, MIN((y)+(h),(r).y_org+(r).height) - MAX((y),(r).y_org)))
 #define LENGTH(X)             (sizeof X / sizeof X[0])
 #define TEXTW(X)              (drw_fontset_getwidth(drw, (X)) + lrpad)
 #define NUMBERSMAXDIGITS      100
@@ -984,10 +984,14 @@ readxresources(void) {
 			fonts[0] = strdup(xval.addr);
 		else
 			fonts[0] = strdup(fonts[0]);
-		if (XrmGetResource(xdb, "dmenu.fontemoji", "*", &type, &xval))
+		if (XrmGetResource(xdb, "dmenu.fontfallback", "*", &type, &xval))
 			fonts[1] = strdup(xval.addr);
 		else
 			fonts[1] = strdup(fonts[1]);
+		if (XrmGetResource(xdb, "dmenu.fontemoji", "*", &type, &xval))
+			fonts[2] = strdup(xval.addr);
+		else
+			fonts[2] = strdup(fonts[2]);
 		if (XrmGetResource(xdb, "dmenu.background", "*", &type, &xval))
 			colors[SchemeNorm][ColBg] = strdup(xval.addr);
 		else
