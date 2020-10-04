@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-21T18:36:01+0200
+# date:       2020-10-04T10:35:44+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to manage displays with arandr/xrandr
@@ -141,13 +141,13 @@ select=$(printf "saved settings\nsecond display\n%s\naudio toggle" "$get_display
     | $menu -p "$label"
     ) && \
     case "$select" in
-        saved?settings)
+        "saved settings")
             saved_settings
         ;;
-        second?display)
+        "second display")
             secondary_display
         ;;
-        audio?toggle)
+        "audio toggle")
             audio.sh -tog
         ;;
     *)

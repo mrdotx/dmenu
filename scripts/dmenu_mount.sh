@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-26T17:44:47+0200
+# date:       2020-10-04T00:44:50+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to un-/mount remote, usb and android
@@ -223,22 +223,22 @@ case $(printf "%s\n" \
     "eject dvd" \
     | $menu -p "$label" \
     ) in
-    unmount)
+    "unmount")
         unmount
         ;;
-    mount?remote)
+    "mount remote")
         mount_remote
         ;;
-    mount?usb)
+    "mount usb")
         mount_usb
         ;;
-    mount?image)
+    "mount image")
         mount_image
         ;;
-    mount?android)
+    "mount android")
         mount_android
         ;;
-    eject?dvd)
+    "eject dvd")
         dvd_eject
         ;;
 esac
