@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-04T10:35:44+0200
+# date:       2020-10-05T13:04:00+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to manage displays with arandr/xrandr
@@ -54,6 +54,17 @@ case $script in
         exit 1
         ;;
 esac
+
+# saved settings
+saved_settings() {
+    select=$(find "$HOME/.local/share/repos/shell/screenlayout/" -iname "*.sh" \
+        | cut -d / -f 9 \
+        | sed 's/.sh//g' \
+        | sort \
+        | $menu_saved_settings -p "$label_saved_settings" \
+    )
+    "$HOME/.local/share/repos/shell/screenlayout/$select.sh"
+}
 
 # second display
 secondary_display() {
@@ -116,18 +127,7 @@ secondary_display() {
     fi
 }
 
-# saved settings
-saved_settings() {
-    select=$(find "$HOME/.local/share/repos/shell/screenlayout/" -iname "*.sh" \
-        | cut -d / -f 9 \
-        | sed 's/.sh//g' \
-        | sort \
-        | $menu_saved_settings -p "$label_saved_settings" \
-    )
-    "$HOME/.local/share/repos/shell/screenlayout/$select.sh"
-}
-
-# get display
+# menu
 display_all=$(xrandr -q \
     | grep "connected" \
 )
@@ -135,8 +135,6 @@ get_display=$(printf "%s" "$display_all" \
     | grep " connected" \
     | cut -d ' ' -f1 \
 )
-
-# menu
 select=$(printf "saved settings\nsecond display\n%s\naudio toggle" "$get_display" \
     | $menu -p "$label"
     ) && \
@@ -161,7 +159,7 @@ select=$(printf "saved settings\nsecond display\n%s\naudio toggle" "$get_display
     esac
 
 # maintenance after setup displays
-if [ -n "$select" ] && [ ! "$select" = "audio toggle" ]; then
-    systemctl --user restart xwallpaper.service
-    systemctl --user restart polybar.service
-fi
+[ -n "$select" ] \
+    && [ ! "$select" = "audio toggle" ] \
+    && systemctl --user restart xwallpaper.service \
+    && systemctl --user restart polybar.service
