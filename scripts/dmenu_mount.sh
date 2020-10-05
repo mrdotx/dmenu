@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-04T00:44:50+0200
+# date:       2020-10-05T13:20:33+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to un-/mount remote, usb and android
@@ -71,7 +71,8 @@ unmount() {
         | $menu_unmount -p "$label_unmount" \
     )
 
-    [ -z "$select" ] && exit 1
+    [ -z "$select" ] \
+        && exit 1
 
     $auth umount "$select" \
         && notify-send "unmount" "$select unmounted" \
@@ -110,7 +111,8 @@ mount_remote() {
         | $menu_mount_remote -p "$label_mount_remote" \
     )
 
-    [ -z "$select" ] && exit 1
+    [ -z "$select" ] \
+        && exit 1
 
     remote_directory=$(printf "%s" "$remote_config" \
         | grep "$select;" \
@@ -133,7 +135,8 @@ mount_usb() {
         | $menu_mount_usb -p "$label_mount_usb" \
         | awk '{print $1}')"
 
-    [ -z "$select" ] && exit 1
+    [ -z "$select" ] \
+        && exit 1
 
     mount_point="/mnt/$(basename "$select")"
     partition_type="$(lsblk -no "fstype" "$select")"
@@ -169,7 +172,8 @@ mount_image() {
         | $menu_mount_image -p "$label_mount_image" \
     )
 
-    [ -z "$select" ] && exit 1
+    [ -z "$select" ] \
+        && exit 1
 
     mount_point="/mnt/$select"
 
@@ -186,7 +190,8 @@ mount_android() {
         | cut -d : -f 1 \
     )
 
-    [ -z "$select" ] && exit 1
+    [ -z "$select" ] \
+        && exit 1
 
     mount_point="/mnt/$select"
 
@@ -207,7 +212,8 @@ dvd_eject() {
         | awk '{print $1}' \
     )
 
-    [ -z "$select" ] && exit 1
+    [ -z "$select" ] \
+        && exit 1
 
     $auth eject "$select" \
         && notify-send "dvd eject" "$select ejected"

@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-21T18:03:58+0200
+# date:       2020-10-05T13:30:35+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search/sync bookmarks from firefox
@@ -45,16 +45,16 @@ select=$(printf "%s\n" "$bookmarks" \
     | $menu -p "$label" \
 )
 
-[ -n "$select" ] \
-    || exit 1
+[ -z "$select" ] \
+    && exit 1
 
 open=$(printf "%s" "$bookmarks" \
     | grep -F "$select" \
     | cut -d ';' -f2 \
 )
 
-[ -n "$open" ] \
-    || open=$(printf "%s" "https://lite.duckduckgo.com/lite/?q=$select" \
+[ -z "$open" ] \
+    && open=$(printf "%s" "https://lite.duckduckgo.com/lite/?q=$select" \
         | sed 's/ /\%20/g' \
     )
 

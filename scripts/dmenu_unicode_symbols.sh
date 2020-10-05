@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-21T17:47:41+0200
+# date:       2020-10-05T13:18:47+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search and copy unicode symbols
@@ -43,8 +43,8 @@ select=$(< "$HOME/.local/share/repos/dmenu/scripts/data/unicode-symbols" \
     $menu -p "$label" \
 )
 
-[ -n "$select" ] \
-    || exit 1
+[ -z "$select" ] \
+    && exit 1
 
 symbol=$(printf "%s\n" "$select" \
     | sed 's/ .*//' \

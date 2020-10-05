@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_exit.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-16T10:49:12+0200
+# date:       2020-10-05T13:28:22+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to shutdown/reboot/logout/suspend/lock
@@ -48,7 +48,8 @@ select=$(printf "%s\n" \
     | $menu -p "$label" \
 )
 
-[ -n "$select" ] || exit 1
+[ -z "$select" ] \
+    && exit 1
 
 notify-send "exit" "trying to $select"
 
