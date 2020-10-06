@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-06T12:47:54+0200
+# date:       2020-10-06T13:26:23+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start vim with a few shortcuts
@@ -54,10 +54,10 @@ case $(printf "%s\n" \
     "==  new  ==" \
     "pi" \
     "pi2" \
-    "middlefinger-streetwear.com" \
-    "prinzipal-kreuzberg.com" \
-    "klassiker.online.de" \
-    "marcusreith.de" \
+    "middlefinger" \
+    "prinzipal" \
+    "klassiker" \
+    "marcus" \
     | $menu -p "$label" \
     ) in
     "== ideas ==")
@@ -75,16 +75,16 @@ case $(printf "%s\n" \
     "pi2")
         open "scp" "prometheus"
         ;;
-    "middlefinger-streetwear.com")
+    "middlefinger")
         open "scp" "middlefinger"
         ;;
-    "prinzipal-kreuzberg.com")
+    "prinzipal")
         open "scp" "prinzipal"
         ;;
-    "klassiker.online.de")
+    "klassiker")
         netrc "ftp" "klassiker.online.de"
         ;;
-    "marcusreith.de")
+    "marcus")
         netrc "ftp" "marcusreith.de"
         ;;
 esac
