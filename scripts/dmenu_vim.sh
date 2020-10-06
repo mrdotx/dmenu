@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-16T10:53:49+0200
+# date:       2020-10-06T11:49:56+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start vim with a few shortcuts
@@ -37,14 +37,13 @@ case $script in
 esac
 
 openssh() {
-    $TERMINAL -e vim scp://"$1"/ -c ":call ToggleNetrw()"
+    $TERMINAL -e vim "$1"://"$2"/ -c ":call ToggleNetrw()"
 }
 
 netrc() {
-    remote=$1
     gpg -o "$HOME/.netrc" "$HOME/.local/share/cloud/webde/Keys/netrc.gpg" \
         && chmod 600 "$HOME/.netrc" \
-        && $TERMINAL -e vim "$remote" -c ":call ToggleNetrw()" \
+        && openssh "$1" "$2" \
         && rm -f "$HOME/.netrc"
 }
 
@@ -59,8 +58,6 @@ case $(printf "%s\n" \
     "marcusreith.de" \
     "pi" \
     "pi2" \
-    "p9" \
-    "m3" \
     | $menu -p "$label" \
     ) in
     "== ideas ==")
@@ -73,27 +70,21 @@ case $(printf "%s\n" \
         $TERMINAL -e vim
         ;;
     "middlefinger-streetwear.com")
-        openssh "middlefinger"
+        openssh "scp" "middlefinger"
         ;;
     "prinzipal-kreuzberg.com")
-        openssh "prinzipal"
+        openssh "scp" "prinzipal"
         ;;
     "klassiker.online.de")
-        netrc "ftp://klassiker.online.de/"
+        netrc "ftp" "klassiker.online.de"
         ;;
     "marcusreith.de")
-        netrc "ftp://marcusreith.de/"
+        netrc "ftp" "marcusreith.de"
         ;;
     "pi")
-        openssh "hermes"
+        openssh "scp" "hermes"
         ;;
     "pi2")
-        openssh "prometheus"
-        ;;
-    "p9")
-        openssh "p9"
-        ;;
-    "m3")
-        openssh "m3"
+        openssh "scp" "prometheus"
         ;;
 esac
