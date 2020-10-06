@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-06T11:49:56+0200
+# date:       2020-10-06T12:47:54+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start vim with a few shortcuts
@@ -24,11 +24,11 @@ fi
 case $script in
     dmenu_*)
         label="vim »"
-        menu="dmenu -l 11 -c -bw 2 -r -i"
+        menu="dmenu -l 9 -c -bw 2 -r -i"
         ;;
     rofi_*)
         label=""
-        menu="rofi -m -1 -l 6 -columns 2 -theme klassiker-center -dmenu -i"
+        menu="rofi -m -1 -l 5 -columns 2 -theme klassiker-center -dmenu -i"
         ;;
     *)
         printf "%s\n" "$help"
@@ -36,14 +36,14 @@ case $script in
         ;;
 esac
 
-openssh() {
+open() {
     $TERMINAL -e vim "$1"://"$2"/ -c ":call ToggleNetrw()"
 }
 
 netrc() {
-    gpg -o "$HOME/.netrc" "$HOME/.local/share/cloud/webde/Keys/netrc.gpg" \
+    gpg -d -o "$HOME/.netrc" "$HOME/.local/share/cloud/webde/Keys/netrc.gpg" \
         && chmod 600 "$HOME/.netrc" \
-        && openssh "$1" "$2" \
+        && open "$1" "$2" \
         && rm -f "$HOME/.netrc"
 }
 
@@ -52,12 +52,12 @@ case $(printf "%s\n" \
     "== ideas ==" \
     "== notes ==" \
     "==  new  ==" \
+    "pi" \
+    "pi2" \
     "middlefinger-streetwear.com" \
     "prinzipal-kreuzberg.com" \
     "klassiker.online.de" \
     "marcusreith.de" \
-    "pi" \
-    "pi2" \
     | $menu -p "$label" \
     ) in
     "== ideas ==")
@@ -69,22 +69,22 @@ case $(printf "%s\n" \
     "==  new  ==")
         $TERMINAL -e vim
         ;;
+    "pi")
+        open "scp" "hermes"
+        ;;
+    "pi2")
+        open "scp" "prometheus"
+        ;;
     "middlefinger-streetwear.com")
-        openssh "scp" "middlefinger"
+        open "scp" "middlefinger"
         ;;
     "prinzipal-kreuzberg.com")
-        openssh "scp" "prinzipal"
+        open "scp" "prinzipal"
         ;;
     "klassiker.online.de")
         netrc "ftp" "klassiker.online.de"
         ;;
     "marcusreith.de")
         netrc "ftp" "marcusreith.de"
-        ;;
-    "pi")
-        openssh "scp" "hermes"
-        ;;
-    "pi2")
-        openssh "scp" "prometheus"
         ;;
 esac
