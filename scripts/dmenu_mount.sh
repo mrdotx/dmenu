@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-06T11:51:47+0200
+# date:       2020-10-06T13:27:40+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to un-/mount remote, usb and android
@@ -82,7 +82,7 @@ unmount() {
 # remote mount
 mount_remote() {
     remote_config="
-        # devices
+        # device        directory
         pi;             /home/alarm
         pi2;            /home/alarm
         p9;             /storage/1B0C-F276
