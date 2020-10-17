@@ -3,10 +3,8 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-17T13:44:31+0200
+# date:       2020-10-17T19:50:35+0200
 
-clipboard="$(xsel -o -b)"
-clipboard_clear="$(xsel -c -b)"
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
 script=$(basename "$0")
@@ -54,6 +52,9 @@ case $script in
         ;;
 esac
 
+[ "$(command -v "xsel")" ] \
+    && clipboard="$(xsel -n -o -b)"
+
 if [ -n "$clipboard" ]; then \
     search=$(printf "%s\n== clear clipboard ==\n%s" "$clipboard" "$(tac "$history_file")")
 else
@@ -69,8 +70,8 @@ search=$(printf "%s" "$search" \
 
 case "$search" in
     "== clear clipboard ==")
-        "$clipboard_clear"
-        "$0"
+        xsel -c -b
+        $0
         exit 0
         ;;
     *'youtube.com/watch'* \
