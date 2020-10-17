@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-17T11:14:42+0200
+# date:       2020-10-17T13:44:31+0200
 
 clipboard="$(xsel -o -b)"
 clipboard_clear="$(xsel -c -b)"
@@ -94,7 +94,12 @@ case "$search" in
         fi
 
         printf "" | $menu -p "please wait..." &
-        result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id)
+        # the loop is a workaround, because sometimes no results are returned
+        i=10
+        while [ $i -ge 1 ] && [ -z "$result" ]; do
+            result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id)
+            i=$((i-1))
+        done
         kill "$(pgrep -f "$menu -p please wait...")"
 
         select=$(printf "%s" "$result" \
