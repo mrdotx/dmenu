@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-20T21:48:11+0200
+# date:       2020-10-17T11:14:42+0200
 
 clipboard="$(xsel -o -b)"
 clipboard_clear="$(xsel -c -b)"
@@ -61,7 +61,8 @@ else
 fi
 
 search=$(printf "%s" "$search" \
-    | $menu -p "$label")
+    | $menu -p "$label" \
+)
 
 [ -z "$search" ] \
     && exit 1
@@ -110,8 +111,15 @@ case "$search" in
         ;;
 esac
 
-search=$(printf "1) play video\n2) play audio\n3) add video to taskspooler\n4) add audio to taskspooler\n5) download video\n6) download audio" \
-    | $menu_result -p "$label_result")
+search=$(printf "%s\n" \
+    "1) play video" \
+    "2) play audio" \
+    "3) add video to taskspooler" \
+    "4) add audio to taskspooler" \
+    "5) download video" \
+    "6) download audio" \
+    | $menu_result -p "$label_result" \
+)
 
 [ -z "$search" ] \
     && exit 1
