@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-21T17:28:18+0200
+# date:       2020-10-17T11:22:46+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to calculate with bc
@@ -42,7 +42,9 @@ result=$(printf "%s\n" "$@" \
     | bc -l \
     | sed '/\./ s/\.\{0,1\}0\{1,\}$//' \
 )
-select=$(printf "clear\ncopy to clipboard" \
+select=$(printf "%s\n" \
+            "clear" \
+            "copy to clipboard" \
     | $menu -p "= $result" \
 )
 case $select in
@@ -53,7 +55,7 @@ case $select in
         ;;
     "copy to clipboard")
         printf "%s\n" "$result" \
-            | xsel -o -b \
+            | xsel -i -b \
             && notify-send "Clipboard" "Result copied: $result"
         ;;
     *)
