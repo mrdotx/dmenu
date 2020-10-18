@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-05T13:26:42+0200
+# date:       2020-10-18T10:57:34+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -90,8 +90,8 @@ get_ssid() {
         scan_ssid
         get_ssid
     }
-    [ -z "$select" ] \
-        && exit 1
+    [ -n "$select" ] \
+        || exit 1
 }
 
 get_psk() {
