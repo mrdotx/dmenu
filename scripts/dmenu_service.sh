@@ -3,7 +3,12 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_service.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-06-08T09:34:18+0200
+# date:       2020-10-18T11:14:13+0200
+
+# auth can be something like sudo -A, doas -- or
+# nothing, depending on configuration requirements
+auth="doas"
+vpn_name="hades"
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start and stop services
@@ -38,11 +43,6 @@ case $script in
         exit 1
         ;;
 esac
-
-# auth can be something like sudo -A, doas -- or
-# nothing, depending on configuration requirements
-auth="doas --"
-vpn_name="hades"
 
 # app status
 app_status() {

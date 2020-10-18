@@ -3,7 +3,11 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-06T13:27:40+0200
+# date:       2020-10-18T11:13:47+0200
+
+# auth can be something like sudo -A, doas -- or
+# nothing, depending on configuration requirements
+auth="doas"
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to un-/mount remote, usb and android
@@ -59,10 +63,6 @@ case $script in
         exit 1
         ;;
 esac
-
-# auth can be something like sudo -A, doas -- or
-# nothing, depending on configuration requirements
-auth="doas --"
 
 # unmount
 unmount() {

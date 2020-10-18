@@ -3,7 +3,9 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-05T13:30:35+0200
+# date:       2020-10-18T10:28:21+0200
+
+bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to search/sync bookmarks from firefox
@@ -36,7 +38,6 @@ case $script in
         ;;
 esac
 
-bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
 bookmarks=$(printf "== Sync Bookmarks ==;sync_bookmarks\n%s" "$(cat "$bookmarks_file")")
 
 # select bookmark or search with duckduckgo
