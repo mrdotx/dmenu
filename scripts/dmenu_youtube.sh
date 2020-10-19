@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-17T19:50:35+0200
+# date:       2020-10-19T19:54:42+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -24,9 +24,10 @@ help="$script [-h/--help] -- script to search youtube with youtube-dl and play
     $script -r 5
     $script -r all"
 
-if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-    printf "%s\n" "$help"
-    exit 0
+if [ "$1" = "-h" ] \
+    || [ "$1" = "--help" ]; then
+        printf "%s\n" "$help"
+        exit 0
 fi
 
 case $script in

@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-06T13:26:23+0200
+# date:       2020-10-19T19:55:31+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start vim with a few shortcuts
@@ -16,9 +16,10 @@ help="$script [-h/--help] -- script to start vim with a few shortcuts
     dmenu_vim.sh
     rofi_vim.sh"
 
-if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-    printf "%s\n" "$help"
-    exit 0
+if [ "$1" = "-h" ] \
+    || [ "$1" = "--help" ]; then
+        printf "%s\n" "$help"
+        exit 0
 fi
 
 case $script in

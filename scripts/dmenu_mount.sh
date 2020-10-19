@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-18T11:13:47+0200
+# date:       2020-10-19T19:57:26+0200
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
@@ -20,9 +20,10 @@ help="$script [-h/--help] -- script to un-/mount remote, usb and android
     dmenu_mount.sh
     rofi_mount.sh"
 
-if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-    printf "%s\n" "$help"
-    exit 0
+if [ "$1" = "-h" ] \
+    || [ "$1" = "--help" ]; then
+        printf "%s\n" "$help"
+        exit 0
 fi
 
 case $script in

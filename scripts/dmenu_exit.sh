@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_exit.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-05T13:28:22+0200
+# date:       2020-10-19T19:53:07+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to shutdown/reboot/logout/suspend/lock
@@ -16,9 +16,10 @@ help="$script [-h/--help] -- script to shutdown/reboot/logout/suspend/lock
     dmenu_exit.sh
     rofi_exit.sh"
 
-if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-    printf "%s\n" "$help"
-    exit 0
+if [ "$1" = "-h" ] \
+    || [ "$1" = "--help" ]; then
+        printf "%s\n" "$help"
+        exit 0
 fi
 
 case $script in

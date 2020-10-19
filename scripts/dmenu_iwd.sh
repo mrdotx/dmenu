@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-18T10:57:34+0200
+# date:       2020-10-19T19:53:36+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -15,9 +15,10 @@ help="$script [-h/--help] -- script to connect to wlan with iwd
     dmenu_iwd.sh
     rofi_iwd.sh"
 
-if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-    printf "%s\n" "$help"
-    exit 0
+if [ "$1" = "-h" ] \
+    || [ "$1" = "--help" ]; then
+        printf "%s\n" "$help"
+        exit 0
 fi
 
 case $script in

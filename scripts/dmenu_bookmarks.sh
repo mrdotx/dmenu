@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-18T10:28:21+0200
+# date:       2020-10-19T19:51:55+0200
 
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
 
@@ -18,9 +18,10 @@ help="$script [-h/--help] -- script to search/sync bookmarks from firefox
     dmenu_bookmarks.sh
     rofi_bookmarks.sh"
 
-if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-    printf "%s\n" "$help"
-    exit 0
+if [ "$1" = "-h" ] \
+    || [ "$1" = "--help" ]; then
+        printf "%s\n" "$help"
+        exit 0
 fi
 
 case $script in
