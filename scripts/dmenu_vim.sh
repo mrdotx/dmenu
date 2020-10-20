@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-19T19:55:31+0200
+# date:       2020-10-20T19:55:56+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start vim with a few shortcuts
@@ -38,7 +38,7 @@ case $script in
 esac
 
 open() {
-    $TERMINAL -e vim "$1"://"$2"/ -c ":call ToggleNetrw()"
+    $TERMINAL -e vim "$1"://"$2"/ -c ":call NetrwToggle()"
 }
 
 netrc() {
