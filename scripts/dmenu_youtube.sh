@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-19T19:54:42+0200
+# date:       2020-10-20T20:23:05+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -32,20 +32,16 @@ fi
 
 case $script in
     dmenu_*)
-        # get active window id
-        window_id=$(xprop -root \
-            | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
-        )
         label="youtube »"
-        menu="dmenu -b -l 10 -i -w $window_id"
+        menu="dmenu -l 20 -c -bw 2 -i"
         label_result="youtube »"
-        menu_result="dmenu -b -l 10 -r -i -w $window_id"
+        menu_result="dmenu -l 20 -c -bw 2 -r -i"
         ;;
     rofi_*)
         label=""
-        menu="rofi -m -2 -l 10 -theme klassiker-vertical -dmenu -i"
+        menu="rofi -m -1 -l 15 -theme klassiker-center -dmenu -i"
         label_result=""
-        menu_result="rofi -m -2 -l 10 -theme klassiker-vertical -dmenu -i"
+        menu_result="rofi -m -1 -l 15 -theme klassiker-center -dmenu -i"
         ;;
     *)
         printf "%s\n" "$help"
@@ -72,7 +68,7 @@ search=$(printf "%s" "$search" \
 case "$search" in
     "== clear clipboard ==")
         xsel -c -b
-        $0
+        "$0"
         exit 0
         ;;
     *'youtube.com/watch'* \
