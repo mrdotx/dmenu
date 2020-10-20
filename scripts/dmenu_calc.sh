@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-19T19:52:14+0200
+# date:       2020-10-20T19:03:37+0200
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to calculate with bc
@@ -52,7 +52,7 @@ case $select in
     "")
         ;;
     clear)
-        $0
+        "$0"
         ;;
     "copy to clipboard")
         printf "%s\n" "$result" \
@@ -60,6 +60,6 @@ case $select in
             && notify-send "Clipboard" "Result copied: $result"
         ;;
     *)
-        $0 "$result $select"
+        "$0" "$result $select"
         ;;
 esac
