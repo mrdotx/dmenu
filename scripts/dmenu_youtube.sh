@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-20T20:23:05+0200
+# date:       2020-10-25T07:55:19+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -141,9 +141,9 @@ case "$search" in
         tsp "$TERMINAL" -e mpv --no-video ytdl://"$open"
         ;;
     "5) download video")
-        $TERMINAL -e youtube-dl -ciw "$open" &
+        $TERMINAL -e terminal_wrapper.sh youtube-dl -ciw "$open" &
         ;;
     "6) download audio")
-        $TERMINAL -e youtube-dl -ciw -x --audio-format mp3 --audio-quality 0 "$open" &
+        $TERMINAL -e terminal_wrapper.sh youtube-dl -ciw -x --audio-format mp3 --audio-quality 0 "$open" &
         ;;
 esac
