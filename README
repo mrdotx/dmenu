@@ -65,8 +65,6 @@ dmenu_man.sh
     - search for man pages
 dmenu_mount.sh
     - un-/mount remote, usb and android locations/devices
-dmenu_service.sh
-    - start/stop some services like bluetooth, printer, firewall etc
 dmenu_unicode_symbols.sh
     - search and copy unicode symbols
 dmenu_vim.sh
