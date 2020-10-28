@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-25T07:55:19+0100
+# date:       2020-10-28T08:59:12+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -91,14 +91,14 @@ case "$search" in
             search_results=10
         fi
 
-        printf "" | $menu -p "please wait..." &
         # the loop is a workaround, because sometimes no results are returned
-        i=10
-        while [ $i -ge 1 ] && [ -z "$result" ]; do
+        attempts=60
+        while [ $attempts -ge 1 ] && [ -z "$result" ]; do
+            printf "" | $menu -p "please wait...$attempts" &
             result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id)
-            i=$((i-1))
+            kill "$(pgrep -f "$menu -p please wait...$attempts")"
+            attempts=$((attempts-1))
         done
-        kill "$(pgrep -f "$menu -p please wait...")"
 
         select=$(printf "%s" "$result" \
             | sed -n '1~2p' \
