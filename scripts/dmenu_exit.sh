@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_exit.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-25T18:45:10+0100
+# date:       2020-10-30T22:58:27+0100
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to shutdown/reboot/logout/suspend/lock
@@ -52,6 +52,8 @@ select=$(printf "%s\n" \
 [ -z "$select" ] \
     && exit 1
 
-notify-send "exit" "trying to $select"
+notify-send \
+    "exit" \
+    "trying to $select"
 
 eval "i3_knockout.sh -$select"

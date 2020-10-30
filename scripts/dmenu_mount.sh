@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-19T19:57:26+0200
+# date:       2020-10-30T23:03:05+0100
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
@@ -76,7 +76,9 @@ unmount() {
         && exit 1
 
     $auth umount "$select" \
-        && notify-send "unmount" "$select unmounted" \
+        && notify-send \
+            "unmount" \
+            "$select unmounted" \
         && rm -d "$select"
 }
 
@@ -126,7 +128,9 @@ mount_remote() {
     [ ! -d "$mount_point" ] \
         && mkdir "$mount_point" \
         && sleep 1 && rclone mount "$select:$remote_directory" "$mount_point" \
-        & notify-send "remote mount" "$select mounted to $mount_point"
+        & notify-send \
+            "remote mount" \
+            "$select mounted to $mount_point"
 }
 
 # mount usb
@@ -147,11 +151,15 @@ mount_usb() {
         && case "$partition_type" in
             "vfat")
                 $auth mount -t vfat "$select" "$mount_point" -o rw,umask=0000 \
-                && notify-send "usb mount $partition_type" "$select mounted to $mount_point"
+                && notify-send \
+                    "usb mount $partition_type" \
+                    "$select mounted to $mount_point"
                 ;;
             *)
                 $auth mount "$select" "$mount_point" \
-                && notify-send "usb mount $partition_type" "$select mounted to $mount_point"
+                && notify-send \
+                    "usb mount $partition_type" \
+                    "$select mounted to $mount_point"
 
                 user="$(whoami)"
                 user_group="$(groups | awk '{print $1}')"
@@ -181,7 +189,9 @@ mount_image() {
     [ ! -d "$mount_point" ] \
         && mkdir "$mount_point" \
         && $auth mount -o loop "$search/$select" "$mount_point" \
-        && notify-send "image mount" "$select mounted to $mount_point"
+        && notify-send \
+            "image mount" \
+            "$select mounted to $mount_point"
 }
 
 # mount android
@@ -199,7 +209,9 @@ mount_android() {
     [ ! -d "$mount_point" ] \
         && mkdir "$mount_point" \
         && simple-mtpfs --device "$select" "$mount_point" \
-        && notify-send "android mount" "$select mounted to $mount_point"
+        && notify-send \
+            "android mount" \
+            "$select mounted to $mount_point"
 }
 
 # dvd eject
@@ -217,7 +229,9 @@ dvd_eject() {
         && exit 1
 
     $auth eject "$select" \
-        && notify-send "dvd eject" "$select ejected"
+        && notify-send \
+            "dvd eject" \
+            "$select ejected"
 }
 
 # menu

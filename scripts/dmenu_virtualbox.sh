@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_virtualbox.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-19T19:55:07+0200
+# date:       2020-10-30T22:57:59+0100
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start a virtual machine without
@@ -45,6 +45,8 @@ select=$(VBoxManage list vms \
 [ -z "$select" ] \
     && exit 1
 
-notify-send "virtualbox" "starting $select"
+notify-send \
+    "virtualbox" \
+    "starting $select"
 
 VBoxManage startvm "$select" >/dev/null 2>&1

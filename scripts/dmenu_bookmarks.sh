@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-20T18:59:00+0200
+# date:       2020-10-30T23:00:09+0100
 
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
 
@@ -113,7 +113,9 @@ case "$open" in
         copy_to_qutebrowser
         [ $firefox = 1 ] \
             && firefox-developer-edition &
-        notify-send "bookmarks" "synchronized"
+        notify-send \
+            "bookmarks" \
+            "synchronized"
         "$0"
         ;;
     *)
