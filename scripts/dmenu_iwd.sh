@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-29T20:04:06+0100
+# date:       2020-10-30T17:50:58+0100
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -62,13 +62,14 @@ get_interface() {
 
 scan_ssid() {
     timer=5
+    messageid="$(date +%s)"
     iwctl station "$interface" scan \
         &&  while [ $timer -ge 1 ]; do
-                printf "please wait...%s" "$timer" | $menu_ssid -p "$interface" &
+                dunstify -u low -r "$messageid" "$script" "search: $interface\nplease wait...$timer"
                 sleep 1
-                kill "$(pgrep -f "$menu_ssid -p $interface")"
                 timer=$((timer-1))
-            done
+            done \
+        && dunstify -u low -r "$messageid" "$script" "search: $interface\nplease wait...finished"
 
     scan_result=$(iwctl station "$interface" get-networks \
         | remove_escape_sequences \
