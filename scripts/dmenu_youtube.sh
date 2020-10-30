@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-30T17:49:53+0100
+# date:       2020-10-30T21:16:37+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -92,14 +92,14 @@ case "$search" in
         fi
 
         # this loop is a workaround, because often youtube-dl returns no results
-        attempts=60
+        attempts=30
         messageid="$(date +%s)"
         while [ $attempts -ge 1 ] && [ -z "$result" ]; do
-            dunstify -u low -r "$messageid" "$script" "search: $search\nplease wait...$attempts"
+            dunstify -u low -r "$messageid" "youtube-dl - please wait...$attempts" "search: $search"
             result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id)
             attempts=$((attempts-1))
         done
-        dunstify -u low -r "$messageid" "$script" "search: $search\nplease wait...finished"
+        dunstify -u low -r "$messageid" "youtube-dl - finished" "search: $search"
 
         select=$(printf "%s" "$result" \
             | sed -n '1~2p' \
