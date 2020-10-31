@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-30T22:56:14+0100
+# date:       2020-10-31T18:29:08+0100
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to connect to wlan with iwd
@@ -75,6 +75,7 @@ scan_ssid() {
             done \
         && notify-send \
             -u low \
+            -t 1000 \
             "iNet wireless daemon - finished" \
             "interface: $interface" \
             -h string:x-canonical-private-synchronous:"$message_id"

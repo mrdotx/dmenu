@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-30T22:56:39+0100
+# date:       2020-10-31T18:29:47+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -105,6 +105,7 @@ case "$search" in
         done
         notify-send \
             -u low \
+            -t 1000 \
             "youtube-dl - finished" \
             "search: $search" \
             -h string:x-canonical-private-synchronous:"$message_id"
