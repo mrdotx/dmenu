@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-31T18:29:47+0100
+# date:       2020-11-01T15:14:57+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -92,16 +92,18 @@ case "$search" in
         fi
 
         # this loop is a workaround, because often youtube-dl returns no results
-        attempts=30
+        attempts=5
         message_id="$(date +%s)"
-        while [ $attempts -ge 1 ] && [ -z "$result" ]; do
-            notify-send \
-                -u low \
-                "youtube-dl - please wait...$attempts" \
-                "search: $search" \
-                -h string:x-canonical-private-synchronous:"$message_id"
-            result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id)
-            attempts=$((attempts-1))
+        while [ $attempts -ge 1 ] \
+            && [ -z "$result" ]; do
+                notify-send \
+                    -u low \
+                    -t 0 \
+                    "youtube-dl - please wait...$attempts" \
+                    "search: $search" \
+                    -h string:x-canonical-private-synchronous:"$message_id"
+                result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id)
+                attempts=$((attempts-1))
         done
         notify-send \
             -u low \
