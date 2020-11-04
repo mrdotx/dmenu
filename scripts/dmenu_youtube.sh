@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-11-01T15:14:57+0100
+# date:       2020-11-04T18:31:43+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -92,7 +92,7 @@ case "$search" in
         fi
 
         # this loop is a workaround, because often youtube-dl returns no results
-        attempts=5
+        attempts=30
         message_id="$(date +%s)"
         while [ $attempts -ge 1 ] \
             && [ -z "$result" ]; do
