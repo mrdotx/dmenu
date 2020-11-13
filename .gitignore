@@ -1,14 +1,14 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/.gitignore
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-09-20T19:52:26+0200
+# date:       2020-11-13T14:37:33+0100
 
-scripts/data/bookmarks
-scripts/data/youtube
-config.h
-dmenu
-dmenu.o
-drw.o
-stest
-stest.o
-util.o
+/scripts/data/bookmarks
+/scripts/data/youtube
+/config.h
+/dmenu
+/dmenu.o
+/drw.o
+/stest
+/stest.o
+/util.o
