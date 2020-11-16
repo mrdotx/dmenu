@@ -57,8 +57,6 @@ dmenu_calc.sh
     - calculate with bc
 dmenu_display.sh
     - manage displays with arandr/xrandr
-dmenu_exit
-    - shutdown/reboot/logout/suspend or lock the system
 dmenu_iwd.sh
     - connect to wlan with iwd
 dmenu_man.sh
