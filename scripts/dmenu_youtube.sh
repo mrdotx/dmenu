@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-11-21T11:05:41+0100
+# date:       2020-11-21T14:32:52+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -13,16 +13,10 @@ help="$script [-h/--help] -- script to search youtube with youtube-dl and play
   Usage:
     depending on how the script is named,
     it will be executed either with dmenu or with rofi
-    $script [-r] [quantity]
-
-  Settings:
-    [-r]       = results to query from youtube
-    [quantity] = integer (default 10) or all (takes a long time)
+    $script
 
   Examples:
-    $script
-    $script -r 5
-    $script -r all"
+    $script"
 
 if [ "$1" = "-h" ] \
     || [ "$1" = "--help" ]; then
@@ -82,11 +76,35 @@ case "$search" in
         sed -i "1s/^/$search\n/" "$history_file"
         printf "%s\n" "$(awk '! seen[$0]++' < "$history_file")" > "$history_file"
 
-        if [ "$1" = "-r" ]; then
-            search_results=$2
-        else
-            search_results=10
-        fi
+        search_result=$(printf "%s\n" \
+                "relevance 10" \
+                "date 10" \
+                "relevance all" \
+                "date all" \
+                "== [relevance/date] [quantity/all] ==" \
+            | $menu -p "$label" \
+        )
+
+        case "$search_result" in
+            relevance*)
+                search_result="$( \
+                    printf "%s" "$search_result" \
+                    | sed 's/relevance /ytsearch/g' \
+                )"
+                ;;
+            date*)
+                search_result="$( \
+                    printf "%s" "$search_result" \
+                    | sed 's/date /ytsearchdate/g' \
+                )"
+                ;;
+            "== [relevance/date] [quantity/all] ==")
+                exit 0
+                ;;
+            "")
+                exit 0
+                ;;
+        esac
 
         # this loop is a workaround, because often youtube-dl returns no results
         attempts=30
@@ -97,16 +115,16 @@ case "$search" in
                     -u low \
                     -t 0 \
                     "youtube-dl - please wait...$attempts" \
-                    "search: $search" \
+                    "search: $search\nresult: $search_result" \
                     -h string:x-canonical-private-synchronous:"$message_id"
-                result=$(youtube-dl "ytsearch$search_results:$search" -e --get-id)
+                result=$(youtube-dl "$search_result:$search" -e --get-id)
                 attempts=$((attempts-1))
         done
         notify-send \
             -u low \
             -t 1000 \
             "youtube-dl - finished" \
-            "search: $search" \
+            "search: $search\nresult: $search_result" \
             -h string:x-canonical-private-synchronous:"$message_id"
 
         select=$(printf "%s" "$result" \
