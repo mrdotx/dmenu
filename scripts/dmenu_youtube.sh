@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-11-12T12:07:24+0100
+# date:       2020-11-21T11:05:41+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -53,9 +53,9 @@ esac
     && clipboard="$(xsel -n -o -b)"
 
 if [ -n "$clipboard" ]; then \
-    search=$(printf "== clear clipboard ==\n%s\n== clear clipboard ==\n%s" "$clipboard" "$(tac "$history_file")")
+    search=$(printf "== clear clipboard ==\n%s\n== clear clipboard ==\n%s" "$clipboard" "$(cat "$history_file")")
 else
-    search=$(printf "%s" "$(tac "$history_file")")
+    search=$(printf "%s" "$(cat "$history_file")")
 fi
 
 search=$(printf "%s" "$search" \
@@ -79,11 +79,8 @@ case "$search" in
             open="$search"
             ;;
     *)
-        printf "%s\n" "$search" >> "$history_file"
-        printf "%s\n" "$(tac "$history_file" \
-            | awk '! seen[$0]++' \
-            | tac \
-        )" > "$history_file"
+        sed -i "1s/^/$search\n/" "$history_file"
+        printf "%s\n" "$(awk '! seen[$0]++' < "$history_file")" > "$history_file"
 
         if [ "$1" = "-r" ]; then
             search_results=$2
