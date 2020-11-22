@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-30T23:00:09+0100
+# date:       2020-11-22T09:27:59+0100
 
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
 
@@ -87,7 +87,7 @@ copy_to_w3m() {
 </html>"
 
     printf "%s\n" "$header" > "$w3m_file"
-    awk -F ';' '{print "<li><a href=\""$2"\">"$1"</a>"}' < "$bookmarks_file" >> "$w3m_file"
+    awk -F ';' '{print "<li><a href=\""$2"\">"$1"</a>"}' "$bookmarks_file" >> "$w3m_file"
     printf "%s" "$footer" >> "$w3m_file"
 }
 
