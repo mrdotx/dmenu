@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-11-21T14:32:52+0100
+# date:       2020-11-22T09:45:14+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -74,9 +74,9 @@ case "$search" in
             ;;
     *)
         sed -i "1s/^/$search\n/" "$history_file"
-        printf "%s\n" "$(awk '! seen[$0]++' < "$history_file")" > "$history_file"
+        printf "%s\n" "$(awk '! seen[$0]++' "$history_file")" > "$history_file"
 
-        search_result=$(printf "%s\n" \
+        search_string=$(printf "%s\n" \
                 "relevance 10" \
                 "date 10" \
                 "relevance all" \
@@ -85,16 +85,16 @@ case "$search" in
             | $menu -p "$label" \
         )
 
-        case "$search_result" in
+        case "$search_string" in
             relevance*)
                 search_result="$( \
-                    printf "%s" "$search_result" \
+                    printf "%s" "$search_string" \
                     | sed 's/relevance /ytsearch/g' \
                 )"
                 ;;
             date*)
                 search_result="$( \
-                    printf "%s" "$search_result" \
+                    printf "%s" "$search_string" \
                     | sed 's/date /ytsearchdate/g' \
                 )"
                 ;;
@@ -106,26 +106,25 @@ case "$search" in
                 ;;
         esac
 
+        notification() {
+            notify-send \
+                -u low \
+                -t "$1" \
+                "$2" \
+                "search: $search\nresult: $search_string" \
+                -h string:x-canonical-private-synchronous:"$message_id"
+        }
+
         # this loop is a workaround, because often youtube-dl returns no results
         attempts=30
         message_id="$(date +%s)"
         while [ $attempts -ge 1 ] \
             && [ -z "$result" ]; do
-                notify-send \
-                    -u low \
-                    -t 0 \
-                    "youtube-dl - please wait...$attempts" \
-                    "search: $search\nresult: $search_result" \
-                    -h string:x-canonical-private-synchronous:"$message_id"
+                notification 0 "youtube-dl - please wait...$attempts"
                 result=$(youtube-dl "$search_result:$search" -e --get-id)
                 attempts=$((attempts-1))
         done
-        notify-send \
-            -u low \
-            -t 1000 \
-            "youtube-dl - finished" \
-            "search: $search\nresult: $search_result" \
-            -h string:x-canonical-private-synchronous:"$message_id"
+        notification 1000 "youtube-dl - finished"
 
         select=$(printf "%s" "$result" \
             | sed -n '1~2p' \
