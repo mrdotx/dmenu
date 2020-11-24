@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-20T19:55:56+0200
+# date:       2020-11-24T14:12:16+0100
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to start vim with a few shortcuts
@@ -42,7 +42,7 @@ open() {
 }
 
 netrc() {
-    gpg -d -o "$HOME/.netrc" "$HOME/.local/share/cloud/webde/Keys/netrc.gpg" \
+    gpg -d -o "$HOME/.netrc" "$HOME/.local/share/cloud/webde/.keys/netrc.gpg" \
         && chmod 600 "$HOME/.netrc" \
         && open "$1" "$2" \
         && rm -f "$HOME/.netrc"
