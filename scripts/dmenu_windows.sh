@@ -3,10 +3,10 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_windows.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-19T17:01:25+0200
+# date:       2020-12-03T17:53:08+0100
 
-desktops=$(mktemp "/tmp/dmenu_windows.XXXXXX")
-windows=$(mktemp "/tmp/dmenu_windows.XXXXXX")
+desktops=$(mktemp -t dmenu_windows.XXXXXX)
+windows=$(mktemp -t dmenu_windows.XXXXXX)
 
 wmctrl -d > "$desktops"
 wmctrl -l > "$windows"
