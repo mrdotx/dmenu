@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-19T19:52:41+0200
+# date:       2020-12-17T15:42:04+0100
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to manage displays with arandr/xrandr
@@ -58,13 +58,10 @@ esac
 
 # saved settings
 saved_settings() {
-    select=$(find "$HOME/.local/share/repos/shell/screenlayout/" -iname "*.sh" \
-        | cut -d / -f 9 \
-        | sed 's/.sh//g' \
-        | sort \
+    select=$(screenlayout.sh list \
         | $menu_saved_settings -p "$label_saved_settings" \
     )
-    "$HOME/.local/share/repos/shell/screenlayout/$select.sh"
+    screenlayout.sh "$select"
 }
 
 # second display
