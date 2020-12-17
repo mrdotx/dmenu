@@ -3,63 +3,12 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-12-17T15:42:04+0100
-
-script=$(basename "$0")
-help="$script [-h/--help] -- script to manage displays with arandr/xrandr
-  Usage:
-    depending on how the script is named,
-    it will be executed either with dmenu or with rofi
-
-  Examples:
-    dmenu_display.sh
-    rofi_display.sh"
-
-if [ "$1" = "-h" ] \
-    || [ "$1" = "--help" ]; then
-        printf "%s\n" "$help"
-        exit 0
-fi
-
-case $script in
-    dmenu_*)
-        label="display »"
-        menu="dmenu -l 5 -c -bw 2 -r -i"
-        label_mirroring="mirroring »"
-        menu_mirroring="dmenu -l 2 -c -bw 2 -r -i"
-        label_external="resolution from »"
-        menu_external="dmenu -l 4 -c -bw 2 -r -i"
-        label_primary="primary »"
-        menu_primary="dmenu -l 4 -c -bw 2 -r -i"
-        label_orientation="position of"
-        menu_orientation="dmenu -l 4 -c -bw 2 -r -i"
-        label_saved_settings="display »"
-        menu_saved_settings="dmenu -l 10 -c -bw 2 -r -i"
-        ;;
-    rofi_*)
-        label=""
-        menu="rofi -m -1 -l 3 -columns 2 -theme klassiker-center -dmenu -i"
-        label_mirroring="mirroring »"
-        menu_mirroring="rofi -m -1 -l 1 -columns 2 -theme klassiker-center -dmenu -i"
-        label_external="resolution from »"
-        menu_external="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
-        label_primary="primary »"
-        menu_primary="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
-        label_orientation="position of"
-        menu_orientation="rofi -m -1 -l 2 -columns 2 -theme klassiker-center -dmenu -i"
-        label_saved_settings=""
-        menu_saved_settings="rofi -m -1 -l 3 -columns 2 -theme klassiker-center -dmenu -i"
-        ;;
-    *)
-        printf "%s\n" "$help"
-        exit 1
-        ;;
-esac
+# date:       2020-12-17T22:49:58+0100
 
 # saved settings
 saved_settings() {
     select=$(screenlayout.sh list \
-        | $menu_saved_settings -p "$label_saved_settings" \
+        | dmenu -l 10 -c -bw 2 -r -i -p "display »" \
     )
     screenlayout.sh "$select"
 }
@@ -67,11 +16,11 @@ saved_settings() {
 # second display
 secondary_display() {
     mirroring=$(printf "no\nyes" \
-        | $menu_mirroring -p "$label_mirroring" \
+        | dmenu -l 2 -c -bw 2 -r -i -p "mirroring »" \
     )
     if [ "$mirroring" = "yes" ]; then
         external=$(printf "%s" "$get_display" \
-            | $menu_external -p "$label_external" \
+            | dmenu -l 4 -c -bw 2 -r -i -p "resolution from »" \
         )
         internal=$(printf "%s" "$get_display" \
             | grep -v "$external" \
@@ -111,14 +60,14 @@ secondary_display() {
         xrandr --output "$external" --auto --scale 1.0x1.0 --output "$internal" --auto --same-as "$external" --scale "$scale_x"x"$scale_y"
     else
         primary=$(printf "%s" "$get_display" \
-            | $menu_primary -p "$label_primary" \
+            | dmenu -l 4 -c -bw 2 -r -i -p "primary »" \
         )
         secondary=$(printf "%s" "$get_display" \
             | grep -v "$primary" \
             | sed q1 \
         )
         orientation=$(printf "above\nright\nbelow\nleft" \
-            | $menu_orientation -p "$label_orientation $secondary »" \
+            | dmenu -l 4 -c -bw 2 -r -i -p "position of $secondary »" \
             | sed 's/left/left-of/;s/right/right-of/' \
         )
         xrandr --output "$primary" --auto --scale 1.0x1.0 --output "$secondary" --"$orientation" "$primary" --auto --scale 1.0x1.0
@@ -134,7 +83,7 @@ get_display=$(printf "%s" "$display_all" \
     | cut -d ' ' -f1 \
 )
 select=$(printf "saved settings\nsecond display\n%s\naudio toggle" "$get_display" \
-    | $menu -p "$label"
+    | dmenu -l 5 -c -bw 2 -r -i -p "display »"
     ) && \
     case "$select" in
         "saved settings")

@@ -3,39 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-11-24T14:12:16+0100
-
-script=$(basename "$0")
-help="$script [-h/--help] -- script to start vim with a few shortcuts
-                            for local/remote locations/files
-  Usage:
-    depending on how the script is named,
-    it will be executed either with dmenu or with rofi
-
-  Examples:
-    dmenu_vim.sh
-    rofi_vim.sh"
-
-if [ "$1" = "-h" ] \
-    || [ "$1" = "--help" ]; then
-        printf "%s\n" "$help"
-        exit 0
-fi
-
-case $script in
-    dmenu_*)
-        label="vim »"
-        menu="dmenu -l 9 -c -bw 2 -r -i"
-        ;;
-    rofi_*)
-        label=""
-        menu="rofi -m -1 -l 5 -columns 2 -theme klassiker-center -dmenu -i"
-        ;;
-    *)
-        printf "%s\n" "$help"
-        exit 1
-        ;;
-esac
+# date:       2020-12-17T22:27:42+0100
 
 open() {
     $TERMINAL -e vim "$1"://"$2"/ -c ":call NetrwToggle()"
@@ -59,7 +27,7 @@ case $(printf "%s\n" \
     "prinzipal" \
     "klassiker" \
     "marcus" \
-    | $menu -p "$label" \
+    | dmenu -l 9 -c -bw 2 -r -i -p "vim »" \
     ) in
     "== ideas ==")
         $TERMINAL -e vim -c ":VimwikiIndex" -c ":VimwikiGoto ideas"

@@ -3,48 +3,15 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-11-22T09:27:59+0100
+# date:       2020-12-17T22:31:46+0100
 
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
-
-script=$(basename "$0")
-help="$script [-h/--help] -- script to search/sync bookmarks from firefox
-                                   and open them with link_handler.sh
-  Usage:
-    depending on how the script is named,
-    it will be executed either with dmenu or with rofi
-
-  Examples:
-    dmenu_bookmarks.sh
-    rofi_bookmarks.sh"
-
-if [ "$1" = "-h" ] \
-    || [ "$1" = "--help" ]; then
-        printf "%s\n" "$help"
-        exit 0
-fi
-
-case $script in
-    dmenu_*)
-        label="bookmark »"
-        menu="dmenu -l 20 -c -bw 2 -i"
-        ;;
-    rofi_*)
-        label=""
-        menu="rofi -m -1 -l 15 -theme klassiker-center -dmenu -i"
-        ;;
-    *)
-        printf "%s\n" "$help"
-        exit 1
-        ;;
-esac
-
 bookmarks=$(printf "== Sync Bookmarks ==;sync_bookmarks\n%s" "$(cat "$bookmarks_file")")
 
 # select bookmark or search with duckduckgo
 select=$(printf "%s\n" "$bookmarks" \
     | cut -d ';' -f1 \
-    | $menu -p "$label" \
+    | dmenu -l 20 -c -bw 2 -i -p "bookmark »" \
 )
 
 [ -z "$select" ] \

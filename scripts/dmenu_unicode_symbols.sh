@@ -3,45 +3,15 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-30T23:03:30+0100
+# date:       2020-12-17T22:29:34+0100
 
-script=$(basename "$0")
-help="$script [-h/--help] -- script to search and copy unicode symbols
-  Usage:
-    depending on how the script is named,
-    it will be executed either with dmenu or with rofi
-
-  Examples:
-    dmenu_symbols.sh
-    rofi_symbols.sh"
-
-if [ "$1" = "-h" ] \
-    || [ "$1" = "--help" ]; then
-        printf "%s\n" "$help"
-        exit 0
-fi
-
-case $script in
-    dmenu_*)
-        # get active window id
-        window_id=$(xprop -root \
-            | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
-        )
-        label="symbol »"
-        menu="dmenu -b -l 15 -r -i -w $window_id"
-        ;;
-    rofi_*)
-        label=""
-        menu="rofi -m -2 -l 10 -columns 2 -theme klassiker-vertical -dmenu -i"
-        ;;
-    *)
-        printf "%s\n" "$help"
-        exit 1
-        ;;
-esac
+# get active window id
+window_id=$(xprop -root \
+    | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
+)
 
 select=$(< "$HOME/.local/share/repos/dmenu/scripts/data/unicode-symbols" \
-    $menu -p "$label" \
+    dmenu -b -l 15 -r -i -w "$window_id" -p "symbol »" \
 )
 
 [ -z "$select" ] \

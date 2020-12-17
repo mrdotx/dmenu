@@ -3,73 +3,17 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-10-30T23:03:05+0100
+# date:       2020-12-17T22:58:29+0100
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
 auth="doas"
 
-script=$(basename "$0")
-help="$script [-h/--help] -- script to un-/mount remote, usb and android
-                                locations/devices
-  Usage:
-    depending on how the script is named,
-    it will be executed either with dmenu or with rofi
-
-  Examples:
-    dmenu_mount.sh
-    rofi_mount.sh"
-
-if [ "$1" = "-h" ] \
-    || [ "$1" = "--help" ]; then
-        printf "%s\n" "$help"
-        exit 0
-fi
-
-case $script in
-    dmenu_*)
-        label="un-/mount »"
-        menu="dmenu -l 9 -c -bw 2 -r -i"
-        label_unmount="unmount »"
-        menu_unmount="dmenu -l 5 -c -bw 2 -r -i"
-        label_mount_remote="mount »"
-        menu_mount_remote="dmenu -l 20 -c -bw 2 -r -i"
-        label_mount_usb="mount »"
-        menu_mount_usb="dmenu -l 5 -c -bw 2 -r -i"
-        label_mount_image="mount »"
-        menu_mount_image="dmenu -l 5 -c -bw 2 -r -i"
-        label_mount_android="mount »"
-        menu_mount_android="dmenu -l 5 -c -bw 2 -r -i"
-        label_dvd_eject="eject »"
-        menu_dvd_eject="dmenu -l 5 -c -bw 2 -r -i"
-        ;;
-    rofi_*)
-        label=""
-        menu="rofi -m -1 -l 3 -columns 3 -theme klassiker-center -dmenu -i"
-        label_unmount="⏏️"
-        menu_unmount="rofi -m -1 -l 2 -columns 3 -theme klassiker-center -dmenu -i"
-        label_mount_remote=""
-        menu_mount_remote="rofi -m -1 -l 4 -columns 4 -theme klassiker-center -dmenu -i"
-        label_mount_usb=""
-        menu_mount_usb="rofi -m -1 -l 2 -columns 3 -theme klassiker-center -dmenu -i"
-        label_mount_image=""
-        menu_mount_image="rofi -m -1 -l 2 -columns 3 -theme klassiker-center -dmenu -i"
-        label_mount_android=""
-        menu_mount_android="rofi -m -1 -l 2 -columns 3 -theme klassiker-center -dmenu -i"
-        label_dvd_eject="⏏️"
-        menu_dvd_eject="rofi -m -1 -l 2 -columns 3 -theme klassiker-center -dmenu -i"
-        ;;
-    *)
-        printf "%s\n" "$help"
-        exit 1
-        ;;
-esac
-
 # unmount
 unmount() {
     select=$(awk '/\/mnt\/.*/ {print $2}' /proc/self/mounts \
         | sort \
-        | $menu_unmount -p "$label_unmount" \
+        | dmenu -l 5 -c -bw 2 -r -i -p "unmount »" \
     )
 
     [ -z "$select" ] \
@@ -111,7 +55,7 @@ mount_remote() {
         | grep -v -e "#" -e "^\s*$" \
         | cut -d ";" -f1 \
         | tr -d ' ' \
-        | $menu_mount_remote -p "$label_mount_remote" \
+        | dmenu -l 20 -c -bw 2 -r -i -p "mount »" \
     )
 
     [ -z "$select" ] \
@@ -137,7 +81,7 @@ mount_remote() {
 mount_usb() {
     select="$(lsblk -rpo "name,type,size,mountpoint" \
         | awk '{ if ($2=="part"&&$4=="" || $2=="rom"&&$4=="" || $3=="1,4M"&&$4=="") printf "%s (%s)\n",$1,$3}' \
-        | $menu_mount_usb -p "$label_mount_usb" \
+        | dmenu -l 5 -c -bw 2 -r -i -p "mount »" \
         | awk '{print $1}')"
 
     [ -z "$select" ] \
@@ -178,7 +122,7 @@ mount_image() {
             -iname "*.mdf" -o \
             -iname "*.nrg" \
         | cut -d / -f 5 \
-        | $menu_mount_image -p "$label_mount_image" \
+        | dmenu -l 5 -c -bw 2 -r -i -p "mount »" \
     )
 
     [ -z "$select" ] \
@@ -197,7 +141,7 @@ mount_image() {
 # mount android
 mount_android() {
     select=$(simple-mtpfs -l 2>/dev/null \
-        | $menu_mount_android -p "$label_mount_android" \
+        | dmenu -l 5 -c -bw 2 -r -i -p "mount »" \
         | cut -d : -f 1 \
     )
 
@@ -221,7 +165,7 @@ dvd_eject() {
     )
 
     select=$(printf "%s\n" "$mounts" \
-        | $menu_dvd_eject -p "$label_dvd_eject" \
+        | dmenu -l 5 -c -bw 2 -r -i -p "eject »" \
         | awk '{print $1}' \
     )
 
@@ -242,7 +186,7 @@ case $(printf "%s\n" \
     "mount image" \
     "mount android" \
     "eject dvd" \
-    | $menu -p "$label" \
+    | dmenu -l 9 -c -bw 2 -r -i -p "un-/mount »" \
     ) in
     "unmount")
         unmount

@@ -3,45 +3,9 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-11-22T09:45:14+0100
+# date:       2020-12-17T21:39:25+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
-
-script=$(basename "$0")
-help="$script [-h/--help] -- script to search youtube with youtube-dl and play
-                                video/audio with mpv or download them
-  Usage:
-    depending on how the script is named,
-    it will be executed either with dmenu or with rofi
-    $script
-
-  Examples:
-    $script"
-
-if [ "$1" = "-h" ] \
-    || [ "$1" = "--help" ]; then
-        printf "%s\n" "$help"
-        exit 0
-fi
-
-case $script in
-    dmenu_*)
-        label="youtube »"
-        menu="dmenu -l 20 -c -bw 2 -i"
-        label_result="youtube »"
-        menu_result="dmenu -l 20 -c -bw 2 -r -i"
-        ;;
-    rofi_*)
-        label=""
-        menu="rofi -m -1 -l 15 -theme klassiker-center -dmenu -i"
-        label_result=""
-        menu_result="rofi -m -1 -l 15 -theme klassiker-center -dmenu -i"
-        ;;
-    *)
-        printf "%s\n" "$help"
-        exit 1
-        ;;
-esac
 
 [ "$(command -v "xsel")" ] \
     && clipboard="$(xsel -n -o -b)"
@@ -53,7 +17,7 @@ else
 fi
 
 search=$(printf "%s" "$search" \
-    | $menu -p "$label" \
+    | dmenu -l 20 -c -bw 2 -i -p "youtube »" \
 )
 
 [ -z "$search" ] \
@@ -82,7 +46,7 @@ case "$search" in
                 "relevance all" \
                 "date all" \
                 "== [relevance/date] [quantity/all] ==" \
-            | $menu -p "$label" \
+            | dmenu -l 20 -c -bw 2 -r -i -p "youtube »" \
         )
 
         case "$search_string" in
@@ -128,7 +92,7 @@ case "$search" in
 
         select=$(printf "%s" "$result" \
             | sed -n '1~2p' \
-            | $menu_result -p "$label_result" \
+            | dmenu -l 20 -c -bw 2 -r -i -p "youtube »" \
         )
 
         [ -z "$select" ] \
@@ -147,7 +111,7 @@ search=$(printf "%s\n" \
     "4) add audio to taskspooler" \
     "5) download video" \
     "6) download audio" \
-    | $menu_result -p "$label_result" \
+    | dmenu -l 20 -c -bw 2 -r -i -p "youtube »" \
 )
 
 [ -z "$search" ] \
