@@ -26,10 +26,10 @@ static const char *colors[SchemeLast][2] = {
 static const unsigned int alphas[SchemeLast][2] = {
     /*                fgalpha    bgalphga    */
     [SchemeNorm] = { fgalpha, bgalpha },
-    [SchemeSel] = { fgalpha, bgalpha },
-    [SchemeSelHighlight] = { fgalpha, bgalpha },
+    [SchemeSel] = { fgalpha, fgalpha },
+    [SchemeSelHighlight] = { fgalpha, fgalpha },
     [SchemeNormHighlight] = { fgalpha, bgalpha },
-    [SchemeOut] = { fgalpha, bgalpha },
+    [SchemeOut] = { fgalpha, fgalpha },
 };
 
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
