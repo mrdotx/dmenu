@@ -10,13 +10,13 @@ static const char *fonts[] = {
     "Source-Code-Pro:pixelsize=14:antialias=true:autohint=true",
     "JoyPixels:pixelsize=14:antialias=true:autohint=true"
 };
-static const unsigned int bgalpha = 0xe6;
-static const unsigned int fgalpha = OPAQUE;
+static const unsigned int alpha = 0xe6;
+static const unsigned int solid = OPAQUE;
 static const char *prompt      = "run »";      /* -p  option; prompt to the left of input field */
 static const char *symbol_1 = "«";
 static const char *symbol_2 = "»";
 static const char *colors[SchemeLast][2] = {
-    /*                fg         bg       */
+/*                  foreground, background */
     [SchemeNorm] = { "#cccccc", "#000000" },
     [SchemeSel] = { "#cccccc", "#4185d7" },
     [SchemeSelHighlight] = { "#ffffff", "#4185d7" },
@@ -24,12 +24,12 @@ static const char *colors[SchemeLast][2] = {
     [SchemeOut] = { "#000000", "#1f5393" },
 };
 static const unsigned int alphas[SchemeLast][2] = {
-    /*                fgalpha    bgalphga    */
-    [SchemeNorm] = { fgalpha, bgalpha },
-    [SchemeSel] = { fgalpha, fgalpha },
-    [SchemeSelHighlight] = { fgalpha, fgalpha },
-    [SchemeNormHighlight] = { fgalpha, bgalpha },
-    [SchemeOut] = { fgalpha, fgalpha },
+/*              foreground, background */
+    [SchemeNorm] = { solid, alpha },
+    [SchemeSel] = { solid, solid },
+    [SchemeSelHighlight] = { solid, solid },
+    [SchemeNormHighlight] = { solid, alpha },
+    [SchemeOut] = { solid, solid },
 };
 
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
