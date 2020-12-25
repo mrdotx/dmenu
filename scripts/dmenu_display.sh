@@ -3,12 +3,12 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-12-17T22:49:58+0100
+# date:       2020-12-25T21:29:04+0100
 
 # saved settings
 saved_settings() {
-    select=$(screenlayout.sh list \
-        | dmenu -l 10 -c -bw 2 -r -i -p "display »" \
+    select=$(screenlayout.sh --list \
+        | dmenu -l 10 -c -bw 2 -i -p "display »" \
     )
     screenlayout.sh "$select"
 }
