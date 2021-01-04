@@ -12,7 +12,7 @@ static const char *fonts[] = {
 };
 static const unsigned int alpha = 0xe6;
 static const unsigned int solid = OPAQUE;
-static const char *prompt      = "run »";      /* -p  option; prompt to the left of input field */
+static const char *prompt   = "run »";      /* -p  option; prompt to the left of input field */
 static const char *symbol_1 = "«";
 static const char *symbol_2 = "»";
 static const char *colors[SchemeLast][2] = {
