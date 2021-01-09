@@ -3,7 +3,7 @@
 # path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author:     klassiker [mrdotx]
 # github:     https://github.com/mrdotx/dmenu
-# date:       2020-12-17T22:40:43+0100
+# date:       2021-01-09T17:17:13+0100
 
 remove_escape_sequences() {
     tail -n +5 \
@@ -22,7 +22,7 @@ get_interface() {
 }
 
 scan_ssid() {
-    timer=5
+    timer=3
     message_id="$(date +%s)"
     iwctl station "$interface" scan \
         &&  while [ $timer -ge 1 ]; do
