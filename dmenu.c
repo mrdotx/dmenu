@@ -856,7 +856,7 @@ setup(void)
 	}
 	for (j = 0; j < SchemeOut; ++j) {
 		for (i = 0; i < 2; ++i)
-			free(colors[j][i]);
+			free(strdup(colors[j][i]));
 	}
 
 	clip = XInternAtom(dpy, "CLIPBOARD",   False);
@@ -983,18 +983,19 @@ readxresources(void) {
 			fonts[0] = strdup(xval.addr);
 		else
 			fonts[0] = strdup(fonts[0]);
-		if (XrmGetResource(xdb, "dmenu.fontfallback", "*", &type, &xval))
+        if (XrmGetResource(xdb, "dmenu.fontfallback", "*", &type, &xval))
 			fonts[1] = strdup(xval.addr);
 		else
 			fonts[1] = strdup(fonts[1]);
-		if (XrmGetResource(xdb, "dmenu.fontemoji", "*", &type, &xval))
+        if (XrmGetResource(xdb, "dmenu.fontemoji", "*", &type, &xval))
 			fonts[2] = strdup(xval.addr);
 		else
 			fonts[2] = strdup(fonts[2]);
-		if (XrmGetResource(xdb, "dmenu.background", "*", &type, &xval))
+        if (XrmGetResource(xdb, "dmenu.background", "*", &type, &xval))
 			colors[SchemeNorm][ColBg] = strdup(xval.addr);
 		else
 			colors[SchemeNorm][ColBg] = strdup(colors[SchemeNorm][ColBg]);
+
         if (XrmGetResource(xdb, "dmenu.foreground", "*", &type, &xval))
 			colors[SchemeNorm][ColFg] = strdup(xval.addr);
 		else
@@ -1117,7 +1118,7 @@ main(int argc, char *argv[])
 	if (!drw_fontset_create(drw, (const char**)fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
 
-	free(fonts[0]);
+	free(strdup(fonts[0]));
 	lrpad = drw->fonts->h;
 
 #ifdef __OpenBSD__
