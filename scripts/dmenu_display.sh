@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
-# author:     klassiker [mrdotx]
-# github:     https://github.com/mrdotx/dmenu
-# date:       2020-12-25T21:29:04+0100
+# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
+# author: klassiker [mrdotx]
+# github: https://github.com/mrdotx/dmenu
+# date:   2021-01-15T13:32:25+0100
 
 # saved settings
 saved_settings() {

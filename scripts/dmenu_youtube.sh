@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
-# author:     klassiker [mrdotx]
-# github:     https://github.com/mrdotx/dmenu
-# date:       2020-12-17T21:39:25+0100
+# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
+# author: klassiker [mrdotx]
+# github: https://github.com/mrdotx/dmenu
+# date:   2021-01-15T13:33:26+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 

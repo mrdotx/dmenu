@@ -1,7 +1,7 @@
-# path:       /home/klassiker/.local/share/repos/dmenu/.gitignore
-# author:     klassiker [mrdotx]
-# github:     https://github.com/mrdotx/dmenu
-# date:       2020-11-13T14:37:33+0100
+# path:   /home/klassiker/.local/share/repos/dmenu/.gitignore
+# author: klassiker [mrdotx]
+# github: https://github.com/mrdotx/dmenu
+# date:   2021-01-15T13:31:43+0100
 
 /scripts/data/bookmarks
 /scripts/data/youtube

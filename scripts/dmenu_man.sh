@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_man.sh
-# author:     klassiker [mrdotx]
-# github:     https://github.com/mrdotx/dmenu
-# date:       2020-12-17T22:36:05+0100
+# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_man.sh
+# author: klassiker [mrdotx]
+# github: https://github.com/mrdotx/dmenu
+# date:   2021-01-15T13:32:42+0100
 
 win_id=$(xprop -root \
     | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \

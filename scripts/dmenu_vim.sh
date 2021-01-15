@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
-# author:     klassiker [mrdotx]
-# github:     https://github.com/mrdotx/dmenu
-# date:       2020-12-17T22:27:42+0100
+# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
+# author: klassiker [mrdotx]
+# github: https://github.com/mrdotx/dmenu
+# date:   2021-01-15T13:33:05+0100
 
 open() {
     $TERMINAL -e vim "$1"://"$2"/ -c ":call NetrwToggle()"

@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
-# author:     klassiker [mrdotx]
-# github:     https://github.com/mrdotx/dmenu
-# date:       2020-12-17T22:31:46+0100
+# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
+# author: klassiker [mrdotx]
+# github: https://github.com/mrdotx/dmenu
+# date:   2021-01-15T13:32:11+0100
 
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
 bookmarks=$(printf "== Sync Bookmarks ==;sync_bookmarks\n%s" "$(cat "$bookmarks_file")")

@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:       /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
-# author:     klassiker [mrdotx]
-# github:     https://github.com/mrdotx/dmenu
-# date:       2021-01-09T17:17:13+0100
+# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
+# author: klassiker [mrdotx]
+# github: https://github.com/mrdotx/dmenu
+# date:   2021-01-15T13:32:34+0100
 
 remove_escape_sequences() {
     tail -n +5 \
