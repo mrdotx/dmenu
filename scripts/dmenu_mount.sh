@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-01-15T13:32:50+0100
+# date:   2021-02-16T20:22:40+0100
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
@@ -32,8 +32,9 @@ mount_remote() {
         # device        directory
         pi;             /home/alarm
         pi2;            /home/alarm
-        p9;             /storage/1B0C-F276
-        m3;             /storage/7EB3-34D3
+        p9;             /storage/emulated/0
+        m3;             /storage/emulated/0
+        n10;            /storage/emulated/0
         firetv;         /storage/emulated/0
         firetv4k;       /storage/emulated/0
 
