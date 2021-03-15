@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-02-16T20:22:40+0100
+# date:   2021-03-15T11:18:10+0100
 
 # auth can be something like sudo -A, doas -- or
 # nothing, depending on configuration requirements
@@ -94,23 +94,22 @@ mount_usb() {
     [ ! -d "$mount_point" ] \
         && mkdir "$mount_point" \
         && case "$partition_type" in
-            "vfat")
-                $auth mount -t vfat "$select" "$mount_point" -o rw,umask=0000 \
-                && notify-send \
-                    "usb mount $partition_type" \
-                    "$select mounted to $mount_point"
+            vfat)
+                $auth mount -t "$partition_type" "$select" "$mount_point" -o rw,umask=0000 \
+                ;;
+            exfat)
+                $auth mount "$select" "$mount_point" -o rw,umask=0000 \
                 ;;
             *)
-                $auth mount "$select" "$mount_point" \
-                && notify-send \
-                    "usb mount $partition_type" \
-                    "$select mounted to $mount_point"
-
+                $auth mount "$select" "$mount_point"
                 user="$(whoami)"
                 user_group="$(groups | awk '{print $1}')"
                 $auth chown "$user":"$user_group" 741 "$mount_point"
                 ;;
-    esac
+            esac \
+        && notify-send \
+            "usb mount $partition_type" \
+            "$select mounted to $mount_point"
 }
 
 # mount image
