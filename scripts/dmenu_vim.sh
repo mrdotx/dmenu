@@ -3,16 +3,17 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-01-15T13:33:05+0100
+# date:   2021-06-07T08:06:42+0200
 
 open() {
     $TERMINAL -e vim "$1"://"$2"/ -c ":call NetrwToggle()"
 }
 
 netrc() {
-    gpg -d -o "$HOME/.netrc" "$HOME/.local/share/cloud/webde/.keys/netrc.gpg" \
+    gpg -d -o "$HOME/.netrc" "$HOME/.local/share/cloud/webde/.keys/netrc.asc" \
         && chmod 600 "$HOME/.netrc" \
         && open "$1" "$2" \
+        && sleep 2 \
         && rm -f "$HOME/.netrc"
 }
 
