@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_password.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-08T17:39:55+0200
+# date:   2021-06-08T19:51:29+0200
 
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
 file_type=".gpg"
@@ -15,19 +15,34 @@ select=$( \
         | dmenu -l 20 -c -bw 2 -r -i -p "password entry »" \
 )
 
-[ -n "$select" ] || exit 0
+[ -n "$select" ] \
+    || exit 0
 
-entry=$(gpg --quiet --decrypt "$password_store/$select$file_type")
+get_entry() {
+    entry=$(gpg --quiet --decrypt "$password_store/$select$file_type")
 
-get_username() {
-    printf "%s\n" "$entry" \
-        | grep "^username:" \
-        | sed 's/^username://; s/^[ \t]*//; s/[ \t]*$//'
-}
+    username() {
+        printf "%s\n" "$entry" \
+            | grep "^username:" \
+            | sed 's/^username://; s/^[ \t]*//; s/[ \t]*$//'
+    }
 
-get_password() {
-    printf "%s\n" "$entry" \
-        | head -n 1
+    password() {
+        printf "%s\n" "$entry" \
+            | head -n 1
+    }
+
+    case "$1" in
+        type)
+            eval "$2" \
+                | xdotool type --clearmodifiers --file -
+            ;;
+        copy)
+            timeout="${3-45000}"
+            eval "$2" \
+                | xsel --input --selectionTimeout "$timeout" --clipboard
+            ;;
+    esac
 }
 
 case $(printf "%s\n" \
@@ -39,27 +54,21 @@ case $(printf "%s\n" \
     | dmenu -l 5 -c -bw 2 -r -i -p "$select »" \
     ) in
     "1) type username and password")
-        get_username \
-            | xdotool type --clearmodifiers --file -
+        get_entry "type" "username"
         xdotool key Tab
-        get_password \
-            | xdotool type --clearmodifiers --file -
+        get_entry "type" "password"
         ;;
     "2) type username")
-        get_username \
-            | xdotool type --clearmodifiers --file -
+        get_entry "type" "username"
         ;;
     "3) type password")
-        get_password \
-            | xdotool type --clearmodifiers --file -
+        get_entry "type" "password"
         ;;
     "4) copy username")
-        get_username \
-            | xsel --input --selectionTimeout 60000 --clipboard
+        get_entry "copy" "username" 60000
         ;;
     "5) copy password")
-        get_password \
-            | xsel --input --selectionTimeout 45000 --clipboard
+        get_entry "copy" "password"
         ;;
     *)
         exit 0
