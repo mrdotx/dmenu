@@ -3,19 +3,21 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_password.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-08T15:23:10+0200
+# date:   2021-06-08T15:55:20+0200
 
-password_store=${PASSWORD_STORE_DIR-~/.password-store}
+password_store="${PASSWORD_STORE_DIR-~/.password-store}"
+file_type=".gpg"
 
 select=$( \
-    find "$password_store" -iname "*.gpg" -printf "%P\n" \
+    find "$password_store" -iname "*$file_type" -printf "%P\n" \
+        | sed "s/$file_type$//" \
         | sort \
         | dmenu -l 20 -c -bw 2 -r -i -p "password entry »" \
 )
 
 [ -n "$select" ] || exit 0
 
-entry=$(gpg --quiet --decrypt "$password_store/$select")
+entry=$(gpg --quiet --decrypt "$password_store/$select$file_type")
 
 get_username() {
     printf "%s\n" "$entry" \
