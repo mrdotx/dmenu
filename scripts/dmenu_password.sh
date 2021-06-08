@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_password.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-08T19:51:29+0200
+# date:   2021-06-08T20:48:12+0200
 
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
 file_type=".gpg"
@@ -38,9 +38,8 @@ get_entry() {
                 | xdotool type --clearmodifiers --file -
             ;;
         copy)
-            timeout="${3-45000}"
             eval "$2" \
-                | xsel --input --selectionTimeout "$timeout" --clipboard
+                | xsel --input --selectionTimeout 45000 --clipboard
             ;;
     esac
 }
@@ -65,7 +64,7 @@ case $(printf "%s\n" \
         get_entry "type" "password"
         ;;
     "4) copy username")
-        get_entry "copy" "username" 60000
+        get_entry "copy" "username"
         ;;
     "5) copy password")
         get_entry "copy" "password"
