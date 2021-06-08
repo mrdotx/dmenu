@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_password.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-08T15:55:20+0200
+# date:   2021-06-08T17:39:55+0200
 
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
 file_type=".gpg"
@@ -22,7 +22,7 @@ entry=$(gpg --quiet --decrypt "$password_store/$select$file_type")
 get_username() {
     printf "%s\n" "$entry" \
         | grep "^username:" \
-        | sed 's/^username: //; s/^username://'
+        | sed 's/^username://; s/^[ \t]*//; s/[ \t]*$//'
 }
 
 get_password() {
