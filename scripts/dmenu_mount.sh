@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-09T11:44:25+0200
+# date:   2021-06-09T13:19:45+0200
 
 # auth can be something like sudo -A, doas -- or nothing,
 # depending on configuration requirements
@@ -29,22 +29,7 @@ unmount() {
 # remote mount
 mount_remote() {
     remote_config="
-        # devices       directory
-        pi;             /home/alarm
-        pi2;            /home/alarm
-        n10;            /storage/emulated/0
-        m3;             /storage/emulated/0
-        p9;             /storage/emulated/0
-        firetv4k;       /storage/emulated/0
-        firetv;         /storage/emulated/0
-
-        # websites
-        middlefinger;   /
-        prinzipal;      /
-        klassiker;      /
-        marcus;         /
-
-        # storage
+        # cloud storage
         webde;          /
         dropbox;        /
         gmx;            /
