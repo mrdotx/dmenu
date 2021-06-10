@@ -3,18 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-07T08:06:42+0200
+# date:   2021-06-10T13:14:23+0200
 
 open() {
     $TERMINAL -e vim "$1"://"$2"/ -c ":call NetrwToggle()"
-}
-
-netrc() {
-    gpg -d -o "$HOME/.netrc" "$HOME/.local/share/cloud/webde/.keys/netrc.asc" \
-        && chmod 600 "$HOME/.netrc" \
-        && open "$1" "$2" \
-        && sleep 2 \
-        && rm -f "$HOME/.netrc"
 }
 
 # menu for vim shortcuts
@@ -52,9 +44,9 @@ case $(printf "%s\n" \
         open "scp" "prinzipal"
         ;;
     "klassiker")
-        netrc "ftp" "klassiker.online.de"
+        open "ftp" "klassiker.online.de"
         ;;
     "marcus")
-        netrc "ftp" "marcusreith.de"
+        open "ftp" "marcusreith.de"
         ;;
 esac
