@@ -3333,7 +3333,7 @@ $ Dollar Currency; U+0024
  fa-music; U+F001
  fa-search; U+F002
  fa-heart; U+F004
- fa-star; U+F005
+ fa-faucet; U+F005
  fa-user; U+F007
  fa-film; U+F008
  fa-th-large; U+F009
@@ -3350,6 +3350,7 @@ $ Dollar Currency; U+0024
  fa-clock; U+F017
  fa-road; U+F018
  fa-download; U+F019
+ fa-microblog; U+F01A
  fa-inbox; U+F01C
  fa-redo; U+F01E
  fa-sync; U+F021
@@ -3361,7 +3362,7 @@ $ Dollar Currency; U+0024
  fa-volume-down; U+F027
  fa-volume-up; U+F028
  fa-qrcode; U+F029
- fa-brcode; U+F02A
+ fa-barcode; U+F02A
  fa-tag; U+F02B
  fa-tags; U+F02C
  fa-book; U+F02D
@@ -3402,18 +3403,21 @@ $ Dollar Currency; U+0024
  fa-minus-circle; U+F056
  fa-times-circle; U+F057
  fa-check-circle; U+F058
- fa-question-circle; U+F059
- fa-info-circle; U+F05A
- fa-crosshairs; U+F05B
+ fa-bacteria; U+F059
+ fa-bacterium; U+F05A
+ fa-box-tissue; U+F05B
+ fa-hand-holding-medical; U+F05C
+ fa-hand-sparkles; U+F05D
  fa-ban; U+F05E
+ fa-handshake-alt-slash; U+F05F
  fa-arrow-left; U+F060
  fa-arrow-right; U+F061
  fa-arrow-up; U+F062
  fa-arrow-down; U+F063
- fa-share; U+F064
+ fa-head-side-virus; U+F064
  fa-expand; U+F065
  fa-compress; U+F066
- fa-plus; U+F067
+ fa-lungs-virus; U+F067
  fa-minus; U+F068
  fa-asterisk; U+F069
  fa-exclamation-circle; U+F06A
@@ -3421,6 +3425,7 @@ $ Dollar Currency; U+0024
  fa-leaf; U+F06C
  fa-fire; U+F06D
  fa-eye; U+F06E
+ fa-stopwatch-20; U+F06F
  fa-eye-slash; U+F070
  fa-exclamation-triangle; U+F071
  fa-plane; U+F072
@@ -3434,13 +3439,18 @@ $ Dollar Currency; U+0024
  fa-shopping-cart; U+F07A
  fa-folder; U+F07B
  fa-folder-open; U+F07C
+ fa-cloudflare; U+F07D
+ fa-guilded; U+F07E
+ fa-hive; U+F07F
  fa-chart-bar; U+F080
- fa-twitter-square; U+F081
+ fa-instalod; U+F081
  fa-facebook-square; U+F082
  fa-camera-retro; U+F083
  fa-key; U+F084
  fa-cogs; U+F085
  fa-comments; U+F086
+ fa-watchman-monitoring; U+F087
+ fa-wodu; U+F088
  fa-star-half; U+F089
  fa-linkedin; U+F08C
  fa-thumbtack; U+F08D
@@ -4196,6 +4206,7 @@ $ Dollar Currency; U+0024
  fa-hand-holding; U+F4BD
  fa-hand-holding-heart; U+F4BE
  fa-hand-holding-usd; U+F4C0
+ fa-hand-holding-water; U+F4C1
  fa-hands; U+F4C2
  fa-hands-helping; U+F4C4
  fa-parachute-box; U+F4CD
@@ -4463,6 +4474,7 @@ $ Dollar Currency; U+0024
  fa-kaggle; U+F5FA
  fa-laptop-code; U+F5FC
  fa-layer-group; U+F5FD
+ fa-lungs; U+F604
  fa-markdown; U+F60F
  fa-microscope; U+F610
  fa-neos; U+F612
@@ -4523,7 +4535,7 @@ $ Dollar Currency; U+0024
  fa-torii-gate; U+F6A1
  fa-vihara; U+F6A7
  fa-volume-mute; U+F6A9
- fa-yin-yang; U+F6ADA
+ fa-yin-yang; U+F6AD
  fa-acquisitions-incorporated; U+F6AF
  fa-blender-phone; U+F6B6
  fa-book-dead; U+F6B7
@@ -4590,7 +4602,6 @@ $ Dollar Currency; U+0024
  fa-temperature-low; U+F76B
  fa-vote-yea; U+F772
  fa-water; U+F773
- fa-adobe; U+F778
  fa-artstation; U+F77A
  fa-atlassian; U+F77B
  fa-baby; U+F77C
@@ -4668,10 +4679,12 @@ $ Dollar Currency; U+0024
  fa-clinic-medical; U+F7F2
  fa-comment-medical; U+F7F5
  fa-crutch; U+F7F7
+ fa-disease; U+F7FA
  fa-egg; U+F7FB
  fa-hamburger; U+F805
  fa-hand-middle-finger; U+F806
  fa-hard-hat; U+F807
+ fa-hospital-user; U+F80D
  fa-hotdog; U+F80F
  fa-ice-cream; U+F810
  fa-laptop-medical; U+F812
@@ -4725,13 +4738,3 @@ $ Dollar Currency; U+0024
  fa-swift; U+F8E1
  fa-umbraco; U+F8E8
  fa-caravan; U+F8FF
-龜fa-firefox-browser; U+F907
-邏fa-ideal; U+F913
-駱fa-microblog; U+F91A
-爛fa-pied-piper-square; U+F91E
-論fa-trailer; U+F941
-雷fa-unity; U+F949
-勒fa-dailymotion; U+F952
-凌fa-instagram-square; U+F955
-稜fa-mixer; U+F956
-綾fa-shopify; U+F957
