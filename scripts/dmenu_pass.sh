@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-11T08:10:35+0200
+# date:   2021-06-11T11:53:00+0200
 
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
 file_type=".gpg"
@@ -48,28 +48,34 @@ get_entry() {
 }
 
 case $(printf "%s\n" \
-    "1) type username and password" \
-    "2) type username" \
-    "3) type password" \
-    "4) copy username" \
-    "5) copy password" \
+    "1) type username, tab, password" \
+    "2) type username, 2xtab, password" \
+    "3) type username" \
+    "4) type password" \
+    "5) copy username" \
+    "6) copy password" \
     | dmenu -l 5 -c -bw 2 -r -i -p "$select »" \
     ) in
-    "1) type username and password")
+    "1) type username, tab, password")
         get_entry "type" "username"
         xdotool key Tab
         get_entry "type" "password"
         ;;
-    "2) type username")
+    "2) type username, 2xtab, password")
         get_entry "type" "username"
-        ;;
-    "3) type password")
+        xdotool key Tab Tab
         get_entry "type" "password"
         ;;
-    "4) copy username")
+    "3) type username")
+        get_entry "type" "username"
+        ;;
+    "4) type password")
+        get_entry "type" "password"
+        ;;
+    "5) copy username")
         get_entry "copy" "username"
         ;;
-    "5) copy password")
+    "6) copy password")
         get_entry "copy" "password"
         ;;
     *)
