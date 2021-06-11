@@ -14,7 +14,7 @@ shell scripts for dmenu
 | dmenu_iwd.sh             | connect to wlan with iwd                                                      |
 | dmenu_man.sh             | search for man pages                                                          |
 | dmenu_mount.sh           | un-/mount remote, usb and android locations/devices                           |
-| dmenu_password.sh        | use username or password from gpg password store                              |
+| dmenu_pass.sh            | use username or password from gpg password store                              |
 | dmenu_unicode_symbols.sh | search and copy unicode symbols                                               |
 | dmenu_vim.sh             | start vim with a few shortcuts for local/remote locations/files               |
 | dmenu_virtualbox.sh      | start a virtual machine without virtualbox frontend                           |
