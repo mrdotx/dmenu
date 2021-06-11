@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-11T07:35:11+0200
+# date:   2021-06-11T08:10:35+0200
 
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
 file_type=".gpg"
@@ -12,7 +12,7 @@ select=$( \
     find "$password_store" -iname "*$file_type" -printf "%P\n" \
         | sed "s/$file_type$//" \
         | sort \
-        | dmenu -l 20 -c -bw 2 -r -i -p "password entry »" \
+        | dmenu -l 20 -c -bw 2 -r -i -p "pass »" \
 )
 
 [ -n "$select" ] \
@@ -22,18 +22,21 @@ get_entry() {
     entry=$(gpg --quiet --decrypt "$password_store/$select$file_type")
 
     username() {
-        printf "%s\n" "$entry" \
+        printf "%s" "$entry" \
             | grep "^username:" \
             | sed 's/^username://; s/^[ \t]*//; s/[ \t]*$//'
     }
 
     password() {
-        printf "%s\n" "$entry" \
+        printf "%s" "$entry" \
             | head -n 1
     }
 
     case "$1" in
         type)
+            # workaround for mismatched keyboard layouts
+            setxkbmap -synch
+
             eval "$2" \
                 | xdotool type --clearmodifiers --file -
             ;;
