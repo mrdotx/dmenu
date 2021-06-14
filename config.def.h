@@ -11,8 +11,7 @@ static const char *fonts[] = {
     "JoyPixels:pixelsize=14:antialias=true:autohint=true"
 };
 static const unsigned int alpha = 0xe6;
-static const unsigned int solid = OPAQUE;
-static const char *prompt   = "run »";      /* -p  option; prompt to the left of input field */
+static const char *prompt      = "run »";      /* -p  option; prompt to the left of input field */
 static const char *symbol_1 = "«";
 static const char *symbol_2 = "»";
 static const char *colors[SchemeLast][2] = {
@@ -25,11 +24,11 @@ static const char *colors[SchemeLast][2] = {
 };
 static const unsigned int alphas[SchemeLast][2] = {
 /*              foreground, background */
-    [SchemeNorm] = { solid, alpha },
-    [SchemeSel] = { solid, solid },
-    [SchemeSelHighlight] = { solid, solid },
-    [SchemeNormHighlight] = { solid, alpha },
-    [SchemeOut] = { solid, solid },
+    [SchemeNorm] = { OPAQUE, alpha },
+    [SchemeSel] = { OPAQUE, OPAQUE },
+    [SchemeSelHighlight] = { OPAQUE, OPAQUE },
+    [SchemeNormHighlight] = { OPAQUE, alpha },
+    [SchemeOut] = { OPAQUE, OPAQUE },
 };
 
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
