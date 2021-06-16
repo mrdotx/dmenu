@@ -3,10 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-01-15T13:32:18+0100
+# date:   2021-06-16T17:40:07+0200
 
 # get active window id
-win_id=$(xprop -root \
+window_id=$(xprop -root \
     | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
 )
 
@@ -18,7 +18,7 @@ result=$(printf "%s\n" "$@" \
 select=$(printf "%s\n" \
             "clear" \
             "copy to clipboard" \
-    | dmenu -b -l 3 -w "$win_id" -p "= $result" \
+    | dmenu -b -l 3 -w "$window_id" -p "= $result" \
 )
 case $select in
     "")

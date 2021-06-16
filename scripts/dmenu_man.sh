@@ -3,15 +3,16 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_man.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-01-15T13:32:42+0100
+# date:   2021-06-16T17:39:10+0200
 
-win_id=$(xprop -root \
+# get active window id
+window_id=$(xprop -root \
     | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
 )
 
 select=$(apropos -l '' \
     | sort \
-    | dmenu -b -l 15 -r -i -w "$win_id" -p "man »" \
+    | dmenu -b -l 15 -r -i -w "$window_id" -p "man »" \
     | cut -d ' ' -f1,2 \
     | tr -d ' ')
 
