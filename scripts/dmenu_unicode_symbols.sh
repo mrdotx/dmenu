@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-01-15T13:32:59+0100
+# date:   2021-06-16T17:38:46+0200
 
 # get active window id
 window_id=$(xprop -root \
@@ -21,7 +21,7 @@ symbol=$(printf "%s\n" "$select" \
     | sed 's/ .*//' \
 )
 
-# insert to cursor in active window
+# type at cursor in active window
 xdotool type "$symbol"
 # copy symbol to clipboard
 printf "%s" "$symbol" \
