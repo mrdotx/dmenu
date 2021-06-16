@@ -3,16 +3,21 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-11T11:53:00+0200
+# date:   2021-06-16T17:35:18+0200
 
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
 file_type=".gpg"
+
+# get active window id
+window_id=$(xprop -root \
+    | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
+)
 
 select=$( \
     find "$password_store" -iname "*$file_type" -printf "%P\n" \
         | sed "s/$file_type$//" \
         | sort \
-        | dmenu -l 20 -c -bw 2 -r -i -p "pass »" \
+        | dmenu -b -l 15 -r -i -w "$window_id" -p "pass »" \
 )
 
 [ -n "$select" ] \
@@ -54,7 +59,7 @@ case $(printf "%s\n" \
     "4) type password" \
     "5) copy username" \
     "6) copy password" \
-    | dmenu -l 5 -c -bw 2 -r -i -p "$select »" \
+    | dmenu -b -l 6 -r -i -w "$window_id" -p "$select »" \
     ) in
     "1) type username, tab, password")
         get_entry "type" "username"
