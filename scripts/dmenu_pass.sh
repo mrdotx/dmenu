@@ -3,12 +3,12 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-26T09:18:35+0200
+# date:   2021-06-26T09:50:59+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
 file_type=".gpg"
-generate_password_chars=14
+generate_password_chars=16
 
 # get active window id
 window_id=$(xprop -root \
