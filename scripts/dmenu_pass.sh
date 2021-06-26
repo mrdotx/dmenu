@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-26T09:50:59+0200
+# date:   2021-06-26T15:27:54+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
@@ -31,12 +31,14 @@ get_entry() {
     username() {
         printf "%s" "$entry" \
             | grep "^username:" \
-            | sed 's/^username://; s/^[ \t]*//; s/[ \t]*$//'
+            | sed "s/^username://; s/^[ \t]*//; s/[ \t]*$//" \
+            | tr -d "\n"
     }
 
     password() {
         printf "%s" "$entry" \
-            | head -n 1
+            | head -n 1 \
+            | tr -d "\n"
     }
 
     generate_password() {
