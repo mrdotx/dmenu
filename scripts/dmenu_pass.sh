@@ -3,11 +3,12 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-26T15:27:54+0200
+# date:   2021-06-27T19:12:12+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
 file_type=".gpg"
+clipboard_timeout=45
 generate_password_chars=16
 
 # get active window id
@@ -52,20 +53,16 @@ get_entry() {
             setxkbmap -synch
 
             eval "$2" \
-                | xdotool type --clearmodifiers --file -
+                | xdotool type \
+                    --clearmodifiers \
+                    --file -
             ;;
         copy)
-            case "$2" in
-                generate_password)
-                    timeout=120000
-                    ;;
-                *)
-                    timeout=45000
-                    ;;
-            esac
-
             eval "$2" \
-                | xsel --input --selectionTimeout "$timeout" --clipboard
+                | xsel \
+                    --input \
+                    --selectionTimeout "$((clipboard_timeout * 1000))" \
+                    --clipboard
             ;;
     esac
 }
@@ -74,13 +71,13 @@ case "$select" in
     "== Generate Password ==")
         case $(printf "%s\n" \
             "1) type password" \
-            "2) copy password" \
+            "2) copy password ($clipboard_timeout sec)" \
             | dmenu -b -l 2 -r -i -w "$window_id" -p "$select »" \
             ) in
             "1) type password")
                 get_entry "type" "generate_password"
                 ;;
-            "2) copy password")
+            "2) copy password ($clipboard_timeout sec)")
                 get_entry "copy" "generate_password"
                 ;;
             *)
@@ -94,8 +91,8 @@ case "$select" in
             "2) type username, 2xtab, password" \
             "3) type username" \
             "4) type password" \
-            "5) copy username" \
-            "6) copy password" \
+            "5) copy username ($clipboard_timeout sec)" \
+            "6) copy password ($clipboard_timeout sec)" \
             | dmenu -b -l 6 -r -i -w "$window_id" -p "$select »" \
             ) in
             "1) type username, tab, password")
@@ -114,10 +111,10 @@ case "$select" in
             "4) type password")
                 get_entry "type" "password"
                 ;;
-            "5) copy username")
+            "5) copy username ($clipboard_timeout sec)")
                 get_entry "copy" "username"
                 ;;
-            "6) copy password")
+            "6) copy password ($clipboard_timeout sec)")
                 get_entry "copy" "password"
                 ;;
             *)
