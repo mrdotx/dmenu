@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-09T13:19:45+0200
+# date:   2021-06-29T07:23:34+0200
 
 # auth can be something like sudo -A, doas -- or nothing,
 # depending on configuration requirements
@@ -68,7 +68,7 @@ mount_usb() {
     select="$(lsblk -rpo "name,type,size,mountpoint" \
         | awk '{ if ($2=="part"&&$4=="" || $2=="rom"&&$4=="" || $3=="1,4M"&&$4=="") printf "%s (%s)\n",$1,$3}' \
         | dmenu -l 5 -c -bw 2 -r -i -p "mount »" \
-        | awk '{print $1}')"
+        | cut -d " " -f1)"
 
     [ -z "$select" ] \
         && exit 1
@@ -88,7 +88,7 @@ mount_usb() {
             *)
                 $auth mount "$select" "$mount_point"
                 user="$(whoami)"
-                user_group="$(groups | awk '{print $1}')"
+                user_group="$(groups | cut -d " " -f1)"
                 $auth chown "$user":"$user_group" 741 "$mount_point"
                 ;;
             esac \
@@ -127,7 +127,7 @@ mount_image() {
 mount_android() {
     select=$(simple-mtpfs -l 2>/dev/null \
         | dmenu -l 5 -c -bw 2 -r -i -p "mount »" \
-        | cut -d : -f 1 \
+        | cut -d ":" -f1 \
     )
 
     [ -z "$select" ] \
@@ -151,7 +151,7 @@ dvd_eject() {
 
     select=$(printf "%s\n" "$mounts" \
         | dmenu -l 5 -c -bw 2 -r -i -p "eject »" \
-        | awk '{print $1}' \
+        | cut -d " " -f1 \
     )
 
     [ -z "$select" ] \
