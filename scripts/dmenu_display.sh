@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-01-15T13:32:25+0100
+# date:   2021-07-08T14:04:07+0200
 
 # saved settings
 saved_settings() {
@@ -108,5 +108,5 @@ select=$(printf "saved settings\nsecond display\n%s\naudio toggle" "$get_display
 # maintenance after setup displays
 [ -n "$select" ] \
     && [ ! "$select" = "audio toggle" ] \
-    && systemctl --user restart xwallpaper.service \
+    && wallpaper.sh \
     && systemctl --user restart polybar.service
