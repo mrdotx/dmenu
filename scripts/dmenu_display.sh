@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-10T10:17:28+0200
+# date:   2021-07-10T11:27:19+0200
 
 all_displays=$(xrandr \
     | grep "connected" \
@@ -15,7 +15,7 @@ connected_displays=$(printf "%s" "$all_displays" \
 
 default_settings() {
     select=$(screenlayout.sh --defaults \
-        | dmenu -l 10 -c -bw 2 -i -p "display »" \
+        | dmenu -l 10 -c -bw 2 -i -p "default »" \
     )
     screenlayout.sh "$select"
 }
@@ -84,7 +84,7 @@ second_display() {
         )
 
         xrandr \
-            --output "$primary" --auto \
+            --output "$primary" --auto --primary \
             --scale 1.0x1.0 \
             --output "$secondary" --"$orientation" "$primary" --auto \
             --scale 1.0x1.0
@@ -121,29 +121,29 @@ refresh_rate() {
 
 # menu
 select=$(printf "%s\n" \
+    "default settings" \
+    "refresh rate" \
     "second display" \
     "$connected_displays" \
     "audio toggle" \
-    "refresh rate" \
-    "default settings" \
     | dmenu -l 10 -c -bw 2 -r -i -p "display »"
     ) && \
     case "$select" in
+        "default settings")
+            default_settings
+        ;;
+        "refresh rate")
+            refresh_rate
+        ;;
         "second display")
             second_display
         ;;
         "audio toggle")
             audio.sh -tog
         ;;
-        "refresh rate")
-            refresh_rate
-        ;;
-        "default settings")
-            default_settings
-        ;;
     *)
         eval xrandr \
-            --output "$select" --auto \
+            --output "$select" --auto --primary \
             --scale 1.0x1.0 \
             "$(printf "%s" "$all_displays" \
                 | grep -v "$select" \
