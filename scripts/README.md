@@ -23,5 +23,6 @@ shell scripts for dmenu
 
 related projects:
 
-- [link-handler](https://github.com/mrdotx/link-handler)
 - [i3](https://github.com/mrdotx/i3)
+- [link-handler](https://github.com/mrdotx/link-handler)
+- [shell](https://github.com/mrdotx/shell)
