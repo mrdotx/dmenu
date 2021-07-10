@@ -3,35 +3,41 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-08T14:04:07+0200
+# date:   2021-07-10T10:17:28+0200
 
-# saved settings
-saved_settings() {
-    select=$(screenlayout.sh --list \
+all_displays=$(xrandr \
+    | grep "connected" \
+)
+connected_displays=$(printf "%s" "$all_displays" \
+    | grep " connected" \
+    | cut -d ' ' -f1 \
+)
+
+default_settings() {
+    select=$(screenlayout.sh --defaults \
         | dmenu -l 10 -c -bw 2 -i -p "display »" \
     )
     screenlayout.sh "$select"
 }
 
-# second display
-secondary_display() {
+second_display() {
     mirroring=$(printf "no\nyes" \
         | dmenu -l 2 -c -bw 2 -r -i -p "mirroring »" \
     )
     if [ "$mirroring" = "yes" ]; then
-        external=$(printf "%s" "$get_display" \
+        external=$(printf "%s" "$connected_displays" \
             | dmenu -l 4 -c -bw 2 -r -i -p "resolution from »" \
         )
-        internal=$(printf "%s" "$get_display" \
+        internal=$(printf "%s" "$connected_displays" \
             | grep -v "$external" \
         )
 
-        resolution_external=$(xrandr --query \
+        resolution_external=$(xrandr \
             | sed -n "/^$external/,/\+/p" \
             | tail -n 1 \
             | awk '{print $1}' \
         )
-        resolution_internal=$(xrandr --query \
+        resolution_internal=$(xrandr \
             | sed -n "/^$internal/,/\+/p" \
             | tail -n 1 \
             | awk '{print $1}' \
@@ -57,47 +63,89 @@ secondary_display() {
             | bc -l \
         )
 
-        xrandr --output "$external" --auto --scale 1.0x1.0 --output "$internal" --auto --same-as "$external" --scale "$scale_x"x"$scale_y"
+        xrandr \
+            --output "$external" --auto \
+            --scale 1.0x1.0 \
+            --output "$internal" --auto \
+            --same-as "$external" \
+            --scale "$scale_x"x"$scale_y"
     else
-        primary=$(printf "%s" "$get_display" \
+        primary=$(printf "%s" "$connected_displays" \
             | dmenu -l 4 -c -bw 2 -r -i -p "primary »" \
         )
-        secondary=$(printf "%s" "$get_display" \
+        secondary=$(printf "%s" "$connected_displays" \
             | grep -v "$primary" \
-            | sed q1 \
+            | head -n1 \
         )
+
         orientation=$(printf "above\nright\nbelow\nleft" \
             | dmenu -l 4 -c -bw 2 -r -i -p "position of $secondary »" \
             | sed 's/left/left-of/;s/right/right-of/' \
         )
-        xrandr --output "$primary" --auto --scale 1.0x1.0 --output "$secondary" --"$orientation" "$primary" --auto --scale 1.0x1.0
+
+        xrandr \
+            --output "$primary" --auto \
+            --scale 1.0x1.0 \
+            --output "$secondary" --"$orientation" "$primary" --auto \
+            --scale 1.0x1.0
     fi
 }
 
+refresh_rate() {
+    select=$(printf "%s\n" \
+        "$connected_displays" \
+        | dmenu -l 10 -c -bw 2 -r -i -p "display »" \
+    )
+
+    mode=$(xrandr \
+        | grep "$select" \
+        | cut -d '+' -f1 \
+        | cut -d ' ' -f4 \
+    )
+
+    rate=$(printf "%s\n" \
+        "240.00" \
+        "144.00" \
+        "120.00" \
+        "75.00" \
+        "60.00" \
+        "50.00" \
+        | dmenu -l 10 -c -bw 2 -i -p "rate »" \
+    )
+
+    xrandr \
+        --output "$select" \
+        --mode "$mode" \
+        --rate "$rate"
+}
+
 # menu
-display_all=$(xrandr -q \
-    | grep "connected" \
-)
-get_display=$(printf "%s" "$display_all" \
-    | grep " connected" \
-    | cut -d ' ' -f1 \
-)
-select=$(printf "saved settings\nsecond display\n%s\naudio toggle" "$get_display" \
-    | dmenu -l 5 -c -bw 2 -r -i -p "display »"
+select=$(printf "%s\n" \
+    "second display" \
+    "$connected_displays" \
+    "audio toggle" \
+    "refresh rate" \
+    "default settings" \
+    | dmenu -l 10 -c -bw 2 -r -i -p "display »"
     ) && \
     case "$select" in
-        "saved settings")
-            saved_settings
-        ;;
         "second display")
-            secondary_display
+            second_display
         ;;
         "audio toggle")
             audio.sh -tog
         ;;
+        "refresh rate")
+            refresh_rate
+        ;;
+        "default settings")
+            default_settings
+        ;;
     *)
-        eval xrandr --output "$select" --auto --scale 1.0x1.0 \
-            "$(printf "%s" "$display_all" \
+        eval xrandr \
+            --output "$select" --auto \
+            --scale 1.0x1.0 \
+            "$(printf "%s" "$all_displays" \
                 | grep -v "$select" \
                 | awk '{print "--output", $1, "--off"}' \
                 | tr '\n' ' ' \
@@ -107,6 +155,6 @@ select=$(printf "saved settings\nsecond display\n%s\naudio toggle" "$get_display
 
 # maintenance after setup displays
 [ -n "$select" ] \
-    && [ ! "$select" = "audio toggle" ] \
+    && [ "$select" != "audio toggle" ] \
     && wallpaper.sh \
     && systemctl --user restart polybar.service
