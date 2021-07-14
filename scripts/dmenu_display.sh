@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-14T19:50:37+0200
+# date:   2021-07-14T20:02:46+0200
 
 # config
 spacer="----------------"
@@ -30,7 +30,7 @@ default_settings() {
 refresh_rate() {
     select=$(printf "%s\n" \
         "$connected_displays" \
-        | dmenu -l 10 -c -bw 2 -r -i -p "display »" \
+        | dmenu -l 4 -c -bw 2 -r -i -p "display »" \
     )
     [ -z "$select" ] \
         && exit 0
@@ -62,7 +62,7 @@ refresh_rate() {
 rotate() {
     select=$(printf "%s\n" \
         "$connected_displays" \
-        | dmenu -l 10 -c -bw 2 -r -i -p "rotate »" \
+        | dmenu -l 4 -c -bw 2 -r -i -p "rotate »" \
     )
     [ -z "$select" ] \
         && exit 0
