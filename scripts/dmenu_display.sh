@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T08:09:19+0200
+# date:   2021-07-15T08:50:08+0200
 
 all_displays=$(xrandr \
     | grep "connected" \
@@ -13,7 +13,6 @@ connected_displays=$(printf "%s" "$all_displays" \
     | cut -d ' ' -f1 \
 )
 
-# settings
 default_settings() {
     select=$(screenlayout.sh --defaults \
         | dmenu -l 10 -c -bw 2 -i -p "$select »" \
