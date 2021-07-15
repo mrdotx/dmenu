@@ -3,10 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-14T20:02:46+0200
-
-# config
-spacer="----------------"
+# date:   2021-07-15T07:20:48+0200
 
 all_displays=$(xrandr \
     | grep "connected" \
@@ -164,9 +161,7 @@ select=$(printf "%s\n" \
     "refresh rate" \
     "rotate" \
     "second display" \
-    "$spacer" \
     "$connected_displays" \
-    "$spacer" \
     "audio toggle" \
     | dmenu -l 10 -c -bw 2 -r -i -p "display »"
     ) && \
@@ -199,9 +194,6 @@ select=$(printf "%s\n" \
         "audio toggle")
             audio.sh -tog
         ;;
-        "$spacer")
-            "$0" &
-        ;;
     *)
         eval xrandr \
             --output "$select" --auto --primary \
@@ -217,6 +209,5 @@ select=$(printf "%s\n" \
 # maintenance after setup displays
 [ -n "$select" ] \
     && [ "$select" != "audio toggle" ] \
-    && [ "$select" != "$spacer" ] \
     && wallpaper.sh \
     && systemctl --user restart polybar.service
