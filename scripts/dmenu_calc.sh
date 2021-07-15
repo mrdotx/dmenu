@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-19T18:08:50+0200
+# date:   2021-07-15T07:25:34+0200
 
 # get active window id
 window_id=$(xprop -root \
@@ -18,12 +18,12 @@ result=$(printf "%s\n" "$@" \
 
 # set result to label
 [ -n "$result" ] \
-    && label="$* = $result"
+    && label="$* = $result »"
 
 select=$(printf "%s\n" \
             "clear" \
             "copy to clipboard" \
-    | dmenu -b -l 3 -w "$window_id" -p "${label-"calc"}" \
+    | dmenu -b -l 3 -w "$window_id" -p "${label-"calc »"}" \
 )
 
 case $select in
