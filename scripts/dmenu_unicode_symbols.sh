@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-16T17:38:46+0200
+# date:   2021-07-15T12:59:22+0200
 
 # get active window id
 window_id=$(xprop -root \
@@ -15,7 +15,7 @@ select=$(< "$HOME/.local/share/repos/dmenu/scripts/data/unicode-symbols" \
 )
 
 [ -z "$select" ] \
-    && exit 1
+    && exit 0
 
 symbol=$(printf "%s\n" "$select" \
     | sed 's/ .*//' \

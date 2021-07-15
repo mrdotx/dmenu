@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_man.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-12T10:28:25+0200
+# date:   2021-07-15T12:42:44+0200
 
 select=$(apropos -l '' \
     | sort \
@@ -11,6 +11,5 @@ select=$(apropos -l '' \
     | cut -d ' ' -f1,2 \
     | tr -d ' ')
 
-if [ -n "$select" ]; then
-    $TERMINAL -T "man floating" -e man "$select" &
-fi
+[ -n "$select" ] \
+    && $TERMINAL -T "man floating" -e man "$select" &

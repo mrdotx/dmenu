@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T09:13:44+0200
+# date:   2021-07-15T12:53:20+0200
 
 all_displays=$(xrandr \
     | grep "connected" \
@@ -17,10 +17,8 @@ default_settings() {
     select=$(screenlayout.sh --defaults \
         | dmenu -l 10 -c -bw 2 -i -p "$select »" \
     )
-    [ -z "$select" ] \
-        && exit 1
-
-    screenlayout.sh "$select"
+    [ -n "$select" ] \
+        && screenlayout.sh "$select"
 }
 
 refresh_rate() {
@@ -70,7 +68,6 @@ rotate() {
         "inverted" \
         | dmenu -l 4 -c -bw 2 -i -p "direction »" \
     )
-
     [ -z "$direction" ] \
         && exit 0
 

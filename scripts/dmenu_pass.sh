@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T07:27:55+0200
+# date:   2021-07-15T12:58:54+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
@@ -24,7 +24,7 @@ select=$(printf "== Generate Password ==\n%s" \
 )
 
 [ -z "$select" ] \
-    && exit 1
+    && exit 0
 
 get_entry() {
     entry=$(gpg --quiet --decrypt "$password_store/$select$file_type")

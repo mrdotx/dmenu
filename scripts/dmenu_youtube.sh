@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-01-15T13:33:26+0100
+# date:   2021-07-15T13:01:30+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -21,7 +21,7 @@ search=$(printf "%s" "$search" \
 )
 
 [ -z "$search" ] \
-    && exit 1
+    && exit 0
 
 case "$search" in
     "== clear clipboard ==")
@@ -96,7 +96,7 @@ case "$search" in
         )
 
         [ -z "$select" ] \
-            && exit 1
+            && exit 0
 
         open=$(printf "%s" "$result" \
             | sed -n "/$select/{n;p}"
@@ -115,7 +115,7 @@ search=$(printf "%s\n" \
 )
 
 [ -z "$search" ] \
-    && exit 1
+    && exit 0
 
 case "$search" in
     "1) play video")

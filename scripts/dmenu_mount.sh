@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-29T07:23:34+0200
+# date:   2021-07-15T12:57:55+0200
 
 # auth can be something like sudo -A, doas -- or nothing,
 # depending on configuration requirements
@@ -16,10 +16,8 @@ unmount() {
         | dmenu -l 5 -c -bw 2 -r -i -p "unmount »" \
     )
 
-    [ -z "$select" ] \
-        && exit 1
-
-    $auth umount "$select" \
+    [ -n "$select" ] \
+        && $auth umount "$select" \
         && notify-send \
             "unmount" \
             "$select unmounted" \
@@ -45,7 +43,7 @@ mount_remote() {
     )
 
     [ -z "$select" ] \
-        && exit 1
+        && exit 0
 
     remote_directory=$(printf "%s" "$remote_config" \
         | grep "$select;" \
@@ -71,7 +69,7 @@ mount_usb() {
         | cut -d " " -f1)"
 
     [ -z "$select" ] \
-        && exit 1
+        && exit 0
 
     mount_point="/mnt/$(basename "$select")"
     partition_type="$(lsblk -no "fstype" "$select")"
@@ -111,7 +109,7 @@ mount_image() {
     )
 
     [ -z "$select" ] \
-        && exit 1
+        && exit 0
 
     mount_point="/mnt/$select"
 
@@ -131,7 +129,7 @@ mount_android() {
     )
 
     [ -z "$select" ] \
-        && exit 1
+        && exit 0
 
     mount_point="/mnt/$select"
 
@@ -155,9 +153,7 @@ dvd_eject() {
     )
 
     [ -z "$select" ] \
-        && exit 1
-
-    $auth eject "$select" \
+        && $auth eject "$select" \
         && notify-send \
             "dvd eject" \
             "$select ejected"

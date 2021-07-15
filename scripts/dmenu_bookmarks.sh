@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-05-14T20:27:00+0200
+# date:   2021-07-15T12:50:27+0200
 
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
 bookmarks=$(printf "== Sync Bookmarks ==;sync_bookmarks\n%s" "$(cat "$bookmarks_file")")
@@ -15,7 +15,7 @@ select=$(printf "%s\n" "$bookmarks" \
 )
 
 [ -z "$select" ] \
-    && exit 1
+    && exit 0
 
 open=$(printf "%s" "$bookmarks" \
     | grep -F "$select" \
