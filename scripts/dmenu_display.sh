@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T08:50:08+0200
+# date:   2021-07-15T09:13:44+0200
 
 all_displays=$(xrandr \
     | grep "connected" \
@@ -200,4 +200,5 @@ select=$(printf "%s\n" \
 [ -n "$select" ] \
     && [ "$select" != "audio toggle" ] \
     && wallpaper.sh \
-    && systemctl --user restart polybar.service
+    && systemctl --user restart polybar.service \
+    && polybar_rss.sh --update
