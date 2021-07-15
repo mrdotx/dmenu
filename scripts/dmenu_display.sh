@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T07:20:48+0200
+# date:   2021-07-15T08:09:19+0200
 
 all_displays=$(xrandr \
     | grep "connected" \
@@ -16,7 +16,7 @@ connected_displays=$(printf "%s" "$all_displays" \
 # settings
 default_settings() {
     select=$(screenlayout.sh --defaults \
-        | dmenu -l 10 -c -bw 2 -i -p "default »" \
+        | dmenu -l 10 -c -bw 2 -i -p "$select »" \
     )
     [ -z "$select" ] \
         && exit 1
@@ -27,7 +27,7 @@ default_settings() {
 refresh_rate() {
     select=$(printf "%s\n" \
         "$connected_displays" \
-        | dmenu -l 4 -c -bw 2 -r -i -p "display »" \
+        | dmenu -l 4 -c -bw 2 -r -i -p "$select »" \
     )
     [ -z "$select" ] \
         && exit 0
@@ -59,7 +59,7 @@ refresh_rate() {
 rotate() {
     select=$(printf "%s\n" \
         "$connected_displays" \
-        | dmenu -l 4 -c -bw 2 -r -i -p "rotate »" \
+        | dmenu -l 4 -c -bw 2 -r -i -p "$select »" \
     )
     [ -z "$select" ] \
         && exit 0
@@ -160,7 +160,8 @@ select=$(printf "%s\n" \
     "default settings" \
     "refresh rate" \
     "rotate" \
-    "second display" \
+    "extend" \
+    "mirror" \
     "$connected_displays" \
     "audio toggle" \
     | dmenu -l 10 -c -bw 2 -r -i -p "display »"
@@ -168,32 +169,22 @@ select=$(printf "%s\n" \
     case "$select" in
         "default settings")
             default_settings
-        ;;
+            ;;
         "refresh rate")
             refresh_rate
-        ;;
+            ;;
         "rotate")
             rotate
-        ;;
-        "second display")
-            mirroring=$(printf "no\nyes" \
-                | dmenu -l 2 -c -bw 2 -r -i -p "mirroring »" \
-            )
-            case $mirroring in
-                "yes")
-                    mirror
-                    ;;
-                "no")
-                    extend
-                    ;;
-                *)
-                    exit 0
-                    ;;
-            esac
-        ;;
+            ;;
+        "extend")
+            extend
+            ;;
+        "mirror")
+            mirror
+            ;;
         "audio toggle")
             audio.sh -tog
-        ;;
+            ;;
     *)
         eval xrandr \
             --output "$select" --auto --primary \
