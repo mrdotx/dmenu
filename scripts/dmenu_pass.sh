@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-09T08:15:38+0200
+# date:   2021-07-15T07:27:55+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
@@ -72,7 +72,7 @@ case "$select" in
         case $(printf "%s\n" \
             "1) copy password ($clipboard_timeout sec)" \
             "2) type password" \
-            | dmenu -b -l 2 -r -i -w "$window_id" -p "$select »" \
+            | dmenu -b -l 2 -r -i -w "$window_id" -p "Generate Password »" \
             ) in
             "1) copy password ($clipboard_timeout sec)")
                 get_entry "copy" "generate_password"
