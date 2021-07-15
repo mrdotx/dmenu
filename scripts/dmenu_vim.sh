@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-06-10T13:14:23+0200
+# date:   2021-07-15T08:12:34+0200
 
 open() {
     $TERMINAL -e vim "$1"://"$2"/ -c ":call NetrwToggle()"
@@ -13,7 +13,7 @@ open() {
 case $(printf "%s\n" \
     "== ideas ==" \
     "== notes ==" \
-    "==  new  ==" \
+    "== new ==" \
     "pi" \
     "pi2" \
     "middlefinger" \
@@ -28,7 +28,7 @@ case $(printf "%s\n" \
     "== notes ==")
         $TERMINAL -e vim -c ":VimwikiIndex"
         ;;
-    "==  new  ==")
+    "== new ==")
         $TERMINAL -e vim
         ;;
     "pi")
