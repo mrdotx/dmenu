@@ -3,10 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_vim.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T08:12:34+0200
+# date:   2021-07-15T17:57:14+0200
 
 open() {
-    $TERMINAL -e vim "$1"://"$2"/ -c ":call NetrwToggle()"
+    $TERMINAL -e vim "$1://$2/" -c ":call NetrwToggle()"
 }
 
 # menu for vim shortcuts
