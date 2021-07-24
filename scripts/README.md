@@ -12,6 +12,7 @@ shell scripts for dmenu
 | dmenu_calc.sh            | calculate with bc                                                             |
 | dmenu_display.sh         | manage displays with xrandr                                                   |
 | dmenu_iwd.sh             | connect to wlan with iwd                                                      |
+| dmenu_macro.sh           | execute predefined macros                                                     |
 | dmenu_man.sh             | search for man pages                                                          |
 | dmenu_mount.sh           | un-/mount remote, usb and android locations/devices                           |
 | dmenu_pass.sh            | use username or password from gpg password store                              |
