@@ -3,24 +3,26 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_macro.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-24T19:24:58+0200
+# date:   2021-07-25T10:22:54+0200
 
-type_in="i3_tmux.sh -o 1 'shell'"
+type_tmux() {
+    i3_tmux.sh -o 1 'shell'
+    i3-msg workspace 2
 
-type_string() {
-    $1
-    i3-msg workspace 3
+    # clear prompt
+    [ "$2" != false ] \
+        && xdotool key Control_L+c
 
     # workaround for mismatched keyboard layouts
     setxkbmap -synch
 
-    printf "%s" "$2" \
+    printf "%s" "$1" \
         | xdotool type \
             --delay 1 \
             --clearmodifiers \
             --file -
 
-    [ "$3" != false ] \
+    [ "$2" != false ] \
         && xdotool key Return
 }
 
@@ -30,8 +32,9 @@ case $(printf "%s\n" \
     "ventoy" \
     "terminal colors" \
     "neofetch" \
+    "starwars" \
     "weather" \
-    "covid stats" \
+    "corona stats" \
     | dmenu -l 10 -c -bw 2 -r -i -p "macro »" \
     ) in
     "keyboard setup")
@@ -42,37 +45,34 @@ case $(printf "%s\n" \
         xset r rate 200 50
         ;;
     "boot next")
-        type_string \
-            "$type_in" \
+        type_tmux \
             " clear; doas efistub.sh -b"
         ;;
     "ventoy")
-        type_string \
-            "$type_in" \
+        type_tmux \
             " clear; lsblk; ventoy -h"
-        type_string \
-            "$type_in" \
+        type_tmux \
             "doas ventoy -u /dev/sdb" \
             false
         ;;
     "terminal colors")
-        type_string \
-            "$type_in" \
+        type_tmux \
             " clear; terminal_colors.sh"
         ;;
     "neofetch")
-        type_string \
-            "$type_in" \
+        type_tmux \
             " clear; neofetch"
         ;;
+    "starwars")
+        type_tmux \
+            " clear; telnet towel.blinkenlights.nl"
+        ;;
     "weather")
-        type_string \
-            "$type_in" \
+        type_tmux \
             " clear; curl -s 'wttr.in/?AFq2&lang=de'"
         ;;
-    "covid stats")
-        type_string \
-            "$type_in" \
+    "corona stats")
+        type_tmux \
             " clear; curl -s 'https://corona-stats.online?top=30&source=2&minimal=true' | head -n32"
         ;;
 esac
