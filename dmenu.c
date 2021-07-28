@@ -1076,7 +1076,7 @@ main(int argc, char *argv[])
 	return 1; /* unreachable */
 }
 
- void
+void
 xinitvisual()
 {
 	XVisualInfo *infos;
