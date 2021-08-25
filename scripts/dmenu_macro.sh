@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_macro.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-25T10:22:54+0200
+# date:   2021-08-25T10:24:05+0200
 
 type_tmux() {
     i3_tmux.sh -o 1 'shell'
@@ -27,7 +27,6 @@ type_tmux() {
 }
 
 case $(printf "%s\n" \
-    "keyboard setup" \
     "boot next" \
     "ventoy" \
     "terminal colors" \
@@ -37,13 +36,6 @@ case $(printf "%s\n" \
     "corona stats" \
     | dmenu -l 10 -c -bw 2 -r -i -p "macro »" \
     ) in
-    "keyboard setup")
-        setxkbmap \
-            -model pc105 \
-            -layout us,de \
-            -option grp:caps_switch
-        xset r rate 200 50
-        ;;
     "boot next")
         type_tmux \
             " clear; doas efistub.sh -b"
