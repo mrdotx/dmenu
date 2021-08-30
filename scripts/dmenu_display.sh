@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-08-30T19:26:16+0200
+# date:   2021-08-30T20:43:27+0200
 
 # config
 screen_layouts_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -221,6 +221,6 @@ select=$(printf "%s\n" \
 # maintenance after setup displays
 [ -n "$select" ] \
     && [ "$select" != "audio toggle" ] \
-    && wallpaper.sh \
+    && systemctl --user restart wallpaper.service \
     && systemctl --user restart polybar.service \
     && polybar_rss.sh --update
