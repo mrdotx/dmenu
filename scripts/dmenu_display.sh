@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-08-31T18:40:39+0200
+# date:   2021-08-31T20:42:46+0200
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -150,13 +150,14 @@ mirror() {
     resolution_primary=$(resolution "$primary")
     resolution_secondary=$(resolution "$secondary")
 
-    resolution_primary_x=$(resolution_x "$resolution_primary")
-    resolution_primary_y=$(resolution_y "$resolution_primary")
-    resolution_secondary_x=$(resolution_x "$resolution_secondary")
-    resolution_secondary_y=$(resolution_y "$resolution_secondary")
-
-    scale_x=$(scale "$resolution_primary_x" "$resolution_secondary_x")
-    scale_y=$(scale "$resolution_primary_y" "$resolution_secondary_y")
+    scale_x=$(scale \
+        "$(resolution_x "$resolution_primary")" \
+        "$(resolution_x "$resolution_secondary")" \
+    )
+    scale_y=$(scale \
+        "$(resolution_y "$resolution_primary")" \
+        "$(resolution_y "$resolution_secondary")" \
+    )
 
     xrandr \
         --output "$primary" --auto \
