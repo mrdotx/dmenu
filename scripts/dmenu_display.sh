@@ -3,12 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-08-30T20:43:27+0200
+# date:   2021-08-31T16:06:55+0200
 
 # config
 screen_layouts_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
-primary="HDMI2"
-secondary="eDP1"
 scale_dimensions="1.0x1.0"
 
 all_displays=$(xrandr \
@@ -19,7 +17,21 @@ connected_displays=$(printf "%s" "$all_displays" \
     | cut -d ' ' -f1 \
 )
 
+display() {
+    primary=$(printf "%s" "$connected_displays" \
+        | dmenu -l 4 -c -bw 2 -r -i -p "$1" \
+    )
+    [ -z "$primary" ] \
+        && exit 0
+    secondary=$(printf "%s" "$connected_displays" \
+        | grep -v "$primary" \
+        | head -n1 \
+    )
+}
+
 default_settings() {
+    display "primary »"
+
     select=$(printf "%s" "$(cat "$screen_layouts_file")" \
         | dmenu -l 10 -c -bw 2 -i -p "$select »" \
     )
@@ -48,44 +60,33 @@ default_settings() {
 }
 
 refresh_rate() {
-    select=$(printf "%s\n" \
-        "$connected_displays" \
-        | dmenu -l 4 -c -bw 2 -r -i -p "$select »" \
-    )
-    [ -z "$select" ] \
-        && exit 0
+    display "$select »"
 
     mode=$(xrandr \
-        | grep "$select" \
-        | cut -d '+' -f1 \
-        | cut -d ' ' -f4 \
+        | grep -A1 "$primary" \
+        | tail -n1 \
+        | awk '{print $1}'
     )
 
-    rate=$(printf "%s\n" \
-        "240.00" \
-        "144.00" \
-        "120.00" \
-        "75.00" \
-        "60.00" \
-        "50.00" \
-        | dmenu -l 10 -c -bw 2 -i -p "rate »" \
+    rate=$(xrandr \
+        | grep -A1 "$primary" \
+        | tail -n1 \
+        | awk '{for (i=2;i<=NF;i++) print $i}' \
+        | sed "s/\+//; /^$/d" \
+        | dmenu -l 10 -c -bw 2 -r -i -p "rate »" \
+        | sed "s/\*//" \
     )
     [ -z "$rate" ] \
         && exit 0
 
     xrandr \
-        --output "$select" \
+        --output "$primary" \
         --mode "$mode" \
         --rate "$rate"
 }
 
 rotate() {
-    select=$(printf "%s\n" \
-        "$connected_displays" \
-        | dmenu -l 4 -c -bw 2 -r -i -p "$select »" \
-    )
-    [ -z "$select" ] \
-        && exit 0
+    display "$select »"
 
     direction=$(printf "%s\n" \
         "normal" \
@@ -98,24 +99,16 @@ rotate() {
         && exit 0
 
     xrandr \
-        --output "$select" \
+        --output "$primary" \
         --rotate "$direction"
 }
 
 extend() {
-    primary=$(printf "%s" "$connected_displays" \
-        | dmenu -l 4 -c -bw 2 -r -i -p "primary »" \
-    )
-    [ -z "$primary" ] \
-        && exit 0
-    secondary=$(printf "%s" "$connected_displays" \
-        | grep -v "$primary" \
-        | head -n1 \
-    )
+    display "primary »"
 
     orientation=$(printf "above\nright\nbelow\nleft" \
         | dmenu -l 4 -c -bw 2 -r -i -p "position of $secondary »" \
-        | sed 's/left/left-of/;s/right/right-of/' \
+        | sed "s/left/left-of/;s/right/right-of/" \
     )
     [ -z "$orientation" ] \
         && exit 0
@@ -128,51 +121,46 @@ extend() {
 }
 
 mirror() {
-    external=$(printf "%s" "$connected_displays" \
-        | dmenu -l 4 -c -bw 2 -r -i -p "resolution from »" \
-    )
-    [ -z "$external" ] \
-        && exit 0
-    internal=$(printf "%s" "$connected_displays" \
-        | grep -v "$external" \
-    )
+    display "resolution from »"
 
-    resolution_external=$(xrandr \
-        | sed -n "/^$external/,/\+/p" \
-        | tail -n 1 \
-        | awk '{print $1}' \
-    )
-    resolution_internal=$(xrandr \
-        | sed -n "/^$internal/,/\+/p" \
-        | tail -n 1 \
-        | awk '{print $1}' \
-    )
+    resolution() {
+        xrandr \
+            | sed -n "/^$1/,/\+/p" \
+            | tail -n 1 \
+            | awk '{print $1}'
+    }
 
-    resolution_external_x=$(printf "%s" "$resolution_external" \
-        | sed 's/x.*//' \
-    )
-    resolution_external_y=$(printf "%s" "$resolution_external" \
-        | sed 's/.*x//' \
-    )
-    resolution_internal_x=$(printf "%s" "$resolution_internal" \
-        | sed 's/x.*//' \
-    )
-    resolution_internal_y=$(printf "%s" "$resolution_internal" \
-        | sed 's/.*x//' \
-    )
+    resolution_x() {
+        printf "%s" "$1" \
+            | sed "s/x.*//"
+    }
 
-    scale_x=$(printf "%s\n" "$resolution_external_x / $resolution_internal_x" \
-        | bc -l \
-    )
-    scale_y=$(printf "%s\n" "$resolution_external_y / $resolution_internal_y" \
-        | bc -l \
-    )
+    resolution_y() {
+        printf "%s" "$1" \
+            | sed "s/.*x//"
+    }
+
+    scale() {
+        printf "%s\n" "$1 / $2" \
+            | bc -l
+    }
+
+    resolution_primary=$(resolution "$primary")
+    resolution_secondary=$(resolution "$secondary")
+
+    resolution_primary_x=$(resolution_x "$resolution_primary")
+    resolution_primary_y=$(resolution_y "$resolution_primary")
+    resolution_secondary_x=$(resolution_x "$resolution_secondary")
+    resolution_secondary_y=$(resolution_y "$resolution_secondary")
+
+    scale_x=$(scale "$resolution_primary_x" "$resolution_secondary_x")
+    scale_y=$(scale "$resolution_primary_y" "$resolution_secondary_y")
 
     xrandr \
-        --output "$external" --auto \
+        --output "$primary" --auto \
         --scale "$scale_dimensions" \
-        --output "$internal" --auto \
-        --same-as "$external" \
+        --output "$secondary" --auto \
+        --same-as "$primary" \
         --scale "$scale_x"x"$scale_y"
 }
 
