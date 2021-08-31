@@ -3,11 +3,12 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-08-31T17:39:46+0200
+# date:   2021-08-31T18:40:39+0200
 
 # config
-screen_layouts_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
+saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
 scale_dimensions="1.0x1.0"
+edit="$TERMINAL -e $EDITOR"
 
 all_displays=$(xrandr \
     | grep "connected" \
@@ -33,7 +34,7 @@ display() {
 saved_settings() {
     display "primary »"
 
-    select=$(printf "%s" "$(cat "$screen_layouts_file")" \
+    select=$(printf "%s" "$(cat "$saved_settings_file")" \
         | dmenu -l 10 -c -bw 2 -i -p "$select »" \
     )
     [ -n "$select" ] \
@@ -173,6 +174,7 @@ select=$(printf "%s\n" \
     "extend" \
     "mirror" \
     "$connected_displays" \
+    "== edit saved settings ==" \
     "audio toggle" \
     | dmenu -l 10 -c -bw 2 -r -i -p "display »"
     ) && \
@@ -191,6 +193,9 @@ select=$(printf "%s\n" \
             ;;
         "mirror")
             mirror
+            ;;
+        "== edit saved settings ==")
+            $edit "$saved_settings_file"
             ;;
         "audio toggle")
             audio.sh -tog
