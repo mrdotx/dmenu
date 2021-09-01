@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-08-31T20:42:46+0200
+# date:   2021-09-01T08:49:11+0200
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -15,8 +15,8 @@ all_displays=$(xrandr \
 )
 connected_displays=$(printf "%s" "$all_displays" \
     | grep " connected" \
-    | cut -d ' ' -f1 \
     | sort -k3 -r \
+    | cut -d ' ' -f1 \
 )
 
 display() {
@@ -108,7 +108,11 @@ rotate() {
 extend() {
     display "primary »"
 
-    orientation=$(printf "above\nright\nbelow\nleft" \
+    orientation=$(printf "%s\n" \
+        "above" \
+        "right" \
+        "below" \
+        "left" \
         | dmenu -l 4 -c -bw 2 -r -i -p "position of $secondary »" \
         | sed "s/left/left-of/;s/right/right-of/" \
     )
