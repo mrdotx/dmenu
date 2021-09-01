@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-01T08:49:11+0200
+# date:   2021-09-01T09:15:41+0200
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -34,30 +34,28 @@ display() {
 saved_settings() {
     display "primary »"
 
+    get_value() {
+        value=$(printf "%s" "$select" \
+            | cut -d ';' -f"$1")
+        printf "%s" "${value:-"$2"}"
+    }
+
     select=$(printf "%s" "$(cat "$saved_settings_file")" \
         | dmenu -l 10 -c -bw 2 -i -p "$select »" \
     )
     [ -n "$select" ] \
-        && pri_mode=$(printf "%s" "$select" | cut -d ';' -f1) \
-        && pri_pos=$(printf "%s" "$select" | cut -d ';' -f2) \
-        && pri_rate=$(printf "%s" "$select" | cut -d ';' -f3) \
-        && pri_rotate=$(printf "%s" "$select" | cut -d ';' -f4) \
-        && sec_mode=$(printf "%s" "$select" | cut -d ';' -f5) \
-        && sec_pos=$(printf "%s" "$select" | cut -d ';' -f6) \
-        && sec_rate=$(printf "%s" "$select" | cut -d ';' -f7) \
-        && sec_rotate=$(printf "%s" "$select" | cut -d ';' -f8) \
         && xrandr \
             --output "$primary" --auto --primary \
-            --mode "${pri_mode:-1920x1080}" \
-            --pos "${pri_pos:-0x0}" \
-            --rate "${pri_rate:-60}" \
-            --rotate "${pri_rotate:-normal}" \
+            --mode "$(get_value 1 "1920x1080")" \
+            --pos "$(get_value 2 "0x0")" \
+            --rate "$(get_value 3 "60")" \
+            --rotate "$(get_value 4 "normal")" \
             --scale "$scale_dimensions" \
             --output "$secondary" --auto \
-            --mode "${sec_mode:-1920x1080}" \
-            --pos "${sec_pos:-1920x0}" \
-            --rate "${sec_rate:-60}" \
-            --rotate "${sec_rotate:-normal}" \
+            --mode "$(get_value 5 "1920x1080")" \
+            --pos "$(get_value 6 "1920x0")" \
+            --rate "$(get_value 7 "60")" \
+            --rotate "$(get_value 8 "normal")" \
             --scale "$scale_dimensions"
 }
 
