@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T13:01:30+0200
+# date:   2021-09-04T17:42:39+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -26,7 +26,7 @@ search=$(printf "%s" "$search" \
 case "$search" in
     "== clear clipboard ==")
         xsel -c -b
-        "$0"
+        "$0" &
         exit 0
         ;;
     *'youtube.com/watch'* \

@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-08-12T21:58:39+0200
+# date:   2021-09-04T17:45:14+0200
 
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
 bookmarks=$(printf "== Sync Bookmarks ==;sync_bookmarks\n%s" "$(cat "$bookmarks_file")")
@@ -84,7 +84,7 @@ case "$open" in
         notify-send \
             "bookmarks" \
             "synchronized"
-        "$0"
+        "$0" &
         ;;
     *)
         link_handler.sh "$open"
