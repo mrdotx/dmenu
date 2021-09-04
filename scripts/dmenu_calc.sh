@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T07:25:34+0200
+# date:   2021-09-04T17:19:09+0200
 
 # get active window id
 window_id=$(xprop -root \
@@ -30,7 +30,7 @@ case $select in
     "")
         ;;
     clear)
-        "$0"
+        "$0" &
         ;;
     "copy to clipboard")
         printf "%s\n" "$result" \
@@ -39,7 +39,10 @@ case $select in
                 "Clipboard" \
                 "Result copied: $result"
         ;;
+    [1-9]*)
+        "$0" "$select" &
+        ;;
     *)
-        "$0" "$result$select"
+        "$0" "$result$select" &
         ;;
 esac
