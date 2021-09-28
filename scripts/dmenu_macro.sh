@@ -3,16 +3,9 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_macro.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-08-25T10:24:05+0200
+# date:   2021-09-28T12:21:34+0200
 
-type_tmux() {
-    i3_tmux.sh -o 1 'shell'
-    i3-msg workspace 2
-
-    # clear prompt
-    [ "$2" != false ] \
-        && xdotool key Control_L+c
-
+type_chars() {
     # workaround for mismatched keyboard layouts
     setxkbmap -synch
 
@@ -21,9 +14,16 @@ type_tmux() {
             --delay 1 \
             --clearmodifiers \
             --file -
+}
 
-    [ "$2" != false ] \
-        && xdotool key Return
+type_tmux() {
+    i3_tmux.sh -o 1 'shell'
+    i3-msg workspace 2
+
+    # clear prompt
+    xdotool key ctrl+c
+    type_chars " clear; $1"
+    xdotool key return
 }
 
 case $(printf "%s\n" \
@@ -38,33 +38,34 @@ case $(printf "%s\n" \
     ) in
     "boot next")
         type_tmux \
-            " clear; doas efistub.sh -b"
+            "doas efistub.sh -b"
         ;;
     "ventoy")
         type_tmux \
-            " clear; lsblk; ventoy -h"
-        type_tmux \
-            "doas ventoy -u /dev/sdb" \
-            false
+            "lsblk; ventoy -h"
+        type_chars \
+            "doas ventoy -u /dev/sdb"
         ;;
     "terminal colors")
         type_tmux \
-            " clear; terminal_colors.sh"
+            "terminal_colors.sh"
         ;;
     "neofetch")
         type_tmux \
-            " clear; neofetch"
+            "neofetch"
         ;;
     "starwars")
         type_tmux \
-            " clear; telnet towel.blinkenlights.nl"
+            "telnet towel.blinkenlights.nl"
         ;;
     "weather")
         type_tmux \
-            " clear; curl -s 'wttr.in/?AFq2&lang=de'"
+            "curl -s 'wttr.in/?AFq2&lang=de'"
         ;;
     "corona stats")
         type_tmux \
-            " clear; curl -s 'https://corona-stats.online?top=30&source=2&minimal=true' | head -n32"
+            "curl -s \
+                'https://corona-stats.online?top=30&source=2&minimal=true' \
+                | head -n32"
         ;;
 esac
