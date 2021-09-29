@@ -3,13 +3,13 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_macro.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-29T10:46:18+0200
+# date:   2021-09-29T12:42:38+0200
 
 press_key() {
     i="$1"
     shift
     while [ "$i" -ge 1 ]; do
-        xdotool key "$@"
+        xdotool key --delay 15 "$@"
         i=$((i-1))
     done
 }
@@ -50,10 +50,9 @@ open_autostart() {
 
     # start ranger
     $TERMINAL -e "$SHELL"
-    sleep .3
     type_string " clear; ranger_cd"
     press_key 1 return
-    sleep 1.6
+    sleep 2
 
     # start tmux
     open_tmux "cinfo" "true"
