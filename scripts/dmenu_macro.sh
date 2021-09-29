@@ -3,9 +3,18 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_macro.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-28T12:21:34+0200
+# date:   2021-09-29T10:46:18+0200
 
-type_chars() {
+press_key() {
+    i="$1"
+    shift
+    while [ "$i" -ge 1 ]; do
+        xdotool key "$@"
+        i=$((i-1))
+    done
+}
+
+type_string() {
     # workaround for mismatched keyboard layouts
     setxkbmap -synch
 
@@ -16,56 +25,96 @@ type_chars() {
             --file -
 }
 
-type_tmux() {
-    i3_tmux.sh -o 1 'shell'
-    i3-msg workspace 2
-
-    # clear prompt
-    xdotool key ctrl+c
-    type_chars " clear; $1"
-    xdotool key return
+change_workspace() {
+    i3-msg workspace "$1"
 }
 
-case $(printf "%s\n" \
-    "boot next" \
-    "ventoy" \
-    "terminal colors" \
-    "neofetch" \
-    "starwars" \
-    "weather" \
-    "corona stats" \
-    | dmenu -l 10 -c -bw 2 -r -i -p "macro »" \
-    ) in
-    "boot next")
-        type_tmux \
-            "doas efistub.sh -b"
+open_tmux() {
+    i3_tmux.sh -o 1 'shell'
+    change_workspace 2
+
+    # increase font size
+    [ "$2" = "true" ] \
+        && press_key 8 ctrl+plus
+
+    # clear prompt
+    press_key 1 ctrl+c
+    type_string " clear; $1"
+    press_key 1 return
+}
+
+open_autostart() {
+    change_workspace 1
+    # start webbrowser
+    $BROWSER_GRAPHICAL &
+
+    # start ranger
+    $TERMINAL -e "$SHELL"
+    sleep .3
+    type_string " clear; ranger_cd"
+    press_key 1 return
+    sleep 1.6
+
+    # start tmux
+    open_tmux "cinfo" "true"
+
+    change_workspace 1
+    # change folder to repos in ranger
+    press_key 1 apostrophe r
+    change_workspace 2
+}
+
+open_macro_menu() {
+    case $(printf "%s\n" \
+        "weather" \
+        "corona stats" \
+        "boot next" \
+        "ventoy" \
+        "terminal colors" \
+        "neofetch" \
+        "starwars" \
+        | dmenu -l 10 -c -bw 2 -r -i -p "macro »" \
+        ) in
+        "weather")
+            open_tmux \
+                "curl -s 'wttr.in/?AFq2&lang=de'"
+            ;;
+        "corona stats")
+            open_tmux \
+                "curl -s \
+                    'https://corona-stats.online?top=30&source=2&minimal=true' \
+                    | head -n32"
+            ;;
+        "boot next")
+            open_tmux \
+                "doas efistub.sh -b"
+            ;;
+        "ventoy")
+            open_tmux \
+                "lsblk; ventoy -h"
+            type_string \
+                "doas ventoy -u /dev/sdb"
+            ;;
+        "terminal colors")
+            open_tmux \
+                "terminal_colors.sh"
+            ;;
+        "neofetch")
+            open_tmux \
+                "neofetch"
+            ;;
+        "starwars")
+            open_tmux \
+                "telnet towel.blinkenlights.nl"
+            ;;
+    esac
+}
+
+case "$1" in
+    --autostart)
+        open_autostart
         ;;
-    "ventoy")
-        type_tmux \
-            "lsblk; ventoy -h"
-        type_chars \
-            "doas ventoy -u /dev/sdb"
-        ;;
-    "terminal colors")
-        type_tmux \
-            "terminal_colors.sh"
-        ;;
-    "neofetch")
-        type_tmux \
-            "neofetch"
-        ;;
-    "starwars")
-        type_tmux \
-            "telnet towel.blinkenlights.nl"
-        ;;
-    "weather")
-        type_tmux \
-            "curl -s 'wttr.in/?AFq2&lang=de'"
-        ;;
-    "corona stats")
-        type_tmux \
-            "curl -s \
-                'https://corona-stats.online?top=30&source=2&minimal=true' \
-                | head -n32"
+    *)
+        open_macro_menu
         ;;
 esac
