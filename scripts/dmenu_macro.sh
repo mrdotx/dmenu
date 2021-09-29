@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_macro.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-29T12:42:38+0200
+# date:   2021-09-29T19:10:02+0200
 
 press_key() {
     i="$1"
@@ -45,14 +45,18 @@ open_tmux() {
 
 open_autostart() {
     change_workspace 1
-    # start webbrowser
-    $BROWSER_GRAPHICAL &
+    # start web browser
+    firefox-developer-edition &
 
     # start ranger
     $TERMINAL -e "$SHELL"
     type_string " clear; ranger_cd"
     press_key 1 return
-    sleep 2
+
+    # wait for web browser window
+    while ! wmctrl -l | grep -q "Mozilla Firefox"; do
+        sleep .1
+    done
 
     # start tmux
     open_tmux "cinfo" "true"
