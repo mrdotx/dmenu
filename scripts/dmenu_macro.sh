@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_macro.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-29T19:10:02+0200
+# date:   2021-09-29T20:05:46+0200
 
 press_key() {
     i="$1"
@@ -57,6 +57,7 @@ open_autostart() {
     while ! wmctrl -l | grep -q "Mozilla Firefox"; do
         sleep .1
     done
+    sleep .3
 
     # start tmux
     open_tmux "cinfo" "true"
