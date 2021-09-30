@@ -3,12 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T12:59:22+0200
+# date:   2021-09-30T18:45:00+0200
 
 # get active window id
-window_id=$(xprop -root \
-    | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
-)
+window_id=$(xdotool getactivewindow)
 
 select=$(< "$HOME/.local/share/repos/dmenu/scripts/data/unicode-symbols" \
     dmenu -b -l 15 -r -i -w "$window_id" -p "symbol »" \
@@ -22,7 +20,7 @@ symbol=$(printf "%s\n" "$select" \
 )
 
 # type at cursor in active window
-xdotool type "$symbol"
+xdotool type --window "$window_id" "$symbol"
 # copy symbol to clipboard
 printf "%s" "$symbol" \
     | xsel -i -b

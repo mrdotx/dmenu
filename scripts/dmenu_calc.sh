@@ -3,12 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-04T17:19:09+0200
+# date:   2021-09-30T18:39:27+0200
 
 # get active window id
-window_id=$(xprop -root \
-    | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}' \
-)
+window_id=$(xdotool getactivewindow)
 
 # use bc for calculations
 result=$(printf "%s\n" "$@" \
