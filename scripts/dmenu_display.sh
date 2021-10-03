@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-01T09:15:41+0200
+# date:   2021-10-03T22:14:36+0200
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -129,19 +129,16 @@ mirror() {
 
     resolution() {
         xrandr \
-            | sed -n "/^$1/,/\+/p" \
-            | tail -n 1 \
-            | awk '{print $1}'
+            | grep "^$1" \
+            | grep -oE '[0-9]{1,4}x[0-9]{1,4}'
     }
 
     resolution_x() {
-        printf "%s" "$1" \
-            | sed "s/x.*//"
+        printf "%d" "${1%%x*}"
     }
 
     resolution_y() {
-        printf "%s" "$1" \
-            | sed "s/.*x//"
+        printf "%d" "${1##*x}"
     }
 
     scale() {
@@ -162,7 +159,7 @@ mirror() {
     )
 
     xrandr \
-        --output "$primary" --auto \
+        --output "$primary" --auto --primary \
         --scale "$scale_dimensions" \
         --output "$secondary" --auto \
         --same-as "$primary" \
