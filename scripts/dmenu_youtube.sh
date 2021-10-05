@@ -3,32 +3,26 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-04T17:42:39+0200
+# date:   2021-10-05T13:41:43+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
-[ "$(command -v "xsel")" ] \
-    && clipboard="$(xsel -n -o -b)"
-
-if [ -n "$clipboard" ]; then \
-    search=$(printf "== clear clipboard ==\n%s\n== clear clipboard ==\n%s" "$clipboard" "$(cat "$history_file")")
-else
-    search=$(printf "%s" "$(cat "$history_file")")
-fi
-
-search=$(printf "%s" "$search" \
-    | dmenu -l 20 -c -bw 2 -i -p "youtube »" \
-)
+case "$1" in
+    --clipboard)
+        [ "$(command -v "xsel")" ] \
+            && search="$(xsel -n -o -b)"
+        ;;
+    *)
+        search=$(printf "%s" "$(cat "$history_file")" \
+            | dmenu -l 20 -c -bw 2 -i -p "youtube »" \
+        )
+        ;;
+esac
 
 [ -z "$search" ] \
     && exit 0
 
 case "$search" in
-    "== clear clipboard ==")
-        xsel -c -b
-        "$0" &
-        exit 0
-        ;;
     *'youtube.com/watch'* \
         | *'youtube.com/playlist'* \
         | *'youtu.be'* \
