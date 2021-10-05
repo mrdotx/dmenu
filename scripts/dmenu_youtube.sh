@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-10-05T13:41:43+0200
+# date:   2021-10-05T18:33:43+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -28,6 +28,9 @@ case "$search" in
         | *'youtu.be'* \
         | https://* \
         | http://*)
+            notify-send \
+                "youtube - open/search from clipboard" \
+                "$search"
             open="$search"
             ;;
     *)
