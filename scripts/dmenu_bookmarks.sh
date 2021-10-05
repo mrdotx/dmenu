@@ -3,29 +3,31 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-04T17:45:14+0200
+# date:   2021-10-05T18:26:53+0200
 
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
-bookmarks=$(printf "== Sync Bookmarks ==;sync_bookmarks\n%s" "$(cat "$bookmarks_file")")
 
-# select bookmark or search with duckduckgo
-select=$(printf "%s\n" "$bookmarks" \
-    | cut -d ';' -f1 \
-    | dmenu -l 20 -c -bw 2 -i -p "bookmark »" \
-)
-
-[ -z "$select" ] \
-    && exit 0
-
-open=$(printf "%s" "$bookmarks" \
-    | grep -F "$select" \
-    | cut -d ';' -f2 \
-)
-
-[ -z "$open" ] \
-    && open=$(printf "%s" "https://lite.duckduckgo.com/lite/?q=$select" \
-        | sed 's/ /\%20/g' \
+select_bookmark() {
+    bookmarks=$(cat "$bookmarks_file")
+    select=$(printf "%s\n" "$bookmarks" \
+        | cut -d ';' -f1 \
+        | dmenu -l 20 -c -bw 2 -i -p "bookmark »" \
     )
+
+    [ -z "$select" ] \
+        && exit 0
+
+    open=$(printf "%s" "$bookmarks)" \
+        | grep -F "$select" \
+        | cut -d ';' -f2 \
+    )
+
+    # select bookmark or search with duckduckgo
+    [ -z "$open" ] \
+        && open=$(printf "%s" "https://lite.duckduckgo.com/lite/?q=$select" \
+            | sed 's/ /\%20/g' \
+        )
+}
 
 # data functions
 close_firefox() {
@@ -72,8 +74,8 @@ copy_to_qutebrowser() {
 }
 
 # sync/open bookmark
-case "$open" in
-    sync_bookmarks)
+case "$1" in
+    --sync)
         close_firefox
         create_bookmarks
         copy_to_w3m
@@ -84,9 +86,9 @@ case "$open" in
         notify-send \
             "bookmarks" \
             "synchronized"
-        "$0" &
         ;;
     *)
+        select_bookmark
         link_handler.sh "$open"
         ;;
 esac
