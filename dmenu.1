@@ -8,6 +8,10 @@ dmenu \- dynamic menu
 .IR lines ]
 .RB [ \-h
 .IR height ]
+.RB [ \-bw
+.IR width ]
+.RB [ \-mw
+.IR width ]
 .RB [ \-m
 .IR monitor ]
 .RB [ \-p
@@ -60,6 +64,12 @@ dmenu lists items vertically, with the given number of lines.
 .TP
 .BI \-h " height"
 dmenu uses a menu line of at least 'height' pixels tall, but no less than 8.
+.TP
+.BI \-bw " width"
+defines the border width in pixel around the dmenu window when centered (-c) is used.
+.TP
+.BI \-mw " width"
+defines the minimum width in pixel of the dmenu window when centered (-c) is used.
 .TP
 .BI \-m " monitor"
 dmenu is displayed on the monitor number supplied. Monitor numbers are starting
