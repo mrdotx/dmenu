@@ -40,11 +40,6 @@ dmenu-rejectnomatch-4.7.diff
 dmenu-xresources-alt-5.0.diff
 dmenu-mousesupport-5.0.diff
 
-Options
--------
--bw     - defines the border width
-          echo 'item1\nitem2\nitem3' | dmenu -bw 3
-
 Last implemented commit
 -----------------------
 2021-08-20 21:05	Revert "Improve speed of drw_text when provided with large strings"	Hiltjo Posthuma
