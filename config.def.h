@@ -9,7 +9,7 @@ static int centered = 0;
 static int min_width = 250;
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static char font[] = "DejaVuSansMono Nerd Font:pixelsize=16:antialias=true:autohint=true";
-static char fontfallback[] = "Source-Code-Pro:pixelsize=14:antialias=true:autohint=true";
+static char fontfallback[] = "DejaVu Sans:pixelsize=14:antialias=true:autohint=true";
 static char fontemoji[] = "JoyPixels:pixelsize=14:antialias=true:autohint=true";
 static const char *fonts[] = {
 	font,
