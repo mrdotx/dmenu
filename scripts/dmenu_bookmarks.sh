@@ -3,9 +3,12 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-10-08T18:53:52+0200
+# date:   2021-11-07T11:03:27+0100
 
+# config
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
+search_url="https://searx.tiekoetter.com/search?q="
+open_in_browser="link_handler.sh"
 
 select_bookmark() {
     bookmarks=$(cat "$bookmarks_file")
@@ -24,7 +27,7 @@ select_bookmark() {
 
     # select bookmark or search with duckduckgo
     [ -z "$open" ] \
-        && open=$(printf "%s" "https://lite.duckduckgo.com/lite/?q=$select" \
+        && open=$(printf "%s" "$search_url$select" \
             | sed 's/ /\%20/g' \
         )
 }
@@ -89,6 +92,6 @@ case "$1" in
         ;;
     *)
         select_bookmark
-        link_handler.sh "$open"
+        $open_in_browser "$open"
         ;;
 esac
