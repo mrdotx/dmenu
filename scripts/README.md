@@ -8,7 +8,7 @@ shell scripts for dmenu
 
 | name                     | comment                                                                       |
 | :----------------------- | :---------------------------------------------------------------------------- |
-| dmenu_bookmarks.sh       | search/sync bookmarks from firefox and open them with link_handler.sh         |
+| dmenu_bookmarks.sh       | search/sync bookmarks from firefox and open them in browser                   |
 | dmenu_calc.sh            | calculate with bc                                                             |
 | dmenu_display.sh         | manage displays with xrandr                                                   |
 | dmenu_iwd.sh             | connect to wlan with iwd                                                      |
