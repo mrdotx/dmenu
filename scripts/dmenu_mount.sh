@@ -3,15 +3,19 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T12:57:55+0200
+# date:   2021-11-12T09:12:55+0100
 
 # auth can be something like sudo -A, doas -- or nothing,
 # depending on configuration requirements
 auth="$EXEC_AS_USER"
 
+#config
+mount_dir="/tmp"
+
 # unmount
 unmount() {
-    select=$(awk '/\/mnt\/.*/ {print $2}' /proc/self/mounts \
+    select=$(grep "/mnt\|$mount_dir/" /proc/self/mounts \
+        | cut -d " " -f2 \
         | sort \
         | dmenu -l 5 -c -bw 2 -r -i -p "unmount »" \
     )
@@ -51,11 +55,12 @@ mount_remote() {
         | tr -d ' ' \
     )
 
-    mount_point=/mnt/$select
+    mount_point="$mount_dir/$select"
 
     [ ! -d "$mount_point" ] \
         && mkdir "$mount_point" \
-        && sleep 1 && rclone mount "$select:$remote_directory" "$mount_point" \
+        && sleep 1 \
+        && rclone mount "$select:$remote_directory" "$mount_point" \
         & notify-send \
             "remote mount" \
             "$select mounted to $mount_point"
@@ -71,7 +76,7 @@ mount_usb() {
     [ -z "$select" ] \
         && exit 0
 
-    mount_point="/mnt/$(basename "$select")"
+    mount_point="$mount_dir/$(basename "$select")"
     partition_type="$(lsblk -no "fstype" "$select")"
 
     [ ! -d "$mount_point" ] \
@@ -111,7 +116,7 @@ mount_image() {
     [ -z "$select" ] \
         && exit 0
 
-    mount_point="/mnt/$select"
+    mount_point="$mount_dir/$select"
 
     [ ! -d "$mount_point" ] \
         && mkdir "$mount_point" \
@@ -131,7 +136,7 @@ mount_android() {
     [ -z "$select" ] \
         && exit 0
 
-    mount_point="/mnt/$select"
+    mount_point="$mount_dir/$select"
 
     [ ! -d "$mount_point" ] \
         && mkdir "$mount_point" \
