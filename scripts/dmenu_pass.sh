@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-30T18:40:06+0200
+# date:   2021-12-16T13:10:03+0100
 
 # config
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
@@ -11,14 +11,11 @@ file_type=".gpg"
 clipboard_timeout=45
 generate_password_chars=16
 
-# get active window id
-window_id=$(xdotool getactivewindow)
-
 select=$(printf "== Generate Password ==\n%s" \
     "$(find "$password_store" -iname "*$file_type" -printf "%P\n" \
         | sed "s/$file_type$//" \
         | sort)" \
-        | dmenu -b -l 15 -r -i -w "$window_id" -p "pass »" \
+        | dmenu -l 15 -c -bw 2 -r -i -p "pass »" \
 )
 
 [ -z "$select" ] \
@@ -70,7 +67,7 @@ case "$select" in
         case $(printf "%s\n" \
             "1) copy password ($clipboard_timeout sec)" \
             "2) type password" \
-            | dmenu -b -l 2 -r -i -w "$window_id" -p "Generate Password »" \
+            | dmenu -l 2 -c -bw 2 -r -i -p "Generate Password »" \
             ) in
             "1) copy password ($clipboard_timeout sec)")
                 get_entry "copy" "generate_password"
@@ -91,7 +88,7 @@ case "$select" in
             "4) type username, 2xtab, password" \
             "5) type username" \
             "6) type password" \
-            | dmenu -b -l 6 -r -i -w "$window_id" -p "$select »" \
+            | dmenu -l 6 -c -bw -r -i -p "$select »" \
             ) in
             "1) copy username ($clipboard_timeout sec)")
                 get_entry "copy" "username"
