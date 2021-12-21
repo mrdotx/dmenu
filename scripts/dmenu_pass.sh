@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-12-16T13:10:03+0100
+# date:   2021-12-21T10:14:06+0100
 
 # config
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
@@ -38,7 +38,7 @@ get_entry() {
     }
 
     generate_password() {
-        printf "%s" "$(< /dev/urandom tr -dc A-Za-z0-9 \
+        printf "%s" "$(tr -dc A-Za-z0-9 < /dev/urandom \
             | head -c"$generate_password_chars")"
     }
 
