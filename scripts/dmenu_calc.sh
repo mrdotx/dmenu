@@ -3,10 +3,13 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-09-30T18:39:27+0200
+# date:   2022-01-25T14:23:48+0100
 
 # get active window id
 window_id=$(xdotool getactivewindow)
+
+# get clipboard
+clipboard=$(xsel -n -o -b)
 
 # use bc for calculations
 result=$(printf "%s\n" "$@" \
@@ -18,10 +21,13 @@ result=$(printf "%s\n" "$@" \
 [ -n "$result" ] \
     && label="$* = $result »"
 
-select=$(printf "%s\n" \
+select=$(printf "%s\n%s [%s...]\n%s\n%s\n" \
             "clear" \
+            "calculate from clipboard" \
+            "$(printf "%s" "$clipboard" | head -c10)" \
+            "type to cursor" \
             "copy to clipboard" \
-    | dmenu -b -l 3 -w "$window_id" -p "${label-"calc »"}" \
+    | dmenu -b -l 4 -w "$window_id" -p "${label-"calc »"}" \
 )
 
 case $select in
@@ -29,6 +35,15 @@ case $select in
         ;;
     clear)
         "$0" &
+        ;;
+    "calculate from clipboard"*)
+        "$0" "$clipboard" &
+        ;;
+    "type to cursor")
+        printf "%s" "$result" \
+            | xdotool type \
+                --clearmodifiers \
+                --file -
         ;;
     "copy to clipboard")
         printf "%s\n" "$result" \
