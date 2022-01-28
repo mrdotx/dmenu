@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-12-21T10:14:06+0100
+# date:   2022-01-28T21:44:18+0100
 
 # config
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
@@ -88,7 +88,7 @@ case "$select" in
             "4) type username, 2xtab, password" \
             "5) type username" \
             "6) type password" \
-            | dmenu -l 6 -c -bw -r -i -p "$select »" \
+            | dmenu -l 6 -c -bw 2 -r -i -p "$select »" \
             ) in
             "1) copy username ($clipboard_timeout sec)")
                 get_entry "copy" "username"
