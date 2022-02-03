@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/data/unicode-files/unicode-symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-12-16T19:38:21+0100
+# date:   2022-02-03T18:40:03+0100
 
 output_file="../unicode-symbols"
 
@@ -26,13 +26,12 @@ grep "; fully-qualified" "$emoji_file" \
     | sort -u -k 2 > "$output_file"
 
 # font awesome
-for file in "$fa_files"; do
-    sed '/^$/d' $file \
+for file in $fa_files; do
+    sed '/^$/d' "$file" \
         | awk 'ORS=NR%3?FS:RS' \
         | awk -F "     " '{print $1 " fa-" $2 "; " $3}'
 done \
     | sort -u -k 2 >> "$output_file"
 
 # others
-cat "$others_file" \
-    | sort -u -k 2 >> "$output_file"
+    sort -u -k 2 "$others_file" >> "$output_file"
