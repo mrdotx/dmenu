@@ -42,4 +42,4 @@ dmenu-mousesupport-5.0.diff
 
 Last implemented commit
 -----------------------
-2021-08-20 21:05	Revert "Improve speed of drw_text when provided with large strings"	Hiltjo Posthuma
+2022-02-11 11:26	bump version to 5.1	Hiltjo Posthuma
