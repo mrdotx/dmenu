@@ -3,12 +3,12 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_screenshot.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-10-08T18:57:42+0200
+# date:   2022-02-24T17:44:31+0100
 
 # config
 screenshot_directory="$HOME/Desktop"
 screenshot_file="$screenshot_directory/screenshot-$(date +"%FT%T%z").png"
-screenshot_command="maim -B -u -q $screenshot_file"
+screenshot_command="maim -Buq $screenshot_file"
 screenshot_preview="sxiv $screenshot_file"
 
 execute() {
@@ -32,13 +32,13 @@ case $select in
         execute "$select"
         ;;
     "window"*)
-        execute "$select --window $(xdotool getactivewindow)"
+        execute "$select -i $(xdotool getactivewindow)"
         ;;
     "selection"*)
         notify-send \
             "maim" \
             "select an area or a window for the screenshot"
-        execute "$select --select"
+        execute "$select -so"
         ;;
     *)
         exit 0
