@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_alsa.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-03-05T08:23:14+0100
+# date:   2022-03-05T11:44:40+0100
 
 # speed up script by not using unicode
 LC_ALL=C
@@ -37,9 +37,7 @@ set_asoundrc() {
         "    device $device" \
         "}" \
         "defaults.ctl {" \
-        "    type hw" \
         "    card $card" \
-        "    device $device" \
         "}" > "$config"
 }
 
