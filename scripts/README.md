@@ -8,6 +8,7 @@ shell scripts for dmenu
 
 | name                     | comment                                                                       |
 | :----------------------- | :---------------------------------------------------------------------------- |
+| dmenu_alsa.sh            | set the default alsa playback device via asoundrc config file                 |
 | dmenu_bookmarks.sh       | search/sync bookmarks from firefox and open them in browser                   |
 | dmenu_calc.sh            | calculate with bc                                                             |
 | dmenu_display.sh         | manage displays with xrandr                                                   |
