@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-10-03T22:14:36+0200
+# date:   2022-03-05T08:30:25+0100
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -175,7 +175,6 @@ select=$(printf "%s\n" \
     "mirror" \
     "$connected_displays" \
     "== edit saved settings ==" \
-    "audio toggle" \
     | dmenu -l 10 -c -bw 2 -r -i -p "display »"
     ) && \
     case "$select" in
@@ -197,9 +196,6 @@ select=$(printf "%s\n" \
         "== edit saved settings ==")
             $edit "$saved_settings_file"
             ;;
-        "audio toggle")
-            audio.sh -tog
-            ;;
     *)
         eval xrandr \
             --output "$select" --auto --primary \
@@ -214,7 +210,6 @@ select=$(printf "%s\n" \
 
 # maintenance after setup displays
 [ -n "$select" ] \
-    && [ "$select" != "audio toggle" ] \
     && systemctl --user restart wallpaper.service \
     && systemctl --user restart polybar.service \
     && polybar_rss.sh --update
