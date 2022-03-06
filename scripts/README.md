@@ -6,22 +6,22 @@ shell scripts for dmenu
 | :---------- | :------------------- |
 | data        | data for the scripts |
 
-| name                     | comment                                                                       |
-| :----------------------- | :---------------------------------------------------------------------------- |
-| dmenu_alsa.sh            | set the default alsa playback device via asoundrc config file                 |
-| dmenu_bookmarks.sh       | search/sync bookmarks from firefox and open them in browser                   |
-| dmenu_calc.sh            | calculate with bc                                                             |
-| dmenu_display.sh         | manage displays with xrandr                                                   |
-| dmenu_iwd.sh             | connect to wlan with iwd                                                      |
-| dmenu_man.sh             | search for man pages                                                          |
-| dmenu_mount.sh           | un-/mount remote, usb and android locations/devices                           |
-| dmenu_pass.sh            | use username or password from gpg password store                              |
-| dmenu_screenshot.sh      | take screenshot from desktop, window or selection                             |
-| dmenu_ssh.sh             | connect to hosts over ssh                                                     |
-| dmenu_unicode_symbols.sh | search and copy unicode symbols                                               |
-| dmenu_virtualbox.sh      | start a virtual machine without virtualbox frontend                           |
-| dmenu_windows            | window switcher                                                               |
-| dmenu_youtube.sh         | search youtube with youtube-dl and play video/audio with mpv or download them |
+| name                     | comment                                                                                      |
+| :----------------------- | :------------------------------------------------------------------------------------------- |
+| dmenu_alsa.sh            | set the default alsa playback device via asoundrc config file and control volume per options |
+| dmenu_bookmarks.sh       | search/sync bookmarks from firefox and open them in browser                                  |
+| dmenu_calc.sh            | calculate with bc                                                                            |
+| dmenu_display.sh         | manage displays with xrandr                                                                  |
+| dmenu_iwd.sh             | connect to wlan with iwd                                                                     |
+| dmenu_man.sh             | search for man pages                                                                         |
+| dmenu_mount.sh           | un-/mount remote, usb and android locations/devices                                          |
+| dmenu_pass.sh            | use username or password from gpg password store                                             |
+| dmenu_screenshot.sh      | take screenshot from desktop, window or selection                                            |
+| dmenu_ssh.sh             | connect to hosts over ssh                                                                    |
+| dmenu_unicode_symbols.sh | search and copy unicode symbols                                                              |
+| dmenu_virtualbox.sh      | start a virtual machine without virtualbox frontend                                          |
+| dmenu_windows            | window switcher                                                                              |
+| dmenu_youtube.sh         | search youtube with youtube-dl and play video/audio with mpv or download them                |
 
 related projects:
 
