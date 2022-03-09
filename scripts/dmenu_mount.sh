@@ -3,11 +3,11 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-11-12T09:12:55+0100
+# date:   2022-03-09T13:40:02+0100
 
 # auth can be something like sudo -A, doas -- or nothing,
 # depending on configuration requirements
-auth="$EXEC_AS_USER"
+auth="${EXEC_AS_USER:-sudo}"
 
 #config
 mount_dir="/tmp"
