@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_alsa.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-03-09T12:58:29+0100
+# date:   2022-03-09T14:17:59+0100
 
 # speed up script by not using unicode
 LC_ALL=C
@@ -86,18 +86,13 @@ set_volume() {
 }
 
 notification() {
-    volume="$(amixer -c 0 get "$1" \
+    volume="$(amixer get "$1" \
         | tail -1 \
         | cut -d'[' -f2 \
         | sed 's/%]*//' \
     )"
-    mute="$(amixer -c 0 get "$2" \
-        | tail -1 \
-        | cut -d'[' -f2 \
-        | sed 's/]//' \
-    )"
 
-    [ "$mute" = "off" ] \
+    amixer get "$2" | tail -1 | grep "\[off\]" >/dev/null \
         && volume=0
 
     [ "$volume" -gt 0 ] \
