@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_alsa.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-03-06T11:51:49+0100
+# date:   2022-03-09T12:58:29+0100
 
 # speed up script by not using unicode
 LC_ALL=C
@@ -13,6 +13,7 @@ LANG=C
 config_path="$HOME/.config/alsa"
 config_file="asoundrc"
 analog_filter="analog"
+message_title="Volume"
 
 script=$(basename "$0")
 help="$script [-h/--help] -- script to change alsa audio output
@@ -27,8 +28,8 @@ help="$script [-h/--help] -- script to change alsa audio output
     [-mute]   = mute volume
 
   Examples:
-    $script -inc 10
-    $script -dec 10
+    $script -inc 5
+    $script -dec 5
     $script -abs 36
     $script -mute"
 
@@ -77,10 +78,39 @@ set_volume() {
         && [ "$2" -ge 0 ] > /dev/null 2>&1 \
         && [ "$2" -le 100 ] > /dev/null 2>&1; then
             amixer -q set $device_mixer "$2%$1"
+            notification "$device_mixer" "$device_mute" "$2"
     else
         printf "%s\n" "$help"
         exit 1
     fi
+}
+
+notification() {
+    volume="$(amixer -c 0 get "$1" \
+        | tail -1 \
+        | cut -d'[' -f2 \
+        | sed 's/%]*//' \
+    )"
+    mute="$(amixer -c 0 get "$2" \
+        | tail -1 \
+        | cut -d'[' -f2 \
+        | sed 's/]//' \
+    )"
+
+    [ "$mute" = "off" ] \
+        && volume=0
+
+    [ "$volume" -gt 0 ] \
+        && volume=$((volume /= ${3:-1})) \
+        && volume=$((volume *= ${3:-1}))
+
+    notify-send \
+        -u low  \
+        -t 2000 \
+        -i "dialog-information" \
+        "$message_title" \
+        -h string:x-canonical-private-synchronous:"$message_title" \
+        -h int:value:"$volume"
 }
 
 case "$1" in
@@ -102,6 +132,7 @@ case "$1" in
     -mute)
         get_analog
         amixer -q set $device_mute toggle
+        notification "$device_mixer" "$device_mute"
         ;;
     *)
         select=$(aplay -l \
