@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_alsa.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-03-09T14:17:59+0100
+# date:   2022-03-10T07:33:54+0100
 
 # speed up script by not using unicode
 LC_ALL=C
@@ -92,18 +92,20 @@ notification() {
         | sed 's/%]*//' \
     )"
 
-    amixer get "$2" | tail -1 | grep "\[off\]" >/dev/null \
-        && volume=0
-
-    [ "$volume" -gt 0 ] \
-        && volume=$((volume /= ${3:-1})) \
-        && volume=$((volume *= ${3:-1}))
+    if amixer get "$2" | tail -1 | grep "\[off\]" >/dev/null; then
+        volume=0 \
+        volume_indicator="MUTE"
+    else
+        volume=$((volume /= ${3:-1}))
+        volume=$((volume *= ${3:-1}))
+        volume_indicator="$volume"
+    fi
 
     notify-send \
         -u low  \
         -t 2000 \
         -i "dialog-information" \
-        "$message_title" \
+        "$message_title $volume_indicator" \
         -h string:x-canonical-private-synchronous:"$message_title" \
         -h int:value:"$volume"
 }
