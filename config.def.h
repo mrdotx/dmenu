@@ -8,13 +8,13 @@ static int centered = 0;
 /* minimum width when centered */
 static int min_width = 250;
 /* -fn option overrides fonts[0]; default X11 font or font set */
-static char font[] = "DejaVuSansMono Nerd Font:pixelsize=16:antialias=true:autohint=true";
-static char fontfallback[] = "DejaVu Sans:pixelsize=14:antialias=true:autohint=true";
-static char fontemoji[] = "JoyPixels:pixelsize=14:antialias=true:autohint=true";
+static char font[] = "DejaVuSansMono Nerd Font:pixelsize=16";
+static char font0[] = "JoyPixels:pixelsize=14";
+static char font1[] = "DejaVu Sans:pixelsize=14";
 static const char *fonts[] = {
 	font,
-    fontfallback,
-    fontemoji
+	font0,
+	font1
 };
 static const unsigned int alpha = 0xe6;
 /* -p  option; prompt to the left of input field */
@@ -42,12 +42,12 @@ static char *colors[SchemeLast][2] = {
 };
 
 static const unsigned int alphas[SchemeLast][2] = {
-    /*                    foreground, background */
-    [SchemeNorm]          = { OPAQUE, alpha },
-    [SchemeSel]           = { OPAQUE, OPAQUE },
-    [SchemeSelHighlight]  = { OPAQUE, OPAQUE },
-    [SchemeNormHighlight] = { OPAQUE, alpha },
-    [SchemeOut]           = { OPAQUE, OPAQUE },
+	/*                    foreground, background */
+	[SchemeNorm]          = { OPAQUE, alpha },
+	[SchemeSel]           = { OPAQUE, OPAQUE },
+	[SchemeSelHighlight]  = { OPAQUE, OPAQUE },
+	[SchemeNormHighlight] = { OPAQUE, alpha },
+	[SchemeOut]           = { OPAQUE, OPAQUE },
 };
 
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
@@ -70,8 +70,8 @@ static unsigned int border_width = 0;
  */
 ResourcePref resources[] = {
 	{ "font",                    STRING, &font },
-	{ "fontfallback",            STRING, &fontfallback },
-	{ "fontemoji",               STRING, &fontemoji },
+	{ "font0",                   STRING, &font0 },
+	{ "font1",                   STRING, &font1 },
 	{ "foreground",              STRING, &foreground },
 	{ "background",              STRING, &background },
 	{ "selforeground",           STRING, &selforeground },
