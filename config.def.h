@@ -32,6 +32,8 @@ static char normhighlightforeground[] = "#4185d7";
 static char normhighlightbackground[] = "#000000";
 static char outforeground[]           = "#000000";
 static char outbackground[]           = "#1f5393";
+static char outhighlightforeground[]  = "#4185d7";
+static char outhighlightbackground[]  = "#1f5393";
 static char *colors[SchemeLast][2] = {
 	/*                    foreground, background */
 	[SchemeNorm]          = { foreground, background },
@@ -39,6 +41,7 @@ static char *colors[SchemeLast][2] = {
 	[SchemeSelHighlight]  = { selhighlightforeground, selhighlightbackground },
 	[SchemeNormHighlight] = { normhighlightforeground, normhighlightbackground },
 	[SchemeOut]           = { outforeground, outbackground },
+	[SchemeOutHighlight]  = { outhighlightforeground, outhighlightbackground },
 };
 
 static const unsigned int alphas[SchemeLast][2] = {
@@ -48,6 +51,7 @@ static const unsigned int alphas[SchemeLast][2] = {
 	[SchemeSelHighlight]  = { OPAQUE, OPAQUE },
 	[SchemeNormHighlight] = { OPAQUE, alpha },
 	[SchemeOut]           = { OPAQUE, OPAQUE },
+	[SchemeOutHighlight]  = { OPAQUE, OPAQUE },
 };
 
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */

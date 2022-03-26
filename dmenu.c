@@ -32,7 +32,7 @@
 #define OPAQUE                0xffU
 
 /* enums */
-enum { SchemeNorm, SchemeSel, SchemeOut, SchemeNormHighlight, SchemeSelHighlight, SchemeLast }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeOut, SchemeNormHighlight, SchemeSelHighlight, SchemeOutHighlight, SchemeLast }; /* color schemes */
 
 struct item {
 	char *text;
@@ -164,7 +164,7 @@ drawhighlights(struct item *item, int x, int y, int maxw)
 	char restorechar, tokens[sizeof text], *highlight,  *token;
 	int indentx, highlightlen;
 
-	drw_setscheme(drw, scheme[item == sel ? SchemeSelHighlight : SchemeNormHighlight]);
+	drw_setscheme(drw, scheme[item == sel ? SchemeSelHighlight : item->out ? SchemeOutHighlight : SchemeNormHighlight]);
 	strcpy(tokens, text);
 	for (token = strtok(tokens, " "); token; token = strtok(NULL, " ")) {
 		highlight = fstrstr(item->text, token);
@@ -179,13 +179,14 @@ drawhighlights(struct item *item, int x, int y, int maxw)
 			// Move highlight str end, draw highlight, & restore
 			restorechar = highlight[strlen(token)];
 			highlight[strlen(token)] = '\0';
-			drw_text(
-				drw,
-				x + indentx - (lrpad / 2) - 1,
-				y,
-				MIN(maxw - indentx, TEXTW(highlight) - lrpad),
-				bh, 0, highlight, 0
-			);
+			if (indentx - (lrpad / 2) - 1 < maxw)
+				drw_text(
+					drw,
+					x + indentx - (lrpad / 2) - 1,
+					y,
+					MIN(maxw - indentx, TEXTW(highlight) - lrpad),
+					bh, 0, highlight, 0
+				);
 			highlight[strlen(token)] = restorechar;
 
 			if (strlen(highlight) - strlen(token) < strlen(token)) break;
