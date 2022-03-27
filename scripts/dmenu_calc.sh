@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-01-25T14:23:48+0100
+# date:   2022-03-27T10:26:19+0200
 
 # get active window id
 window_id=$(xdotool getactivewindow)
@@ -25,7 +25,7 @@ select=$(printf "%s\n%s [%s...]\n%s\n%s\n" \
             "clear" \
             "calculate from clipboard" \
             "$(printf "%s" "$clipboard" | head -c10)" \
-            "type to cursor" \
+            "insert at cursor" \
             "copy to clipboard" \
     | dmenu -b -l 4 -w "$window_id" -p "${label-"calc »"}" \
 )
@@ -39,7 +39,7 @@ case $select in
     "calculate from clipboard"*)
         "$0" "$clipboard" &
         ;;
-    "type to cursor")
+    "insert at cursor")
         printf "%s" "$result" \
             | xdotool type \
                 --clearmodifiers \
