@@ -277,13 +277,14 @@ drawmenu(void)
 		for (item = curr; item != next; item = item->right)
 			x = drawitem(item, x, 0, textw_clamp(item->text, mw - x - TEXTW(symbol_1) - TEXTW(numbers)));
 		if (next) {
-			w = TEXTW(symbol_2);
+			w = TEXTW(symbol_2) + TEXTW(numbers);
 			drw_setscheme(drw, scheme[SchemeNorm]);
-			drw_text(drw, mw - w - TEXTW(numbers), 0, w, bh, lrpad / 2, symbol_2, 0);
+			drw_text(drw, mw - w, 0, w, bh, lrpad / 2, symbol_2, 0);
 		}
 	}
+	w = TEXTW(numbers);
 	drw_setscheme(drw, scheme[SchemeNorm]);
-	drw_text(drw, mw - TEXTW(numbers), 0, TEXTW(numbers), bh, lrpad / 2, numbers, 0);
+	drw_text(drw, mw - w, 0, w, bh, lrpad / 2, numbers, 0);
 	drw_map(drw, win, 0, 0, mw, mh);
 }
 
