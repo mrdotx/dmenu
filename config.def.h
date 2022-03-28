@@ -86,4 +86,6 @@ ResourcePref resources[] = {
 	{ "normhighlightbackground", STRING, &normhighlightbackground },
 	{ "outforeground",           STRING, &outforeground },
 	{ "outbackground",           STRING, &outbackground },
+	{ "outhighlightforeground",  STRING, &outhighlightforeground },
+	{ "outhighlightbackground",  STRING, &outhighlightbackground },
 };
