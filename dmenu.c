@@ -284,7 +284,7 @@ drawmenu(void)
 		}
 	}
 	w = TEXTW(numbers);
-	drw_setscheme(drw, scheme[SchemeNorm]);
+	drw_setscheme(drw, scheme[SchemeSel]);
 	drw_text(drw, mw - w, 0, w, bh, lrpad / 2, numbers, 0);
 	drw_map(drw, win, 0, 0, mw, mh);
 }

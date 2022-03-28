@@ -32,7 +32,7 @@ static char normhighlightforeground[] = "#4185d7";
 static char normhighlightbackground[] = "#000000";
 static char outforeground[]           = "#000000";
 static char outbackground[]           = "#1f5393";
-static char outhighlightforeground[]  = "#4185d7";
+static char outhighlightforeground[]  = "#cccccc";
 static char outhighlightbackground[]  = "#1f5393";
 static char *colors[SchemeLast][2] = {
 	/*                    foreground, background */
