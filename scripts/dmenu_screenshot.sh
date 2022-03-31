@@ -3,13 +3,13 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_screenshot.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-02-24T17:44:31+0100
+# date:   2022-03-31T18:50:00+0200
 
 # config
 screenshot_directory="$HOME/Desktop"
 screenshot_file="$screenshot_directory/screenshot-$(date +"%FT%T%z").png"
 screenshot_command="maim -Buq $screenshot_file"
-screenshot_preview="sxiv $screenshot_file"
+screenshot_preview="nsxiv $screenshot_file"
 
 execute() {
     screenshot_command="$screenshot_command $*"
