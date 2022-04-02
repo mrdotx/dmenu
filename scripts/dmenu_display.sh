@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-03-07T17:24:13+0100
+# date:   2022-04-02T09:07:12+0200
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -211,5 +211,4 @@ select=$(printf "%s\n" \
 # maintenance after setup displays
 [ -n "$select" ] \
     && systemctl --user restart wallpaper.service \
-    && systemctl --user restart polybar.service \
-    && polybar_rss.sh --update
+    && systemctl --user restart polybar.service
