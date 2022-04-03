@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_alsa.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-03-10T07:33:54+0100
+# date:   2022-04-03T17:15:59+0200
 
 # speed up script by not using unicode
 LC_ALL=C
@@ -32,6 +32,31 @@ help="$script [-h/--help] -- script to change alsa audio output
     $script -dec 5
     $script -abs 36
     $script -mute"
+
+notification() {
+    volume="$(amixer get "$1" \
+        | tail -1 \
+        | cut -d'[' -f2 \
+        | sed 's/%]*//' \
+    )"
+
+    if amixer get "$2" | tail -1 | grep "\[off\]" >/dev/null; then
+        volume=0 \
+        volume_indicator="MUTE"
+    else
+        volume=$((volume /= ${3:-1}))
+        volume=$((volume *= ${3:-1}))
+        volume_indicator="$volume"
+    fi
+
+    notify-send \
+        -u low  \
+        -t 2000 \
+        -i "dialog-information" \
+        "$message_title $volume_indicator" \
+        -h string:x-canonical-private-synchronous:"$message_title" \
+        -h int:value:"$volume"
+}
 
 get_analog() {
     card=$(grep -m1 "card" "$config_path/$config_file" \
@@ -83,31 +108,6 @@ set_volume() {
         printf "%s\n" "$help"
         exit 1
     fi
-}
-
-notification() {
-    volume="$(amixer get "$1" \
-        | tail -1 \
-        | cut -d'[' -f2 \
-        | sed 's/%]*//' \
-    )"
-
-    if amixer get "$2" | tail -1 | grep "\[off\]" >/dev/null; then
-        volume=0 \
-        volume_indicator="MUTE"
-    else
-        volume=$((volume /= ${3:-1}))
-        volume=$((volume *= ${3:-1}))
-        volume_indicator="$volume"
-    fi
-
-    notify-send \
-        -u low  \
-        -t 2000 \
-        -i "dialog-information" \
-        "$message_title $volume_indicator" \
-        -h string:x-canonical-private-synchronous:"$message_title" \
-        -h int:value:"$volume"
 }
 
 case "$1" in
