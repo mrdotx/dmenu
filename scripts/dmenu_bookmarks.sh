@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-11-07T11:03:27+0100
+# date:   2022-04-14T13:28:44+0200
 
 # config
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
@@ -36,7 +36,7 @@ select_bookmark() {
 close_firefox() {
     killall -q "/usr/lib/firefox-developer-edition/firefox" \
         && firefox=1 \
-        && sleep .1
+        && sleep .5
 }
 
 create_bookmarks() {
