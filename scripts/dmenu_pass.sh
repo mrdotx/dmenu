@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-01-28T21:44:18+0100
+# date:   2022-04-15T09:19:20+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
@@ -82,35 +82,35 @@ case "$select" in
         ;;
     *)
         case $(printf "%s\n" \
-            "1) copy username ($clipboard_timeout sec)" \
-            "2) copy password ($clipboard_timeout sec)" \
-            "3) type username, tab, password" \
-            "4) type username, 2xtab, password" \
-            "5) type username" \
-            "6) type password" \
+            "1) type username, tab, password" \
+            "2) type username, 2xtab, password" \
+            "3) type username" \
+            "4) type password" \
+            "5) copy username to clipboard ($clipboard_timeout sec)" \
+            "6) copy password to clipboard ($clipboard_timeout sec)" \
             | dmenu -l 6 -c -bw 2 -r -i -p "$select »" \
             ) in
-            "1) copy username ($clipboard_timeout sec)")
-                get_entry "copy" "username"
-                ;;
-            "2) copy password ($clipboard_timeout sec)")
-                get_entry "copy" "password"
-                ;;
-            "3) type username, tab, password")
+            "1) type username, tab, password")
                 get_entry "type" "username"
                 xdotool key Tab
                 get_entry "type" "password"
                 ;;
-            "4) type username, 2xtab, password")
+            "2) type username, 2xtab, password")
                 get_entry "type" "username"
                 xdotool key Tab Tab
                 get_entry "type" "password"
                 ;;
-            "5) type username")
+            "3) type username")
                 get_entry "type" "username"
                 ;;
-            "6) type password")
+            "4) type password")
                 get_entry "type" "password"
+                ;;
+            "5) copy username to clipboard ($clipboard_timeout sec)")
+                get_entry "copy" "username"
+                ;;
+            "6) copy password to clipboard ($clipboard_timeout sec)")
+                get_entry "copy" "password"
                 ;;
             *)
                 exit 0
