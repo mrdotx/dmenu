@@ -3,9 +3,9 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_alsa.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-17T16:05:31+0200
+# date:   2022-04-21T10:15:39+0200
 
-# don't use unicode to identify the playback device
+# use posix to identify the playback device
 LC_ALL=C
 LANG=C
 
