@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-10-08T19:12:47+0200
+# date:   2022-04-23T16:47:26+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -115,22 +115,22 @@ search=$(printf "%s\n" \
     && exit 0
 
 case "$search" in
-    "1) play video")
-        mpv --really-quiet ytdl://"$open" >/dev/null 2>&1 &
+    6*)
+        $TERMINAL -e terminal_wrapper.sh youtube-dl -ciw -x --audio-format mp3 --audio-quality 0 "$open" &
         ;;
-    "2) play audio")
-        $TERMINAL -e mpv --no-video ytdl://"$open" &
-        ;;
-    "3) add video to taskspooler")
-        tsp mpv --really-quiet ytdl://"$open" >/dev/null 2>&1
-        ;;
-    "4) add audio to taskspooler")
-        tsp "$TERMINAL" -e mpv --no-video ytdl://"$open"
-        ;;
-    "5) download video")
+    5*)
         $TERMINAL -e terminal_wrapper.sh youtube-dl -ciw "$open" &
         ;;
-    "6) download audio")
-        $TERMINAL -e terminal_wrapper.sh youtube-dl -ciw -x --audio-format mp3 --audio-quality 0 "$open" &
+    4*)
+        tsp "$TERMINAL" -e mpv --no-video ytdl://"$open"
+        ;;
+    3*)
+        tsp mpv --really-quiet ytdl://"$open" >/dev/null 2>&1
+        ;;
+    2*)
+        $TERMINAL -e mpv --no-video ytdl://"$open" &
+        ;;
+    1*)
+        mpv --really-quiet ytdl://"$open" >/dev/null 2>&1 &
         ;;
 esac
