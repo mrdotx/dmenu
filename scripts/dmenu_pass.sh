@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-23T16:53:17+0200
+# date:   2022-04-27T09:46:23+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR-~/.password-store}"
@@ -15,7 +15,7 @@ select=$(printf "== Generate Password ==\n%s" \
     "$(find "$password_store" -iname "*$file_type" -printf "%P\n" \
         | sed "s/$file_type$//" \
         | sort)" \
-        | dmenu -l 15 -c -bw 2 -r -i -p "pass »" \
+        | dmenu -l 15 -c -bw 1 -r -i -p "pass »" \
 )
 
 [ -z "$select" ] \
@@ -67,7 +67,7 @@ case "$select" in
         case $(printf "%s\n" \
             "1) copy password ($clipboard_timeout sec)" \
             "2) type password" \
-            | dmenu -l 2 -c -bw 2 -r -i -p "Generate Password »" \
+            | dmenu -l 2 -c -bw 1 -r -i -p "Generate Password »" \
             ) in
             2*)
                 get_entry "type" "generate_password"
@@ -88,7 +88,7 @@ case "$select" in
             "4) type password" \
             "5) copy username to clipboard ($clipboard_timeout sec)" \
             "6) copy password to clipboard ($clipboard_timeout sec)" \
-            | dmenu -l 6 -c -bw 2 -r -i -p "$select »" \
+            | dmenu -l 6 -c -bw 1 -r -i -p "$select »" \
             ) in
             6*)
                 get_entry "copy" "password"

@@ -3,11 +3,11 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_virtualbox.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-07-15T13:00:20+0200
+# date:   2022-04-27T09:46:48+0200
 
 select=$(VBoxManage list vms \
     | cut -d '"' -f2 \
-    | dmenu -l 5 -c -bw 2 -r -i -p "vm »" \
+    | dmenu -l 5 -c -bw 1 -r -i -p "vm »" \
 )
 
 [ -n "$select" ] \

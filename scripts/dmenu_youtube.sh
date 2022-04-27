@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-23T16:47:26+0200
+# date:   2022-04-27T09:47:46+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -14,7 +14,7 @@ case "$1" in
         ;;
     *)
         search=$(printf "%s" "$(cat "$history_file")" \
-            | dmenu -l 20 -c -bw 2 -mw 720 -i -p "youtube »" \
+            | dmenu -l 20 -c -bw 1 -mw 720 -i -p "youtube »" \
         )
         ;;
 esac
@@ -43,7 +43,7 @@ case "$search" in
                 "relevance all" \
                 "date all" \
                 "== [relevance/date] [quantity/all] ==" \
-            | dmenu -l 20 -c -bw 2 -r -i -p "youtube »" \
+            | dmenu -l 20 -c -bw 1 -r -i -p "youtube »" \
         )
 
         case "$search_string" in
@@ -89,7 +89,7 @@ case "$search" in
 
         select=$(printf "%s" "$result" \
             | sed -n '1~2p' \
-            | dmenu -l 20 -c -bw 2 -r -i -p "youtube »" \
+            | dmenu -l 20 -c -bw 1 -r -i -p "youtube »" \
         )
 
         [ -z "$select" ] \
@@ -108,7 +108,7 @@ search=$(printf "%s\n" \
     "4) add audio to taskspooler" \
     "5) download video" \
     "6) download audio" \
-    | dmenu -l 20 -c -bw 2 -r -i -p "youtube »" \
+    | dmenu -l 20 -c -bw 1 -r -i -p "youtube »" \
 )
 
 [ -z "$search" ] \

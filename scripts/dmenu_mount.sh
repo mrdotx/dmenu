@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-03-09T13:40:02+0100
+# date:   2022-04-27T09:46:06+0200
 
 # auth can be something like sudo -A, doas -- or nothing,
 # depending on configuration requirements
@@ -17,7 +17,7 @@ unmount() {
     select=$(grep "/mnt\|$mount_dir/" /proc/self/mounts \
         | cut -d " " -f2 \
         | sort \
-        | dmenu -l 5 -c -bw 2 -r -i -p "unmount »" \
+        | dmenu -l 5 -c -bw 1 -r -i -p "unmount »" \
     )
 
     [ -n "$select" ] \
@@ -43,7 +43,7 @@ mount_remote() {
         | grep -v -e "#" -e "^\s*$" \
         | cut -d ";" -f1 \
         | tr -d ' ' \
-        | dmenu -l 20 -c -bw 2 -r -i -p "mount »" \
+        | dmenu -l 20 -c -bw 1 -r -i -p "mount »" \
     )
 
     [ -z "$select" ] \
@@ -70,7 +70,7 @@ mount_remote() {
 mount_usb() {
     select="$(lsblk -rpo "name,type,size,mountpoint" \
         | awk '{ if ($2=="part"&&$4=="" || $2=="rom"&&$4=="" || $3=="1,4M"&&$4=="") printf "%s (%s)\n",$1,$3}' \
-        | dmenu -l 5 -c -bw 2 -r -i -p "mount »" \
+        | dmenu -l 5 -c -bw 1 -r -i -p "mount »" \
         | cut -d " " -f1)"
 
     [ -z "$select" ] \
@@ -110,7 +110,7 @@ mount_image() {
             -iname "*.mdf" -o \
             -iname "*.nrg" \
         | cut -d / -f 5 \
-        | dmenu -l 5 -c -bw 2 -r -i -p "mount »" \
+        | dmenu -l 5 -c -bw 1 -r -i -p "mount »" \
     )
 
     [ -z "$select" ] \
@@ -129,7 +129,7 @@ mount_image() {
 # mount android
 mount_android() {
     select=$(simple-mtpfs -l 2>/dev/null \
-        | dmenu -l 5 -c -bw 2 -r -i -p "mount »" \
+        | dmenu -l 5 -c -bw 1 -r -i -p "mount »" \
         | cut -d ":" -f1 \
     )
 
@@ -153,7 +153,7 @@ dvd_eject() {
     )
 
     select=$(printf "%s\n" "$mounts" \
-        | dmenu -l 5 -c -bw 2 -r -i -p "eject »" \
+        | dmenu -l 5 -c -bw 1 -r -i -p "eject »" \
         | cut -d " " -f1 \
     )
 
@@ -172,7 +172,7 @@ case $(printf "%s\n" \
     "mount image" \
     "mount android" \
     "eject dvd" \
-    | dmenu -l 9 -c -bw 2 -r -i -p "un-/mount »" \
+    | dmenu -l 9 -c -bw 1 -r -i -p "un-/mount »" \
     ) in
     "unmount")
         unmount

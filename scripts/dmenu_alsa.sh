@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_alsa.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-24T08:08:59+0200
+# date:   2022-04-27T09:42:46+0200
 
 # use standard c to identify the playback device
 LC_ALL=C
@@ -40,7 +40,7 @@ set_asoundrc() {
 
 select=$(aplay -l \
     | grep '^card' \
-    | dmenu -l 10 -c -bw 2 -r -i -p "device »" \
+    | dmenu -l 10 -c -bw 1 -r -i -p "device »" \
 )
 
 [ -n "$select" ] \

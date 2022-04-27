@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-03T18:05:02+0200
+# date:   2022-04-27T09:44:42+0200
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -21,7 +21,7 @@ connected_displays=$(printf "%s" "$all_displays" \
 
 display() {
     primary=$(printf "%s" "$connected_displays" \
-        | dmenu -l 4 -c -bw 2 -r -i -p "$1" \
+        | dmenu -l 4 -c -bw 1 -r -i -p "$1" \
     )
     [ -z "$primary" ] \
         && exit 0
@@ -41,7 +41,7 @@ saved_settings() {
     }
 
     select=$(printf "%s" "$(cat "$saved_settings_file")" \
-        | dmenu -l 10 -c -bw 2 -i -p "$select »" \
+        | dmenu -l 10 -c -bw 1 -i -p "$select »" \
     )
     [ -n "$select" ] \
         && xrandr \
@@ -73,7 +73,7 @@ refresh_rate() {
         | tail -n1 \
         | awk '{for (i=2;i<=NF;i++) print $i}' \
         | sed "s/\+//; /^$/d" \
-        | dmenu -l 10 -c -bw 2 -r -i -p "rate »" \
+        | dmenu -l 10 -c -bw 1 -r -i -p "rate »" \
         | sed "s/\*//" \
     )
     [ -z "$rate" ] \
@@ -93,7 +93,7 @@ rotate() {
         "left" \
         "right" \
         "inverted" \
-        | dmenu -l 4 -c -bw 2 -i -p "direction »" \
+        | dmenu -l 4 -c -bw 1 -i -p "direction »" \
     )
     [ -z "$direction" ] \
         && exit 0
@@ -111,7 +111,7 @@ extend() {
         "right" \
         "below" \
         "left" \
-        | dmenu -l 4 -c -bw 2 -r -i -p "position of $secondary »" \
+        | dmenu -l 4 -c -bw 1 -r -i -p "position of $secondary »" \
         | sed "s/left/left-of/;s/right/right-of/" \
     )
     [ -z "$orientation" ] \
@@ -175,7 +175,7 @@ select=$(printf "%s\n" \
     "extend" \
     "mirror" \
     "$connected_displays" \
-    | dmenu -l 10 -c -bw 2 -r -i -p "display »"
+    | dmenu -l 10 -c -bw 1 -r -i -p "display »"
     ) && \
     case "$select" in
         "saved settings")

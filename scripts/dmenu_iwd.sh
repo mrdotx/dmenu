@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2021-01-15T13:32:34+0100
+# date:   2022-04-27T09:45:28+0200
 
 remove_escape_sequences() {
     tail -n +5 \
@@ -14,7 +14,7 @@ get_interface() {
     interface=$(iwctl device list \
         | remove_escape_sequences \
         | awk '{print $1" == ["$2"] == ["$3"]"}' \
-        | dmenu -l 3 -c -bw 2 -r -i -p "interface »" \
+        | dmenu -l 3 -c -bw 1 -r -i -p "interface »" \
         | awk '{print $1}'
     )
     [ -n "$interface" ] \
@@ -51,7 +51,7 @@ scan_ssid() {
 
 get_ssid() {
     select=$(printf "[scan] == rescan?\n%s" "$scan_result" \
-        | dmenu -l 10 -c -bw 2 -r -i -p "ssid »" \
+        | dmenu -l 10 -c -bw 1 -r -i -p "ssid »" \
     )
     ssid=$(printf "%s" "$select" \
         | awk -F " == " '{print $2}' \
@@ -74,7 +74,7 @@ get_ssid() {
 
 get_psk() {
     psk=$(printf 'press esc or enter if you had already insert a passphrase before!\n' \
-        | dmenu -l 1 -c -bw 2 -i -p "passphrase »" \
+        | dmenu -l 1 -c -bw 1 -i -p "passphrase »" \
     )
 }
 
