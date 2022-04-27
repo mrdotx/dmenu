@@ -57,7 +57,7 @@ static const unsigned int alphas[SchemeLast][2] = {
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines = 0;
 /* -h option; minimum height of a menu line */
-static unsigned int lineheight = 26;
+static unsigned int lineheight = 25;
 static unsigned int min_lineheight = 0;
 
 /*
