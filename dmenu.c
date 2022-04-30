@@ -943,10 +943,10 @@ main(int argc, char *argv[])
 			colors[SchemeSel][ColFg] = argv[++i];
 		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
 			embed = argv[++i];
+		else if (!strcmp(argv[i], "-mw"))
+			min_width = atoi(argv[++i]);   /* minimum width when centered*/
 		else if (!strcmp(argv[i], "-bw"))
 			border_width = atoi(argv[++i]); /* border width */
-		else if (!strcmp(argv[i], "-mw"))
-			min_width = atoi(argv[++i]); /* minimum width when centered*/
 		else
 			usage();
 

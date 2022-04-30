@@ -6,7 +6,7 @@ static int topbar = 1;
 /* -c option; centers dmenu on screen */
 static int centered = 0;
 /* minimum width when centered */
-static int min_width = 250;
+static int min_width = 0;
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static char font[] = "DejaVuSansMono Nerd Font:pixelsize=16";
 static char font0[] = "JoyPixels:pixelsize=14";
