@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-27T09:47:46+0200
+# date:   2022-04-30T10:31:52+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -14,7 +14,7 @@ case "$1" in
         ;;
     *)
         search=$(printf "%s" "$(cat "$history_file")" \
-            | dmenu -l 20 -c -bw 1 -mw 720 -i -p "youtube »" \
+            | dmenu -l 20 -c -bw 1 -i -p "youtube »" \
         )
         ;;
 esac
