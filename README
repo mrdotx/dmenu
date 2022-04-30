@@ -41,4 +41,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2022-03-28 15:38	drw_text: account for fallback fonts in ellipsis_width	NRK
+2022-04-29 18:15	inputw: improve correctness and startup performance, by NRK	Hiltjo Posthuma
