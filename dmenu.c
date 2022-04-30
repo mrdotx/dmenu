@@ -125,15 +125,6 @@ calcoffsets(void)
 			break;
 }
 
-static int
-max_textw(void)
-{
-	int len = 0;
-	for (struct item *item = items; item && item->text; item++)
-		len = MAX(TEXTW(item->text), len);
-	return len;
-}
-
 static void
 cleanup(void)
 {
@@ -233,6 +224,16 @@ recalculatenumbers()
 	for (item = items; item && item->text; item++)
 		denom++;
 	snprintf(numbers, NUMBERSBUFSIZE, "%d/%d", numer, denom);
+}
+
+static int
+max_textw(void)
+{
+	int len = 0;
+	recalculatenumbers();
+	for (struct item *item = items; item && item->text; item++)
+		len = MAX(TEXTW(item->text) + TEXTW(numbers), len);
+	return len;
 }
 
 static void
