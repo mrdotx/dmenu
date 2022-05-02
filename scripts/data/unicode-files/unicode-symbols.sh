@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/data/unicode-files/unicode-symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-05-02T09:54:57+0200
+# date:   2022-05-02T12:22:09+0200
 
 output_file="../unicode-symbols"
 
@@ -52,17 +52,17 @@ get_emoji() {
         | cut -d' ' -f2 --complement
 }
 
-    # others
-    sort -u -k 2 "others.txt" > "$output_file"
-
 # write symbols to file
 {
+    # emoji
+    get_emoji | sort -u -k 2;
+
     # nerd font
     get_nerdfont | sort -u -k 2;
 
     # font awesome
     get_fontawesome | sort -u -k 2;
 
-    # emoji
-    get_emoji | sort -u -k 2
-} >> "$output_file"
+    # others
+    sort -u -k 2 "others.txt"
+} > "$output_file"
