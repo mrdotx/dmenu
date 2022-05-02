@@ -8,13 +8,19 @@ static int centered = 0;
 /* minimum width when centered */
 static int min_width = 0;
 /* -fn option overrides fonts[0]; default X11 font or font set */
-static char font[] = "DejaVuSansMono Nerd Font:pixelsize=16";
-static char font0[] = "JoyPixels:pixelsize=14";
-static char font1[] = "DejaVu Sans:pixelsize=14";
+static char font[]  = "DejaVuSansMono Nerd Font:pixelsize=16";
+static char font0[] = "DejaVu Sans:pixelsize=14";
+static char font1[] = "Font Awesome 6 Free:style=Solid:pixelsize=14";
+static char font2[] = "Font Awesome 6 Free:style=Regular:pixelsize=14";
+static char font3[] = "Font Awesome 6 Brands:style=Regular:pixelsize=14";
+static char font4[] = "JoyPixels:pixelsize=14";
 static const char *fonts[] = {
 	font,
 	font0,
-	font1
+	font1,
+	font2,
+	font3,
+	font4
 };
 static const unsigned int alpha = 0xe6;
 /* -p  option; prompt to the left of input field */
@@ -76,6 +82,9 @@ ResourcePref resources[] = {
 	{ "font",                    STRING, &font },
 	{ "font0",                   STRING, &font0 },
 	{ "font1",                   STRING, &font1 },
+	{ "font2",                   STRING, &font2 },
+	{ "font3",                   STRING, &font3 },
+	{ "font4",                   STRING, &font4 },
 	{ "foreground",              STRING, &foreground },
 	{ "background",              STRING, &background },
 	{ "selforeground",           STRING, &selforeground },
