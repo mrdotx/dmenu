@@ -41,4 +41,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2022-04-30 11:19	fix incorrect comment, math is hard	Hiltjo Posthuma
+2022-05-01 16:38	Makefile: add manual path for OpenBSD	Hiltjo Posthuma
