@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/data/unicode-files/unicode-symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-05-02T12:22:09+0200
+# date:   2022-05-03T12:51:37+0200
 
 output_file="../unicode-symbols"
 
@@ -30,18 +30,6 @@ get_nerdfont() {
     done
 }
 
-get_fontawesome() {
-    # font awesome copied from
-    # https://fontawesome.com/v5/cheatsheet
-    fa_files=$(find . -iname "fa-*")
-
-    for file in $fa_files; do
-        sed '/^$/d' "$file" \
-            | awk 'ORS=NR%3?FS:RS' \
-            | awk -F "     " '{print $1 " fa-" $2 "; " $3}'
-    done
-}
-
 get_emoji() {
     emoji_url="https://unicode.org/Public/emoji/14.0/emoji-test.txt"
 
@@ -59,9 +47,6 @@ get_emoji() {
 
     # nerd font
     get_nerdfont | sort -u -k 2;
-
-    # font awesome
-    get_fontawesome | sort -u -k 2;
 
     # others
     sort -u -k 2 "others.txt"
