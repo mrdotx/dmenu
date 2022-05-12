@@ -3,7 +3,17 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-05-12T10:54:51+0200
+# date:   2022-05-12T11:36:11+0200
+
+notification() {
+    notify-send \
+        -u low  \
+        -t "${3:-5000}" \
+        -i "dialog-information" \
+        "iNet wireless daemon$1" \
+        "$2" \
+        -h string:x-canonical-private-synchronous:"$message_id"
+}
 
 remove_escape_sequences() {
     tail -n +5 \
@@ -15,7 +25,7 @@ get_interface() {
         | remove_escape_sequences \
         | awk '{print $1" == ["$2"] == ["$3"]"}' \
         | dmenu -l 3 -c -bw 1 -r -i -p "interface »" \
-        | awk '{print $1}'
+        | cut -d ' ' -f1
     )
     [ -n "$interface" ] \
         || exit 1
@@ -26,21 +36,17 @@ scan_ssid() {
     message_id="$(date +%s)"
     iwctl station "$interface" scan \
         &&  while [ $timer -ge 1 ]; do
-                notify-send \
-                    -u low  \
-                    -t 0 \
-                    "iNet wireless daemon - please wait...$timer" \
+                notification \
+                    " - please wait...$timer" \
                     "interface: $interface" \
-                    -h string:x-canonical-private-synchronous:"$message_id"
+                    0
                 sleep 1
                 timer=$((timer-1))
             done \
-        && notify-send \
-            -u low \
-            -t 1000 \
-            "iNet wireless daemon - finished" \
+        && notification \
+            " - finished" \
             "interface: $interface" \
-            -h string:x-canonical-private-synchronous:"$message_id"
+            1000
 
     scan_result=$(iwctl station "$interface" get-networks \
         | remove_escape_sequences \
@@ -83,8 +89,8 @@ connect_iwd() {
     else
         iwctl station "$interface" connect "$ssid"
     fi
-    notify-send \
-        "iNet wireless daemon" \
+    notification \
+        "" \
         "connected to \"$ssid\""
 }
 
