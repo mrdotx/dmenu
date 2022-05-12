@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-27T09:45:28+0200
+# date:   2022-05-12T10:54:51+0200
 
 remove_escape_sequences() {
     tail -n +5 \
@@ -56,11 +56,9 @@ get_ssid() {
     ssid=$(printf "%s" "$select" \
         | awk -F " == " '{print $2}' \
     )
-    if printf "%s" "$ssid" | grep -q "^> "; then
-        notify-send "iNet wireless daemon" "already connected to \"$(printf "%s" "$ssid" \
-            | sed 's/> //')\""
-        exit 0
-    fi
+    printf "%s" "$ssid" | grep -q "^> " \
+        && ssid=$(printf "%s" "$ssid" | sed 's/^> //') \
+        && iwctl station "$interface" disconnect "$ssid"
     [ "$(printf "%s" "$select" \
         | awk -F " == " '{print $1}')" = "[open]" ] \
         && open=1
@@ -85,7 +83,9 @@ connect_iwd() {
     else
         iwctl station "$interface" connect "$ssid"
     fi
-    notify-send "iNet wireless daemon" "connected to \"$ssid\""
+    notify-send \
+        "iNet wireless daemon" \
+        "connected to \"$ssid\""
 }
 
 get_interface \
