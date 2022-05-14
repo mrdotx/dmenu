@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-05-14T19:15:10+0200
+# date:   2022-05-14T20:21:17+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -79,16 +79,16 @@ case "$search" in
                 -h string:x-canonical-private-synchronous:"$message_id"
         }
 
-        # this loop is a workaround, because often youtube-dl returns no results
+        # this loop is a workaround, because often yt-dlp returns no results
         attempts=30
         message_id="$(date +%s)"
         while [ $attempts -ge 1 ] \
             && [ -z "$result" ]; do
-                notification 0 "youtube-dl - please wait...$attempts"
-                result=$(youtube-dl "$search_result:$search" -e --get-id)
+                notification 0 "yt-dlp - please wait...$attempts"
+                result=$(yt-dlp "$search_result:$search" -e --get-id)
                 attempts=$((attempts-1))
         done
-        notification 1000 "youtube-dl - finished"
+        notification 1000 "yt-dlp - finished"
 
         select=$(printf "%s" "$result" \
             | sed -n '1~2p' \
@@ -119,10 +119,10 @@ search=$(printf "%s\n" \
 
 case "$search" in
     6*)
-        $TERMINAL -e terminal_wrapper.sh youtube-dl -ciw -x --audio-format mp3 --audio-quality 0 "$open" &
+        $TERMINAL -e terminal_wrapper.sh yt-dlp -ciw -x --audio-format mp3 --audio-quality 0 "$open" &
         ;;
     5*)
-        $TERMINAL -e terminal_wrapper.sh youtube-dl -ciw "$open" &
+        $TERMINAL -e terminal_wrapper.sh yt-dlp -ciw "$open" &
         ;;
     4*)
         tsp "$TERMINAL" -e mpv --no-video ytdl://"$open"
