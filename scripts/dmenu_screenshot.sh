@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_screenshot.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-30T10:27:06+0200
+# date:   2022-05-14T12:08:15+0200
 
 # config
 screenshot_directory="$HOME/Desktop"
@@ -19,12 +19,12 @@ execute() {
 
 # menu
 select=$(printf "%s\n" \
-    "desktop" \
-    "window" \
-    "selection" \
-    "desktop --delay 5" \
-    "window --delay 5" \
-    | dmenu -l 5 -c -bw 1 -p "screenshot »"
+            "desktop" \
+            "window" \
+            "selection" \
+            "desktop --delay 5" \
+            "window --delay 5" \
+                | dmenu -l 5 -c -bw 1 -p "screenshot »" \
 )
 
 case $select in
