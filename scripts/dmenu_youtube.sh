@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-30T10:31:52+0200
+# date:   2022-05-14T19:15:10+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -34,6 +34,9 @@ case "$search" in
             open="$search"
             ;;
     *)
+        ! [ -f "$history_file" ] \
+            && printf "%s\n" "$search" > "$history_file"
+
         sed -i "1s/^/$search\n/" "$history_file"
         printf "%s\n" "$(awk '! seen[$0]++' "$history_file")" > "$history_file"
 
