@@ -1,0 +1,333 @@
+super+a                      | i3,apps        | alsamixer
+super+Shift+a                | i3,apps        | alsa (dmenu)
+super+b                      | i3,apps        | bookmarks (dmenu)
+super+Shift+b                | i3,apps        | bookmarks (sync)
+super+c                      | i3,apps        | cmus (tmux)
+super+shift+c                | i3,apps        | popup with song information if cmus is running
+super+d                      | i3,apps        | darktable
+super+e                      | i3,apps        | editor mode
+super+shift+e                | i3,apps        | editor
+super+g                      | i3,apps        | gimp
+super+h                      | i3,apps        | ssh mode
+super+shift+h                | i3,apps        | ssh (dmenu)
+super+i                      | i3,apps        | inkscape
+super+j                      | i3,apps        | jameica
+super+k                      | i3,apps        | kodi
+super+m                      | i3,apps        | thunderbird
+super+n                      | i3,apps        | newsboat (tmux)
+super+shift+n                | i3,apps        | podboat (tmux)
+super+o                      | i3,apps        | libreoffice
+super+p                      | i3,apps        | change display settings (dmenu)
+super+shift+p                | i3,apps        | password manager (dmenu)
+super+r                      | i3,apps        | ranger (tmux)
+super+s                      | i3,apps        | scribus
+super+t                      | i3,apps        | htop (tmux)
+super+shift+t                | i3,apps        | btop (tmux)
+super+u                      | i3,apps        | un-/mount (dmenu)
+super+v                      | i3,apps        | virtualbox (dmenu)
+super+shift+v                | i3,apps        | virtualbox manager
+super+w                      | i3,apps        | secondary browser (firefox)
+super+shift+w                | i3,apps        | primary browser (w3m)
+super+ctrl+w                 | i3,apps        | backup browser (surf)
+super+x                      | i3,apps        | link handler (dragon-drop)
+super+shift+x                | i3,apps        | link handler (clipboard)
+super+y                      | i3,apps        | youtube (dmenu)
+super+shift+y                | i3,apps        | youtube (clipboard)
+super+z                      | i3,apps        | midnight commander (tmux)
+super+`                      | i3,apps        | unicode symbols (dmenu)
+super+[                      | i3,apps        | man pages (fzf)
+super+shift+[                | i3,apps        | man pages (dmenu)
+super+]                      | i3,apps        | package manager (fzf)
+super+\                      | i3,apps        | color picker
+super+shift+\                | i3,apps        | start/stop conky
+super+'                      | i3,apps        | network manager (dmenu)
+super+,                      | i3,apps        | calculator (dmenu)
+super+.                      | i3,apps        | stopwatch
+super+/                      | i3,apps        | show shortcuts (dmenu)
+super+shift+/                | i3,apps        | show notes (BROWSER)
+AudioRaiseVolume             | i3,multimedia  | increase volume by 5
+AudioLowerVolume             | i3,multimedia  | decrease volume by 5
+AudioMute                    | i3,multimedia  | mute audio
+MonBrightnessUp              | i3,multimedia  | increase monitor brightness by 5
+MonBrightnessDown            | i3,multimedia  | decrease monitor brightness by 5
+TouchpadToggle               | i3,multimedia  | enables/disables touchpad
+Cut                          | i3,multimedia  | autostart
+super+[1-0]                  | i3,workspaces  | switch to workspace 1...10
+super+ctrl+[1-0]             | i3,workspaces  | move focused container to workspace 1...10
+super+shift+[1-0]            | i3,workspaces  | move to workspace with focused to container 1...10
+super+alt+[←,→,↑,↓]          | i3,workspaces  | swap workspaces
+super+alt+[prior,next]       | i3,workspaces  | workspace (previous,next)
+alt+tab                      | i3,workspaces  | workspace back and forth
+super+[←,→,↑,↓]              | i3,windows     | focus window
+super+shift+[←,→,↑,↓]        | i3,windows     | move focused window
+super+ctrl+[←,→,↑,↓]         | i3,windows     | resize window
+super+ctrl+[prior,next,home] | i3,windows     | resize window gaps
+super+shift+prior            | i3,windows     | toggle window tiling/floating
+super+shift+next             | i3,windows     | change focus between tiling/floating windows
+super+shift+home             | i3,windows     | toggle sticky
+super+tab                    | i3,windows     | window switcher
+super+space                  | i3,windows     | container mode
+super(release)               | i3,system      | primary program launcher (i3-dmenu-desktop)
+shift+super(release)         | i3,system      | secondary program launcher (dmenu)
+print                        | i3,system      | screenshot (dmenu)
+super+print                  | i3,system      | macros mode
+super+return                 | i3,system      | terminal (urxvt)
+super+shift+return           | i3,system      | terminal (tmux)
+super+ctrl+return            | i3,system      | backup terminal (st)
+super+l                      | i3,system      | lock screen
+super+shift+l                | i3,system      | suspend
+super+f                      | i3,system      | toggle fullscreen mode for focused container
+super+shift+f                | i3,system      | toggle fullscreen mode global
+super+ctrl+f                 | i3,system      | move container to multimedia workspace
+ctrl+q                       | i3,system      | kill focused window
+ctrl+shift+q                 | i3,system      | kill all windows on focused workspace
+ctrl+alt+backspace           | i3,system      | reload i3 configuration file
+ctrl+alt+escape              | i3,system      | restart i3 inplace (preserves layout/session)
+ctrl+alt+delete              | i3,system      | exit mode
+alt+space                    | i3,system      | services mode
+:q                           | vim            | close
+:w                           | vim            | write/saves
+:wa[!]                       | vim            | write/save all windows [force]
+:wq                          | vim            | write/save and close
+:x                           | vim            | save and quit, same as wq
+:q!                          | vim            | force close if file has changed and not save changes
+v                            | vim            | enter visual mode for selection of LINES
+ctrl+v                       | vim            | enter visual mode for selection of BLOCKS
+R                            | vim            | enter replace mode
+y                            | vim            | yank/copy selected region
+yy                           | vim            | yank/copy entire line
+"[reg]y                      | vim            | yank/copy marked region into register [reg] (from a-z)
+c                            | vim            | cut selection
+p                            | vim            | paste yanked content
+"[reg]p                      | vim            | paste yanked content in register [reg] (from a-z)
+P                            | vim            | paste yanked content BEFORE
+u                            | vim            | undo
+ctrl+r                       | vim            | redo
+:![cmd]                      | vim            | execute shell command [cmd]
+ctrl+z                       | vim            | send vim to background (fg brings it to front again)
+a                            | vim,insert     | append text after the cursor
+A                            | vim,insert     | append text at the end of the line
+i                            | vim,insert     | insert text before the cursor
+I                            | vim,insert     | insert text before the first non-blank in the line
+o                            | vim,insert     | begin a new line BELOW the cursor and insert text
+O                            | vim,insert     | begin a new line ABOVE the cursor and insert text
+s                            | vim,insert     | erase the current letter under the cursor, set insert-mode
+S                            | vim,insert     | erase the whole line, set insert-mode
+cc                           | vim,insert     | delete the current line, set insert-mode
+cw                           | vim,insert     | delete word, set insert-mode
+dd                           | vim,insert     | delete line under curser
+x                            | vim,edit       | delete char under cursor
+X                            | vim,edit       | delete char before cursor
+#x                           | vim,edit       | delete the next # chars. starting from char under cursor
+dw                           | vim,edit       | delete next word
+dW                           | vim,edit       | delete up to the next word
+d^                           | vim,edit       | delete up unto the beginning of the line
+d$                           | vim,edit       | delete until end of the line
+D                            | vim,edit       | see d$, delete until end of the line
+dd                           | vim,edit       | delete whole line
+dib                          | vim,edit       | delete contents in parenthesis '(' ')' block (e.g. function args)
+diB                          | vim,edit       | delete inner '{' '}' block
+daB                          | vim,edit       | delete a '{' '}' block
+das                          | vim,edit       | delete a sentence
+diw                          | vim,edit       | delete word under cursor
+df[c]                        | vim,edit       | delete until next occurence of [c] (char) found (including [c])
+dt[c]                        | vim,edit       | delete until next occurence of [c] (char) found (without [c])
+ciw                          | vim,edit       | change word under cursor
+ciB                          | vim,edit       | change inner '{' '}' block
+cf[c]                        | vim,edit       | see "df[c]" but change instead of delete
+ct[c]                        | vim,edit       | see "dt[c]" but change instead of delete
+#J                           | vim,edit       | merge # number of lines together
+gq                           | vim,edit       | (in visual-mode) format selected text according to line-width
+gqq                          | vim,edit       | format current line according to line-width
+#gqq                         | vim,edit       | format next #-lines
+C-n                          | vim,edit       | keyword completion
+r[c]                         | vim,edit       | replace char [c]
+#r[c]                        | vim,edit       | replace follow # chars with [c], : csock, cursor on s, 3re ceeek
+u                            | vim,edit       | convert selection (visual mode) to lowercase
+U                            | vim,edit       | convert selection (visual mode) to uppercase
+ga                           | vim,edit       | show ascii of char under cursor
+:s/xxx/yyy/                  | vim,replace    | replace xxx with yyy at the first occurrence
+:s/xxx/yyy/g                 | vim,replace    | replace xxx with yyy first occurrence, global (whole sentence)
+:s/xxx/yyy/gc                | vim,replace    | replace xxx with yyy global with confirm
+:%s/xxx/yyy/g                | vim,replace    | replace xxx with yyy global in the whole file
+:g/^#/d                      | vim,replace    | delete all lines that begins with #
+:g/^$/d                      | vim,replace    | delete all lines that are empty
+*                            | vim,search     | search for word under cursor (forward) and highlight occurrence
+%                            | vim,search     | jump from open/close ( / #if / ( / { to corresponding ) / #endif / }
+[{                           | vim,search     | jump to start of current code block
+]}                           | vim,search     | jump to end of current code block
+gd                           | vim,search     | jump to var declaration
+f[c]                         | vim,search     | find char [c] from current cursor position -> forwards
+F[c]                         | vim,search     | find char [c] from current cursor position <- backwards
+,                            | vim,search     | repeat previous f[c] or F[c] in opposite direction
+;                            | vim,search     | repeat previous f[c] or F[c] in same direction
+'.                           | vim,search     | jump back to last edited line
+g;                           | vim,search     | jump back to last edited position
+[m                           | vim,search     | jump to start of funtion body
+[i                           | vim,search     | show first declartion/use of the word under cursor
+[I                           | vim,search     | show all occurrences of word under cursor in current file
+[/                           | vim,search     | cursor to n previous start of a c comment
+,,                           | vim,netrw      | toggle netrw
+shift+t                      | vim,netrw      | open in tab
+shift+v                      | vim,netrw      | open in vertical split
+shift+h                      | vim,netrw      | open in horizontal split
+q+[a-z]+[cmds]               | vim,macros     | enter a macro (stop with q)
+[n]+@+[a-z]                  | vim,macros     | execute macro n times
+@+@                          | vim,macros     | rerun last run macro
+dp                           | vim,diff       | diffput puts changes under the cursor
+do                           | vim,diff       | diffget (o => obtain) change under the cursor
+]c                           | vim,diff       | jump to the next diff
+[c                           | vim,diff       | jump to the previous diff
+]s                           | vim,spell      | next spelling mistake
+[s                           | vim,spell      | previous spelling mistake
+z=                           | vim,spell      | give Suggestions (prepend 1, use first suggestions automatically)
+zg                           | vim,spell      | add misspelled to spellfile
+zug                          | vim,spell      | remove word from spellfile
+ctrl-ws                      | vim,windows    | split current window horizontally (alternative :split)
+ctrl-wv                      | vim,windows    | split current window vertically (alternative :vsplit)
+ctrl-ww                      | vim,windows    | jump to the next window
+tab                          | vim,windows    | jump to the next window
+ctrl-wx                      | vim,windows    | windows exchange
+shift-tab                    | vim,windows    | windows exchange
+ctrl-w[←,↑,↓,→]              | vim,windows    | jump to window left/top/bottom/right to the current
+ctrl-w#<                     | vim,windows    | shrink/resize current window from the right by # (default 1)
+ctrl-w#>                     | vim,windows    | increase/resize current window to the right by # (default 1)
+[h,j,k,l]                    | vim,move       | cursor (left,down,up,right)
+[H,M,L]                      | vim,move       | jump to (top,middle,bottom)
+C-b                          | vim,move       | move back one full screen (page up)
+C-f                          | vim,move       | move forward one full screen (page down)
+C-d                          | vim,move       | move forward 1/2 screen; half page down
+C-u                          | vim,move       | move back (up) 1/2 screen; half page up
+w                            | vim,move       | jump by start of words (punctuation considered words)
+e                            | vim,move       | jump to end of words (punctuation considered words)
+b                            | vim,move       | jump backward by words (punctuation considered words)
+0                            | vim,move       | start of line
+^                            | vim,move       | first non-blank character of line
+$                            | vim,move       | end of line
+G                            | vim,move       | bottom of file
+gg                           | vim,move       | top of file
+E                            | vim,move       | jump to end of words (no punctuation)
+W                            | vim,move       | jump by words (spaces separate words)
+B                            | vim,move       | jump backward by words (no punctuation)
+#G                           | vim,move       | goto line #
+#gg                          | vim,move       | goto line #
+ctrl+shift+y                 | terminal       | paste from primary (middle mouse button)
+ctrl+shift+c                 | terminal       | copy selected text to clipboard
+ctrl+shift+v                 | terminal       | paste from clipboard
+ctrl+shift+esc               | terminal       | keyboard select
+ctrl+[+,-,=]                 | terminal       | zoom (grow, shrink, standard)
+shift+[prior,next]           | terminal       | scrollback (mouse scroll)
+alt+c                        | terminal       | fuzzy finder cd into directory
+ctrl+t                       | terminal       | fuzzy finder paste file or directory
+ctrl+r                       | terminal       | fuzzy finder paste command from history
+alt+o                        | terminal,urxvt | start matcher-select mode
+matcher-select y             | terminal,urxvt | copy url
+matcher-select enter         | terminal,urxvt | open url
+alt+y                        | terminal,st    | copy url
+alt+o                        | terminal,st    | open url from clipboard
+?                            | ranger         | show help menus
+i                            | ranger         | show file information
+r                            | ranger         | open file with
+o                            | ranger         | change sort order
+z                            | ranger         | change settings (zh show hidden files)
+space                        | ranger         | mark active file
+t                            | ranger         | tag files
+cw                           | ranger         | rename marked files
+/                            | ranger         | search files
+n                            | ranger         | next hit from search
+yy                           | ranger         | yank, copy file
+dd                           | ranger         | move file
+pp                           | ranger         | paste file
+u                            | ranger         | show undo-functions
+dD                           | ranger         | delete files
+ctrl+n                       | ranger,tabs    | create new tab
+ctrl+w                       | ranger,tabs    | close active tab
+tab                          | ranger,tabs    | next tab
+shift+tab                    | ranger,tabs    | previous tab
+alt+[1-9]                    | ranger,tabs    | switch to tab 1...9
+shift+h                      | w3m            | show hot key
+,+?                          | w3m            | user defined hot keys
+[shift+b,s]                  | w3m            | previous or forward page
+[tab,shift+tab]              | w3m            | next or previous link
+v                            | w3m            | toggle html source and normal view
+[/,?]                        | w3m            | forward or backward search
+[n,N]                        | w3m            | next or previous search result
+[T,ctrl+t]                   | w3m            | open new tab or current link in new tab
+esc+t                        | w3m            | popup list to open tab
+[shift+t,ctrl+q]             | w3m            | open or close a tab
+[{,}]                        | w3m            | previous or forward tab
+shift+u                      | w3m            | goto url
+shift+r                      | w3m            | reload page
+[,+d,,+shift+d]              | w3m            | save link under the cursor or show download list
+[,+y,,+shift+y]              | w3m            | copy link of current page or under the cursor to clipboard
+[,+w,,+shift+w]              | w3m            | open link of current page or under the cursor in firefox
+[,+l,,+shift+l]              | w3m            | open link of current page or under the cursor with link_handler.sh
+ctrl+h                       | w3m            | show history
+[c,u]                        | w3m            | show url of current page or under cursor
+[<,>]                        | w3m            | scroll left or right
+[,+b,,+shift+b]              | w3m            | open bookmarks or add bookmark
+,+s                          | w3m            | search with duckduckgo
+,+e                          | w3m            | edit the screen with external editor
+,+c                          | w3m            | toggle color
+,+t                          | w3m            | toggle table borders
+[,+i,,+shift+i]              | w3m            | toggle display image or save image
+[,+a,,+shift+a]              | w3m            | toggle user agent to duckduckbot or remove
+[,+u,,+shift+u]              | w3m            | popup list to open link or goto link
+o                            | w3m            | open options
+[i,escape]                   | surf           | insert, normal mode
+c                            | surf           | stops loading current page or download
+[h,l]                        | surf           | back or forward in history
+[j,k]                        | surf           | scroll page up or down
+[space,o]                    | surf           | scroll half page up or down
+[i,u]                        | surf           | scroll horizontally to right or left
+[plus,minus,equal]           | surf           | zoom in, out or reset
+/                            | surf           | open search bar
+[n,N]                        | surf           | next or previous search result
+ctrl+f                       | surf           | show links to follow
+d                            | surf           | open download console
+b                            | surf           | open url bar with bookmarks
+g                            | surf           | open url bar
+m                            | surf           | save as bookmark
+ctrl+P                       | surf           | open print page dialog
+[r,ctrl+r]                   | surf           | reloads the website, without using the cache
+[y,p]                        | surf           | copies/loads current uri to primary selection
+ctrl+t                       | surf           | display the current tls certificate
+ctrl+[A,C,I,M]               | surf           | cookies, caret browsing, images, styles
+ctrl+[S,T,V]                 | surf           | scripts, tls, plugins
+q                            | surf           | close surf
+ctrl+enter                   | tabbed         | open new tab
+ctrl+[←,→]                   | tabbed         | rotate open tab (backwards,forwards)
+ctrl+[↑,↓]                   | tabbed         | move current tab (backwards,forwards)
+ctrl+tab                     | tabbed         | toggle between last two tabs
+ctrl+`                       | tabbed         | show open tabs to switch
+alt+[1-0]                    | tabbed         | switch to open tab 1...10
+alt+q                        | tabbed         | close tab
+ctrl+b                       | tmux           | initiate command sequence
+ctrl+a                       | tmux           | toggle hotkeys for nested session
+m                            | tmux           | enable/disable mouse support
+?                            | tmux           | show active shortcuts
+t                            | tmux           | show clock overlay
+r                            | tmux           | reload config
+d                            | tmux           | detach current session
+s                            | tmux           | switch session
+c                            | tmux           | create new window
+&                            | tmux           | close active window
+,                            | tmux           | rename active window
+l                            | tmux           | switch to last active window (marked as -)
+p                            | tmux           | switch to previous window
+n                            | tmux           | switch to next window
+[0-9]                        | tmux           | switch to window 1...9
+" or shift+h                 | tmux           | tile active window horizontally
+% or shift+v                 | tmux           | tile active window vertically
+w                            | tmux           | show list of windows
+[←,↑,↓,→]                    | tmux           | change active container
+ctrl+[←,↑,↓,→]               | tmux           | change active container size
+space                        | tmux           | switch windows devision
+{,}                          | tmux           | move active container left, right
+!                            | tmux           | open active container in new window
+shift+mouse                  | tmux,copy      | select to copy
+[                            | tmux,copy      | activate scroll-mode (arrow keys)
+v                            | tmux,copy      | begin selection
+V                            | tmux,copy      | select line
+ctrl+v                       | tmux,copy      | select rectangle
+y                            | tmux,copy      | copy to clipboard
