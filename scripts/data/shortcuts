@@ -130,12 +130,17 @@ diB                          | vim,edit       | delete inner '{' '}' block
 daB                          | vim,edit       | delete a '{' '}' block
 das                          | vim,edit       | delete a sentence
 diw                          | vim,edit       | delete word under cursor
+daw                          | vim,edit       | delete word under cursor till next word
 df[c]                        | vim,edit       | delete until next occurence of [c] (char) found (including [c])
 dt[c]                        | vim,edit       | delete until next occurence of [c] (char) found (without [c])
-ciw                          | vim,edit       | change word under cursor
+cib                          | vim,edit       | change contents in parenthesis '(' ')' block (e.g. function args)
 ciB                          | vim,edit       | change inner '{' '}' block
-cf[c]                        | vim,edit       | see "df[c]" but change instead of delete
-ct[c]                        | vim,edit       | see "dt[c]" but change instead of delete
+caB                          | vim,edit       | change a '{' '}' block
+cas                          | vim,edit       | change a sentence
+ciw                          | vim,edit       | change word under cursor
+caw                          | vim,edit       | change word under cursor till next word
+cf[c]                        | vim,edit       | change until next occurence of [c] (char) found (including [c])
+ct[c]                        | vim,edit       | change until next occurence of [c] (char) found (without [c])
 #J                           | vim,edit       | merge # number of lines together
 gq                           | vim,edit       | (in visual-mode) format selected text according to line-width
 gqq                          | vim,edit       | format current line according to line-width
