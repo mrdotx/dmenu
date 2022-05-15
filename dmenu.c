@@ -839,8 +839,8 @@ setup(void)
 
 		if (centered) {
 			mw = MIN(MAX(max_textw() + promptw, min_width), wa.width) - (border_width * 2);
-			x = (wa.width  - mw) / 2;
-			y = (wa.height - mh) / 2;
+			x = ((wa.width  - mw) / 2) - border_width;
+			y = ((wa.height - mh) / 2) - border_width;
 		} else {
 			x = 0;
 			y = topbar ? 0 : wa.height - mh;
