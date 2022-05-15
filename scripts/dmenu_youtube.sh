@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-05-14T20:21:17+0200
+# date:   2022-05-15T08:14:33+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -75,20 +75,21 @@ case "$search" in
                 -u low \
                 -t "$1" \
                 "$2" \
-                "search: $search\nresult: $search_string" \
+                "search:  $search\nresult:  $search_string\nattempt: $3" \
                 -h string:x-canonical-private-synchronous:"$message_id"
         }
 
-        # this loop is a workaround, because often yt-dlp returns no results
-        attempts=30
+        # if yt-dlp returns no results try again 30 times
+        max_attempts=30
+        attempt=1
         message_id="$(date +%s)"
-        while [ $attempts -ge 1 ] \
+        while [ $attempt -le $max_attempts ] \
             && [ -z "$result" ]; do
-                notification 0 "yt-dlp - please wait...$attempts"
+                notification 0 "yt-dlp - please wait..." "$attempt/$max_attempts"
                 result=$(yt-dlp "$search_result:$search" -e --get-id)
-                attempts=$((attempts-1))
+                attempt=$((attempt+1))
         done
-        notification 1000 "yt-dlp - finished"
+        notification 1000 "yt-dlp - finished" "$((attempt-1))/$max_attempts"
 
         select=$(printf "%s" "$result" \
             | sed -n '1~2p' \
