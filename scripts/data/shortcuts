@@ -45,13 +45,16 @@ super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
 super+/                      | i3,apps        | show shortcuts (dmenu)
 super+shift+/                | i3,apps        | show notes (BROWSER)
-AudioRaiseVolume             | i3,multimedia  | increase volume by 5
-AudioLowerVolume             | i3,multimedia  | decrease volume by 5
-AudioMute                    | i3,multimedia  | mute audio
-MonBrightnessUp              | i3,multimedia  | increase monitor brightness by 5
-MonBrightnessDown            | i3,multimedia  | decrease monitor brightness by 5
-TouchpadToggle               | i3,multimedia  | enables/disables touchpad
-Cut                          | i3,multimedia  | autostart
+XF86AudioRaiseVolume         | i3,multimedia  | increase volume by 5
+XF86AudioLowerVolume         | i3,multimedia  | decrease volume by 5
+XF86AudioMute                | i3,multimedia  | mute audio
+XF86MonBrightnessUp          | i3,multimedia  | increase monitor brightness by 5
+XF86MonBrightnessDown        | i3,multimedia  | decrease monitor brightness by 5
+XF86TouchpadToggle           | i3,multimedia  | enables/disables touchpad
+XF86Cut                      | i3,multimedia  | autostart
+XF86WakeUp                   | i3,multimedia  | system reboot
+XF86PowerOff                 | i3,multimedia  | system shutdown
+XF86Sleep                    | i3,multimedia  | system suspend
 super+[1-0]                  | i3,workspaces  | switch to workspace 1...10
 super+ctrl+[1-0]             | i3,workspaces  | move focused container to workspace 1...10
 super+shift+[1-0]            | i3,workspaces  | move to workspace with focused to container 1...10
