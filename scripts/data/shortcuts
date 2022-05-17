@@ -53,8 +53,6 @@ XF86MonBrightnessDown        | i3,multimedia  | decrease monitor brightness by 5
 XF86TouchpadToggle           | i3,multimedia  | enables/disables touchpad
 XF86Cut                      | i3,multimedia  | autostart
 XF86WakeUp                   | i3,multimedia  | system reboot
-XF86PowerOff                 | i3,multimedia  | system shutdown
-XF86Sleep                    | i3,multimedia  | system suspend
 super+[1-0]                  | i3,workspaces  | switch to workspace 1...10
 super+ctrl+[1-0]             | i3,workspaces  | move focused container to workspace 1...10
 super+shift+[1-0]            | i3,workspaces  | move to workspace with focused to container 1...10
