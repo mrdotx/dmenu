@@ -88,6 +88,7 @@ ctrl+alt+delete              | i3,system      | exit mode
 alt+space                    | i3,system      | services mode
 :q                           | vim            | close
 :w                           | vim            | write/saves
+:W                           | vim            | write/saves as root [cmd]
 :wa[!]                       | vim            | write/save all windows [force]
 :wq                          | vim            | write/save and close
 :x                           | vim            | save and quit, same as wq
