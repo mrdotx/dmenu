@@ -45,14 +45,21 @@ super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
 super+/                      | i3,apps        | show shortcuts (dmenu)
 super+shift+/                | i3,apps        | show notes (BROWSER)
-XF86AudioRaiseVolume         | i3,multimedia  | increase volume by 5
-XF86AudioLowerVolume         | i3,multimedia  | decrease volume by 5
+XF86Explorer                 | i3,multimedia  | ranger (tmux)
+XF86HomePage                 | i3,multimedia  | secondary browser (firefox)
+XF86Calculator               | i3,multimedia  | calculator (dmenu)
+XF86Tools                    | i3,multimedia  | cmus (tmux)
+XF86AudioPrev                | i3,multimedia  | cmus previous
+XF86AudioNext                | i3,multimedia  | cmus next
+XF86AudioPlay                | i3,multimedia  | cmus toggle pause
+XF86AudioStop                | i3,multimedia  | cmus stop
 XF86AudioMute                | i3,multimedia  | mute audio
-XF86MonBrightnessUp          | i3,multimedia  | increase monitor brightness by 5
+XF86AudioLowerVolume         | i3,multimedia  | decrease volume by 5
+XF86AudioRaiseVolume         | i3,multimedia  | increase volume by 5
 XF86MonBrightnessDown        | i3,multimedia  | decrease monitor brightness by 5
-XF86TouchpadToggle           | i3,multimedia  | enables/disables touchpad
+XF86MonBrightnessUp          | i3,multimedia  | increase monitor brightness by 5
 XF86Cut                      | i3,multimedia  | autostart
-XF86WakeUp                   | i3,multimedia  | system reboot
+XF86TouchpadToggle           | i3,multimedia  | enables/disables touchpad
 super+[1-0]                  | i3,workspaces  | switch to workspace 1...10
 super+ctrl+[1-0]             | i3,workspaces  | move focused container to workspace 1...10
 super+shift+[1-0]            | i3,workspaces  | move to workspace with focused to container 1...10
@@ -86,6 +93,12 @@ ctrl+alt+backspace           | i3,system      | reload i3 configuration file
 ctrl+alt+escape              | i3,system      | restart i3 inplace (preserves layout/session)
 ctrl+alt+delete              | i3,system      | exit mode
 alt+space                    | i3,system      | services mode
+super+f1                     | i3,system      | change display settings (dmenu)
+super+f2                     | i3,system      | autostart
+super+f5                     | i3,system      | move mouse away
+super+f6                     | i3,system      | system reboot
+super+f7                     | i3,system      | system suspend
+super+f8                     | i3,system      | system shutdown
 :q                           | vim            | close
 :w                           | vim            | write/saves
 :W                           | vim            | write/saves as root [cmd]
