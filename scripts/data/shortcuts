@@ -96,9 +96,9 @@ alt+space                    | i3,system      | services mode
 super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | autostart
 super+f5                     | i3,system      | move mouse away
-super+f6                     | i3,system      | system reboot
-super+f7                     | i3,system      | system suspend
-super+f8                     | i3,system      | system shutdown
+super+f6                     | i3,system      | reboot
+super+f7                     | i3,system      | suspend
+super+f8                     | i3,system      | shutdown
 :q                           | vim            | close
 :w                           | vim            | write/saves
 :W                           | vim            | write/saves as root [cmd]
