@@ -40,7 +40,6 @@ super+shift+[                | i3,apps        | man pages (dmenu)
 super+]                      | i3,apps        | package manager (fzf)
 super+\                      | i3,apps        | color picker
 super+shift+\                | i3,apps        | start/stop conky
-super+'                      | i3,apps        | network manager (dmenu)
 super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
 super+/                      | i3,apps        | show shortcuts (dmenu)
@@ -82,8 +81,6 @@ super+print                  | i3,system      | macros mode
 super+return                 | i3,system      | terminal (urxvt)
 super+shift+return           | i3,system      | terminal (tmux)
 super+ctrl+return            | i3,system      | backup terminal (st)
-super+l                      | i3,system      | lock screen
-super+shift+l                | i3,system      | suspend
 super+f                      | i3,system      | toggle fullscreen mode for focused container
 super+shift+f                | i3,system      | toggle fullscreen mode global
 super+ctrl+f                 | i3,system      | move container to multimedia workspace
@@ -94,11 +91,13 @@ ctrl+alt+escape              | i3,system      | restart i3 inplace (preserves la
 ctrl+alt+delete              | i3,system      | exit mode
 alt+space                    | i3,system      | services mode
 super+f1                     | i3,system      | change display settings (dmenu)
-super+f2                     | i3,system      | autostart
-super+f5                     | i3,system      | move mouse away
-super+f6                     | i3,system      | reboot
-super+f7                     | i3,system      | suspend
+super+f2                     | i3,system      | network manager (dmenu)
+super+f5                     | i3,system      | lock screen
+super+f6                     | i3,system      | suspend
+super+f7                     | i3,system      | reboot
 super+f8                     | i3,system      | shutdown
+super+f9                     | i3,system      | move mouse away
+super+f10                    | i3,system      | autostart
 :q                           | vim            | close
 :w                           | vim            | write/saves
 :W                           | vim            | write/saves as root [cmd]
