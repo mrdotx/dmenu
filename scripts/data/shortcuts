@@ -12,6 +12,8 @@ super+shift+h                | i3,apps        | ssh (dmenu)
 super+i                      | i3,apps        | inkscape
 super+j                      | i3,apps        | jameica
 super+k                      | i3,apps        | kodi
+super+l                      | i3,apps        | link handler (dragon-drop)
+super+shift+l                | i3,apps        | link handler (clipboard)
 super+m                      | i3,apps        | thunderbird
 super+n                      | i3,apps        | newsboat (tmux)
 super+shift+n                | i3,apps        | podboat (tmux)
@@ -22,23 +24,20 @@ super+r                      | i3,apps        | ranger (tmux)
 super+s                      | i3,apps        | scribus
 super+t                      | i3,apps        | htop (tmux)
 super+shift+t                | i3,apps        | btop (tmux)
-super+u                      | i3,apps        | un-/mount (dmenu)
+super+u                      | i3,apps        | unicode symbols (dmenu)
 super+v                      | i3,apps        | virtualbox (dmenu)
 super+shift+v                | i3,apps        | virtualbox manager
 super+w                      | i3,apps        | secondary browser (firefox)
 super+shift+w                | i3,apps        | primary browser (w3m)
 super+ctrl+w                 | i3,apps        | backup browser (surf)
-super+x                      | i3,apps        | link handler (dragon-drop)
-super+shift+x                | i3,apps        | link handler (clipboard)
+super+x                      | i3,apps        | color picker
+super+shift+x                | i3,apps        | start/stop conky
 super+y                      | i3,apps        | youtube (dmenu)
 super+shift+y                | i3,apps        | youtube (clipboard)
 super+z                      | i3,apps        | midnight commander (tmux)
-super+`                      | i3,apps        | unicode symbols (dmenu)
-super+[                      | i3,apps        | man pages (fzf)
-super+shift+[                | i3,apps        | man pages (dmenu)
-super+]                      | i3,apps        | package manager (fzf)
-super+\                      | i3,apps        | color picker
-super+shift+\                | i3,apps        | start/stop conky
+super+`                      | i3,apps        | package manager (fzf)
+super+\                      | i3,apps        | man pages (fzf)
+super+shift+\                | i3,apps        | man pages (dmenu)
 super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
 super+/                      | i3,apps        | show shortcuts (dmenu)
@@ -91,6 +90,7 @@ ctrl+alt+delete              | i3,system      | exit mode
 alt+space                    | i3,system      | services mode
 super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
+super+f3                     | i3,system      | un-/mount (dmenu)
 super+f5                     | i3,system      | lock screen
 super+f6                     | i3,system      | suspend
 super+f7                     | i3,system      | reboot
