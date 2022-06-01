@@ -1,7 +1,7 @@
 super+a                      | i3,apps        | alsamixer
-super+Shift+a                | i3,apps        | alsa (dmenu)
+super+Shift+a                | i3,apps        | alsa device (dmenu)
 super+b                      | i3,apps        | bookmarks (dmenu)
-super+Shift+b                | i3,apps        | bookmarks (sync)
+super+Shift+b                | i3,apps        | bookmarks sync
 super+c                      | i3,apps        | cmus (tmux)
 super+shift+c                | i3,apps        | popup with song information if cmus is running
 super+d                      | i3,apps        | darktable
