@@ -3,13 +3,12 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-05-12T11:36:11+0200
+# date:   2022-06-05T18:04:38+0200
 
 notification() {
     notify-send \
-        -u low  \
         -t "${3:-5000}" \
-        -i "dialog-information" \
+        -u low  \
         "iNet wireless daemon$1" \
         "$2" \
         -h string:x-canonical-private-synchronous:"$message_id"

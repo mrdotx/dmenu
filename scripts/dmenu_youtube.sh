@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-05-15T19:06:17+0200
+# date:   2022-06-05T18:05:55+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -71,8 +71,8 @@ case "$search" in
 
         notification() {
             notify-send \
-                -u low \
                 -t "$1" \
+                -u low \
                 "$2" \
                 "search:  $search\nresult:  $search_string\nattempt: $3" \
                 -h string:x-canonical-private-synchronous:"$message_id"
