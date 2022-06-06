@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-06-05T18:04:38+0200
+# date:   2022-06-06T10:53:03+0200
 
 notification() {
     notify-send \
@@ -19,13 +19,42 @@ remove_escape_sequences() {
         | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g;/^\s*$/d'
 }
 
+toggle_device_power() {
+    interface=$(iwctl device list \
+        | remove_escape_sequences \
+        | awk '{print $1" ==> ["$3"] == "$2""}' \
+        | dmenu -l 3 -c -bw 1 -r -i -p "interface »"
+    )
+
+    device=$(printf "%s" "$interface" | cut -d ' ' -f1)
+    power=$(printf "%s" "$interface" | cut -d ' ' -f3)
+
+    case $power in
+        \[on\])
+            iwctl device "$device" set-property Powered off
+            ;;
+        \[off\])
+            iwctl device "$device" set-property Powered on
+            ;;
+    esac
+
+    get_interface
+}
+
 get_interface() {
     interface=$(iwctl device list \
         | remove_escape_sequences \
-        | awk '{print $1" == ["$2"] == ["$3"]"}' \
-        | dmenu -l 3 -c -bw 1 -r -i -p "interface »" \
-        | cut -d ' ' -f1
+        | awk '{print $1" == "$2" == ["$3"]\n== toggle device power =="}' \
+        | dmenu -l 3 -c -bw 1 -r -i -p "interface »"
     )
+
+    power=$(printf "%s" "$interface" | cut -d ' ' -f5)
+    interface=$(printf "%s" "$interface" | cut -d ' ' -f1)
+
+    [ "$interface" = "==" ] \
+        || [ "$power" = "[off]" ] \
+        && toggle_device_power
+
     [ -n "$interface" ] \
         || exit 1
 }
