@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-28T21:36:19+0200
+# date:   2022-06-10T20:21:05+0200
 
 # get active window id
 window_id=$(xdotool getactivewindow)
@@ -21,13 +21,15 @@ result=$(printf "%s\n" "$@" \
 [ -n "$result" ] \
     && label="$* = $result »"
 
-select=$(printf "%s\n%s [%s...]\n%s\n%s\n" \
+menu=$(printf "%s\n" \
             "clear" \
-            "calculate from clipboard" \
-            "$(printf "%s" "$clipboard" | head -c10)" \
             "insert at cursor" \
             "copy to clipboard" \
-    | dmenu -b -l 4 -bw 1 -w "$window_id" -p "${label-"calc »"}" \
+            "clear clipboard" \
+            "$clipboard")
+
+select=$(printf "%s\n" "$menu" \
+    | dmenu -b -l 5 -bw 1 -w "$window_id" -p "${label-"calc »"}" \
 )
 
 case $select in
@@ -35,9 +37,6 @@ case $select in
         ;;
     clear)
         "$0" &
-        ;;
-    "calculate from clipboard"*)
-        "$0" "$clipboard" &
         ;;
     "insert at cursor")
         printf "%s" "$result" \
@@ -52,10 +51,17 @@ case $select in
                 "Clipboard" \
                 "Result copied: $result"
         ;;
-    [1-9]*)
-        "$0" "$select" &
+    "clear clipboard")
+        xsel -c -b \
+            && notify-send \
+                "Clipboard" \
+                "cleared..." \
+            && "$0" &
+        ;;
+    [-+/*]*)
+        "$0" "$result$select" &
         ;;
     *)
-        "$0" "$result$select" &
+        "$0" "$select" &
         ;;
 esac
