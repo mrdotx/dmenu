@@ -253,11 +253,21 @@ t                            | ranger         | tag files
 cw                           | ranger         | rename marked files
 /                            | ranger         | search files
 n                            | ranger         | next hit from search
+q                            | ranger         | quit
 yy                           | ranger         | yank, copy file
 dd                           | ranger         | move file
 pp                           | ranger         | paste file
+xx                           | ranger         | search in files
 u                            | ranger         | show undo-functions
-dD                           | ranger         | delete files
+d                            | ranger         | delete shortcuts
+,                            | ranger         | document shortcuts
+x                            | ranger         | development shortcuts
+ctrl+f                       | ranger         | find files
+ctrl+g                       | ranger         | locate files
+ctrl+t                       | ranger         | go to tagged files
+ctrl+c                       | ranger         | drag-n-drop (external) all files and exit
+ctrl+x                       | ranger         | drag-n-drop (external) selected files
+ctrl+v                       | ranger         | drag-n-drop (ranger)
 ctrl+n                       | ranger,tabs    | create new tab
 ctrl+w                       | ranger,tabs    | close active tab
 tab                          | ranger,tabs    | next tab
