@@ -246,11 +246,14 @@ alt+o                        | terminal,st    | open url from clipboard
 ?                            | ranger         | show help menus
 i                            | ranger         | show file information
 r                            | ranger         | open file with
+g                            | ranger         | goto directory
 o                            | ranger         | change sort order
 z                            | ranger         | change settings (zh show hidden files)
-space                        | ranger         | mark active file
-t                            | ranger         | tag files
+.                            | ranger         | change filter stack
+M                            | ranger         | change line mode
+space                        | ranger         | mark highlighted file
 cw                           | ranger         | rename marked files
+t                            | ranger         | tag files
 /                            | ranger         | search files
 n                            | ranger         | next hit from search
 q                            | ranger         | quit
