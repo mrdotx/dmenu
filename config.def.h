@@ -10,7 +10,7 @@ static int min_width = 250;
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static char font[]  = "DejaVuSansMono Nerd Font:pixelsize=16";
 static char font0[] = "DejaVu Sans:pixelsize=14";
-static char font1[] = "JoyPixels:pixelsize=14";
+static char font1[] = "Noto Color Emoji:pixelsize=14";
 static const char *fonts[] = {
 	font,
 	font0,
