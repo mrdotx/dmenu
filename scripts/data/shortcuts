@@ -5,9 +5,9 @@ super+Shift+b                | i3,apps        | bookmarks sync
 super+c                      | i3,apps        | cmus (tmux)
 super+shift+c                | i3,apps        | popup with song information if cmus is running
 super+d                      | i3,apps        | darktable
-super+e                      | i3,apps        | editor mode
+super+e                      | i3,apps        | editor [i3 mode]
 super+g                      | i3,apps        | gimp
-super+h                      | i3,apps        | ssh mode
+super+h                      | i3,apps        | ssh [i3 mode]
 super+shift+h                | i3,apps        | ssh (dmenu)
 super+i                      | i3,apps        | inkscape
 super+j                      | i3,apps        | jameica
@@ -71,11 +71,11 @@ super+shift+prior            | i3,windows     | toggle window tiling/floating
 super+shift+next             | i3,windows     | change focus between tiling/floating windows
 super+shift+home             | i3,windows     | toggle sticky
 super+tab                    | i3,windows     | window switcher
-super+space                  | i3,windows     | container mode
+super+space                  | i3,windows     | container [i3 mode]
 super(release)               | i3,system      | primary program launcher (i3-dmenu-desktop)
 shift+super(release)         | i3,system      | secondary program launcher (dmenu)
 print                        | i3,system      | screenshot (dmenu)
-super+print                  | i3,system      | macros mode
+super+print                  | i3,system      | macros [i3 mode]
 super+return                 | i3,system      | terminal (urxvt)
 super+shift+return           | i3,system      | terminal (tmux)
 super+ctrl+return            | i3,system      | backup terminal (st)
@@ -86,8 +86,8 @@ ctrl+q                       | i3,system      | kill focused window
 ctrl+shift+q                 | i3,system      | kill all windows on focused workspace
 ctrl+alt+backspace           | i3,system      | reload i3 configuration file
 ctrl+alt+escape              | i3,system      | restart i3 inplace (preserves layout/session)
-ctrl+alt+delete              | i3,system      | exit mode
-alt+space                    | i3,system      | services mode
+ctrl+alt+delete              | i3,system      | exit [i3 mode]
+alt+space                    | i3,system      | services [i3 mode]
 super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
 super+f3                     | i3,system      | un-/mount (dmenu)
