@@ -1,5 +1,4 @@
 super+a                      | i3,apps        | alsamixer
-super+Shift+a                | i3,apps        | alsa device (dmenu)
 super+b                      | i3,apps        | bookmarks (dmenu)
 super+Shift+b                | i3,apps        | bookmarks sync
 super+c                      | i3,apps        | cmus (tmux)
@@ -30,12 +29,12 @@ super+shift+v                | i3,apps        | virtualbox manager
 super+w                      | i3,apps        | secondary browser (firefox)
 super+shift+w                | i3,apps        | primary browser (w3m)
 super+ctrl+w                 | i3,apps        | backup browser (surf)
-super+x                      | i3,apps        | color picker
-super+shift+x                | i3,apps        | start/stop conky
+super+x                      | i3,apps        | start/stop conky
 super+y                      | i3,apps        | youtube (dmenu)
 super+shift+y                | i3,apps        | youtube (clipboard)
 super+z                      | i3,apps        | midnight commander (tmux)
 super+`                      | i3,apps        | package manager (fzf)
+super+=                      | i3,apps        | color picker
 super+\                      | i3,apps        | man pages (fzf)
 super+shift+\                | i3,apps        | man pages (dmenu)
 super+,                      | i3,apps        | calculator (dmenu)
@@ -91,6 +90,7 @@ alt+space                    | i3,system      | services [i3 mode]
 super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
 super+f3                     | i3,system      | un-/mount (dmenu)
+super+f4                     | i3,system      | alsa device (dmenu)
 super+f5                     | i3,system      | lock screen
 super+f6                     | i3,system      | suspend
 super+f7                     | i3,system      | reboot
@@ -311,7 +311,7 @@ c                            | surf           | stops loading current page or do
 [j,k]                        | surf           | scroll page up or down
 [space,o]                    | surf           | scroll half page up or down
 [i,u]                        | surf           | scroll horizontally to right or left
-[plus,minus,equal]           | surf           | zoom in, out or reset
+[+,-,=]                      | surf           | zoom in, out or reset
 /                            | surf           | open search bar
 [n,N]                        | surf           | next or previous search result
 ctrl+f                       | surf           | show links to follow
