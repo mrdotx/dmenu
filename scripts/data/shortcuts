@@ -95,7 +95,7 @@ super+f5                     | i3,system      | lock screen
 super+f6                     | i3,system      | suspend
 super+f7                     | i3,system      | reboot
 super+f8                     | i3,system      | shutdown
-super+f12                    | i3,system      | autostart
+super+home                   | i3,system      | autostart
 super+menu                   | i3,system      | move mouse away
 :q                           | vim            | close
 :w                           | vim            | write/saves
