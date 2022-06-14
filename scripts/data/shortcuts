@@ -91,7 +91,6 @@ super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
 super+f3                     | i3,system      | un-/mount (dmenu)
 super+f4                     | i3,system      | alsa device (dmenu)
-super+scroll_lock            | i3,system      | logout
 super+pause                  | i3,system      | autostart
 super+insert                 | i3,system      | lock screen
 super+delete                 | i3,system      | suspend
