@@ -35,8 +35,9 @@ super+shift+y                | i3,apps        | youtube (clipboard)
 super+z                      | i3,apps        | midnight commander (tmux)
 super+`                      | i3,apps        | package manager (fzf)
 super+=                      | i3,apps        | color picker
-super+\                      | i3,apps        | man pages (fzf)
-super+shift+\                | i3,apps        | man pages (dmenu)
+super+]                      | i3,apps        | man pages (fzf)
+super+shift+]                | i3,apps        | man pages (dmenu)
+super+\                      | i3,apps        | autostart
 super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
 super+/                      | i3,apps        | show shortcuts (dmenu)
@@ -54,8 +55,7 @@ XF86AudioLowerVolume         | i3,multimedia  | decrease volume by 5
 XF86AudioRaiseVolume         | i3,multimedia  | increase volume by 5
 XF86MonBrightnessDown        | i3,multimedia  | decrease monitor brightness by 5
 XF86MonBrightnessUp          | i3,multimedia  | increase monitor brightness by 5
-XF86Cut                      | i3,multimedia  | autostart
-XF86TouchpadToggle           | i3,multimedia  | enables/disables touchpad
+XF86Cut                      | i3,multimedia  | enables/disables touchpad
 super+[1-0]                  | i3,workspaces  | switch to workspace 1...10
 super+ctrl+[1-0]             | i3,workspaces  | move focused container to workspace 1...10
 super+shift+[1-0]            | i3,workspaces  | move to workspace with focused to container 1...10
@@ -91,7 +91,6 @@ super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
 super+f3                     | i3,system      | un-/mount (dmenu)
 super+f4                     | i3,system      | alsa device (dmenu)
-super+pause                  | i3,system      | autostart
 super+insert                 | i3,system      | lock screen
 super+delete                 | i3,system      | suspend
 super+home                   | i3,system      | reboot
