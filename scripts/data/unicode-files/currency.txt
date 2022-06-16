@@ -1,0 +1,36 @@
+$ currency: Dollar; 0024
+¢ currency: Cent; 00A2
+£ currency: Pound British; 00A3
+¥ currency: Yen Japan; 00A5
+₠ currency: ECU Europe; 20A0
+₡ currency: Colon Costa Rica; 20A1
+₢ currency: Cruzeiro Brazil; 20A2
+₣ currency: Franc French; 20A3
+₤ currency: Lira Italy; 20A4
+₥ currency: Mill; 20A5
+₦ currency: Naira Nigeria; 20A6
+₧ currency: Peseta Spain; 20A7
+₨ currency: Rupee; 20A8
+₩ currency: Won Korea; 20A9
+₪ currency: Shekel Israel; 20AA
+₫ currency: Dong Vietnam; 20AB
+€ currency: Euro; 20AC
+₭ currency: Kip Laos; 20AD
+₮ currency: Tugrik Mongolia; 20AE
+₯ currency: Drachma Greek; 20AF
+₰ currency: Penny German; 20B0
+₱ currency: Peso; 20B1
+₲ currency: Guarani Paraguay; 20B2
+₳ currency: Austral; 20B3
+₴ currency: Hryvnia Ukraine; 20B4
+₵ currency: Cedi Ghana; 20B5
+₶ currency: Livre Tournois France; 20B6
+₷ currency: Spesmilo; 20B7
+₸ currency: Tenge Kazakhstan; 20B8
+₹ currency: Rupee Indian; 20B9
+₺ currency: Lira Turkish; 20BA
+₻ currency: Nordic Mark; 20BB
+₼ currency: Manat Azerbaijan; 20BC
+₽ currency: Ruble Russia; 20BD
+₾ currency: Lari Georgia; 20BE
+₿ currency: Bitcoin; 20BF

@@ -7432,39 +7432,39 @@
  nf-weather-wind_south_west; e355
  nf-weather-wind_west; e354
  nf-weather-windy; e31e
-₳ Austral Currency; 20B3
-₿ Bitcoin Currency; 20BF
-₵ Cedi Ghana Currency; 20B5
-¢ Cent Currency; 00A2
-₡ Colon Costa Rica Currency; 20A1
-₢ Cruzeiro Brazil Currency; 20A2
-$ Dollar Currency; 0024
-₫ Dong Vietnam Currency; 20AB
-₯ Drachma Greek Currency; 20AF
-₠ ECU Europe Currency; 20A0
-€ Euro Currency; 20AC
-₣ Franc French Currency; 20A3
-₲ Guarani Paraguay Currency; 20B2
-₴ Hryvnia Ukraine Currency; 20B4
-₭ Kip Laos Currency; 20AD
-₾ Lari Georgia Currency; 20BE
-₤ Lira Italy Currency; 20A4
-₺ Lira Turkish Currency; 20BA
-₶ Livre Tournois France Currency; 20B6
-₼ Manat Azerbaijan Currency; 20BC
-₥ Mill Currency; 20A5
-₦ Naira Nigeria Currency; 20A6
-₻ Nordic Mark Currency; 20BB
-₰ Penny German Currency; 20B0
-₧ Peseta Spain Currency; 20A7
-₱ Peso Currency; 20B1
-£ Pound British Currency; 00A3
-₽ Ruble Russia Currency; 20BD
-₨ Rupee Currency; 20A8
-₹ Rupee Indian Currency; 20B9
-₪ Shekel Israel Currency; 20AA
-₷ Spesmilo Currency; 20B7
-₸ Tenge Kazakhstan Currency; 20B8
-₮ Tugrik Mongolia Currency; 20AE
-₩ Won Korea Currency; 20A9
-¥ Yen Japan Currency; 00A5
+₳ currency: Austral; 20B3
+₿ currency: Bitcoin; 20BF
+₵ currency: Cedi Ghana; 20B5
+¢ currency: Cent; 00A2
+₡ currency: Colon Costa Rica; 20A1
+₢ currency: Cruzeiro Brazil; 20A2
+$ currency: Dollar; 0024
+₫ currency: Dong Vietnam; 20AB
+₯ currency: Drachma Greek; 20AF
+₠ currency: ECU Europe; 20A0
+€ currency: Euro; 20AC
+₣ currency: Franc French; 20A3
+₲ currency: Guarani Paraguay; 20B2
+₴ currency: Hryvnia Ukraine; 20B4
+₭ currency: Kip Laos; 20AD
+₾ currency: Lari Georgia; 20BE
+₤ currency: Lira Italy; 20A4
+₺ currency: Lira Turkish; 20BA
+₶ currency: Livre Tournois France; 20B6
+₼ currency: Manat Azerbaijan; 20BC
+₥ currency: Mill; 20A5
+₦ currency: Naira Nigeria; 20A6
+₻ currency: Nordic Mark; 20BB
+₰ currency: Penny German; 20B0
+₧ currency: Peseta Spain; 20A7
+₱ currency: Peso; 20B1
+£ currency: Pound British; 00A3
+₽ currency: Ruble Russia; 20BD
+₨ currency: Rupee; 20A8
+₹ currency: Rupee Indian; 20B9
+₪ currency: Shekel Israel; 20AA
+₷ currency: Spesmilo; 20B7
+₸ currency: Tenge Kazakhstan; 20B8
+₮ currency: Tugrik Mongolia; 20AE
+₩ currency: Won Korea; 20A9
+¥ currency: Yen Japan; 00A5

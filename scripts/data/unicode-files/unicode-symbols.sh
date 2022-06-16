@@ -3,10 +3,12 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/data/unicode-files/unicode-symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-05-03T12:51:37+0200
+# date:   2022-06-16T10:27:47+0200
 
+# config
 output_file="../unicode-symbols"
 
+# data functions
 get_nerdfont() {
     nerdfonts_url="https://www.nerdfonts.com/cheat-sheet"
 
@@ -48,6 +50,6 @@ get_emoji() {
     # nerd font
     get_nerdfont | sort -u -k 2;
 
-    # others
-    sort -u -k 2 "others.txt"
+    # currency
+    sort -u -k 2 "currency.txt"
 } > "$output_file"
