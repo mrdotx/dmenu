@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/data/unicode-files/unicode-symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-06-16T10:27:47+0200
+# date:   2022-06-17T18:17:57+0200
 
 # config
 output_file="../unicode-symbols"
@@ -33,7 +33,7 @@ get_nerdfont() {
 }
 
 get_emoji() {
-    emoji_url="https://unicode.org/Public/emoji/14.0/emoji-test.txt"
+    emoji_url="https://unicode.org/Public/emoji/15.0/emoji-test.txt"
 
     curl -fsS "$emoji_url" \
         | grep "; fully-qualified" \
