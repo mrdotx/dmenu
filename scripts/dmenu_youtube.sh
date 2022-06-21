@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-06-07T16:27:02+0200
+# date:   2022-06-21T20:33:06+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -29,6 +29,7 @@ case "$search" in
         | https://* \
         | http://*)
             notify-send \
+                -u low \
                 "yt-dlp - open/search from clipboard" \
                 "$search"
             open="$search"

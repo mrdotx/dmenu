@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-05-15T17:36:39+0200
+# date:   2022-06-21T20:36:04+0200
 
 # get active window id
 window_id=$(xdotool getactivewindow)
@@ -26,5 +26,6 @@ printf "%s" "$symbol" \
     | xsel -i -b
 
 notify-send \
+    -u low \
     "copied $symbol to clipboard" \
     "$select"

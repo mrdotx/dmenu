@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-06-10T20:21:05+0200
+# date:   2022-06-21T20:28:06+0200
 
 # get active window id
 window_id=$(xdotool getactivewindow)
@@ -48,12 +48,14 @@ case $select in
         printf "%s\n" "$result" \
             | xsel -i -b \
             && notify-send \
+                -u low \
                 "Clipboard" \
                 "Result copied: $result"
         ;;
     "clear clipboard")
         xsel -c -b \
             && notify-send \
+                -u low \
                 "Clipboard" \
                 "cleared..." \
             && "$0" &

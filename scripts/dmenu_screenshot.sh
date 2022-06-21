@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_screenshot.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-05-14T12:08:15+0200
+# date:   2022-06-21T20:34:41+0200
 
 # config
 screenshot_directory="$HOME/Desktop"
@@ -36,6 +36,7 @@ case $select in
         ;;
     "selection"*)
         notify-send \
+            -u low \
             "maim" \
             "select an area or a window for the screenshot"
         execute "$select -so"

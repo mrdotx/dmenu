@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-27T09:46:06+0200
+# date:   2022-06-21T20:31:34+0200
 
 # auth can be something like sudo -A, doas -- or nothing,
 # depending on configuration requirements
@@ -23,6 +23,7 @@ unmount() {
     [ -n "$select" ] \
         && $auth umount "$select" \
         && notify-send \
+            -u low \
             "unmount" \
             "$select unmounted" \
         && rm -d "$select"
@@ -62,6 +63,7 @@ mount_remote() {
         && sleep 1 \
         && rclone mount "$select:$remote_directory" "$mount_point" \
         & notify-send \
+            -u low \
             "remote mount" \
             "$select mounted to $mount_point"
 }
@@ -96,6 +98,7 @@ mount_usb() {
                 ;;
             esac \
         && notify-send \
+            -u low \
             "usb mount $partition_type" \
             "$select mounted to $mount_point"
 }
@@ -122,6 +125,7 @@ mount_image() {
         && mkdir "$mount_point" \
         && $auth mount -o loop "$search/$select" "$mount_point" \
         && notify-send \
+            -u low \
             "image mount" \
             "$select mounted to $mount_point"
 }
@@ -142,6 +146,7 @@ mount_android() {
         && mkdir "$mount_point" \
         && simple-mtpfs --device "$select" "$mount_point" \
         && notify-send \
+            -u low \
             "android mount" \
             "$select mounted to $mount_point"
 }
@@ -160,6 +165,7 @@ dvd_eject() {
     [ -z "$select" ] \
         && $auth eject "$select" \
         && notify-send \
+            -u low \
             "dvd eject" \
             "$select ejected"
 }
