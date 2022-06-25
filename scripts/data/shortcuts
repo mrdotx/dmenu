@@ -74,6 +74,7 @@ super+space                  | i3,windows     | container [i3 mode]
 super(release)               | i3,system      | primary program launcher (i3-dmenu-desktop)
 shift+super(release)         | i3,system      | secondary program launcher (dmenu)
 print                        | i3,system      | screenshot (dmenu)
+super+print                  | i3,system      | macros [i3 mode]
 super+return                 | i3,system      | terminal (urxvt)
 super+shift+return           | i3,system      | terminal (tmux)
 super+ctrl+return            | i3,system      | backup terminal (st)
@@ -86,7 +87,6 @@ ctrl+alt+backspace           | i3,system      | reload i3 configuration file
 ctrl+alt+escape              | i3,system      | restart i3 inplace (preserves layout/session)
 ctrl+alt+delete              | i3,system      | exit [i3 mode]
 alt+space                    | i3,system      | services [i3 mode]
-super+menu                   | i3,system      | macros [i3 mode]
 super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
 super+f3                     | i3,system      | un-/mount (dmenu)
@@ -96,6 +96,7 @@ super+pause                  | i3,system      | shutdown
 super+backspace              | i3,system      | reboot
 super+insert                 | i3,system      | lock screen
 super+delete                 | i3,system      | sleep (lock + suspend)
+super+menu                   | i3,system      | move mouse away
 :q                           | vim            | close
 :w                           | vim            | write/saves
 :W                           | vim            | write/saves as root [cmd]
