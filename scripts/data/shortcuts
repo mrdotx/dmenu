@@ -1,7 +1,7 @@
 super+a                      | i3,apps        | alsamixer
 super+b                      | i3,apps        | bookmarks (dmenu)
 super+Shift+b                | i3,apps        | bookmarks sync
-super+c                      | i3,apps        | cmus (tmux)
+super+c                      | i3,apps        | cmus (tmux 20)
 super+shift+c                | i3,apps        | popup with song information if cmus is running
 super+d                      | i3,apps        | darktable
 super+e                      | i3,apps        | editor [i3 mode]
@@ -14,15 +14,15 @@ super+k                      | i3,apps        | kodi
 super+l                      | i3,apps        | link handler (dragon-drop)
 super+shift+l                | i3,apps        | link handler (clipboard)
 super+m                      | i3,apps        | thunderbird
-super+n                      | i3,apps        | newsboat (tmux)
-super+shift+n                | i3,apps        | podboat (tmux)
+super+n                      | i3,apps        | newsboat (tmux 13)
+super+shift+n                | i3,apps        | podboat (tmux 14)
 super+o                      | i3,apps        | libreoffice
 super+p                      | i3,apps        | change display settings (dmenu)
 super+shift+p                | i3,apps        | password manager (dmenu)
-super+r                      | i3,apps        | ranger (tmux)
+super+r                      | i3,apps        | ranger (tmux 12)
 super+s                      | i3,apps        | scribus
-super+t                      | i3,apps        | htop (tmux)
-super+shift+t                | i3,apps        | btop (tmux)
+super+t                      | i3,apps        | htop (tmux 15)
+super+shift+t                | i3,apps        | btop (tmux 16)
 super+u                      | i3,apps        | unicode symbols (dmenu)
 super+v                      | i3,apps        | virtualbox (dmenu)
 super+shift+v                | i3,apps        | virtualbox manager
@@ -32,20 +32,20 @@ super+ctrl+w                 | i3,apps        | backup browser (surf)
 super+x                      | i3,apps        | start/stop conky
 super+y                      | i3,apps        | youtube (dmenu)
 super+shift+y                | i3,apps        | youtube (clipboard)
-super+z                      | i3,apps        | midnight commander (tmux)
-super+`                      | i3,apps        | package manager (fzf)
+super+z                      | i3,apps        | midnight commander (tmux 11)
+super+`                      | i3,apps        | package manager (tmux 18)
 super+=                      | i3,apps        | color picker
-super+]                      | i3,apps        | man pages (fzf)
+super+]                      | i3,apps        | man pages (tmux 17)
 super+shift+]                | i3,apps        | man pages (dmenu)
 super+\                      | i3,apps        | autostart
 super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
 super+/                      | i3,apps        | show shortcuts (dmenu)
 super+shift+/                | i3,apps        | show notes (BROWSER)
-XF86Explorer                 | i3,multimedia  | ranger (tmux)
+XF86Explorer                 | i3,multimedia  | ranger (tmux 12)
 XF86HomePage                 | i3,multimedia  | secondary browser (firefox)
 XF86Calculator               | i3,multimedia  | calculator (dmenu)
-XF86Tools                    | i3,multimedia  | cmus (tmux)
+XF86Tools                    | i3,multimedia  | cmus (tmux 20)
 XF86AudioPrev                | i3,multimedia  | cmus previous
 XF86AudioNext                | i3,multimedia  | cmus next
 XF86AudioPlay                | i3,multimedia  | cmus toggle pause
@@ -76,7 +76,7 @@ shift+super(release)         | i3,system      | secondary program launcher (dmen
 print                        | i3,system      | screenshot (dmenu)
 super+print                  | i3,system      | macros [i3 mode]
 super+return                 | i3,system      | terminal (urxvt)
-super+shift+return           | i3,system      | terminal (tmux)
+super+shift+return           | i3,system      | terminal (tmux 1)
 super+ctrl+return            | i3,system      | backup terminal (st)
 super+f                      | i3,system      | toggle fullscreen mode for focused container
 super+shift+f                | i3,system      | toggle fullscreen mode global
@@ -91,6 +91,7 @@ super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
 super+f3                     | i3,system      | un-/mount (dmenu)
 super+f4                     | i3,system      | alsa device (dmenu)
+super+f12                    | i3,system      | cpupower (tmux 19)
 super+scroll_lock            | i3,system      | logout
 super+pause                  | i3,system      | shutdown
 super+backspace              | i3,system      | reboot
