@@ -20,6 +20,7 @@ shell scripts for dmenu
 | dmenu_shortcuts.sh       | search for defined shortcuts from a file                                  |
 | dmenu_ssh.sh             | connect to hosts over ssh                                                 |
 | dmenu_unicode_symbols.sh | search and copy unicode symbols                                           |
+| dmenu_usb.sh             | un-/re-/bind usb ports                                                    |
 | dmenu_virtualbox.sh      | start a virtual machine without virtualbox frontend                       |
 | dmenu_windows            | window switcher                                                           |
 | dmenu_youtube.sh         | search youtube with yt-dlp and play video/audio with mpv or download them |
