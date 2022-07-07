@@ -91,6 +91,7 @@ super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
 super+f3                     | i3,system      | un-/mount (dmenu)
 super+f4                     | i3,system      | alsa device (dmenu)
+super+f5                     | i3,system      | un-/re-/bind usb ports (dmenu)
 super+f12                    | i3,system      | cpupower (tmux 19)
 super+scroll_lock            | i3,system      | logout
 super+pause                  | i3,system      | shutdown
