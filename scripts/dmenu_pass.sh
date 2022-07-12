@@ -3,13 +3,13 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-07-12T10:52:36+0200
+# date:   2022-07-12T14:08:21+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR:-~/.password-store}"
 file_type=".gpg"
 clipboard_timeout=45
-generate_password_chars=16
+generate_password_characters=16
 
 select=$(printf "== Generate Password ==\n%s" \
     "$(find "$password_store" -iname "*$file_type" -printf "%P\n" \
@@ -37,11 +37,6 @@ get_entry() {
             | tr -d "\n"
     }
 
-    generate_password() {
-        printf "%s" "$(tr -dc A-Za-z0-9 < /dev/urandom \
-            | head -c"$generate_password_chars")"
-    }
-
     case "$1" in
         type)
             # workaround for mismatched keyboard layouts
@@ -60,6 +55,11 @@ get_entry() {
                     --clipboard
             ;;
     esac
+}
+
+generate_password() {
+    printf "%s" "$(tr -dc '[:alnum:]!@#$%^&*()' < /dev/urandom \
+        | head -c"$generate_password_characters")"
 }
 
 case "$select" in
