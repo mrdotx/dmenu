@@ -3,15 +3,14 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-07-12T14:08:21+0200
+# date:   2022-07-12T22:23:48+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR:-~/.password-store}"
 file_type=".gpg"
 clipboard_timeout=45
-generate_password_characters=16
 
-select=$(printf "== Generate Password ==\n%s" \
+select=$(printf "== generate password ==\n%s" \
     "$(find "$password_store" -iname "*$file_type" -printf "%P\n" \
         | sed "s/$file_type$//" \
         | sort)" \
@@ -21,8 +20,30 @@ select=$(printf "== Generate Password ==\n%s" \
 [ -z "$select" ] \
     && exit 0
 
+generate_password() {
+    length=16
+    symbols='!@#'
+
+    while [ -z "$check" ]; do
+        check=1
+        password=$(printf "%s" "$(tr -dc "[:alnum:]$symbols" \
+            < /dev/urandom \
+            | head -c"$length")")
+
+        # check if at least 1 of each type is available
+        for character in [$symbols] [0-9] [A-Z] [a-z]; do
+            printf "%s" "$password" \
+                | grep -q "$character" \
+                    || check=
+        done
+    done
+
+    printf "%s" "$password"
+}
+
 get_entry() {
-    entry=$(gpg --quiet --decrypt "$password_store/$select$file_type")
+    [ "$select" = "== generate password ==" ] \
+        || entry=$(gpg --quiet --decrypt "$password_store/$select$file_type")
 
     username() {
         printf "%s" "$entry" \
@@ -57,17 +78,12 @@ get_entry() {
     esac
 }
 
-generate_password() {
-    printf "%s" "$(tr -dc '[:alnum:]!@#$%^&*()' < /dev/urandom \
-        | head -c"$generate_password_characters")"
-}
-
 case "$select" in
-    "== Generate Password ==")
+    "== generate password ==")
         case $(printf "%s\n" \
             "1) copy password ($clipboard_timeout sec)" \
             "2) type password" \
-            | dmenu -l 2 -c -bw 1 -r -i -p "Generate Password »" \
+            | dmenu -l 2 -c -bw 1 -r -i -p "generate password »" \
             ) in
             2*)
                 get_entry "type" "generate_password"
