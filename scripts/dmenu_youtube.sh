@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-06-21T20:33:06+0200
+# date:   2022-07-12T11:11:42+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -87,9 +87,9 @@ case "$search" in
             && [ -z "$result" ]; do
                 notification 0 "yt-dlp - please wait..." "$attempt/$max_attempts"
                 result=$(yt-dlp "$search_result:$search" -e --get-id)
-                attempt=$((attempt+1))
+                attempt=$((attempt + 1))
         done
-        notification 1000 "yt-dlp - finished" "$((attempt-1))/$max_attempts"
+        notification 1000 "yt-dlp - finished" "$((attempt - 1))/$max_attempts"
 
         select=$(printf "%s" "$result" \
             | sed -n '1~2p' \

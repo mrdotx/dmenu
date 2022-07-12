@@ -3,10 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-04-27T09:46:23+0200
+# date:   2022-07-12T10:52:36+0200
 
 # config
-password_store="${PASSWORD_STORE_DIR-~/.password-store}"
+password_store="${PASSWORD_STORE_DIR:-~/.password-store}"
 file_type=".gpg"
 clipboard_timeout=45
 generate_password_chars=16

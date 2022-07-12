@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iwd.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-06-06T10:53:03+0200
+# date:   2022-07-12T11:10:40+0200
 
 notification() {
     notify-send \
@@ -69,7 +69,7 @@ scan_ssid() {
                     "interface: $interface" \
                     0
                 sleep 1
-                timer=$((timer-1))
+                timer=$((timer - 1))
             done \
         && notification \
             " - finished" \
