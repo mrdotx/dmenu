@@ -3,9 +3,9 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_virtualbox.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-06-21T20:35:38+0200
+# date:   2022-07-12T09:46:31+0200
 
-select=$(VBoxManage list vms \
+select=$(vboxmanage list vms \
     | cut -d '"' -f2 \
     | dmenu -l 5 -c -bw 1 -r -i -p "vm »" \
 )
@@ -15,4 +15,4 @@ select=$(VBoxManage list vms \
         -u low \
         "virtualbox" \
         "starting $select" \
-    && VBoxManage startvm "$select" >/dev/null 2>&1
+    && vboxmanage startvm "$select" >/dev/null 2>&1
