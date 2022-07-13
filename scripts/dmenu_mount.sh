@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_mount.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-06-21T20:31:34+0200
+# date:   2022-07-13T09:18:33+0200
 
 # auth can be something like sudo -A, doas -- or nothing,
 # depending on configuration requirements
@@ -12,7 +12,6 @@ auth="${EXEC_AS_USER:-sudo}"
 #config
 mount_dir="/tmp"
 
-# unmount
 unmount() {
     select=$(grep "/mnt\|$mount_dir/" /proc/self/mounts \
         | cut -d " " -f2 \
@@ -29,7 +28,6 @@ unmount() {
         && rm -d "$select"
 }
 
-# remote mount
 mount_remote() {
     remote_config="
         # cloud storage
@@ -68,7 +66,6 @@ mount_remote() {
             "$select mounted to $mount_point"
 }
 
-# mount usb
 mount_usb() {
     select="$(lsblk -rpo "name,type,size,mountpoint" \
         | awk '{ if ($2=="part"&&$4=="" || $2=="rom"&&$4=="" || $3=="1,4M"&&$4=="") printf "%s (%s)\n",$1,$3}' \
@@ -103,7 +100,6 @@ mount_usb() {
             "$select mounted to $mount_point"
 }
 
-# mount image
 mount_image() {
     search="$HOME/Downloads"
     select=$(find "$search" -type f \
@@ -130,7 +126,6 @@ mount_image() {
             "$select mounted to $mount_point"
 }
 
-# mount android
 mount_android() {
     select=$(simple-mtpfs -l 2>/dev/null \
         | dmenu -l 5 -c -bw 1 -r -i -p "mount »" \
@@ -151,7 +146,6 @@ mount_android() {
             "$select mounted to $mount_point"
 }
 
-# dvd eject
 dvd_eject() {
     mounts=$(lsblk -nrpo "name,type,size,mountpoint" \
         | awk '$2=="rom"{printf "%s (%s)\n",$1,$3}' \
