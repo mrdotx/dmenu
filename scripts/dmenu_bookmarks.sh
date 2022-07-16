@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-06-21T20:33:33+0200
+# date:   2022-07-16T09:32:34+0200
 
 # config
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
@@ -93,6 +93,8 @@ case "$1" in
         ;;
     *)
         select_bookmark
-        $open_in_browser "$open"
+        for url in $open; do
+            $open_in_browser "$url"
+        done
         ;;
 esac
