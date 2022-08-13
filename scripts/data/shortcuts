@@ -89,7 +89,7 @@ ctrl+alt+delete              | i3,system      | exit [i3 mode]
 alt+space                    | i3,system      | services [i3 mode]
 super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
-super+f3                     | i3,system      | un-/mount (dmenu)
+super+f3                     | i3,system      | un-/mount (fzf)
 super+f4                     | i3,system      | alsa device (fzf)
 super+f11                    | i3,system      | usb (fzf)
 super+f12                    | i3,system      | cpupower (fzf)
