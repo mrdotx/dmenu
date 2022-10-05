@@ -25,7 +25,7 @@ See the man page for details.
 
 Version
 -------
-0.5.1
+5.2
 
 Patches
 -------
@@ -41,4 +41,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2022-09-16 21:05	remove workaround for a crash with color emojis on some systems, now fixed in libXft 2.3.5	Hiltjo Posthuma
+2022-10-04 17:36	bump version to 5.2	Hiltjo Posthuma
