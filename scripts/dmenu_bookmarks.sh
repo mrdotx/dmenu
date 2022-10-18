@@ -3,11 +3,11 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-07-16T09:32:34+0200
+# date:   2022-10-18T09:08:50+0200
 
 # config
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
-search_url="https://searx.tiekoetter.com/search?q="
+search_url="https://lite.duckduckgo.com/lite/?q="
 open_in_browser="link_handler.sh"
 
 select_bookmark() {
