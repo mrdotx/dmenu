@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-07-12T11:11:42+0200
+# date:   2022-12-26T19:05:36+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -126,7 +126,7 @@ case "$search" in
         $TERMINAL -e terminal_wrapper.sh yt-dlp -ciw "$open" &
         ;;
     4*)
-        tsp "$TERMINAL" -e mpv --no-video ytdl://"$open"
+        tsp mpv --really-quiet --no-video ytdl://"$open" >/dev/null 2>&1
         ;;
     3*)
         tsp mpv --really-quiet ytdl://"$open" >/dev/null 2>&1
