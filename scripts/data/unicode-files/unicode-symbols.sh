@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/data/unicode-files/unicode-symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-01-21T14:16:53+0100
+# date:   2023-01-21T14:23:42+0100
 
 # config
 output_file="../unicode-symbols"
@@ -13,7 +13,7 @@ get_nerdfont() {
     nerdfonts_url="https://www.nerdfonts.com/cheat-sheet"
 
     get_char() {
-        env printf '%b' "$(printf "\U%0*d%s\n" "$((8-${#1}))" "0" "$1")"
+        env printf '%b' "$(printf "\U%0*d%s" "$((8-${#1}))" "0" "$1")"
     }
 
     data=$(curl -fsS "$nerdfonts_url" \
