@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-01-31T13:43:25+0100
+# date:   2023-01-31T18:55:31+0100
 
 # get active window id
 window_id=$(xdotool getactivewindow)
@@ -25,9 +25,9 @@ menu() {
     [ -n "$*" ] \
         && printf "%s\n" \
             "$*" \
-            "clear" \
-            "insert at cursor" \
-            "copy to clipboard"
+            "clear calculation" \
+            "insert result at cursor" \
+            "copy result to clipboard"
     printf "%s\n" \
         "power costs" \
         "clear clipboard" \
@@ -41,16 +41,16 @@ select=$(printf "%s\n" "$(menu "$*")" \
 case $select in
     "")
         ;;
-    clear)
+    "clear calculation")
         "$0" &
         ;;
-    "insert at cursor")
+    "insert result at cursor")
         printf "%s" "$result" \
             | xdotool type \
                 --clearmodifiers \
                 --file -
         ;;
-    "copy to clipboard")
+    "copy result to clipboard")
         printf "%s\n" "$result" \
             | xsel -i -b \
             && notify-send \
