@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-01-31T18:55:31+0100
+# date:   2023-01-31T19:01:22+0100
 
 # get active window id
 window_id=$(xdotool getactivewindow)
@@ -19,7 +19,7 @@ result=$(printf "%s\n" "$@" \
 # format result and label
 [ -n "$result" ] \
     && result=$(printf "%.4f\n" "$result") \
-    && label="$* = $result »"
+    && label="$result ="
 
 menu() {
     [ -n "$*" ] \
