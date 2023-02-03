@@ -92,8 +92,9 @@ super+f3                     | i3,system      | un-/mount (fzf)
 super+f4                     | i3,system      | alsa device (fzf)
 super+f11                    | i3,system      | usb (fzf)
 super+f12                    | i3,system      | cpupower (fzf)
-super+scroll_lock            | i3,system      | sleep (lock + suspend)
-super+pause                  | i3,system      | shutdown
+super+escape                 | i3,system      | shutdown
+super+scroll_lock            | i3,system      | lock
+super+pause                  | i3,system      | sleep (lock + suspend)
 super+backspace              | i3,system      | reboot
 super+del                    | i3,system      | trash (fzf)
 menu                         | i3,system      | start keyboard mouse (xkeymou)
