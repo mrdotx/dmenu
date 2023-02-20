@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/data/unicode-files/unicode-symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-01-21T14:23:42+0100
+# date:   2023-02-20T12:12:06+0100
 
 # config
 output_file="../unicode-symbols"
@@ -19,20 +19,21 @@ get_nerdfont() {
     data=$(curl -fsS "$nerdfonts_url" \
         | grep "class-name" \
         | sed \
-            -e 's/    <div class="class-name">/;/g' \
-            -e 's/<div class="codepoint">/;/g' \
+            -e 's/    <div class="class-name">//g' \
+            -e 's/<div title="Copy Hex Code to Clipboard"//g' \
+            -e 's/ class="codepoint">/;/g'\
             -e 's/<\/div>//g' \
     )
 
     for line in $data; do
-        class=$(printf "%s" "$line" | cut -d';' -f2)
-        hex=$(printf "%s" "$line" | cut -d';' -f3)
+        class=$(printf "%s" "$line" | cut -d';' -f1)
+        hex=$(printf "%s" "$line" | cut -d';' -f2)
         printf "%s %s; %s\n" "$(get_char "$hex")" "$class" "$hex"
     done
 }
 
 get_emoji() {
-    emoji_url="https://unicode.org/Public/emoji/15.0/emoji-test.txt"
+    emoji_url="https://unicode.org/Public/emoji/latest/emoji-test.txt"
 
     curl -fsS "$emoji_url" \
         | grep "; fully-qualified" \
