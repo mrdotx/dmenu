@@ -35,7 +35,6 @@ super+`                      | i3,apps        | unicode symbols (dmenu)
 super+[                      | i3,apps        | man pages (tmux 17)
 super+shift+[                | i3,apps        | man pages (dmenu)
 super+]                      | i3,apps        | package manager (tmux 18)
-super+\                      | i3,apps        | autostart
 super+'                      | i3,apps        | color picker
 super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
@@ -86,6 +85,8 @@ ctrl+alt+backspace           | i3,system      | reload i3 configuration file
 ctrl+alt+escape              | i3,system      | restart i3 inplace (preserves layout/session)
 ctrl+alt+delete              | i3,system      | exit [i3 mode]
 alt+space                    | i3,system      | services [i3 mode]
+super+\                      | i3,system      | autostart
+super+shift+\                | i3,system      | nfs [i3 mode]
 super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
 super+f3                     | i3,system      | un-/mount (fzf)
