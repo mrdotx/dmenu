@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-10-18T09:08:50+0200
+# date:   2023-03-07T12:22:33+0100
 
 # config
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
@@ -84,7 +84,7 @@ case "$1" in
         copy_to_w3m
         copy_to_surf
         copy_to_qutebrowser
-        [ $firefox = 1 ] \
+        [ "$firefox" = 1 ] \
             && firefox-developer-edition &
         notify-send \
             -u low \
