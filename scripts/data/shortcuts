@@ -351,8 +351,9 @@ l                            | tmux           | switch to last active window (ma
 p                            | tmux           | switch to previous window
 n                            | tmux           | switch to next window
 [0-9]                        | tmux           | switch to window 1...9
-" or shift+h                 | tmux           | tile active window horizontally
-% or shift+v                 | tmux           | tile active window vertically
+h or "                       | tmux           | tile active window horizontally
+v or %                       | tmux           | tile active window vertically
+z                            | tmux           | synchronize panes
 w                            | tmux           | show list of windows
 [←,↑,↓,→]                    | tmux           | change active container
 ctrl+[←,↑,↓,→]               | tmux           | change active container size
