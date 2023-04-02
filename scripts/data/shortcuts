@@ -353,7 +353,7 @@ n                            | tmux           | switch to next window
 [0-9]                        | tmux           | switch to window 1...9
 h or "                       | tmux           | tile active window horizontally
 v or %                       | tmux           | tile active window vertically
-z                            | tmux           | synchronize panes
+y                            | tmux           | synchronize panes
 w                            | tmux           | show list of windows
 [←,↑,↓,→]                    | tmux           | change active container
 ctrl+[←,↑,↓,→]               | tmux           | change active container size
