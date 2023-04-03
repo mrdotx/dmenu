@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-03-07T12:22:33+0100
+# date:   2023-04-03T11:35:02+0200
 
 # config
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
@@ -48,7 +48,7 @@ create_bookmarks() {
 }
 
 copy_to_w3m() {
-    w3m_file="$HOME/.w3m/bookmark.html"
+    w3m_file="$HOME/.local/state/w3m/bookmark.html"
     header="<html><head><title>Bookmarks</title></head>
 <body>
 <h1>Bookmarks</h1>
