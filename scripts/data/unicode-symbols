@@ -14310,7 +14310,7 @@
  nf-oct-desktop_download; f498
  nf-oct-device_camera; f446
  nf-oct-device_camera_video; f447
- nf-oct-device_desktop; f67c
+ nf-oct-device_desktop; f4a9
  nf-oct-device_mobile; f42c
  nf-oct-diff_added; f457
  nf-oct-diff; f440
@@ -14788,8 +14788,9 @@
  nf-weather-night_alt_lightning; e322
  nf-weather-night_alt_partly_cloudy; e379
  nf-weather-night_alt_rain; e325
- nf-weather-night_alt_rain_mix; e326
+ nf-weather-night_alt_rain_mix; e323
  nf-weather-night_alt_rain_wind; e324
+ nf-weather-night_alt_showers; e326
  nf-weather-night_alt_sleet; e3ac
  nf-weather-night_alt_sleet_storm; e364
  nf-weather-night_alt_snow; e327
