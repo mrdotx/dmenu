@@ -41,4 +41,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2023-03-08 20:20	readstdin: reduce memory-usage by duplicating the line from getline()	Hiltjo Posthuma
+2023-04-05 20:11	fix BadMatch error when embedding on some windows	Lucas de Sena
