@@ -268,6 +268,8 @@ u                            | ranger         | show undo-functions
 d                            | ranger         | delete shortcuts
 ,                            | ranger         | document shortcuts
 x                            | ranger         | development shortcuts
+alt+[↑,↓]                    | ranger         | scroll preview 1 line up/down
+alt+[prior,next]             | ranger         | scroll preview 1 page up/down
 ctrl+f                       | ranger         | find files
 ctrl+g                       | ranger         | locate files
 ctrl+t                       | ranger         | go to tagged files
