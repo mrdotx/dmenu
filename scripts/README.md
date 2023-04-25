@@ -16,7 +16,6 @@ shell scripts for dmenu
 | dmenu_pass.sh            | use username or password from gpg password store                          |
 | dmenu_screenshot.sh      | take screenshot from desktop, window or selection                         |
 | dmenu_shortcuts.sh       | search for defined shortcuts from a file                                  |
-| dmenu_ssh.sh             | connect to hosts over ssh                                                 |
 | dmenu_unicode_symbols.sh | search and copy unicode symbols                                           |
 | dmenu_virtualbox.sh      | start a virtual machine without virtualbox frontend                       |
 | dmenu_windows            | window switcher                                                           |
