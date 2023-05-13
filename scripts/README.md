@@ -12,7 +12,6 @@ shell scripts for dmenu
 | dmenu_calc.sh            | calculate with bc                                                         |
 | dmenu_display.sh         | manage displays with xrandr                                               |
 | dmenu_iwd.sh             | connect to wlan with iwd                                                  |
-| dmenu_man.sh             | search for man pages                                                      |
 | dmenu_pass.sh            | use username or password from gpg password store                          |
 | dmenu_screenshot.sh      | take screenshot from desktop, window or selection                         |
 | dmenu_shortcuts.sh       | search for defined shortcuts from a file                                  |
