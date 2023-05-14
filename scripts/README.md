@@ -20,8 +20,12 @@ shell scripts for dmenu
 | dmenu_windows            | window switcher                                                           |
 | dmenu_youtube.sh         | search youtube with yt-dlp and play video/audio with mpv or download them |
 
+config files:
+
+- [dotfiles/i3](https://github.com/mrdotx/dotfiles/tree/master/.config/i3)
+
 related projects:
 
-- [i3](https://github.com/mrdotx/i3)
 - [link-handler](https://github.com/mrdotx/link-handler)
-- [shell](https://github.com/mrdotx/shell)
+- [terminal-wrapper](https://github.com/mrdotx/terminal-wrapper)
+- [fzf](https://github.com/mrdotx/fzf)
