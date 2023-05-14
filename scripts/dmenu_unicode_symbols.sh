@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-05-14T10:16:21+0200
+# date:   2023-05-14T10:37:21+0200
 
 # config
 data_dir="$HOME/.local/share/repos/dmenu/scripts/data"
@@ -45,19 +45,6 @@ get_nerdfont() {
     done
 }
 
-update_symbols() {
-    # emoji
-    get_emoji | sort -u -k 2;
-
-    # nerd font
-    get_nerdfont | sort -u -k 2;
-
-    # files
-    for f in "$unicode_files"/*.txt; do
-        sort -u -k 2 "$f"
-    done
-} > "$unicode_symbols_file"
-
 select_symbols() {
     # get active window id
     window_id=$(xdotool getactivewindow)
@@ -88,7 +75,18 @@ select_symbols() {
 
 case "$1" in
     --update)
-        update_symbols
+        {
+            # emoji
+            get_emoji | sort -u -k 2;
+
+            # nerd font
+            get_nerdfont | sort -u -k 2;
+
+            # files
+            for f in "$unicode_files"/*.txt; do
+                sort -u -k 2 "$f"
+            done
+        } > "$unicode_symbols_file"
         ;;
     *)
         select_symbols
