@@ -3,30 +3,94 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-07-16T09:26:39+0200
+# date:   2023-05-14T10:16:21+0200
 
-# get active window id
-window_id=$(xdotool getactivewindow)
+# config
+data_dir="$HOME/.local/share/repos/dmenu/scripts/data"
+unicode_symbols_file="$data_dir/unicode-symbols"
+unicode_files="$data_dir/unicode-files"
 
-select=$(dmenu -b -l 15 -bw 1 -r -i -w "$window_id" -p "symbol »" \
-    < "$HOME/.local/share/repos/dmenu/scripts/data/unicode-symbols" \
-)
+# data functions
+get_emoji() {
+    emoji_url="https://unicode.org/Public/emoji/latest/emoji-test.txt"
 
-[ -z "$select" ] \
-    && exit 0
+    curl -fsS "$emoji_url" \
+        | grep "; fully-qualified" \
+        | awk -F "; fully-qualified     # " '{print $2 "; " $1}' \
+        | sed 's/[ \t]*$//' \
+        | cut -d' ' -f2 --complement
+}
 
-symbol=$(printf "%s\n" "$select" \
-    | sed 's/ .*//' \
-    | tr -d '\n' \
-)
+get_nerdfont() {
+    nerdfonts_url="https://www.nerdfonts.com/cheat-sheet"
 
-# type at cursor
-xdotool type "$symbol"
-# copy symbol to clipboard
-printf "%s" "$symbol" \
-    | xsel -i -b
+    # print unicode symbol from hex value
+    get_char() {
+        env printf '%b' "$(printf "\U%0*d%s" "$((8-${#1}))" "0" "$1")"
+    }
 
-notify-send \
-    -u low \
-    "copied $symbol to clipboard" \
-    "$select"
+    data=$(curl -fsS "$nerdfonts_url" \
+        | grep "class-name" \
+        | sed \
+            -e 's/    <div class="class-name">//g' \
+            -e 's/<div title="Copy Hex Code to Clipboard"//g' \
+            -e 's/ class="codepoint">/;/g'\
+            -e 's/<\/div>//g' \
+    )
+
+    for line in $data; do
+        class=$(printf "%s" "$line" | cut -d';' -f1)
+        hex=$(printf "%s" "$line" | cut -d';' -f2)
+        printf "%s %s; %s\n" "$(get_char "$hex")" "$class" "$hex"
+    done
+}
+
+update_symbols() {
+    # emoji
+    get_emoji | sort -u -k 2;
+
+    # nerd font
+    get_nerdfont | sort -u -k 2;
+
+    # files
+    for f in "$unicode_files"/*.txt; do
+        sort -u -k 2 "$f"
+    done
+} > "$unicode_symbols_file"
+
+select_symbols() {
+    # get active window id
+    window_id=$(xdotool getactivewindow)
+
+    select=$(dmenu -b -l 15 -bw 1 -r -i -w "$window_id" -p "symbol »" \
+        < "$unicode_symbols_file" \
+    )
+
+    [ -z "$select" ] \
+        && exit 0
+
+    symbol=$(printf "%s\n" "$select" \
+        | sed 's/ .*//' \
+        | tr -d '\n' \
+    )
+
+    # type at cursor
+    xdotool type "$symbol"
+    # copy symbol to clipboard
+    printf "%s" "$symbol" \
+        | xsel -i -b
+
+    notify-send \
+        -u low \
+        "copied $symbol to clipboard" \
+        "$select"
+}
+
+case "$1" in
+    --update)
+        update_symbols
+        ;;
+    *)
+        select_symbols
+        ;;
+esac
