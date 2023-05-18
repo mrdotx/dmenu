@@ -23,7 +23,7 @@ super+r                      | i3,apps        | ranger (tmux 12)
 super+s                      | i3,apps        | scribus
 super+t                      | i3,apps        | btop (tmux 15)
 super+shift+t                | i3,apps        | htop (tmux 16)
-super+v                      | i3,apps        | virtualbox (dmenu)
+super+v                      | i3,apps        | virtualbox (fzf)
 super+shift+v                | i3,apps        | virtualbox manager
 super+w                      | i3,apps        | secondary browser (firefox)
 super+shift+w                | i3,apps        | primary browser (w3m)
