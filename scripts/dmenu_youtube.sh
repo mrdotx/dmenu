@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-12-26T19:05:36+0100
+# date:   2023-05-17T18:45:23+0200
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -106,12 +106,12 @@ case "$search" in
 esac
 
 search=$(printf "%s\n" \
-    "1) play video" \
-    "2) play audio" \
-    "3) add video to taskspooler" \
-    "4) add audio to taskspooler" \
-    "5) download video" \
-    "6) download audio" \
+    "play video" \
+    "play audio" \
+    "add video to taskspooler" \
+    "add audio to taskspooler" \
+    "download video" \
+    "download audio" \
     | dmenu -l 20 -c -bw 1 -r -i -p "youtube »" \
 )
 
@@ -119,22 +119,22 @@ search=$(printf "%s\n" \
     && exit 0
 
 case "$search" in
-    6*)
-        $TERMINAL -e terminal_wrapper.sh yt-dlp -ciw -x --audio-format mp3 --audio-quality 0 "$open" &
+    "play video")
+        mpv --really-quiet ytdl://"$open" >/dev/null 2>&1 &
         ;;
-    5*)
-        $TERMINAL -e terminal_wrapper.sh yt-dlp -ciw "$open" &
-        ;;
-    4*)
-        tsp mpv --really-quiet --no-video ytdl://"$open" >/dev/null 2>&1
-        ;;
-    3*)
-        tsp mpv --really-quiet ytdl://"$open" >/dev/null 2>&1
-        ;;
-    2*)
+    "play audio")
         $TERMINAL -e mpv --no-video ytdl://"$open" &
         ;;
-    1*)
-        mpv --really-quiet ytdl://"$open" >/dev/null 2>&1 &
+    "add video to taskspooler")
+        tsp mpv --really-quiet ytdl://"$open" >/dev/null 2>&1
+        ;;
+    "add audio to taskspooler")
+        tsp mpv --really-quiet --no-video ytdl://"$open" >/dev/null 2>&1
+        ;;
+    "download video")
+        $TERMINAL -e terminal_wrapper.sh yt-dlp -ciw "$open" &
+        ;;
+    "download audio")
+        $TERMINAL -e terminal_wrapper.sh yt-dlp -ciw -x --audio-format mp3 --audio-quality 0 "$open" &
         ;;
 esac
