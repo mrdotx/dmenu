@@ -65,9 +65,9 @@ super+[←,→,↑,↓]              | i3,windows     | focus window
 super+shift+[←,→,↑,↓]        | i3,windows     | move focused window
 super+ctrl+[←,→,↑,↓]         | i3,windows     | resize window
 super+ctrl+[prior,next,home] | i3,windows     | resize window gaps
-super+shift+prior            | i3,windows     | toggle window tiling/floating
-super+shift+next             | i3,windows     | change focus between tiling/floating windows
-super+shift+home             | i3,windows     | toggle sticky
+super+prior                  | i3,windows     | toggle window tiling/floating
+super+next                   | i3,windows     | change focus between tiling/floating windows
+super+home                   | i3,windows     | toggle sticky
 super+tab                    | i3,windows     | window switcher
 super+space                  | i3,windows     | container [i3 mode]
 super(release)               | i3,system      | primary program launcher (i3-dmenu-desktop)
