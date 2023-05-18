@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2022-07-13T09:57:55+0200
+# date:   2023-05-17T18:54:44+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR:-~/.password-store}"
@@ -83,15 +83,15 @@ get_gpg_entry() {
 case "$select" in
     "== generate password ==")
         case $(printf "%s\n" \
-            "1) copy password ($clipboard_timeout sec)" \
-            "2) type password" \
+            "copy password ($clipboard_timeout sec)" \
+            "type password" \
             | dmenu -l 2 -c -bw 1 -r -i -p "generate password »" \
             ) in
-            2*)
-                type_string "$(generate_password)"
-                ;;
-            1*)
+            "copy password"*)
                 copy_string "$(generate_password)"
+                ;;
+            "type password"*)
+                type_string "$(generate_password)"
                 ;;
             *)
                 exit 0
@@ -100,37 +100,37 @@ case "$select" in
         ;;
     *)
         case $(printf "%s\n" \
-            "1) type [username] tab [password] enter" \
-            "2) type [username] 2xtab [password] enter" \
-            "3) type [username]" \
-            "4) type [password]" \
-            "5) copy [username] to clipboard ($clipboard_timeout sec)" \
-            "6) copy [password] to clipboard ($clipboard_timeout sec)" \
+            "type [username] tab [password] enter" \
+            "type [username] 2xtab [password] enter" \
+            "type [username]" \
+            "type [password]" \
+            "copy [username] to clipboard ($clipboard_timeout sec)" \
+            "copy [password] to clipboard ($clipboard_timeout sec)" \
             | dmenu -l 6 -c -bw 1 -r -i -p "$select »" \
             ) in
-            6*)
-                copy_string "$(get_gpg_entry "password")"
-                ;;
-            5*)
-                copy_string "$(get_gpg_entry "username")"
-                ;;
-            4*)
-                type_string "$(get_gpg_entry "password")"
-                ;;
-            3*)
+            "type [username] tab [password] enter"*)
                 type_string "$(get_gpg_entry "username")"
+                xdotool key Tab
+                type_string "$(get_gpg_entry "password")"
+                xdotool key Return
                 ;;
-            2*)
+            "type [username] 2xtab [password] enter"*)
                 type_string "$(get_gpg_entry "username")"
                 xdotool key Tab Tab
                 type_string "$(get_gpg_entry "password")"
                 xdotool key Return
                 ;;
-            1*)
+            "type [username]"*)
                 type_string "$(get_gpg_entry "username")"
-                xdotool key Tab
+                ;;
+            "type [password]"*)
                 type_string "$(get_gpg_entry "password")"
-                xdotool key Return
+                ;;
+            "copy [username] to clipboard"*)
+                copy_string "$(get_gpg_entry "username")"
+                ;;
+            "copy [password] to clipboard"*)
+                copy_string "$(get_gpg_entry "password")"
                 ;;
             *)
                 exit 0
