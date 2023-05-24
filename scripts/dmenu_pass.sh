@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-05-17T18:54:44+0200
+# date:   2023-05-24T09:16:52+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR:-~/.password-store}"
@@ -102,23 +102,31 @@ case "$select" in
         case $(printf "%s\n" \
             "type [username] tab [password] enter" \
             "type [username] 2xtab [password] enter" \
+            "type [username] enter [password] enter" \
             "type [username]" \
             "type [password]" \
             "copy [username] to clipboard ($clipboard_timeout sec)" \
             "copy [password] to clipboard ($clipboard_timeout sec)" \
-            | dmenu -l 6 -c -bw 1 -r -i -p "$select »" \
+            | dmenu -l 7 -c -bw 1 -r -i -p "$select »" \
             ) in
             "type [username] tab [password] enter"*)
-                type_string "$(get_gpg_entry "username")"
-                xdotool key Tab
-                type_string "$(get_gpg_entry "password")"
-                xdotool key Return
+                type_string "$(get_gpg_entry "username")" \
+                    && xdotool key Tab \
+                    && type_string "$(get_gpg_entry "password")" \
+                    && xdotool key Return
                 ;;
             "type [username] 2xtab [password] enter"*)
-                type_string "$(get_gpg_entry "username")"
-                xdotool key Tab Tab
-                type_string "$(get_gpg_entry "password")"
-                xdotool key Return
+                type_string "$(get_gpg_entry "username")" \
+                    && xdotool key Tab Tab \
+                    && type_string "$(get_gpg_entry "password")" \
+                    && xdotool key Return
+                ;;
+            "type [username] enter [password] enter"*)
+                type_string "$(get_gpg_entry "username")" \
+                    && xdotool key Return \
+                    && sleep 1 \
+                    && type_string "$(get_gpg_entry "password")" \
+                    && xdotool key Return
                 ;;
             "type [username]"*)
                 type_string "$(get_gpg_entry "username")"
