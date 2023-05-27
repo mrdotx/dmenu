@@ -264,7 +264,6 @@ q                            | ranger         | quit
 yy                           | ranger         | yank, copy file
 dd                           | ranger         | move file
 pp                           | ranger         | paste file
-xx                           | ranger         | search in files
 u                            | ranger         | show undo-functions
 d                            | ranger         | delete shortcuts
 ,                            | ranger         | document shortcuts
@@ -272,7 +271,7 @@ x                            | ranger         | development shortcuts
 alt+[↑,↓]                    | ranger         | scroll preview 1 line up/down
 alt+[prior,next]             | ranger         | scroll preview 1 page up/down
 ctrl+f                       | ranger         | find files
-ctrl+g                       | ranger         | locate files
+ctrl+g                       | ranger         | search in files
 ctrl+t                       | ranger         | go to tagged files
 ctrl+c                       | ranger         | drag-n-drop (external) all files and exit
 ctrl+x                       | ranger         | drag-n-drop (external) selected files
