@@ -65,9 +65,11 @@ super+[←,→,↑,↓]              | i3,windows     | focus window
 super+shift+[←,→,↑,↓]        | i3,windows     | move focused window
 super+ctrl+[←,→,↑,↓]         | i3,windows     | resize window
 super+ctrl+[prior,next,home] | i3,windows     | resize window gaps
-super+prior                  | i3,windows     | toggle window tiling/floating
-super+next                   | i3,windows     | change focus between tiling/floating windows
-super+home                   | i3,windows     | toggle sticky
+super+prior                  | i3,windows     | enable floating and move window top right
+super+next                   | i3,windows     | enable floating and move window bottom right
+super+home                   | i3,windows     | toggle window tiling/floating
+super+end                    | i3,windows     | change focus between tiling/floating windows
+super+insert                 | i3,windows     | toggle sticky
 super+tab                    | i3,windows     | window switcher
 super+space                  | i3,windows     | container [i3 mode]
 super(release)               | i3,system      | primary program launcher (i3-dmenu-desktop)
@@ -98,7 +100,7 @@ super+escape                 | i3,system      | shutdown
 super+scroll_lock            | i3,system      | lock
 super+pause                  | i3,system      | sleep (lock + suspend)
 super+backspace              | i3,system      | reboot
-super+del                    | i3,system      | trash (fzf)
+super+delete                 | i3,system      | trash (fzf)
 menu                         | i3,system      | start keyboard mouse (xkeymou)
 super+menu                   | i3,system      | move mouse away
 :q                           | vim            | close
