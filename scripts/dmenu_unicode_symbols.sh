@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-05-14T10:37:21+0200
+# date:   2023-06-01T20:02:52+0200
 
 # config
 data_dir="$HOME/.local/share/repos/dmenu/scripts/data"
@@ -30,12 +30,12 @@ get_nerdfont() {
     }
 
     data=$(curl -fsS "$nerdfonts_url" \
-        | grep "class-name" \
+        | grep "^  \"nf" \
+        | grep -v "nfold-" \
         | sed \
-            -e 's/    <div class="class-name">//g' \
-            -e 's/<div title="Copy Hex Code to Clipboard"//g' \
-            -e 's/ class="codepoint">/;/g'\
-            -e 's/<\/div>//g' \
+            -e 's/^  \"//g' \
+            -e 's/\",$//g' \
+            -e 's/\": \"/;/g' \
     )
 
     for line in $data; do
