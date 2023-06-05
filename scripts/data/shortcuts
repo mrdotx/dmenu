@@ -268,13 +268,13 @@ dd                           | ranger         | move file
 pp                           | ranger         | paste file
 u                            | ranger         | show undo-functions
 d                            | ranger         | delete shortcuts
-,                            | ranger         | document shortcuts
+,                            | ranger         | file shortcuts
+,,                           | ranger         | search in files (FzfGrep)
+,.                           | ranger         | go to tagged files (FzfTagged)
+,/                           | ranger         | find files (FzfFind)
 x                            | ranger         | development shortcuts
 alt+[↑,↓]                    | ranger         | scroll preview 1 line up/down
 alt+[prior,next]             | ranger         | scroll preview 1 page up/down
-ctrl+f                       | ranger         | find files
-ctrl+g                       | ranger         | search in files
-ctrl+t                       | ranger         | go to tagged files
 ctrl+c                       | ranger         | drag-n-drop (external) all files and exit
 ctrl+x                       | ranger         | drag-n-drop (external) selected files
 ctrl+v                       | ranger         | drag-n-drop (ranger)
