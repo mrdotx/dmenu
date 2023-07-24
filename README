@@ -41,4 +41,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2023-04-05 20:11	fix BadMatch error when embedding on some windows	Lucas de Sena
+2023-07-07 11:00	drw: minor improvement to the nomatches cache	NRK
