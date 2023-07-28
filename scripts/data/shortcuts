@@ -4,9 +4,9 @@ super+Shift+b                | i3,apps        | bookmarks sync
 super+c                      | i3,apps        | cmus (tmux 20)
 super+shift+c                | i3,apps        | popup with song information if cmus is running
 super+d                      | i3,apps        | darktable
-super+e                      | i3,apps        | editor [i3 mode]
+super+e                      | i3,apps        | editor (i3 mode)
 super+g                      | i3,apps        | gimp
-super+h                      | i3,apps        | ssh [i3 mode]
+super+h                      | i3,apps        | ssh (i3 mode)
 super+shift+h                | i3,apps        | ssh (fzf)
 super+i                      | i3,apps        | inkscape
 super+j                      | i3,apps        | jameica
@@ -39,8 +39,8 @@ super+shift+]                | i3,apps        | package manager (fzf)
 super+'                      | i3,apps        | color picker
 super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
-super+/                      | i3,apps        | show notes (i3 mode)
-super+shift+/                | i3,apps        | show shortcuts (dmenu)
+super+/                      | i3,apps        | show shortcuts (dmenu)
+super+shift+/                | i3,apps        | show notes (i3 mode)
 XF86Explorer                 | i3,multimedia  | ranger (tmux 12)
 XF86HomePage                 | i3,multimedia  | secondary browser (firefox)
 XF86Calculator               | i3,multimedia  | calculator (dmenu)
@@ -71,11 +71,11 @@ super+home                   | i3,windows     | toggle window tiling/floating
 super+end                    | i3,windows     | change focus between tiling/floating windows
 super+insert                 | i3,windows     | toggle sticky
 super+tab                    | i3,windows     | window switcher
-super+space                  | i3,windows     | container [i3 mode]
+super+space                  | i3,windows     | container (i3 mode)
 super(release)               | i3,system      | primary program launcher (i3-dmenu-desktop)
 shift+super(release)         | i3,system      | secondary program launcher (dmenu)
 print                        | i3,system      | screenshot (dmenu)
-super+print                  | i3,system      | macros [i3 mode]
+super+print                  | i3,system      | macros (i3 mode)
 super+return                 | i3,system      | terminal (urxvt)
 super+shift+return           | i3,system      | terminal (tmux 1)
 super+ctrl+return            | i3,system      | backup terminal (st)
@@ -86,10 +86,10 @@ ctrl+q                       | i3,system      | kill focused window
 ctrl+shift+q                 | i3,system      | kill all windows on focused workspace
 ctrl+alt+backspace           | i3,system      | reload i3 configuration file
 ctrl+alt+escape              | i3,system      | restart i3 inplace (preserves layout/session)
-ctrl+alt+delete              | i3,system      | exit [i3 mode]
-alt+space                    | i3,system      | services [i3 mode]
+ctrl+alt+delete              | i3,system      | exit (i3 mode)
+alt+space                    | i3,system      | services (i3 mode)
 super+\                      | i3,system      | autostart
-super+shift+\                | i3,system      | nfs [i3 mode]
+super+shift+\                | i3,system      | nfs (i3 mode)
 super+f1                     | i3,system      | change display settings (dmenu)
 super+f2                     | i3,system      | network manager (dmenu)
 super+f3                     | i3,system      | un-/mount (fzf)
@@ -105,8 +105,8 @@ menu                         | i3,system      | start keyboard mouse (xkeymou)
 super+menu                   | i3,system      | move mouse away
 :q                           | vim            | close
 :w                           | vim            | write/saves
-:W                           | vim            | write/saves as root [cmd]
-:wa[!]                       | vim            | write/save all windows [force]
+:W                           | vim            | write/saves as root (cmd)
+:wa[!]                       | vim            | write/save all windows (force)
 :wq                          | vim            | write/save and close
 :x                           | vim            | save and quit, same as wq
 :q!                          | vim            | force close if file has changed and not save changes
@@ -115,14 +115,14 @@ ctrl+v                       | vim            | enter visual mode for selection 
 R                            | vim            | enter replace mode
 y                            | vim            | yank/copy selected region
 yy                           | vim            | yank/copy entire line
-"[reg]y                      | vim            | yank/copy marked region into register [reg] (from a-z)
+"[reg]y                      | vim            | yank/copy marked region into register (reg from a-z)
 c                            | vim            | cut selection
 p                            | vim            | paste yanked content
-"[reg]p                      | vim            | paste yanked content in register [reg] (from a-z)
+"[reg]p                      | vim            | paste yanked content in register (reg from a-z)
 P                            | vim            | paste yanked content BEFORE
 u                            | vim            | undo
 ctrl+r                       | vim            | redo
-:![cmd]                      | vim            | execute shell command [cmd]
+:![cmd]                      | vim            | execute shell command (cmd)
 ctrl+z                       | vim            | send vim to background (fg brings it to front again)
 a                            | vim,insert     | append text after the cursor
 A                            | vim,insert     | append text at the end of the line
@@ -150,23 +150,23 @@ daB                          | vim,edit       | delete a '{' '}' block
 das                          | vim,edit       | delete a sentence
 diw                          | vim,edit       | delete word under cursor
 daw                          | vim,edit       | delete word under cursor till next word
-df[c]                        | vim,edit       | delete until next occurence of [c] (char) found (including [c])
-dt[c]                        | vim,edit       | delete until next occurence of [c] (char) found (without [c])
+df[c]                        | vim,edit       | delete until next occurence of (c char) found (including c)
+dt[c]                        | vim,edit       | delete until next occurence of (c char) found (without c)
 cib                          | vim,edit       | change contents in parenthesis '(' ')' block (e.g. function args)
 ciB                          | vim,edit       | change inner '{' '}' block
 caB                          | vim,edit       | change a '{' '}' block
 cas                          | vim,edit       | change a sentence
 ciw                          | vim,edit       | change word under cursor
 caw                          | vim,edit       | change word under cursor till next word
-cf[c]                        | vim,edit       | change until next occurence of [c] (char) found (including [c])
-ct[c]                        | vim,edit       | change until next occurence of [c] (char) found (without [c])
+cf[c]                        | vim,edit       | change until next occurence of (c char) found (including c)
+ct[c]                        | vim,edit       | change until next occurence of (c char) found (without c)
 #J                           | vim,edit       | merge # number of lines together
 gq                           | vim,edit       | (in visual-mode) format selected text according to line-width
 gqq                          | vim,edit       | format current line according to line-width
 #gqq                         | vim,edit       | format next #-lines
 C-n                          | vim,edit       | keyword completion
-r[c]                         | vim,edit       | replace char [c]
-#r[c]                        | vim,edit       | replace follow # chars with [c], : csock, cursor on s, 3re ceeek
+r[c]                         | vim,edit       | replace char c
+#r[c]                        | vim,edit       | replace follow # chars with c, : csock, cursor on s, 3re ceeek
 u                            | vim,edit       | convert selection (visual mode) to lowercase
 U                            | vim,edit       | convert selection (visual mode) to uppercase
 ga                           | vim,edit       | show ascii of char under cursor
@@ -181,8 +181,8 @@ ga                           | vim,edit       | show ascii of char under cursor
 [{                           | vim,search     | jump to start of current code block
 ]}                           | vim,search     | jump to end of current code block
 gd                           | vim,search     | jump to var declaration
-f[c]                         | vim,search     | find char [c] from current cursor position -> forwards
-F[c]                         | vim,search     | find char [c] from current cursor position <- backwards
+f[c]                         | vim,search     | find char c from current cursor position -> forwards
+F[c]                         | vim,search     | find char c from current cursor position <- backwards
 ,                            | vim,search     | repeat previous f[c] or F[c] in opposite direction
 ;                            | vim,search     | repeat previous f[c] or F[c] in same direction
 '.                           | vim,search     | jump back to last edited line
@@ -220,8 +220,8 @@ ctrl-w#>                     | vim,windows    | increase/resize current window t
 [H,M,L]                      | vim,move       | jump to (top,middle,bottom)
 C-b                          | vim,move       | move back one full screen (page up)
 C-f                          | vim,move       | move forward one full screen (page down)
-C-d                          | vim,move       | move forward 1/2 screen; half page down
-C-u                          | vim,move       | move back (up) 1/2 screen; half page up
+C-d                          | vim,move       | move forward 1/2 screen, half page down
+C-u                          | vim,move       | move back (up) 1/2 screen, half page up
 w                            | vim,move       | jump by start of words (punctuation considered words)
 e                            | vim,move       | jump to end of words (punctuation considered words)
 b                            | vim,move       | jump backward by words (punctuation considered words)
