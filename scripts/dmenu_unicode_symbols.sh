@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-06-01T20:02:52+0200
+# date:   2023-07-27T19:36:45+0200
 
 # config
 data_dir="$HOME/.local/share/repos/dmenu/scripts/data"
@@ -14,11 +14,14 @@ unicode_files="$data_dir/unicode-files"
 get_emoji() {
     emoji_url="https://unicode.org/Public/emoji/latest/emoji-test.txt"
 
-    curl -fsS "$emoji_url" \
+    emoji=$(curl -fsS "$emoji_url" \
         | grep "; fully-qualified" \
         | awk -F "; fully-qualified     # " '{print $2 "; " $1}' \
         | sed 's/[ \t]*$//' \
-        | cut -d' ' -f2 --complement
+        | cut -d' ' -f2 --complement)
+
+    printf "%s\n" "$emoji"
+    printf "%s\n" "$emoji" | sort -u -k 2 > "$1"
 }
 
 get_nerdfont() {
@@ -41,8 +44,24 @@ get_nerdfont() {
     for line in $data; do
         class=$(printf "%s" "$line" | cut -d';' -f1)
         hex=$(printf "%s" "$line" | cut -d';' -f2)
-        printf "%s %s; %s\n" "$(get_char "$hex")" "$class" "$hex"
+        output=$(printf "%s %s; %s" "$(get_char "$hex")" "$class" "$hex")
+        nerdfont=$(printf "%s\n%s\n" "$nerdfont" "$output")
+
+        printf "%s\n" "$output"
     done
+
+    printf "%s\n" "$nerdfont" | sort -u -k 2 >> "$1"
+}
+
+get_files() {
+    for f in "$unicode_files"/*.txt; do
+        output=$(sort -u -k 2 "$f")
+        files=$(printf "%s\n%s\n" "$files" "$output")
+
+        printf "%s\n" "$output"
+    done
+
+    printf "%s\n" "$files" | sort -u -k 2 >> "$1"
 }
 
 select_symbols() {
@@ -75,18 +94,11 @@ select_symbols() {
 
 case "$1" in
     --update)
-        {
-            # emoji
-            get_emoji | sort -u -k 2;
+            get_emoji "$unicode_symbols_file"
+            get_nerdfont "$unicode_symbols_file"
+            get_files "$unicode_symbols_file"
 
-            # nerd font
-            get_nerdfont | sort -u -k 2;
-
-            # files
-            for f in "$unicode_files"/*.txt; do
-                sort -u -k 2 "$f"
-            done
-        } > "$unicode_symbols_file"
+            sed -i '/^$/d' "$unicode_symbols_file"
         ;;
     *)
         select_symbols
