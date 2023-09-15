@@ -187,10 +187,12 @@
 🩲 briefs; 1FA72
 🔆 bright button; 1F506
 🥦 broccoli; 1F966
+⛓️‍💥 broken chain; 26D3 FE0F 200D 1F4A5
 💔 broken heart; 1F494
 🧹 broom; 1F9F9
 🟤 brown circle; 1F7E4
 🤎 brown heart; 1F90E
+🍄‍🟫 brown mushroom; 1F344 200D 1F7EB
 🟫 brown square; 1F7EB
 🫧 bubbles; 1FAE7
 🧋 bubble tea; 1F9CB
@@ -635,6 +637,10 @@
 🧆 falafel; 1F9C6
 🍂 fallen leaf; 1F342
 👪 family; 1F46A
+🧑‍🧑‍🧒 family: adult, adult, child; 1F9D1 200D 1F9D1 200D 1F9D2
+🧑‍🧑‍🧒‍🧒 family: adult, adult, child, child; 1F9D1 200D 1F9D1 200D 1F9D2 200D 1F9D2
+🧑‍🧒 family: adult, child; 1F9D1 200D 1F9D2
+🧑‍🧒‍🧒 family: adult, child, child; 1F9D1 200D 1F9D2 200D 1F9D2
 👨‍👦 family: man, boy; 1F468 200D 1F466
 👨‍👦‍👦 family: man, boy, boy; 1F468 200D 1F466 200D 1F466
 👨‍👧 family: man, girl; 1F468 200D 1F467
@@ -937,7 +943,7 @@
 🇹🇹 flag: Trinidad & Tobago; 1F1F9 1F1F9
 🇹🇦 flag: Tristan da Cunha; 1F1F9 1F1E6
 🇹🇳 flag: Tunisia; 1F1F9 1F1F3
-🇹🇷 flag: Turkey; 1F1F9 1F1F7
+🇹🇷 flag: Türkiye; 1F1F9 1F1F7
 🇹🇲 flag: Turkmenistan; 1F1F9 1F1F2
 🇹🇨 flag: Turks & Caicos Islands; 1F1F9 1F1E8
 🇹🇻 flag: Tuvalu; 1F1F9 1F1FB
@@ -1120,6 +1126,8 @@
 🫰🏽 hand with index finger and thumb crossed: medium skin tone; 1FAF0 1F3FD
 🐣 hatching chick; 1F423
 🎧 headphone; 1F3A7
+🙂‍↔️ head shaking horizontally; 1F642 200D 2194 FE0F
+🙂‍↕️ head shaking vertically; 1F642 200D 2195 FE0F
 🪦 headstone; 1FAA6
 🧑‍⚕️ health worker; 1F9D1 200D 2695 FE0F
 🧑🏿‍⚕️ health worker: dark skin tone; 1F9D1 1F3FF 200D 2695 FE0F
@@ -1428,6 +1436,7 @@
 🩵 light blue heart; 1FA75
 💡 light bulb; 1F4A1
 🚈 light rail; 1F688
+🍋‍🟩 lime; 1F34B 200D 1F7E9
 🔗 link; 1F517
 🖇️ linked paperclips; 1F587 FE0F
 🦁 lion; 1F981
@@ -1649,12 +1658,24 @@
 🧘🏽‍♂️ man in lotus position: medium skin tone; 1F9D8 1F3FD 200D 2642 FE0F
 👨‍🦽 man in manual wheelchair; 1F468 200D 1F9BD
 👨🏿‍🦽 man in manual wheelchair: dark skin tone; 1F468 1F3FF 200D 1F9BD
+👨‍🦽‍➡️ man in manual wheelchair facing right; 1F468 200D 1F9BD 200D 27A1 FE0F
+👨🏿‍🦽‍➡️ man in manual wheelchair facing right: dark skin tone; 1F468 1F3FF 200D 1F9BD 200D 27A1 FE0F
+👨🏻‍🦽‍➡️ man in manual wheelchair facing right: light skin tone; 1F468 1F3FB 200D 1F9BD 200D 27A1 FE0F
+👨🏾‍🦽‍➡️ man in manual wheelchair facing right: medium-dark skin tone; 1F468 1F3FE 200D 1F9BD 200D 27A1 FE0F
+👨🏼‍🦽‍➡️ man in manual wheelchair facing right: medium-light skin tone; 1F468 1F3FC 200D 1F9BD 200D 27A1 FE0F
+👨🏽‍🦽‍➡️ man in manual wheelchair facing right: medium skin tone; 1F468 1F3FD 200D 1F9BD 200D 27A1 FE0F
 👨🏻‍🦽 man in manual wheelchair: light skin tone; 1F468 1F3FB 200D 1F9BD
 👨🏾‍🦽 man in manual wheelchair: medium-dark skin tone; 1F468 1F3FE 200D 1F9BD
 👨🏼‍🦽 man in manual wheelchair: medium-light skin tone; 1F468 1F3FC 200D 1F9BD
 👨🏽‍🦽 man in manual wheelchair: medium skin tone; 1F468 1F3FD 200D 1F9BD
 👨‍🦼 man in motorized wheelchair; 1F468 200D 1F9BC
 👨🏿‍🦼 man in motorized wheelchair: dark skin tone; 1F468 1F3FF 200D 1F9BC
+👨‍🦼‍➡️ man in motorized wheelchair facing right; 1F468 200D 1F9BC 200D 27A1 FE0F
+👨🏿‍🦼‍➡️ man in motorized wheelchair facing right: dark skin tone; 1F468 1F3FF 200D 1F9BC 200D 27A1 FE0F
+👨🏻‍🦼‍➡️ man in motorized wheelchair facing right: light skin tone; 1F468 1F3FB 200D 1F9BC 200D 27A1 FE0F
+👨🏾‍🦼‍➡️ man in motorized wheelchair facing right: medium-dark skin tone; 1F468 1F3FE 200D 1F9BC 200D 27A1 FE0F
+👨🏼‍🦼‍➡️ man in motorized wheelchair facing right: medium-light skin tone; 1F468 1F3FC 200D 1F9BC 200D 27A1 FE0F
+👨🏽‍🦼‍➡️ man in motorized wheelchair facing right: medium skin tone; 1F468 1F3FD 200D 1F9BC 200D 27A1 FE0F
 👨🏻‍🦼 man in motorized wheelchair: light skin tone; 1F468 1F3FB 200D 1F9BC
 👨🏾‍🦼 man in motorized wheelchair: medium-dark skin tone; 1F468 1F3FE 200D 1F9BC
 👨🏼‍🦼 man in motorized wheelchair: medium-light skin tone; 1F468 1F3FC 200D 1F9BC
@@ -1685,6 +1706,12 @@
 🤹🏽‍♂️ man juggling: medium skin tone; 1F939 1F3FD 200D 2642 FE0F
 🧎‍♂️ man kneeling; 1F9CE 200D 2642 FE0F
 🧎🏿‍♂️ man kneeling: dark skin tone; 1F9CE 1F3FF 200D 2642 FE0F
+🧎‍♂️‍➡️ man kneeling facing right; 1F9CE 200D 2642 FE0F 200D 27A1 FE0F
+🧎🏿‍♂️‍➡️ man kneeling facing right: dark skin tone; 1F9CE 1F3FF 200D 2642 FE0F 200D 27A1 FE0F
+🧎🏻‍♂️‍➡️ man kneeling facing right: light skin tone; 1F9CE 1F3FB 200D 2642 FE0F 200D 27A1 FE0F
+🧎🏾‍♂️‍➡️ man kneeling facing right: medium-dark skin tone; 1F9CE 1F3FE 200D 2642 FE0F 200D 27A1 FE0F
+🧎🏼‍♂️‍➡️ man kneeling facing right: medium-light skin tone; 1F9CE 1F3FC 200D 2642 FE0F 200D 27A1 FE0F
+🧎🏽‍♂️‍➡️ man kneeling facing right: medium skin tone; 1F9CE 1F3FD 200D 2642 FE0F 200D 27A1 FE0F
 🧎🏻‍♂️ man kneeling: light skin tone; 1F9CE 1F3FB 200D 2642 FE0F
 🧎🏾‍♂️ man kneeling: medium-dark skin tone; 1F9CE 1F3FE 200D 2642 FE0F
 🧎🏼‍♂️ man kneeling: medium-light skin tone; 1F9CE 1F3FC 200D 2642 FE0F
@@ -1792,6 +1819,12 @@
 🚣🏽‍♂️ man rowing boat: medium skin tone; 1F6A3 1F3FD 200D 2642 FE0F
 🏃‍♂️ man running; 1F3C3 200D 2642 FE0F
 🏃🏿‍♂️ man running: dark skin tone; 1F3C3 1F3FF 200D 2642 FE0F
+🏃‍♂️‍➡️ man running facing right; 1F3C3 200D 2642 FE0F 200D 27A1 FE0F
+🏃🏿‍♂️‍➡️ man running facing right: dark skin tone; 1F3C3 1F3FF 200D 2642 FE0F 200D 27A1 FE0F
+🏃🏻‍♂️‍➡️ man running facing right: light skin tone; 1F3C3 1F3FB 200D 2642 FE0F 200D 27A1 FE0F
+🏃🏾‍♂️‍➡️ man running facing right: medium-dark skin tone; 1F3C3 1F3FE 200D 2642 FE0F 200D 27A1 FE0F
+🏃🏼‍♂️‍➡️ man running facing right: medium-light skin tone; 1F3C3 1F3FC 200D 2642 FE0F 200D 27A1 FE0F
+🏃🏽‍♂️‍➡️ man running facing right: medium skin tone; 1F3C3 1F3FD 200D 2642 FE0F 200D 27A1 FE0F
 🏃🏻‍♂️ man running: light skin tone; 1F3C3 1F3FB 200D 2642 FE0F
 🏃🏾‍♂️ man running: medium-dark skin tone; 1F3C3 1F3FE 200D 2642 FE0F
 🏃🏼‍♂️ man running: medium-light skin tone; 1F3C3 1F3FC 200D 2642 FE0F
@@ -1879,6 +1912,12 @@
 🧛🏽‍♂️ man vampire: medium skin tone; 1F9DB 1F3FD 200D 2642 FE0F
 🚶‍♂️ man walking; 1F6B6 200D 2642 FE0F
 🚶🏿‍♂️ man walking: dark skin tone; 1F6B6 1F3FF 200D 2642 FE0F
+🚶‍♂️‍➡️ man walking facing right; 1F6B6 200D 2642 FE0F 200D 27A1 FE0F
+🚶🏿‍♂️‍➡️ man walking facing right: dark skin tone; 1F6B6 1F3FF 200D 2642 FE0F 200D 27A1 FE0F
+🚶🏻‍♂️‍➡️ man walking facing right: light skin tone; 1F6B6 1F3FB 200D 2642 FE0F 200D 27A1 FE0F
+🚶🏾‍♂️‍➡️ man walking facing right: medium-dark skin tone; 1F6B6 1F3FE 200D 2642 FE0F 200D 27A1 FE0F
+🚶🏼‍♂️‍➡️ man walking facing right: medium-light skin tone; 1F6B6 1F3FC 200D 2642 FE0F 200D 27A1 FE0F
+🚶🏽‍♂️‍➡️ man walking facing right: medium skin tone; 1F6B6 1F3FD 200D 2642 FE0F 200D 27A1 FE0F
 🚶🏻‍♂️ man walking: light skin tone; 1F6B6 1F3FB 200D 2642 FE0F
 🚶🏾‍♂️ man walking: medium-dark skin tone; 1F6B6 1F3FE 200D 2642 FE0F
 🚶🏼‍♂️ man walking: medium-light skin tone; 1F6B6 1F3FC 200D 2642 FE0F
@@ -1898,6 +1937,12 @@
 👰🏽‍♂️ man with veil: medium skin tone; 1F470 1F3FD 200D 2642 FE0F
 👨‍🦯 man with white cane; 1F468 200D 1F9AF
 👨🏿‍🦯 man with white cane: dark skin tone; 1F468 1F3FF 200D 1F9AF
+👨‍🦯‍➡️ man with white cane facing right; 1F468 200D 1F9AF 200D 27A1 FE0F
+👨🏿‍🦯‍➡️ man with white cane facing right: dark skin tone; 1F468 1F3FF 200D 1F9AF 200D 27A1 FE0F
+👨🏻‍🦯‍➡️ man with white cane facing right: light skin tone; 1F468 1F3FB 200D 1F9AF 200D 27A1 FE0F
+👨🏾‍🦯‍➡️ man with white cane facing right: medium-dark skin tone; 1F468 1F3FE 200D 1F9AF 200D 27A1 FE0F
+👨🏼‍🦯‍➡️ man with white cane facing right: medium-light skin tone; 1F468 1F3FC 200D 1F9AF 200D 27A1 FE0F
+👨🏽‍🦯‍➡️ man with white cane facing right: medium skin tone; 1F468 1F3FD 200D 1F9AF 200D 27A1 FE0F
 👨🏻‍🦯 man with white cane: light skin tone; 1F468 1F3FB 200D 1F9AF
 👨🏾‍🦯 man with white cane: medium-dark skin tone; 1F468 1F3FE 200D 1F9AF
 👨🏼‍🦯 man with white cane: medium-light skin tone; 1F468 1F3FC 200D 1F9AF
@@ -2344,12 +2389,24 @@
 🧘🏽 person in lotus position: medium skin tone; 1F9D8 1F3FD
 🧑‍🦽 person in manual wheelchair; 1F9D1 200D 1F9BD
 🧑🏿‍🦽 person in manual wheelchair: dark skin tone; 1F9D1 1F3FF 200D 1F9BD
+🧑‍🦽‍➡️ person in manual wheelchair facing right; 1F9D1 200D 1F9BD 200D 27A1 FE0F
+🧑🏿‍🦽‍➡️ person in manual wheelchair facing right: dark skin tone; 1F9D1 1F3FF 200D 1F9BD 200D 27A1 FE0F
+🧑🏻‍🦽‍➡️ person in manual wheelchair facing right: light skin tone; 1F9D1 1F3FB 200D 1F9BD 200D 27A1 FE0F
+🧑🏾‍🦽‍➡️ person in manual wheelchair facing right: medium-dark skin tone; 1F9D1 1F3FE 200D 1F9BD 200D 27A1 FE0F
+🧑🏼‍🦽‍➡️ person in manual wheelchair facing right: medium-light skin tone; 1F9D1 1F3FC 200D 1F9BD 200D 27A1 FE0F
+🧑🏽‍🦽‍➡️ person in manual wheelchair facing right: medium skin tone; 1F9D1 1F3FD 200D 1F9BD 200D 27A1 FE0F
 🧑🏻‍🦽 person in manual wheelchair: light skin tone; 1F9D1 1F3FB 200D 1F9BD
 🧑🏾‍🦽 person in manual wheelchair: medium-dark skin tone; 1F9D1 1F3FE 200D 1F9BD
 🧑🏼‍🦽 person in manual wheelchair: medium-light skin tone; 1F9D1 1F3FC 200D 1F9BD
 🧑🏽‍🦽 person in manual wheelchair: medium skin tone; 1F9D1 1F3FD 200D 1F9BD
 🧑‍🦼 person in motorized wheelchair; 1F9D1 200D 1F9BC
 🧑🏿‍🦼 person in motorized wheelchair: dark skin tone; 1F9D1 1F3FF 200D 1F9BC
+🧑‍🦼‍➡️ person in motorized wheelchair facing right; 1F9D1 200D 1F9BC 200D 27A1 FE0F
+🧑🏿‍🦼‍➡️ person in motorized wheelchair facing right: dark skin tone; 1F9D1 1F3FF 200D 1F9BC 200D 27A1 FE0F
+🧑🏻‍🦼‍➡️ person in motorized wheelchair facing right: light skin tone; 1F9D1 1F3FB 200D 1F9BC 200D 27A1 FE0F
+🧑🏾‍🦼‍➡️ person in motorized wheelchair facing right: medium-dark skin tone; 1F9D1 1F3FE 200D 1F9BC 200D 27A1 FE0F
+🧑🏼‍🦼‍➡️ person in motorized wheelchair facing right: medium-light skin tone; 1F9D1 1F3FC 200D 1F9BC 200D 27A1 FE0F
+🧑🏽‍🦼‍➡️ person in motorized wheelchair facing right: medium skin tone; 1F9D1 1F3FD 200D 1F9BC 200D 27A1 FE0F
 🧑🏻‍🦼 person in motorized wheelchair: light skin tone; 1F9D1 1F3FB 200D 1F9BC
 🧑🏾‍🦼 person in motorized wheelchair: medium-dark skin tone; 1F9D1 1F3FE 200D 1F9BC
 🧑🏼‍🦼 person in motorized wheelchair: medium-light skin tone; 1F9D1 1F3FC 200D 1F9BC
@@ -2380,6 +2437,12 @@
 🤹🏽 person juggling: medium skin tone; 1F939 1F3FD
 🧎 person kneeling; 1F9CE
 🧎🏿 person kneeling: dark skin tone; 1F9CE 1F3FF
+🧎‍➡️ person kneeling facing right; 1F9CE 200D 27A1 FE0F
+🧎🏿‍➡️ person kneeling facing right: dark skin tone; 1F9CE 1F3FF 200D 27A1 FE0F
+🧎🏻‍➡️ person kneeling facing right: light skin tone; 1F9CE 1F3FB 200D 27A1 FE0F
+🧎🏾‍➡️ person kneeling facing right: medium-dark skin tone; 1F9CE 1F3FE 200D 27A1 FE0F
+🧎🏼‍➡️ person kneeling facing right: medium-light skin tone; 1F9CE 1F3FC 200D 27A1 FE0F
+🧎🏽‍➡️ person kneeling facing right: medium skin tone; 1F9CE 1F3FD 200D 27A1 FE0F
 🧎🏻 person kneeling: light skin tone; 1F9CE 1F3FB
 🧎🏾 person kneeling: medium-dark skin tone; 1F9CE 1F3FE
 🧎🏼 person kneeling: medium-light skin tone; 1F9CE 1F3FC
@@ -2457,6 +2520,12 @@
 🚣🏽 person rowing boat: medium skin tone; 1F6A3 1F3FD
 🏃 person running; 1F3C3
 🏃🏿 person running: dark skin tone; 1F3C3 1F3FF
+🏃‍➡️ person running facing right; 1F3C3 200D 27A1 FE0F
+🏃🏿‍➡️ person running facing right: dark skin tone; 1F3C3 1F3FF 200D 27A1 FE0F
+🏃🏻‍➡️ person running facing right: light skin tone; 1F3C3 1F3FB 200D 27A1 FE0F
+🏃🏾‍➡️ person running facing right: medium-dark skin tone; 1F3C3 1F3FE 200D 27A1 FE0F
+🏃🏼‍➡️ person running facing right: medium-light skin tone; 1F3C3 1F3FC 200D 27A1 FE0F
+🏃🏽‍➡️ person running facing right: medium skin tone; 1F3C3 1F3FD 200D 27A1 FE0F
 🏃🏻 person running: light skin tone; 1F3C3 1F3FB
 🏃🏾 person running: medium-dark skin tone; 1F3C3 1F3FE
 🏃🏼 person running: medium-light skin tone; 1F3C3 1F3FC
@@ -2499,6 +2568,12 @@
 💁🏽 person tipping hand: medium skin tone; 1F481 1F3FD
 🚶 person walking; 1F6B6
 🚶🏿 person walking: dark skin tone; 1F6B6 1F3FF
+🚶‍➡️ person walking facing right; 1F6B6 200D 27A1 FE0F
+🚶🏿‍➡️ person walking facing right: dark skin tone; 1F6B6 1F3FF 200D 27A1 FE0F
+🚶🏻‍➡️ person walking facing right: light skin tone; 1F6B6 1F3FB 200D 27A1 FE0F
+🚶🏾‍➡️ person walking facing right: medium-dark skin tone; 1F6B6 1F3FE 200D 27A1 FE0F
+🚶🏼‍➡️ person walking facing right: medium-light skin tone; 1F6B6 1F3FC 200D 27A1 FE0F
+🚶🏽‍➡️ person walking facing right: medium skin tone; 1F6B6 1F3FD 200D 27A1 FE0F
 🚶🏻 person walking: light skin tone; 1F6B6 1F3FB
 🚶🏾 person walking: medium-dark skin tone; 1F6B6 1F3FE
 🚶🏼 person walking: medium-light skin tone; 1F6B6 1F3FC
@@ -2530,11 +2605,18 @@
 👰🏽 person with veil: medium skin tone; 1F470 1F3FD
 🧑‍🦯 person with white cane; 1F9D1 200D 1F9AF
 🧑🏿‍🦯 person with white cane: dark skin tone; 1F9D1 1F3FF 200D 1F9AF
+🧑‍🦯‍➡️ person with white cane facing right; 1F9D1 200D 1F9AF 200D 27A1 FE0F
+🧑🏿‍🦯‍➡️ person with white cane facing right: dark skin tone; 1F9D1 1F3FF 200D 1F9AF 200D 27A1 FE0F
+🧑🏻‍🦯‍➡️ person with white cane facing right: light skin tone; 1F9D1 1F3FB 200D 1F9AF 200D 27A1 FE0F
+🧑🏾‍🦯‍➡️ person with white cane facing right: medium-dark skin tone; 1F9D1 1F3FE 200D 1F9AF 200D 27A1 FE0F
+🧑🏼‍🦯‍➡️ person with white cane facing right: medium-light skin tone; 1F9D1 1F3FC 200D 1F9AF 200D 27A1 FE0F
+🧑🏽‍🦯‍➡️ person with white cane facing right: medium skin tone; 1F9D1 1F3FD 200D 1F9AF 200D 27A1 FE0F
 🧑🏻‍🦯 person with white cane: light skin tone; 1F9D1 1F3FB 200D 1F9AF
 🧑🏾‍🦯 person with white cane: medium-dark skin tone; 1F9D1 1F3FE 200D 1F9AF
 🧑🏼‍🦯 person with white cane: medium-light skin tone; 1F9D1 1F3FC 200D 1F9AF
 🧑🏽‍🦯 person with white cane: medium skin tone; 1F9D1 1F3FD 200D 1F9AF
 🧫 petri dish; 1F9EB
+🐦‍🔥 phoenix; 1F426 200D 1F525
 ⛏️ pick; 26CF FE0F
 🛻 pickup truck; 1F6FB
 🥧 pie; 1F967
@@ -3336,12 +3418,24 @@
 🧘🏽‍♀️ woman in lotus position: medium skin tone; 1F9D8 1F3FD 200D 2640 FE0F
 👩‍🦽 woman in manual wheelchair; 1F469 200D 1F9BD
 👩🏿‍🦽 woman in manual wheelchair: dark skin tone; 1F469 1F3FF 200D 1F9BD
+👩‍🦽‍➡️ woman in manual wheelchair facing right; 1F469 200D 1F9BD 200D 27A1 FE0F
+👩🏿‍🦽‍➡️ woman in manual wheelchair facing right: dark skin tone; 1F469 1F3FF 200D 1F9BD 200D 27A1 FE0F
+👩🏻‍🦽‍➡️ woman in manual wheelchair facing right: light skin tone; 1F469 1F3FB 200D 1F9BD 200D 27A1 FE0F
+👩🏾‍🦽‍➡️ woman in manual wheelchair facing right: medium-dark skin tone; 1F469 1F3FE 200D 1F9BD 200D 27A1 FE0F
+👩🏼‍🦽‍➡️ woman in manual wheelchair facing right: medium-light skin tone; 1F469 1F3FC 200D 1F9BD 200D 27A1 FE0F
+👩🏽‍🦽‍➡️ woman in manual wheelchair facing right: medium skin tone; 1F469 1F3FD 200D 1F9BD 200D 27A1 FE0F
 👩🏻‍🦽 woman in manual wheelchair: light skin tone; 1F469 1F3FB 200D 1F9BD
 👩🏾‍🦽 woman in manual wheelchair: medium-dark skin tone; 1F469 1F3FE 200D 1F9BD
 👩🏼‍🦽 woman in manual wheelchair: medium-light skin tone; 1F469 1F3FC 200D 1F9BD
 👩🏽‍🦽 woman in manual wheelchair: medium skin tone; 1F469 1F3FD 200D 1F9BD
 👩‍🦼 woman in motorized wheelchair; 1F469 200D 1F9BC
 👩🏿‍🦼 woman in motorized wheelchair: dark skin tone; 1F469 1F3FF 200D 1F9BC
+👩‍🦼‍➡️ woman in motorized wheelchair facing right; 1F469 200D 1F9BC 200D 27A1 FE0F
+👩🏿‍🦼‍➡️ woman in motorized wheelchair facing right: dark skin tone; 1F469 1F3FF 200D 1F9BC 200D 27A1 FE0F
+👩🏻‍🦼‍➡️ woman in motorized wheelchair facing right: light skin tone; 1F469 1F3FB 200D 1F9BC 200D 27A1 FE0F
+👩🏾‍🦼‍➡️ woman in motorized wheelchair facing right: medium-dark skin tone; 1F469 1F3FE 200D 1F9BC 200D 27A1 FE0F
+👩🏼‍🦼‍➡️ woman in motorized wheelchair facing right: medium-light skin tone; 1F469 1F3FC 200D 1F9BC 200D 27A1 FE0F
+👩🏽‍🦼‍➡️ woman in motorized wheelchair facing right: medium skin tone; 1F469 1F3FD 200D 1F9BC 200D 27A1 FE0F
 👩🏻‍🦼 woman in motorized wheelchair: light skin tone; 1F469 1F3FB 200D 1F9BC
 👩🏾‍🦼 woman in motorized wheelchair: medium-dark skin tone; 1F469 1F3FE 200D 1F9BC
 👩🏼‍🦼 woman in motorized wheelchair: medium-light skin tone; 1F469 1F3FC 200D 1F9BC
@@ -3372,6 +3466,12 @@
 🤹🏽‍♀️ woman juggling: medium skin tone; 1F939 1F3FD 200D 2640 FE0F
 🧎‍♀️ woman kneeling; 1F9CE 200D 2640 FE0F
 🧎🏿‍♀️ woman kneeling: dark skin tone; 1F9CE 1F3FF 200D 2640 FE0F
+🧎‍♀️‍➡️ woman kneeling facing right; 1F9CE 200D 2640 FE0F 200D 27A1 FE0F
+🧎🏿‍♀️‍➡️ woman kneeling facing right: dark skin tone; 1F9CE 1F3FF 200D 2640 FE0F 200D 27A1 FE0F
+🧎🏻‍♀️‍➡️ woman kneeling facing right: light skin tone; 1F9CE 1F3FB 200D 2640 FE0F 200D 27A1 FE0F
+🧎🏾‍♀️‍➡️ woman kneeling facing right: medium-dark skin tone; 1F9CE 1F3FE 200D 2640 FE0F 200D 27A1 FE0F
+🧎🏼‍♀️‍➡️ woman kneeling facing right: medium-light skin tone; 1F9CE 1F3FC 200D 2640 FE0F 200D 27A1 FE0F
+🧎🏽‍♀️‍➡️ woman kneeling facing right: medium skin tone; 1F9CE 1F3FD 200D 2640 FE0F 200D 27A1 FE0F
 🧎🏻‍♀️ woman kneeling: light skin tone; 1F9CE 1F3FB 200D 2640 FE0F
 🧎🏾‍♀️ woman kneeling: medium-dark skin tone; 1F9CE 1F3FE 200D 2640 FE0F
 🧎🏼‍♀️ woman kneeling: medium-light skin tone; 1F9CE 1F3FC 200D 2640 FE0F
@@ -3479,6 +3579,12 @@
 🚣🏽‍♀️ woman rowing boat: medium skin tone; 1F6A3 1F3FD 200D 2640 FE0F
 🏃‍♀️ woman running; 1F3C3 200D 2640 FE0F
 🏃🏿‍♀️ woman running: dark skin tone; 1F3C3 1F3FF 200D 2640 FE0F
+🏃‍♀️‍➡️ woman running facing right; 1F3C3 200D 2640 FE0F 200D 27A1 FE0F
+🏃🏿‍♀️‍➡️ woman running facing right: dark skin tone; 1F3C3 1F3FF 200D 2640 FE0F 200D 27A1 FE0F
+🏃🏻‍♀️‍➡️ woman running facing right: light skin tone; 1F3C3 1F3FB 200D 2640 FE0F 200D 27A1 FE0F
+🏃🏾‍♀️‍➡️ woman running facing right: medium-dark skin tone; 1F3C3 1F3FE 200D 2640 FE0F 200D 27A1 FE0F
+🏃🏼‍♀️‍➡️ woman running facing right: medium-light skin tone; 1F3C3 1F3FC 200D 2640 FE0F 200D 27A1 FE0F
+🏃🏽‍♀️‍➡️ woman running facing right: medium skin tone; 1F3C3 1F3FD 200D 2640 FE0F 200D 27A1 FE0F
 🏃🏻‍♀️ woman running: light skin tone; 1F3C3 1F3FB 200D 2640 FE0F
 🏃🏾‍♀️ woman running: medium-dark skin tone; 1F3C3 1F3FE 200D 2640 FE0F
 🏃🏼‍♀️ woman running: medium-light skin tone; 1F3C3 1F3FC 200D 2640 FE0F
@@ -3567,6 +3673,12 @@
 🧛🏽‍♀️ woman vampire: medium skin tone; 1F9DB 1F3FD 200D 2640 FE0F
 🚶‍♀️ woman walking; 1F6B6 200D 2640 FE0F
 🚶🏿‍♀️ woman walking: dark skin tone; 1F6B6 1F3FF 200D 2640 FE0F
+🚶‍♀️‍➡️ woman walking facing right; 1F6B6 200D 2640 FE0F 200D 27A1 FE0F
+🚶🏿‍♀️‍➡️ woman walking facing right: dark skin tone; 1F6B6 1F3FF 200D 2640 FE0F 200D 27A1 FE0F
+🚶🏻‍♀️‍➡️ woman walking facing right: light skin tone; 1F6B6 1F3FB 200D 2640 FE0F 200D 27A1 FE0F
+🚶🏾‍♀️‍➡️ woman walking facing right: medium-dark skin tone; 1F6B6 1F3FE 200D 2640 FE0F 200D 27A1 FE0F
+🚶🏼‍♀️‍➡️ woman walking facing right: medium-light skin tone; 1F6B6 1F3FC 200D 2640 FE0F 200D 27A1 FE0F
+🚶🏽‍♀️‍➡️ woman walking facing right: medium skin tone; 1F6B6 1F3FD 200D 2640 FE0F 200D 27A1 FE0F
 🚶🏻‍♀️ woman walking: light skin tone; 1F6B6 1F3FB 200D 2640 FE0F
 🚶🏾‍♀️ woman walking: medium-dark skin tone; 1F6B6 1F3FE 200D 2640 FE0F
 🚶🏼‍♀️ woman walking: medium-light skin tone; 1F6B6 1F3FC 200D 2640 FE0F
@@ -3592,6 +3704,12 @@
 👰🏽‍♀️ woman with veil: medium skin tone; 1F470 1F3FD 200D 2640 FE0F
 👩‍🦯 woman with white cane; 1F469 200D 1F9AF
 👩🏿‍🦯 woman with white cane: dark skin tone; 1F469 1F3FF 200D 1F9AF
+👩‍🦯‍➡️ woman with white cane facing right; 1F469 200D 1F9AF 200D 27A1 FE0F
+👩🏿‍🦯‍➡️ woman with white cane facing right: dark skin tone; 1F469 1F3FF 200D 1F9AF 200D 27A1 FE0F
+👩🏻‍🦯‍➡️ woman with white cane facing right: light skin tone; 1F469 1F3FB 200D 1F9AF 200D 27A1 FE0F
+👩🏾‍🦯‍➡️ woman with white cane facing right: medium-dark skin tone; 1F469 1F3FE 200D 1F9AF 200D 27A1 FE0F
+👩🏼‍🦯‍➡️ woman with white cane facing right: medium-light skin tone; 1F469 1F3FC 200D 1F9AF 200D 27A1 FE0F
+👩🏽‍🦯‍➡️ woman with white cane facing right: medium skin tone; 1F469 1F3FD 200D 1F9AF 200D 27A1 FE0F
 👩🏻‍🦯 woman with white cane: light skin tone; 1F469 1F3FB 200D 1F9AF
 👩🏾‍🦯 woman with white cane: medium-dark skin tone; 1F469 1F3FE 200D 1F9AF
 👩🏼‍🦯 woman with white cane: medium-light skin tone; 1F469 1F3FC 200D 1F9AF
