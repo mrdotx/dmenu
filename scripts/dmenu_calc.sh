@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-06-08T07:18:14+0200
+# date:   2023-11-30T21:13:07+0100
 
 # get active window id
 window_id=$(xdotool getactivewindow)
@@ -32,13 +32,14 @@ menu() {
             "insert result at cursor" \
             "copy result to clipboard"
     printf "%s\n" \
-        "power costs" \
+        "electricity costs: price * (hours * days * months / 1000 * W)kWh" \
+        "charging costs: price * efficiency * (V / 1000000 * mAh)kWh" \
         "clear clipboard" \
         "$clipboard"
 }
 
 select=$(printf "%s\n" "$(menu "$*")" \
-    | dmenu -b -l 6 -bw 1 -w "$window_id" -p "${label-"calc »"}" \
+    | dmenu -b -l 7 -bw 1 -w "$window_id" -p "${label-"calc »"}" \
 )
 
 case $select in
@@ -69,8 +70,11 @@ case $select in
                 "cleared..." \
             && "$0" &
         ;;
-    "power costs")
-        "$0" "24*7*52/1000*0,40" &
+    "electricity costs: price * (hours * days * months / 1000 * W)kWh")
+        "$0" "0,40*(24*7*52/1000*1)" &
+        ;;
+    "charging costs: price * efficiency * (V / 1000000 * mAh)kWh")
+        "$0" "0,40*1,30*(3,85/1000000*5100)" &
         ;;
     [-+/*]*)
         "$0" "$result$select" &
