@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-07-04T22:35:10+0200
+# date:   2023-12-23T12:04:47+0100
 
 # config
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
@@ -47,33 +47,39 @@ create_bookmarks() {
         | sort > "$bookmarks_file"
 }
 
-copy_to_w3m() {
+export_to_w3m() {
     w3m_file="$HOME/.local/state/w3m/bookmark.html"
-    header="<html><head><title>Bookmarks</title></head>
-<body>
-<h1>Bookmarks</h1>
-<h2>Firefox</h2>
-<ul>"
-    footer="<!--End of section (do not delete this comment)-->
-</ul>
-</body>
-</html>"
-
-    printf "%s\n" "$header" > "$w3m_file"
+    printf "%s\n" \
+        "<html><head><title>Bookmarks</title></head>" \
+        "<body>" \
+        "<h1>Bookmarks</h1>" \
+        "<h2>Firefox</h2>" \
+        "<ul>" > "$w3m_file"
     awk -F ';' '{print "<li><a href=\""$2"\">"$1"</a>"}' "$bookmarks_file" >> "$w3m_file"
-    printf "%s" "$footer" >> "$w3m_file"
+    printf "%s\n" \
+        "<!--End of section (do not delete this comment)-->" \
+        "</ul>" \
+        "</body>" \
+        "</html>" >> "$w3m_file"
 }
 
-copy_to_surf() {
+export_to_surf() {
     surf_file="$HOME/.config/surf/bookmarks"
     cut -d ';' -f2 "$bookmarks_file" \
         | awk -F '//' '{print $2}' \
         | sed '/^$/d' > "$surf_file"
 }
 
-copy_to_qutebrowser() {
+export_to_qutebrowser() {
     qutebrowser_file="$HOME/.config/qutebrowser/bookmarks/urls"
     cut -d ';' -f2 "$bookmarks_file" > "$qutebrowser_file"
+}
+
+export_to_notes() {
+    notes_file="$HOME/Documents/Notes/index.md"
+    sed -i '/# Bookmarks/Q' "$notes_file"
+    printf "# Bookmarks\n\n" >> "$notes_file"
+    awk -F ';' '{print "- ["$1"]("$2")"}' "$bookmarks_file" >> "$notes_file"
 }
 
 # sync/open bookmark
@@ -81,9 +87,10 @@ case "$1" in
     --sync)
         close_firefox
         create_bookmarks
-        copy_to_w3m
-        copy_to_surf
-        copy_to_qutebrowser
+        export_to_w3m
+        export_to_surf
+        export_to_qutebrowser
+        export_to_notes
         [ "$firefox" = 1 ] \
             && firefox &
         notify-send \
