@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-12-23T12:04:47+0100
+# date:   2023-12-23T12:12:49+0100
 
 # config
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
@@ -32,13 +32,13 @@ select_bookmark() {
         )
 }
 
-# data functions
 close_firefox() {
     killall -q "/usr/lib/firefox/firefox" \
         && firefox=1 \
         && sleep .5
 }
 
+# data functions
 create_bookmarks() {
     firefox_file=$(find "$HOME"/.mozilla/firefox/*default* -iname "places.sqlite")
     printf 'select mb.title, mp.url from moz_bookmarks mb, moz_places mp where mp.id=mb.fk;\n' \
