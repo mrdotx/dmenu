@@ -9,12 +9,14 @@ static int centered = 0;
 static int min_width = 250;
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static char font[]  = "DejaVu Sans Mono:pixelsize=16";
-static char font0[] = "DejaVuSansM Nerd Font:pixelsize=16";
-static char font1[] = "Noto Color Emoji:pixelsize=14";
+static char font0[] = "DejaVu Sans:pixelsize=17";
+static char font1[] = "DejaVuSansM Nerd Font:pixelsize=16";
+static char font2[] = "Noto Color Emoji:pixelsize=14";
 static const char *fonts[] = {
 	font,
 	font0,
-	font1
+	font1,
+	font2
 };
 static const unsigned int alpha = 0xe6;
 /* -p  option; prompt to the left of input field */
@@ -76,6 +78,7 @@ ResourcePref resources[] = {
 	{ "font",                    STRING, &font },
 	{ "font0",                   STRING, &font0 },
 	{ "font1",                   STRING, &font1 },
+	{ "font2",                   STRING, &font2 },
 	{ "foreground",              STRING, &foreground },
 	{ "background",              STRING, &background },
 	{ "selforeground",           STRING, &selforeground },
