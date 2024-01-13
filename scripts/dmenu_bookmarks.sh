@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-12-23T12:12:49+0100
+# date:   2024-01-12T16:44:16+0100
 
 # config
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
@@ -14,7 +14,7 @@ select_bookmark() {
     bookmarks=$(cat "$bookmarks_file")
     select=$(printf "%s\n" "$bookmarks" \
         | cut -d ';' -f1 \
-        | dmenu -l 20 -c -bw 1 -i -p "bookmark »" \
+        | dmenu -l 15 -c -bw 1 -i -p "bookmark »" \
     )
 
     [ -z "$select" ] \
