@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-12-03T17:29:19+0100
+# date:   2024-01-12T16:46:10+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -14,7 +14,7 @@ case "$1" in
         ;;
     *)
         search=$(printf "%s" "$(cat "$history_file")" \
-            | dmenu -l 20 -c -bw 1 -i -p "youtube »" \
+            | dmenu -l 15 -c -bw 1 -i -p "youtube »" \
         )
         ;;
 esac
@@ -47,7 +47,7 @@ case "$search" in
                 "date 10" \
                 "relevance all" \
                 "date all" \
-            | dmenu -l 20 -c -bw 1 -i -p "youtube »" \
+            | dmenu -l 15 -c -bw 1 -i -p "youtube »" \
         )
 
         case "$search_string" in
@@ -94,7 +94,7 @@ case "$search" in
 
         select=$(printf "%s" "$result" \
             | sed -n '1~2p' \
-            | dmenu -l 20 -c -bw 1 -r -i -p "youtube »" \
+            | dmenu -l 15 -c -bw 1 -r -i -p "youtube »" \
         )
 
         [ -z "$select" ] \
@@ -113,7 +113,7 @@ search=$(printf "%s\n" \
     "add audio to taskspooler" \
     "download video" \
     "download audio" \
-    | dmenu -l 20 -c -bw 1 -r -i -p "youtube »" \
+    | dmenu -l 15 -c -bw 1 -r -i -p "youtube »" \
 )
 
 [ -z "$search" ] \
@@ -121,16 +121,16 @@ search=$(printf "%s\n" \
 
 case "$search" in
     "play video")
-        mpv --really-quiet ytdl://"$open" >/dev/null 2>&1 &
+        mpv --no-terminal ytdl://"$open" >/dev/null 2>&1 &
         ;;
     "play audio")
         $TERMINAL -e mpv --no-video ytdl://"$open" &
         ;;
     "add video to taskspooler")
-        tsp mpv --really-quiet ytdl://"$open" >/dev/null 2>&1
+        tsp mpv --no-terminal ytdl://"$open" >/dev/null 2>&1
         ;;
     "add audio to taskspooler")
-        tsp mpv --really-quiet --no-video ytdl://"$open" >/dev/null 2>&1
+        tsp mpv --no-terminal --no-video --force-window ytdl://"$open" >/dev/null 2>&1
         ;;
     "download video")
         $TERMINAL -e terminal_wrapper.sh yt-dlp -ciw "$open" &
