@@ -358,7 +358,8 @@ n                            | tmux           | switch to next window
 [0-9]                        | tmux           | switch to window 1...9
 h or "                       | tmux           | tile active window horizontally
 v or %                       | tmux           | tile active window vertically
-y                            | tmux           | synchronize panes
+x                            | tmux           | close active panes
+y                            | tmux           | toggle synchronize panes
 w                            | tmux           | show list of windows
 [←,↑,↓,→]                    | tmux           | change active container
 ctrl+[←,↑,↓,→]               | tmux           | change active container size
@@ -366,8 +367,8 @@ space                        | tmux           | switch windows devision
 {,}                          | tmux           | move active container left, right
 !                            | tmux           | open active container in new window
 shift+mouse                  | tmux,copy      | select to copy
-[                            | tmux,copy      | activate scroll-mode (arrow keys)
+[                            | tmux,copy      | enter copy-mode
 v                            | tmux,copy      | begin selection
 V                            | tmux,copy      | select line
-ctrl+v                       | tmux,copy      | select rectangle
+ctrl+v                       | tmux,copy      | toggle rectangle selection
 y                            | tmux,copy      | copy to clipboard
