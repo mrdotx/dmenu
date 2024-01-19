@@ -3,12 +3,30 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_iptv.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-01-18T09:31:11+0100
+# date:   2024-01-19T12:35:21+0100
 
 # config
-m3u="$HOME/.local/share/repos/epg/xitylight.m3u"
+m3us="
+$HOME/.local/share/repos/epg/playlists/xitylight.m3u
+"
 radio="$TERMINAL -e mpv"
 tv="mpv --no-terminal"
+
+m3us=$(printf "%s" "$m3us" | sed "/^$/d")
+
+case "$(printf "%s" "$m3us" | wc -w)" in
+    1)
+        m3u="$m3us"
+        ;;
+    *)
+        m3u=$(printf "%s" "$m3us" \
+            | dmenu -l 15 -c -bw 1 -r -i -p "m3u »"
+        )
+        ;;
+esac
+
+[ -z "$m3u" ] \
+    && exit 0
 
 channels=$(grep -v "#EXTM3U\|\#EXTVLCOPT\|^[[:space:]]*$" "$m3u" \
     | sed \
@@ -21,8 +39,6 @@ channels=$(grep -v "#EXTM3U\|\#EXTVLCOPT\|^[[:space:]]*$" "$m3u" \
     | sed 'N;s/\n/\t/' \
     | sort -u \
 )
-
-printf "%s\n" "$channels"
 
 select=$(printf "%s" "$channels" \
     | awk -F "\t" '{print $1 " - " $2}' \
