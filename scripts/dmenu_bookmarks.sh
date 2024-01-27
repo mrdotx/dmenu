@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-01-12T16:44:16+0100
+# date:   2024-01-27T16:01:07+0100
 
 # config
 bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
@@ -75,13 +75,6 @@ export_to_qutebrowser() {
     cut -d ';' -f2 "$bookmarks_file" > "$qutebrowser_file"
 }
 
-export_to_notes() {
-    notes_file="$HOME/Documents/Notes/index.md"
-    sed -i '/# Bookmarks/Q' "$notes_file"
-    printf "# Bookmarks\n\n" >> "$notes_file"
-    awk -F ';' '{print "- ["$1"]("$2")"}' "$bookmarks_file" >> "$notes_file"
-}
-
 # sync/open bookmark
 case "$1" in
     --sync)
@@ -90,7 +83,6 @@ case "$1" in
         export_to_w3m
         export_to_surf
         export_to_qutebrowser
-        export_to_notes
         [ "$firefox" = 1 ] \
             && firefox &
         notify-send \
