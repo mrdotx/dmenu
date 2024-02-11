@@ -1,10 +1,6 @@
-1920x1080;0x1080; 60;;1920x1080;0x0;60;
-1920x1080;0x1080; 60;;1920x1080;0x0;75;
-1920x1080;0x1080; 75;;1920x1080;0x0;60;
-1920x1080;0x1080;144;;1920x1080;0x0;60;
-1920x1080;0x1080;144;;1920x1080;0x0;75;
-1920x1080;0x0; 60;;1920x1080;1920x0;60;
-1920x1080;0x0; 60;;1920x1080;1920x0;75;
-1920x1080;0x0; 75;;1920x1080;1920x0;60;
-1920x1080;0x0;144;;1920x1080;1920x0;60;
-1920x1080;0x0;144;;1920x1080;1920x0;75;
+above, low rate;--mode 1920x1080 --rate 60 --rotate normal --scale 1.0x1.0;--mode 1920x1080 --rate 60 --rotate normal --scale 1.0x1.0 --above "$primary"
+above, high rate;--mode 1920x1080 --rate 144 --rotate normal --scale 1.0x1.0;--mode 1920x1080 --rate 144 --rotate normal --scale 1.0x1.0 --above "$primary"
+right, low rate;--mode 1920x1080 --rate 60 --rotate normal --scale 1.0x1.0;--mode 1920x1080 --rate 60 --rotate normal --scale 1.0x1.0 --right-of "$primary"
+right, high rate;--mode 1920x1080 --rate 144 --rotate normal --scale 1.0x1.0;--mode 1920x1080 --rate 144 --rotate normal --scale 1.0x1.0 --right-of "$primary"
+right, low rate, rotate right;--mode 1920x1080 --rate 60 --rotate normal --scale 1.0x1.0;--mode 1920x1080 --rate 60 --rotate right --scale 1.0x1.0 --left-of "$primary"
+right, high rate, rotate right;--mode 1920x1080 --rate 144 --rotate normal --scale 1.0x1.0;--mode 1920x1080 --rate 144 --rotate right --scale 1.0x1.0 --left-of "$primary"
