@@ -3,11 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-03-30T10:34:59+0200
+# date:   2024-02-11T10:21:37+0100
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
-scale_dimensions="1.0x1.0"
 edit="$TERMINAL -e $EDITOR"
 
 all_displays=$(xrandr \
@@ -34,29 +33,21 @@ display() {
 saved_settings() {
     display "primary »"
 
-    get_value() {
-        value=$(printf "%s" "$select" \
-            | cut -d ';' -f"$1")
-        printf "%s" "${value:-"$2"}"
+    get_options() {
+        printf "%s" "$options" \
+            | cut -d ';' -f"$1"
     }
 
-    select=$(printf "%s" "$(cat "$saved_settings_file")" \
+    select=$(awk -F ';' '{print $1}' "$saved_settings_file" \
         | dmenu -l 10 -c -bw 1 -i -p "$select »" \
     )
     [ -n "$select" ] \
-        && xrandr \
+        && options=$(grep "^$select;" "$saved_settings_file") \
+        && eval xrandr \
             --output "$primary" --auto --primary \
-            --mode "$(get_value 1 "1920x1080")" \
-            --pos "$(get_value 2 "0x0")" \
-            --rate "$(get_value 3 "60")" \
-            --rotate "$(get_value 4 "normal")" \
-            --scale "$scale_dimensions" \
+            "$(get_options 2)" \
             --output "$secondary" --auto \
-            --mode "$(get_value 5 "1920x1080")" \
-            --pos "$(get_value 6 "1920x0")" \
-            --rate "$(get_value 7 "60")" \
-            --rotate "$(get_value 8 "normal")" \
-            --scale "$scale_dimensions"
+            "$(get_options 3)"
 }
 
 refresh_rate() {
@@ -119,9 +110,7 @@ extend() {
 
     xrandr \
         --output "$primary" --auto --primary \
-        --scale "$scale_dimensions" \
-        --output "$secondary" --"$orientation" "$primary" --auto \
-        --scale "$scale_dimensions"
+        --output "$secondary" --"$orientation" "$primary" --auto
 }
 
 mirror() {
@@ -160,7 +149,7 @@ mirror() {
 
     xrandr \
         --output "$primary" --auto --primary \
-        --scale "$scale_dimensions" \
+        --scale "1.0x1.0" \
         --output "$secondary" --auto \
         --same-as "$primary" \
         --scale "$scale_x"x"$scale_y"
@@ -199,7 +188,6 @@ select=$(printf "%s\n" \
     *)
         eval xrandr \
             --output "$select" --auto --primary \
-            --scale "$scale_dimensions" \
             "$(printf "%s" "$all_displays" \
                 | grep -v "$select" \
                 | awk '{print "--output", $1, "--off"}' \
