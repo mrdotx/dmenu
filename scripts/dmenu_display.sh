@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-02-11T10:21:37+0100
+# date:   2024-02-12T10:23:36+0100
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -94,6 +94,25 @@ rotate() {
         --rotate "$direction"
 }
 
+scale_dimensions() {
+    display "$select »"
+
+    scale=$(printf "%s\n" \
+        "1.0x1.0" \
+        "0.7x0.7" \
+        "0.5x0.5" \
+        "0.3x0.3" \
+        "0.1x0.1" \
+        | dmenu -l 5 -c -bw 1 -i -p "scale »" \
+    )
+    [ -z "$scale" ] \
+        && exit 0
+
+    xrandr \
+        --output "$primary" \
+        --scale "$scale"
+}
+
 extend() {
     display "primary »"
 
@@ -114,7 +133,7 @@ extend() {
 }
 
 mirror() {
-    display "resolution from »"
+    display "primary »"
 
     resolution() {
         xrandr \
@@ -161,6 +180,7 @@ select=$(printf "%s\n" \
     "== edit saved settings ==" \
     "refresh rate" \
     "rotate" \
+    "scale" \
     "extend" \
     "mirror" \
     "$connected_displays" \
@@ -178,6 +198,9 @@ select=$(printf "%s\n" \
             ;;
         "rotate")
             rotate
+            ;;
+        "scale")
+            scale_dimensions
             ;;
         "extend")
             extend
