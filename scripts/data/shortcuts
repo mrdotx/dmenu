@@ -343,10 +343,8 @@ alt+[1-0]                    | tabbed         | switch to open tab 1...10
 alt+q                        | tabbed         | close tab
 ctrl+b                       | tmux           | initiate command sequence
 ctrl+a                       | tmux           | toggle hotkeys for nested session
-m                            | tmux           | enable/disable mouse support
 ?                            | tmux           | show active shortcuts
 t                            | tmux           | show clock overlay
-r                            | tmux           | reload config
 d                            | tmux           | detach current session
 s                            | tmux           | switch session
 c                            | tmux           | create new window
@@ -355,10 +353,12 @@ c                            | tmux           | create new window
 l                            | tmux           | switch to last active window (marked as -)
 p                            | tmux           | switch to previous window
 n                            | tmux           | switch to next window
-[0-9]                        | tmux           | switch to window 1...9
+[0-9]                        | tmux           | switch to window 1...10
 h or "                       | tmux           | tile active window horizontally
 v or %                       | tmux           | tile active window vertically
 x                            | tmux           | close active panes
+j                            | tmux           | join panes horizontally
+b                            | tmux           | break panes
 y                            | tmux           | toggle synchronize panes
 w                            | tmux           | show list of windows
 [←,↑,↓,→]                    | tmux           | change active container
@@ -366,6 +366,8 @@ ctrl+[←,↑,↓,→]               | tmux           | change active container 
 space                        | tmux           | switch windows devision
 {,}                          | tmux           | move active container left, right
 !                            | tmux           | open active container in new window
+backspace                    | tmux           | reload config
+enter                        | tmux           | enable/disable mouse support
 shift+mouse                  | tmux,copy      | select to copy
 [                            | tmux,copy      | enter copy-mode
 v                            | tmux,copy      | begin selection
