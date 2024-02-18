@@ -66,8 +66,8 @@ super+[←,→,↑,↓]              | i3,windows     | focus window
 super+shift+[←,→,↑,↓]        | i3,windows     | move focused window
 super+ctrl+[←,→,↑,↓]         | i3,windows     | resize window
 super+ctrl+[prior,next,home] | i3,windows     | resize window gaps
-super+prior                  | i3,windows     | enable floating and move window top right
-super+next                   | i3,windows     | enable floating and move window bottom right
+super+prior                  | i3,windows     | enable floating and move window
+super+next                   | i3,windows     | enable floating and move window
 super+home                   | i3,windows     | toggle window tiling/floating
 super+end                    | i3,windows     | change focus between tiling/floating windows
 super+insert                 | i3,windows     | toggle sticky
