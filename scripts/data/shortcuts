@@ -66,8 +66,8 @@ super+[←,→,↑,↓]              | i3,windows     | focus window
 super+shift+[←,→,↑,↓]        | i3,windows     | move focused window
 super+ctrl+[←,→,↑,↓]         | i3,windows     | resize window
 super+ctrl+[prior,next,home] | i3,windows     | resize window gaps
-super+prior                  | i3,windows     | enable floating and move window
-super+next                   | i3,windows     | enable floating and move window
+super+prior                  | i3,windows     | enable floating and move window (wnw)
+super+next                   | i3,windows     | enable floating and move window (ene)
 super+home                   | i3,windows     | toggle window tiling/floating
 super+end                    | i3,windows     | change focus between tiling/floating windows
 super+insert                 | i3,windows     | toggle sticky
@@ -103,7 +103,7 @@ super+pause                  | i3,system      | sleep (lock + suspend)
 super+backspace              | i3,system      | reboot
 super+delete                 | i3,system      | trash (fzf)
 menu                         | i3,system      | start keyboard mouse (xkeymou)
-super+menu                   | i3,system      | move mouse away
+super+menu                   | i3,system      | move mouse (ne)
 :q                           | vim            | close
 :w                           | vim            | write/saves
 :W                           | vim            | write/saves as root (cmd)
