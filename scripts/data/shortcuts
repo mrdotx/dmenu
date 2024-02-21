@@ -246,6 +246,7 @@ alt+c                        | terminal       | fuzzy finder cd into directory
 ctrl+t                       | terminal       | fuzzy finder paste file or directory
 ctrl+r                       | terminal       | fuzzy finder paste command from history
 alt+o                        | terminal,urxvt | start matcher-select mode
+alt+shift+o                  | terminal,urxvt | open list of top 10 urls to follow
 matcher-select y             | terminal,urxvt | copy url
 matcher-select enter         | terminal,urxvt | open url
 alt+y                        | terminal,st    | copy url
