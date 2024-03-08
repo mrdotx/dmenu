@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-01-12T16:46:10+0100
+# date:   2024-03-08T18:00:48+0100
 
 history_file="$HOME/.local/share/repos/dmenu/scripts/data/youtube"
 
@@ -22,16 +22,26 @@ esac
 [ -z "$search" ] \
     && exit 0
 
+# notifications
+message_id="$(date +%s)"
+notification() {
+    notify-send \
+        -t "$1" \
+        -u low \
+        "$title" \
+        "$message" \
+        -h string:x-canonical-private-synchronous:"$message_id"
+}
+
 case "$search" in
     *'youtube.com/watch'* \
         | *'youtube.com/playlist'* \
         | *'youtu.be'* \
         | https://* \
         | http://*)
-            notify-send \
-                -u low \
-                "yt-dlp - open/search from clipboard" \
-                "$search"
+            title="yt-dlp - open/search from clipboard"
+            message="$search"
+            notification 0
             open="$search"
             ;;
     *)
@@ -43,8 +53,8 @@ case "$search" in
         printf "%s\n" "$history" > "$history_file"
 
         search_string=$(printf "%s\n" \
-                "relevance 10" \
-                "date 10" \
+                "relevance 5" \
+                "date 5" \
                 "relevance all" \
                 "date all" \
             | dmenu -l 15 -c -bw 1 -i -p "youtube »" \
@@ -63,34 +73,26 @@ case "$search" in
                     | sed 's/date /ytsearchdate/g' \
                 )"
                 ;;
-            "== [relevance/date] [quantity/all] ==")
-                exit 0
-                ;;
-            "")
+            *)
                 exit 0
                 ;;
         esac
 
-        notification() {
-            notify-send \
-                -t "$1" \
-                -u low \
-                "$2" \
-                "search:  $search\nresult:  $search_string\nattempt: $3" \
-                -h string:x-canonical-private-synchronous:"$message_id"
-        }
-
         # if yt-dlp returns no results try again 30 times
         max_attempts=30
         attempt=1
-        message_id="$(date +%s)"
+        message_body="search:  $search\nresult:  $search_string\nattempt:"
         while [ $attempt -le $max_attempts ] \
             && [ -z "$result" ]; do
-                notification 0 "yt-dlp - please wait..." "$attempt/$max_attempts"
+                title="yt-dlp - please wait..."
+                message="$message_body $attempt/$max_attempts"
+                notification 0
                 result=$(yt-dlp "$search_result:$search" -e --get-id)
                 attempt=$((attempt + 1))
         done
-        notification 1000 "yt-dlp - finished" "$((attempt - 1))/$max_attempts"
+        title="yt-dlp - finished"
+        message="$message_body $((attempt - 1))/$max_attempts"
+        notification 0
 
         select=$(printf "%s" "$result" \
             | sed -n '1~2p' \
@@ -98,6 +100,7 @@ case "$search" in
         )
 
         [ -z "$select" ] \
+            && notification 1 \
             && exit 0
 
         open=$(printf "%s" "$result" \
@@ -115,6 +118,8 @@ search=$(printf "%s\n" \
     "download audio" \
     | dmenu -l 15 -c -bw 1 -r -i -p "youtube »" \
 )
+
+notification 1
 
 [ -z "$search" ] \
     && exit 0
