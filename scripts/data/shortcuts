@@ -231,6 +231,8 @@ b                            | vim,move       | jump backward by words (punctuat
 $                            | vim,move       | end of line
 G                            | vim,move       | bottom of file
 gg                           | vim,move       | top of file
+gT                           | vim,move       | previous tab
+gt                           | vim,move       | next tab
 E                            | vim,move       | jump to end of words (no punctuation)
 W                            | vim,move       | jump by words (spaces separate words)
 B                            | vim,move       | jump backward by words (no punctuation)
