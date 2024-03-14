@@ -3,11 +3,16 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-07-27T19:36:45+0200
+# date:   2024-03-14T08:05:57+0100
+
+# i3 helper
+. dmenu_helper.sh
+
+title="unicode-symbols"
 
 # config
 data_dir="$HOME/.local/share/repos/dmenu/scripts/data"
-unicode_symbols_file="$data_dir/unicode-symbols"
+unicode_symbols_file="$data_dir/$title"
 unicode_files="$data_dir/unicode-files"
 
 # data functions
@@ -68,7 +73,7 @@ select_symbols() {
     # get active window id
     window_id=$(xdotool getactivewindow)
 
-    select=$(dmenu -b -l 15 -bw 1 -r -i -w "$window_id" -p "symbol »" \
+    select=$(dmenu -b -l 15 -bw 1 -r -i -w "$window_id" -p "$title »" \
         < "$unicode_symbols_file" \
     )
 
@@ -86,10 +91,9 @@ select_symbols() {
     printf "%s" "$symbol" \
         | xsel -i -b
 
-    notify-send \
-        -u low \
-        "copied $symbol to clipboard" \
-        "$select"
+    dmenu_notify 2500 \
+        "$title" \
+        "$symbol copied to clipboard"
 }
 
 case "$1" in

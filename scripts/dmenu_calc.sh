@@ -3,7 +3,12 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-11-30T21:13:07+0100
+# date:   2024-03-14T08:05:47+0100
+
+# i3 helper
+. dmenu_helper.sh
+
+title="calc"
 
 # get active window id
 window_id=$(xdotool getactivewindow)
@@ -39,7 +44,7 @@ menu() {
 }
 
 select=$(printf "%s\n" "$(menu "$*")" \
-    | dmenu -b -l 7 -bw 1 -w "$window_id" -p "${label-"calc »"}" \
+    | dmenu -b -l 7 -bw 1 -w "$window_id" -p "${label-"$title »"}" \
 )
 
 case $select in
@@ -57,17 +62,15 @@ case $select in
     "copy result to clipboard")
         printf "%s\n" "$result" \
             | xsel -i -b \
-            && notify-send \
-                -u low \
-                "Clipboard" \
-                "Result copied: $result"
+            && dmenu_notify 2500 \
+                "$title" \
+                "$result copied to clipboard"
         ;;
     "clear clipboard")
         xsel -c -b \
-            && notify-send \
-                -u low \
-                "Clipboard" \
-                "cleared..." \
+            && dmenu_notify 2500 \
+                "$title" \
+                "Clipboard cleared..." \
             && "$0" &
         ;;
     "electricity costs: price * (hours * days * months / 1000 * W)kWh")

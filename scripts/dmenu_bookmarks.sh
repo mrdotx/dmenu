@@ -3,10 +3,15 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-01-27T16:01:07+0100
+# date:   2024-03-14T08:05:41+0100
+
+# i3 helper
+. dmenu_helper.sh
+
+title="bookmarks"
 
 # config
-bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/bookmarks"
+bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/$title"
 search_url="https://lite.duckduckgo.com/lite/?q="
 open_in_browser="link_handler.sh"
 
@@ -14,7 +19,7 @@ select_bookmark() {
     bookmarks=$(cat "$bookmarks_file")
     select=$(printf "%s\n" "$bookmarks" \
         | cut -d ';' -f1 \
-        | dmenu -l 15 -c -bw 1 -i -p "bookmark »" \
+        | dmenu -l 15 -c -bw 1 -i -p "$title »" \
     )
 
     [ -z "$select" ] \
@@ -85,9 +90,8 @@ case "$1" in
         export_to_qutebrowser
         [ "$firefox" = 1 ] \
             && firefox &
-        notify-send \
-            -u low \
-            "bookmarks" \
+        dmenu_notify 2500 \
+            "$title" \
             "synchronized"
         ;;
     *)
