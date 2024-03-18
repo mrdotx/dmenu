@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_link_handler.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-03-14T07:53:03+0100
+# date:   2024-03-17T19:01:05+0100
 
 # i3 helper
 . dmenu_helper.sh
@@ -32,6 +32,7 @@ select=$(printf "%s\n" \
     "add audio to taskspooler" \
     "download video" \
     "download audio" \
+    "select download format" \
     "download file" \
     | dmenu -l 15 -c -bw 1 -r -i -p "$title »" \
 )
@@ -65,6 +66,10 @@ case "$select" in
     "download audio")
         $TERMINAL -e terminal_wrapper.sh \
             yt-dlp -ciw -x --audio-format mp3 --audio-quality 0 "$urls" &
+        ;;
+    "select download format")
+        $TERMINAL -e terminal_wrapper.sh \
+            yt-dlp -ciwf - "$urls" &
         ;;
     "download file")
         $TERMINAL -e terminal_wrapper.sh \
