@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_screenshot.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-03-14T08:05:53+0100
+# date:   2024-03-21T18:27:29+0100
 
 # i3 helper
 . dmenu_helper.sh
@@ -29,7 +29,7 @@ select=$(printf "%s\n" \
             "selection" \
             "desktop --delay 5" \
             "window --delay 5" \
-                | dmenu -l 5 -c -bw 1 -p "title »" \
+                | dmenu -l 5 -c -bw 1 -p "$title »" \
 )
 
 case $select in
