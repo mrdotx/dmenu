@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_link_handler.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-03-22T08:41:20+0100
+# date:   2024-03-23T08:05:55+0100
 
 # i3 helper
 . dmenu_helper.sh
@@ -16,11 +16,10 @@ download() {
     shift 2
 
     [ -z "$host" ] \
-        && $TERMINAL -e terminal_wrapper.sh eval "$@" &
+        && $TERMINAL -e terminal_wrapper.sh eval "$*" &
 
     [ -n "$host" ] \
-        && dmenu_notify 2500 "$title" "$urls\nsent to: $host" \
-        && ssh -t "$host" "$@" &
+        && ssh -q "$host" "$* >/dev/null 2>&1 &"
 }
 
 case "$1" in
@@ -75,18 +74,21 @@ case "$select" in
         ;;
     "download audio/video file")
         $TERMINAL -e terminal_wrapper.sh \
-            yt-dlp -ciwf - "$urls" &
+            yt-dlp --continue --ignore-errors --no-overwrites \
+                --format - "$urls" &
         ;;
     "download file"*)
         download "on " "$select" "aria2c.sh \"$urls\""
         ;;
     "record video stream"*)
-        download "on " "$select" "yt-dlp -ciw \
+        download "on " "$select" "yt-dlp \
+            --continue --ignore-errors --no-overwrites \
             --embed-thumbnail --embed-metadata \"$urls\""
         ;;
     "record audio stream"*)
-        download "on " "$select" "yt-dlp -ciw \
-            -x --audio-format mp3 --audio-quality 0 \
+        download "on " "$select" "yt-dlp \
+            --continue --ignore-errors --no-overwrites \
+            --extract-audio --audio-format mp3 --audio-quality 0 \
             --embed-thumbnail --embed-metadata \"$urls\""
         ;;
 esac
