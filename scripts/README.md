@@ -2,11 +2,11 @@
 
 shell scripts for dmenu
 
-| folder name | comment              |
-| :---------- | :------------------- |
-| data        | data for the scripts |
+| folder | comment              |
+| :----- | :------------------- |
+| data   | data for the scripts |
 
-| name                     | comment                                                           |
+| file                     | comment                                                           |
 | :----------------------- | :---------------------------------------------------------------- |
 | dmenu_bookmarks.sh       | search/sync bookmarks from firefox and open them in browser       |
 | dmenu_calc.sh            | calculate with bc                                                 |
