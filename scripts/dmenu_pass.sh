@@ -3,14 +3,14 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2023-05-24T09:16:52+0200
+# date:   2024-04-19T12:17:48+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR:-~/.password-store}"
 file_type=".gpg"
 clipboard_timeout=45
 
-select=$(printf "== generate password ==\n%s" \
+select=$(printf "» generate password\n%s" \
     "$(find "$password_store" -iname "*$file_type" -printf "%P\n" \
         | sed "s/$file_type$//" \
         | sort)" \
@@ -81,7 +81,7 @@ get_gpg_entry() {
 
 # menu
 case "$select" in
-    "== generate password ==")
+    "» generate password")
         case $(printf "%s\n" \
             "copy password ($clipboard_timeout sec)" \
             "type password" \

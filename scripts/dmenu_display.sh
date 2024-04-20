@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-02-12T10:23:36+0100
+# date:   2024-04-19T12:15:18+0200
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -177,7 +177,7 @@ mirror() {
 # menu
 select=$(printf "%s\n" \
     "saved settings" \
-    "== edit saved settings ==" \
+    "» edit saved settings" \
     "refresh rate" \
     "rotate" \
     "scale" \
@@ -190,7 +190,7 @@ select=$(printf "%s\n" \
         "saved settings")
             saved_settings
             ;;
-        "== edit saved settings ==")
+        "» edit saved settings")
             $edit "$saved_settings_file"
             ;;
         "refresh rate")

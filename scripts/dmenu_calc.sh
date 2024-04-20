@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-03-14T08:05:47+0100
+# date:   2024-04-19T12:10:16+0200
 
 # i3 helper
 . dmenu_helper.sh
@@ -37,8 +37,8 @@ menu() {
             "insert result at cursor" \
             "copy result to clipboard"
     printf "%s\n" \
-        "electricity costs: price * (hours * days * months / 1000 * W)kWh" \
-        "charging costs: price * efficiency * (V / 1000000 * mAh)kWh" \
+        "» electricity costs: price * (hours * days * months / 1000 * W)kWh" \
+        "» charging costs: price * efficiency * (V / 1000000 * mAh)kWh" \
         "clear clipboard" \
         "$clipboard"
 }
@@ -73,10 +73,10 @@ case $select in
                 "Clipboard cleared..." \
             && "$0" &
         ;;
-    "electricity costs: price * (hours * days * months / 1000 * W)kWh")
+    "» electricity costs: price * (hours * days * months / 1000 * W)kWh")
         "$0" "0,40*(24*7*52/1000*1)" &
         ;;
-    "charging costs: price * efficiency * (V / 1000000 * mAh)kWh")
+    "» charging costs: price * efficiency * (V / 1000000 * mAh)kWh")
         "$0" "0,40*1,30*(3,85/1000000*5100)" &
         ;;
     [-+/*]*)
