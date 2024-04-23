@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-04-19T12:17:48+0200
+# date:   2024-04-23T08:56:52+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR:-~/.password-store}"
@@ -38,20 +38,21 @@ copy_string() {
 
 # data functions
 generate_password() {
-    length=16
+    chars=16
     symbols='!@#'
 
     while [ -z "$check" ]; do
         check=1
-        password=$(printf "%s" "$(tr -dc "[:alnum:]$symbols" \
-            < /dev/urandom \
-            | head -c"$length")")
+        password=$(printf "%s" \
+            "$(tr -dc "[:alnum:]$symbols" < /dev/urandom \
+                | head -c"$chars")" \
+        )
 
-        # check if at least 1 of each type is available
-        for character in [$symbols] [0-9] [A-Z] [a-z]; do
+        # check if at least 1 of each char type is available
+        for char in [$symbols] [0-9] [A-Z] [a-z]; do
             printf "%s" "$password" \
-                | grep -q "$character" \
-                    || check=
+                | grep -q "$char" \
+                    || unset check
 
             [ -z "$check" ] \
                 && break
