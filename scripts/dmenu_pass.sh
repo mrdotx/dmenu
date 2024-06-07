@@ -3,11 +3,12 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-04-23T08:56:52+0200
+# date:   2024-06-06T19:40:33+0200
 
 # config
-password_store="${PASSWORD_STORE_DIR:-~/.password-store}"
+password_store="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 file_type=".gpg"
+edit="$TERMINAL -e ranger"
 clipboard_timeout=45
 
 select=$(printf "» generate password\n%s" \
@@ -101,6 +102,7 @@ case "$select" in
         ;;
     *)
         case $(printf "%s\n" \
+            "» edit saved settings" \
             "type [username] tab [password] enter" \
             "type [username] 2xtab [password] enter" \
             "type [username] enter [password] enter" \
@@ -108,8 +110,11 @@ case "$select" in
             "type [password]" \
             "copy [username] to clipboard ($clipboard_timeout sec)" \
             "copy [password] to clipboard ($clipboard_timeout sec)" \
-            | dmenu -l 7 -c -bw 1 -r -i -p "$select »" \
+            | dmenu -l 8 -c -bw 1 -r -i -p "$select »" \
             ) in
+            "» edit saved settings")
+                $edit "$password_store/$select$file_type"
+                ;;
             "type [username] tab [password] enter"*)
                 type_string "$(get_gpg_entry "username")" \
                     && xdotool key Tab \
