@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_link_handler.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-06-19T18:44:53+0200
+# date:   2024-06-20T07:17:48+0200
 
 # i3 helper
 . dmenu_helper.sh
@@ -62,7 +62,7 @@ select=$(printf "%s\n" \
         "video (ext) on m625q" \
         "audio on m625q" \
         "file on m625q" \
-            | dmenu -l 15 -c -bw 1 -i -p "$title »" \
+            | dmenu -l 15 -c -bw 1 -i -p "download »" \
 )
 dmenu_notify 1 "$title"
 
