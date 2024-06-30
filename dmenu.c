@@ -114,7 +114,8 @@ calcoffsets(void)
 	if (lines > 0)
 		n = lines * bh;
 	else
-		n = mw - (promptw + inputw + TEXTW(symbol_1) + TEXTW(symbol_2) + TEXTW(numbers));
+		n = mw - (promptw + inputw + TEXTW(symbol_1)
+                  - TEXTW(" ") + TEXTW(symbol_2) + TEXTW(numbers));
 	/* calculate which items will begin the next page and previous page */
 	for (i = 0, next = curr; next; next = next->right)
 		if ((i += (lines > 0) ? bh : textw_clamp(next->text, n)) > n)
@@ -639,6 +640,142 @@ draw:
 }
 
 static void
+buttonpress(XEvent *e)
+{
+	struct item *item;
+	XButtonPressedEvent *ev = &e->xbutton;
+	int x = 0, y = 0, h = bh, w;
+
+	if (ev->window != win)
+		return;
+
+	/* right-click: exit */
+	if (ev->button == Button3)
+		exit(1);
+
+	if (prompt && *prompt)
+		x += promptw;
+
+	/* input field */
+	w = (lines > 0 || !matches) ? mw - x : inputw;
+
+	/* left-click on input: clear input,
+	 * NOTE: if there is no left-arrow the space for < is reserved so
+	 *       add that to the input width */
+	if (ev->button == Button1 &&
+	   ((lines <= 0 && ev->x >= 0 && ev->x <= x + w +
+	   ((!prev || !curr->left) ? TEXTW(symbol_1) : 0)) ||
+	   (lines > 0 && ev->y >= y && ev->y <= y + h))) {
+		insert(NULL, -cursor);
+		drawmenu();
+		return;
+	}
+	/* middle-mouse click: paste selection */
+	if (ev->button == Button2) {
+		XConvertSelection(dpy, (ev->state & ShiftMask) ? clip : XA_PRIMARY,
+		                  utf8, utf8, win, CurrentTime);
+		drawmenu();
+		return;
+	}
+	/* scroll up */
+	if (ev->button == Button4 && prev) {
+		sel = curr = prev;
+		calcoffsets();
+		drawmenu();
+		return;
+	}
+	/* scroll down */
+	if (ev->button == Button5 && next) {
+		sel = curr = next;
+		calcoffsets();
+		drawmenu();
+		return;
+	}
+	if (ev->button != Button1)
+		return;
+	if (ev->state & ~ControlMask)
+		return;
+	if (lines > 0) {
+		/* vertical list: (ctrl)left-click on item */
+		w = mw - x;
+		for (item = curr; item != next; item = item->right) {
+			y += h;
+			if (ev->y >= y && ev->y <= (y + h)) {
+				puts(item->text);
+				if (!(ev->state & ControlMask))
+					exit(0);
+				sel = item;
+				if (sel) {
+					sel->out = 1;
+					drawmenu();
+				}
+				return;
+			}
+		}
+	} else if (matches) {
+		/* left-click on left arrow */
+		x += inputw;
+		w = TEXTW(symbol_1);
+		if (prev && curr->left) {
+			if (ev->x >= x && ev->x <= x + w) {
+				sel = curr = prev;
+				calcoffsets();
+				drawmenu();
+				return;
+			}
+		}
+		/* horizontal list: (ctrl)left-click on item */
+		for (item = curr; item != next; item = item->right) {
+			x += w;
+			w = MIN(TEXTW(item->text), mw - x - TEXTW(symbol_2) - TEXTW(numbers));
+			if (ev->x >= x && ev->x <= x + w) {
+				puts(item->text);
+				if (!(ev->state & ControlMask))
+					exit(0);
+				sel = item;
+				if (sel) {
+					sel->out = 1;
+					drawmenu();
+				}
+				return;
+			}
+		}
+		/* left-click on right arrow */
+		w = TEXTW(symbol_2);
+		x = mw - w - TEXTW(numbers);
+		if (next && ev->x >= x && ev->x <= x + w) {
+			sel = curr = next;
+			calcoffsets();
+			drawmenu();
+			return;
+		}
+	}
+}
+
+static void
+motionevent(XButtonEvent *ev)
+{
+	struct item *it;
+	int xy, ev_xy;
+
+	if (ev->window != win || matches == 0)
+		return;
+
+	xy = lines > 0 ? bh : inputw + promptw + TEXTW(symbol_1);
+	ev_xy = lines > 0 ? ev->y : ev->x;
+	for (it = curr; it && it != next; it = it->right) {
+		int wh = lines > 0 ? bh : textw_clamp(it->text, mw - xy - TEXTW(symbol_2) - TEXTW(numbers));
+		if (ev_xy >= xy && ev_xy < (xy + wh)) {
+			sel = it;
+			calcoffsets();
+			drawmenu();
+			break;
+		}
+		xy += wh;
+	}
+}
+
+static void
 paste(void)
 {
 	char *p, *q;
@@ -745,6 +882,12 @@ run(void)
 				break;
 			cleanup();
 			exit(1);
+		case ButtonPress:
+			buttonpress(&ev);
+			break;
+		case MotionNotify:
+			motionevent(&ev.xbutton);
+			break;
 		case Expose:
 			if (ev.xexpose.count == 0)
 				drw_map(drw, win, 0, 0, mw, mh);
@@ -859,7 +1002,8 @@ setup(void)
 	swa.background_pixel = 0;
 	swa.border_pixel = 0;
 	swa.colormap = cmap;
-	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask;
+	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask |
+                     ButtonPressMask | PointerMotionMask;
 	win = XCreateWindow(dpy, root, x, y, mw, mh - (border_width * 2),
 	                    border_width, depth, CopyFromParent, visual,
 	                    CWOverrideRedirect | CWBackPixel | CWBorderPixel | CWColormap | CWEventMask, &swa);
