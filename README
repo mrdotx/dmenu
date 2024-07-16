@@ -43,4 +43,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2024-03-19 11:12	bump version to 5.3	Hiltjo Posthuma
+2024-07-14 09:40	drw.c: use the same pattern as ellipsis_width to check for infinite recursion	Hiltjo Posthuma

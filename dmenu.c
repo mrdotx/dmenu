@@ -114,8 +114,7 @@ calcoffsets(void)
 	if (lines > 0)
 		n = lines * bh;
 	else
-		n = mw - (promptw + inputw + TEXTW(symbol_1)
-                  - TEXTW(" ") + TEXTW(symbol_2) + TEXTW(numbers));
+		n = mw - (promptw + inputw + TEXTW(symbol_1) + TEXTW(symbol_2) + TEXTW(numbers));
 	/* calculate which items will begin the next page and previous page */
 	for (i = 0, next = curr; next; next = next->right)
 		if ((i += (lines > 0) ? bh : textw_clamp(next->text, n)) > n)
