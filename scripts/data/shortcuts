@@ -28,7 +28,7 @@ super+shift+v                | i3,apps        | virtualbox manager
 super+w                      | i3,apps        | secondary browser (firefox)
 super+shift+w                | i3,apps        | primary browser (w3m)
 super+ctrl+w                 | i3,apps        | backup browser (surf)
-super+x                      | i3,apps        | iptv (dmenu)
+super+x                      | i3,apps        | mpv (xitylite.m3u)
 super+y                      | i3,apps        | youtube (dmenu)
 super+shift+y                | i3,apps        | link handler (dmenu)
 super+z                      | i3,apps        | midnight commander (tmux 11)
