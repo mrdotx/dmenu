@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_link_handler.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-06-20T07:17:48+0200
+# date:   2024-07-23T09:26:03+0200
 
 # i3 helper
 . dmenu_helper.sh
@@ -11,6 +11,11 @@
 title="link-handler"
 
 # helper functions
+clear_ytdl() {
+    printf "%s" "$*" \
+        | sed 's/ytdl:\/\///g'
+}
+
 download() {
     host=$(printf "%s" "$select" | awk -F "on " '{print $2}')
 
@@ -71,38 +76,39 @@ dmenu_notify 1 "$title"
 
 case "$select" in
     "play video")
-        mpv --no-terminal \
-            ytdl://"$urls" >/dev/null 2>&1 &
+        case "$(printf "%s" "$urls" | tr '[:upper:]' '[:lower:]')" in
+            *.m3u | *.m3u8)
+                options="--terminal=no --script-opts=menu_playlist=1"
+                ;;
+            *)
+                options="--terminal=no"
+                ;;
+        esac
+        eval "mpv $options \"$urls\" >/dev/null 2>&1 &"
         ;;
     "play audio")
-        $TERMINAL -e mpv --no-video \
-            ytdl://"$urls" &
+        $TERMINAL -e mpv --vid=no "$urls" &
         ;;
     "add video to taskspooler")
-        tsp mpv --no-terminal \
-            ytdl://"$urls" >/dev/null 2>&1
+        tsp mpv --terminal=no "$urls" >/dev/null 2>&1
         ;;
     "add audio to taskspooler")
-        tsp mpv --no-terminal --no-video --force-window \
-            ytdl://"$urls" >/dev/null 2>&1
+        tsp mpv --terminal=no --vid=no --force-window "$urls" >/dev/null 2>&1
         ;;
     "select format")
         $TERMINAL -e terminal_wrapper.sh \
-            yt-dlp \
-                --format - "$urls" &
+            yt-dlp --format - "$(clear_ytdl "$urls")" &
         ;;
     "video (best)"*)
-        download "yt-dlp \
-            \"$urls\""
+        download "yt-dlp \"$(clear_ytdl "$urls")\""
         ;;
     "video (ext)"*)
-        download "yt-dlp \
-            --format-sort \"ext\" \"$urls\""
+        download "yt-dlp --format-sort \"ext\" \"$(clear_ytdl "$urls")\""
         ;;
     "audio"*)
         download "yt-dlp \
             --extract-audio --audio-format mp3 --audio-quality 0 \
-            --embed-thumbnail --embed-metadata \"$urls\""
+            --embed-thumbnail --embed-metadata \"$(clear_ytdl "$urls")\""
         ;;
     "file"*)
         download "aria2c.sh \"$urls\""
