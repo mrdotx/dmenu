@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-03-20T07:41:30+0100
+# date:   2024-07-23T09:26:09+0200
 
 # i3 helper
 . dmenu_helper.sh
@@ -78,4 +78,4 @@ open=$(printf "%s" "$result" \
 )
 
 # link_handler
-$link_handler "$open" &
+$link_handler "ytdl://$open" &
