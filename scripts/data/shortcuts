@@ -298,7 +298,7 @@ v                            | w3m            | toggle html source and normal vi
 [n,N]                        | w3m            | next or previous search result
 [T,ctrl+t]                   | w3m            | open new tab or current link in new tab
 esc+t                        | w3m            | popup list to open tab
-[shift+t,ctrl+q]             | w3m            | open or close a tab
+[shift+t,alt+q]              | w3m            | open or close a tab
 [{,}]                        | w3m            | previous or forward tab
 shift+u                      | w3m            | goto url
 shift+r                      | w3m            | reload page
@@ -318,6 +318,7 @@ ctrl+h                       | w3m            | show history
 [,+a,,+shift+a]              | w3m            | toggle user agent to duckduckbot or remove
 [,+u,,+shift+u]              | w3m            | popup list to open link or goto link
 o                            | w3m            | open options
+q                            | w3m            | quit
 [i,escape]                   | surf           | insert, normal mode
 c                            | surf           | stops loading current page or download
 [h,l]                        | surf           | back or forward in history
