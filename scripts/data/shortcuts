@@ -60,16 +60,13 @@ super+[1-0]                  | i3,workspaces  | switch to workspace 1...10
 super+ctrl+[1-0]             | i3,workspaces  | move focused container to workspace 1...10
 super+shift+[1-0]            | i3,workspaces  | move to workspace with focused to container 1...10
 super+alt+[←,→,↑,↓]          | i3,workspaces  | swap workspaces
-super+alt+[prior,next]       | i3,workspaces  | workspace (previous,next)
+super+alt+[pgup,pgdn]        | i3,workspaces  | workspace (previous,next)
 alt+tab                      | i3,workspaces  | workspace back and forth
 super+[←,→,↑,↓]              | i3,windows     | focus window
 super+shift+[←,→,↑,↓]        | i3,windows     | move focused window
 super+ctrl+[←,→,↑,↓]         | i3,windows     | resize window
-super+ctrl+[prior,next,home] | i3,windows     | resize window gaps
-super+prior                  | i3,windows     | enable floating and move window (ne 1)
-super+shift+prior            | i3,windows     | enable floating and move window (n 1)
-super+next                   | i3,windows     | enable floating and move window (se 1)
-super+shift+next             | i3,windows     | enable floating and move window (s 1)
+super+ctrl+[pgup,pgdn,home]  | i3,windows     | resize window gaps
+super+[pgup,pgdn]            | i3,windows     | floating (i3 mode) (nonprimary,primary output)
 super+home                   | i3,windows     | toggle window tiling/floating
 super+end                    | i3,windows     | change focus between tiling/floating windows
 super+insert                 | i3,windows     | toggle sticky
@@ -245,7 +242,7 @@ ctrl+shift+c                 | terminal       | copy selected text to clipboard
 ctrl+shift+v                 | terminal       | paste from clipboard
 ctrl+shift+esc               | terminal       | keyboard select
 ctrl+[+,-,=]                 | terminal       | zoom (grow, shrink, standard)
-shift+[prior,next]           | terminal       | scrollback (mouse scroll)
+shift+[pgup,pgdn]            | terminal       | scrollback (mouse scroll)
 alt+c                        | terminal       | fuzzy finder cd into directory
 ctrl+t                       | terminal       | fuzzy finder paste file or directory
 ctrl+r                       | terminal       | fuzzy finder paste command from history
@@ -280,7 +277,7 @@ d                            | ranger         | delete shortcuts
 ,/                           | ranger         | find files (FzfFind)
 x                            | ranger         | development shortcuts
 alt+[↑,↓]                    | ranger         | scroll preview 1 line up/down
-alt+[prior,next]             | ranger         | scroll preview 1 page up/down
+alt+[pgup,pgdn]              | ranger         | scroll preview 1 page up/down
 ctrl+c                       | ranger         | drag-n-drop (external) all files and exit
 ctrl+x                       | ranger         | drag-n-drop (external) selected files
 ctrl+v                       | ranger         | drag-n-drop (ranger)
