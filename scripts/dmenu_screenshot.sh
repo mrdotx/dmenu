@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_screenshot.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-03-21T18:27:29+0100
+# date:   2024-08-29T05:49:43+0200
 
 # i3 helper
 . dmenu_helper.sh
@@ -14,7 +14,7 @@ title="screenshot"
 screenshot_directory="$HOME/Desktop"
 screenshot_file="$screenshot_directory/$title-$(date +"%FT%T%z").png"
 screenshot_command="maim -Buq $screenshot_file"
-screenshot_preview="nsxiv $screenshot_file"
+screenshot_preview="nsxiv --quiet --scale-mode w $screenshot_file"
 
 execute() {
     screenshot_command="$screenshot_command $*"
