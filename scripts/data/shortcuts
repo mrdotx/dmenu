@@ -81,7 +81,6 @@ super+shift+return           | i3,system      | terminal (tmux 1)
 super+ctrl+return            | i3,system      | backup terminal (st)
 super+f                      | i3,system      | toggle fullscreen mode for focused container
 super+shift+f                | i3,system      | toggle fullscreen mode global
-super+ctrl+f                 | i3,system      | move container to multimedia workspace
 ctrl+q                       | i3,system      | kill focused window
 ctrl+shift+q                 | i3,system      | kill all windows on focused workspace
 ctrl+alt+backspace           | i3,system      | reload i3 configuration file
