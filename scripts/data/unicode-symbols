@@ -603,6 +603,7 @@
 😋 face savoring food; 1F60B
 😱 face screaming in fear; 1F631
 🤮 face vomiting; 1F92E
+🫩 face with bags under eyes; 1FAE9
 😵 face with crossed-out eyes; 1F635
 🫤 face with diagonal mouth; 1FAE4
 🤭 face with hand over mouth; 1F92D
@@ -687,6 +688,7 @@
 📁 file folder; 1F4C1
 🎞️ film frames; 1F39E FE0F
 📽️ film projector; 1F4FD FE0F
+🫆 fingerprint; 1FAC6
 🔥 fire; 1F525
 🧨 firecracker; 1F9E8
 🚒 fire engine; 1F692
@@ -901,6 +903,7 @@
 🇼🇸 flag: Samoa; 1F1FC 1F1F8
 🇸🇲 flag: San Marino; 1F1F8 1F1F2
 🇸🇹 flag: São Tomé & Príncipe; 1F1F8 1F1F9
+🇨🇶 flag: Sark; 1F1E8 1F1F6
 🇸🇦 flag: Saudi Arabia; 1F1F8 1F1E6
 🏴󠁧󠁢󠁳󠁣󠁴󠁿 flag: Scotland; 1F3F4 E0067 E0062 E0073 E0063 E0074 E007F
 🇸🇳 flag: Senegal; 1F1F8 1F1F3
@@ -1124,6 +1127,7 @@
 🫰🏾 hand with index finger and thumb crossed: medium-dark skin tone; 1FAF0 1F3FE
 🫰🏼 hand with index finger and thumb crossed: medium-light skin tone; 1FAF0 1F3FC
 🫰🏽 hand with index finger and thumb crossed: medium skin tone; 1FAF0 1F3FD
+🪉 harp; 1FA89
 🐣 hatching chick; 1F423
 🎧 headphone; 1F3A7
 🙂‍↔️ head shaking horizontally; 1F642 200D 2194 FE0F
@@ -1397,6 +1401,7 @@
 ⏮️ last track button; 23EE FE0F
 ✝️ latin cross; 271D FE0F
 🍃 leaf fluttering in wind; 1F343
+🪾 leafless tree; 1FABE
 🥬 leafy green; 1F96C
 📒 ledger; 1F4D2
 ⬅️ left arrow; 2B05 FE0F
@@ -2075,12 +2080,12 @@
 🎶 musical notes; 1F3B6
 🎼 musical score; 1F3BC
 🔇 muted speaker; 1F507
-🧑‍🎄 mx claus; 1F9D1 200D 1F384
-🧑🏿‍🎄 mx claus: dark skin tone; 1F9D1 1F3FF 200D 1F384
-🧑🏻‍🎄 mx claus: light skin tone; 1F9D1 1F3FB 200D 1F384
-🧑🏾‍🎄 mx claus: medium-dark skin tone; 1F9D1 1F3FE 200D 1F384
-🧑🏼‍🎄 mx claus: medium-light skin tone; 1F9D1 1F3FC 200D 1F384
-🧑🏽‍🎄 mx claus: medium skin tone; 1F9D1 1F3FD 200D 1F384
+🧑‍🎄 Mx Claus; 1F9D1 200D 1F384
+🧑🏿‍🎄 Mx Claus: dark skin tone; 1F9D1 1F3FF 200D 1F384
+🧑🏻‍🎄 Mx Claus: light skin tone; 1F9D1 1F3FB 200D 1F384
+🧑🏾‍🎄 Mx Claus: medium-dark skin tone; 1F9D1 1F3FE 200D 1F384
+🧑🏼‍🎄 Mx Claus: medium-light skin tone; 1F9D1 1F3FC 200D 1F384
+🧑🏽‍🎄 Mx Claus: medium skin tone; 1F9D1 1F3FD 200D 1F384
 💅 nail polish; 1F485
 💅🏿 nail polish: dark skin tone; 1F485 1F3FF
 💅🏻 nail polish: light skin tone; 1F485 1F3FB
@@ -2822,6 +2827,7 @@
 🤣 rolling on the floor laughing; 1F923
 🧻 roll of paper; 1F9FB
 🐓 rooster; 1F413
+🫜 root vegetable; 1FADC
 🌹 rose; 1F339
 🏵️ rosette; 1F3F5 FE0F
 📍 round pushpin; 1F4CD
@@ -2889,6 +2895,7 @@
 🛒 shopping cart; 1F6D2
 🍰 shortcake; 1F370
 🩳 shorts; 1FA73
+🪏 shovel; 1FA8F
 🚿 shower; 1F6BF
 🦐 shrimp; 1F990
 🔀 shuffle tracks button; 1F500
@@ -2972,6 +2979,7 @@
 🗓️ spiral calendar; 1F5D3 FE0F
 🗒️ spiral notepad; 1F5D2 FE0F
 🐚 spiral shell; 1F41A
+🫟 splatter; 1FADF
 🧽 sponge; 1F9FD
 🥄 spoon; 1F944
 🏅 sports medal; 1F3C5
