@@ -43,4 +43,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2024-10-27 19:08	util.c: output function might override errno and thus affect perror()	Hiltjo Posthuma
+2024-10-30 12:03	remove extra newline	Hiltjo Posthuma
