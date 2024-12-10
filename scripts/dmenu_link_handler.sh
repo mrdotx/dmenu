@@ -3,12 +3,13 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_link_handler.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-07-23T09:26:03+0200
+# date:   2024-12-10T07:44:16+0100
 
 # i3 helper
 . dmenu_helper.sh
 
 title="link-handler"
+remote_host="m625q"
 
 # helper functions
 clear_ytdl() {
@@ -56,19 +57,22 @@ select=$(printf "%s\n" \
     && dmenu_notify 1 "$title" \
     && exit 0
 
-[ "$select" = "download" ] \
-    && select=$(printf "%s\n" \
-        "select format" \
-        "video (best)" \
-        "video (ext)" \
-        "audio" \
-        "file" \
-        "video (best) on m625q" \
-        "video (ext) on m625q" \
-        "audio on m625q" \
-        "file on m625q" \
-            | dmenu -l 15 -c -bw 1 -i -p "download »" \
-)
+case "$select" in
+    "download")
+        select=$(printf "%s\n" \
+            "select format" \
+            "video (best)" \
+            "video (ext)" \
+            "audio" \
+            "file" \
+            "video (best) on $remote_host" \
+            "video (ext) on $remote_host" \
+            "audio on $remote_host" \
+            "file on $remote_host" \
+                | dmenu -l 15 -c -bw 1 -i -p "$select »" \
+        )
+        ;;
+esac
 dmenu_notify 1 "$title"
 
 [ -z "$select" ] \
