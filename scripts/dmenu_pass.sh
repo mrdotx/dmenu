@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-06-06T19:40:33+0200
+# date:   2024-12-14T08:16:25+0100
 
 # config
 password_store="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
@@ -37,30 +37,30 @@ copy_string() {
             --clipboard
 }
 
+check_password() {
+    # check if at least 1 of each char type is available
+    for char in [$2] [0-9] [A-Z] [a-z]; do
+        printf "%s" "$1" \
+            | grep -q "$char" \
+                || return 1
+    done
+}
+
 # data functions
 generate_password() {
     chars=16
     symbols='!@#'
 
-    while [ -z "$check" ]; do
-        check=1
+    while true; do
         password=$(printf "%s" \
             "$(tr -dc "[:alnum:]$symbols" < /dev/urandom \
                 | head -c"$chars")" \
         )
 
-        # check if at least 1 of each char type is available
-        for char in [$symbols] [0-9] [A-Z] [a-z]; do
-            printf "%s" "$password" \
-                | grep -q "$char" \
-                    || unset check
-
-            [ -z "$check" ] \
-                && break
-        done
+        check_password "$password" "$symbols" \
+            && printf "%s" "$password" \
+            && break
     done
-
-    printf "%s" "$password"
 }
 
 get_gpg_entry() {
