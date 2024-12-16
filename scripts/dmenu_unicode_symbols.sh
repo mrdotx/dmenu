@@ -3,10 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-03-14T08:05:57+0100
+# date:   2024-12-16T08:01:30+0100
 
-# i3 helper
-. dmenu_helper.sh
+# source dmenu helper
+. _dmenu_helper.sh
 
 title="unicode-symbols"
 

@@ -3,10 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-07-23T09:26:09+0200
+# date:   2024-12-16T08:01:38+0100
 
-# i3 helper
-. dmenu_helper.sh
+# source dmenu helper
+. _dmenu_helper.sh
 
 title="youtube"
 

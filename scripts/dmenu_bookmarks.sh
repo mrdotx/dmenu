@@ -3,10 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-06-19T18:44:47+0200
+# date:   2024-12-16T08:01:10+0100
 
-# i3 helper
-. dmenu_helper.sh
+# source dmenu helper
+. _dmenu_helper.sh
 
 title="bookmarks"
 

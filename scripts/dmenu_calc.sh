@@ -3,10 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-04-19T12:10:16+0200
+# date:   2024-12-16T08:01:14+0100
 
-# i3 helper
-. dmenu_helper.sh
+# source dmenu helper
+. _dmenu_helper.sh
 
 title="calc"
 
