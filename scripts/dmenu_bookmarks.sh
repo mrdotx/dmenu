@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-12-16T08:01:10+0100
+# date:   2025-02-27T06:29:05+0100
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -71,7 +71,6 @@ export_to_w3m() {
 export_to_surf() {
     surf_file="$HOME/.config/surf/bookmarks"
     cut -d ';' -f2 "$bookmarks_file" \
-        | awk -F '//' '{print $2}' \
         | sed '/^$/d' > "$surf_file"
 }
 
