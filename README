@@ -43,4 +43,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2024-10-30 12:03	remove extra newline	Hiltjo Posthuma
+2025-03-15 18:53	XUngrabKeyboard() instead of XUngrabKey()	Adam Purkrt
