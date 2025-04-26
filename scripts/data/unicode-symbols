@@ -4226,6 +4226,7 @@
  nf-custom-common_lisp; e6b0
  nf-custom-cpp; e61d
  nf-custom-crystal; e62f
+ nf-custom-css; e6b8
  nf-custom-default; e612
  nf-custom-electron; e62e
  nf-custom-elixir; e62d
@@ -4766,6 +4767,18 @@
  nf-dev-yunohost; e8ee
  nf-dev-zend; e778
  nf-dev-zig; e8ef
+ nf-extra-progress_empty_left; ee00
+ nf-extra-progress_empty_mid; ee01
+ nf-extra-progress_empty_right; ee02
+ nf-extra-progress_full_left; ee03
+ nf-extra-progress_full_mid; ee04
+ nf-extra-progress_full_right; ee05
+ nf-extra-progress_spinner_1; ee06
+ nf-extra-progress_spinner_2; ee07
+ nf-extra-progress_spinner_3; ee08
+ nf-extra-progress_spinner_4; ee09
+ nf-extra-progress_spinner_5; ee0a
+ nf-extra-progress_spinner_6; ee0b
  nf-fa-500px; f26e
  nf-fa-accessible_icon; f29b
  nf-fa-accusoft; f0b7
