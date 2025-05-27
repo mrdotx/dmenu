@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_windows.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2025-01-28T07:16:55+0100
+# date:   2025-05-27T05:33:04+0200
 
 desktops=$(mktemp -t dmenu_windows.XXXXXX)
 windows=$(mktemp -t dmenu_windows.XXXXXX)
@@ -18,7 +18,7 @@ select=$(awk 'FNR==NR{a[$1]=$2" ["$9;next}{print a[$2]"]",$0}' \
     "$desktops" "$windows" \
         | cut -d ' ' -f1,2,6- \
         | nl -w 2 -n rz -s ' ' \
-        | dmenu -l 15 -c -bw 1 -r -i -p 'window »' \
+        | dmenu -c -bw 1 -l 15 -r -i -p 'window »' \
         | cut -d ' ' -f1 \
 )
 

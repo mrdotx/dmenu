@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_link_handler.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-12-16T08:01:19+0100
+# date:   2025-05-27T05:30:00+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -50,7 +50,7 @@ select=$(printf "%s\n" \
     "play audio" \
     "add video to taskspooler" \
     "add audio to taskspooler" \
-        | dmenu -l 15 -c -bw 1 -i -p "$title »" \
+        | dmenu -c -bw 1 -l 15 -i -p "$title »" \
 )
 
 [ -z "$select" ] \
@@ -69,7 +69,7 @@ case "$select" in
             "video (ext) on $remote_host" \
             "audio on $remote_host" \
             "file on $remote_host" \
-                | dmenu -l 15 -c -bw 1 -i -p "$select »" \
+                | dmenu -c -bw 1 -l 15 -i -p "$select »" \
         )
         ;;
 esac

@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-12-16T08:01:38+0100
+# date:   2025-05-27T05:33:20+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -16,7 +16,7 @@ link_handler="dmenu_link_handler.sh"
 
 # search
 search=$(printf "%s" "$(cat "$history_file")" \
-    | dmenu -l 15 -c -bw 1 -i -p "$title »" \
+    | dmenu -c -bw 1 -l 15 -i -p "$title »" \
 )
 
 [ -z "$search" ] \
@@ -36,7 +36,7 @@ search_string=$(printf "%s\n" \
         "date 10" \
         "relevance all" \
         "date all" \
-    | dmenu -l 15 -c -bw 1 -i -p "$title »" \
+    | dmenu -c -bw 1 -l 15 -i -p "$title »" \
 )
 
 case "$search_string" in
@@ -64,7 +64,7 @@ result=$(yt-dlp "$search_result:$search" -e --get-id)
 # search result
 select=$(printf "%s" "$result" \
     | sed -n '1~2p' \
-    | dmenu -l 15 -c -bw 1 -r -i -p "$title »" \
+    | dmenu -c -bw 1 -l 15 -r -i -p "$title »" \
 )
 
 dmenu_notify 1 "$title"

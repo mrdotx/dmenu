@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_screenshot.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2025-01-28T07:17:46+0100
+# date:   2025-05-27T05:30:43+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -30,7 +30,7 @@ select=$(printf "%s\n" \
     "window --capturebackground" \
     "window" \
     "selection" \
-        | dmenu -l 5 -c -bw 1 -p "$title »" \
+        | dmenu -c -bw 1 -l 5 -p "$title »" \
 )
 
 case $select in
