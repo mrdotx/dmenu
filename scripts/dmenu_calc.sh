@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-12-16T08:01:14+0100
+# date:   2025-05-28T05:04:57+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -44,7 +44,7 @@ menu() {
 }
 
 select=$(printf "%s\n" "$(menu "$*")" \
-    | dmenu -b -l 7 -bw 1 -w "$window_id" -p "${label-"$title »"}" \
+    | dmenu -b -l 7 -p "${label-"$title »"}" -w "$window_id" \
 )
 
 case $select in

@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-12-16T08:01:30+0100
+# date:   2025-05-28T05:05:12+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -73,7 +73,7 @@ select_symbols() {
     # get active window id
     window_id=$(xdotool getactivewindow)
 
-    select=$(dmenu -b -l 15 -bw 1 -r -i -w "$window_id" -p "$title »" \
+    select=$(dmenu -b -l 15 -r -i -p "$title »" -w "$window_id" \
         < "$unicode_symbols_file" \
     )
 
