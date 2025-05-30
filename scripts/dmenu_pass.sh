@@ -3,13 +3,16 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # github: https://github.com/mrdotx/dmenu
-# date:   2024-12-15T08:08:25+0100
+# date:   2025-05-30T05:27:29+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 file_type=".gpg"
 edit="$TERMINAL -e ranger"
 clipboard_timeout=45
+
+# get active window id
+window_id=$(xdotool getactivewindow)
 
 # helper functions
 type_string() {
@@ -54,13 +57,13 @@ get_gpg_entry() {
     entry=$(gpg --quiet --decrypt "$password_store/$select$file_type")
 
     case "$1" in
-        username)
+        --username)
             printf "%s" "$entry" \
                 | grep "^username:" \
                 | sed "s/^username://; s/^[ \t]*//; s/[ \t]*$//" \
                 | tr -d "\n"
             ;;
-        password)
+        --password)
             printf "%s" "$entry" \
                 | head -n 1 \
                 | tr -d "\n"
@@ -73,7 +76,7 @@ select=$(printf "» generate password\n%s" \
     "$(find "$password_store" -iname "*$file_type" -printf "%P\n" \
         | sed "s/$file_type$//" \
         | sort)" \
-        | dmenu -l 15 -c -bw 1 -r -i -p "pass »" \
+        | dmenu -b -l 15 -r -i -p "pass »" -w "$window_id" \
 )
 
 [ -z "$select" ] \
@@ -82,14 +85,14 @@ select=$(printf "» generate password\n%s" \
 case "$select" in
     "» generate password")
         case $(printf "%s\n" \
-            "copy password ($clipboard_timeout sec)" \
-            "type password" \
-            | dmenu -l 2 -c -bw 1 -r -i -p "generate password »" \
+            "copy [password] to clipboard ($clipboard_timeout sec)" \
+            "type [password]" \
+            | dmenu -b -l 2 -r -i -p "generate password »" -w "$window_id" \
             ) in
-            "copy password"*)
+            "copy [password] to clipboard"*)
                 copy_string "$(generate_password 16 "!@#")"
                 ;;
-            "type password")
+            "type [password]")
                 type_string "$(generate_password 16 "!@#")"
                 ;;
             *)
@@ -98,54 +101,35 @@ case "$select" in
         esac
         ;;
     *)
-        case $(printf "%s\n" \
-            "» edit saved settings" \
-            "type [username] tab [password] enter" \
-            "type [username] 2xtab [password] enter" \
-            "type [username] enter [password] enter" \
-            "type [username]" \
-            "type [password]" \
-            "copy [username] to clipboard ($clipboard_timeout sec)" \
-            "copy [password] to clipboard ($clipboard_timeout sec)" \
-            | dmenu -l 8 -c -bw 1 -r -i -p "$select »" \
-            ) in
-            "» edit saved settings")
-                $edit "$password_store/$select$file_type"
-                ;;
-            "type [username] tab [password] enter")
-                type_string "$(get_gpg_entry "username")" \
-                    && xdotool key Tab \
-                    && type_string "$(get_gpg_entry "password")" \
-                    && xdotool key Return
-                ;;
-            "type [username] 2xtab [password] enter")
-                type_string "$(get_gpg_entry "username")" \
-                    && xdotool key Tab Tab \
-                    && type_string "$(get_gpg_entry "password")" \
-                    && xdotool key Return
-                ;;
-            "type [username] enter [password] enter")
-                type_string "$(get_gpg_entry "username")" \
-                    && xdotool key Return \
-                    && sleep 1 \
-                    && type_string "$(get_gpg_entry "password")" \
-                    && xdotool key Return
-                ;;
-            "type [username]")
-                type_string "$(get_gpg_entry "username")"
-                ;;
-            "type [password]")
-                type_string "$(get_gpg_entry "password")"
-                ;;
-            "copy [username] to clipboard"*)
-                copy_string "$(get_gpg_entry "username")"
-                ;;
-            "copy [password] to clipboard"*)
-                copy_string "$(get_gpg_entry "password")"
-                ;;
-            *)
-                exit 0
-                ;;
-        esac
+        while true; do
+            case $(printf "%s\n" \
+                "» edit saved settings" \
+                "type [username] TAB [password] ENTER" \
+                "type [username]" \
+                "type [password]" \
+                | dmenu -b -l 4 -r -i -p "$select »" -w "$window_id" \
+                ) in
+                "» edit saved settings")
+                    $edit "$password_store/$select$file_type"
+                    break
+                    ;;
+                "type [username] TAB [password] ENTER")
+                    type_string "$(get_gpg_entry --username)" \
+                        && xdotool key Tab \
+                        && type_string "$(get_gpg_entry --password)" \
+                        && xdotool key Return
+                    break
+                    ;;
+                "type [username]")
+                    type_string "$(get_gpg_entry --username)"
+                    ;;
+                "type [password]")
+                    type_string "$(get_gpg_entry --password)"
+                    ;;
+                *)
+                    break
+                    ;;
+            esac
+        done
         ;;
 esac
