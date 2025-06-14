@@ -56,6 +56,9 @@ XF86AudioRaiseVolume         | i3,multimedia  | increase volume by 5
 XF86MonBrightnessDown        | i3,multimedia  | decrease monitor brightness by 5
 XF86MonBrightnessUp          | i3,multimedia  | increase monitor brightness by 5
 XF86Cut                      | i3,multimedia  | enables/disables touchpad
+XF86Favorites                | i3,multimedia  | bookmarks (dmenu)
+XF86Display                  | i3,multimedia  | change display settings (dmenu)
+XF86Launch3                  | i3,multimedia  | move mouse (ne)
 super+[1-0]                  | i3,workspaces  | switch to workspace 1...10
 super+ctrl+[1-0]             | i3,workspaces  | move focused container to workspace 1...10
 super+shift+[1-0]            | i3,workspaces  | move to workspace with focused to container 1...10
