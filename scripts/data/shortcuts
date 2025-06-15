@@ -37,6 +37,7 @@ super+[                      | i3,apps        | man pages (tmux 17)
 super+shift+[                | i3,apps        | man pages (fzf)
 super+]                      | i3,apps        | package manager (tmux 18)
 super+shift+]                | i3,apps        | package manager (fzf)
+super+;                      | i3,apps        | disable/enable touchpad
 super+'                      | i3,apps        | color picker
 super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
@@ -55,7 +56,6 @@ XF86AudioLowerVolume         | i3,multimedia  | decrease volume by 5
 XF86AudioRaiseVolume         | i3,multimedia  | increase volume by 5
 XF86MonBrightnessDown        | i3,multimedia  | decrease monitor brightness by 5
 XF86MonBrightnessUp          | i3,multimedia  | increase monitor brightness by 5
-XF86Cut                      | i3,multimedia  | enables/disables touchpad
 XF86Favorites                | i3,multimedia  | bookmarks (dmenu)
 XF86Display                  | i3,multimedia  | change display settings (dmenu)
 XF86Launch3                  | i3,multimedia  | move mouse (ne)
