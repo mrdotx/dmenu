@@ -2,8 +2,8 @@
 
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
-# github: https://github.com/mrdotx/dmenu
-# date:   2025-05-28T05:04:57+0200
+# url:    https://github.com/mrdotx/dmenu
+# date:   2025-08-09T06:03:44+0200
 
 # source dmenu helper
 . _dmenu_helper.sh

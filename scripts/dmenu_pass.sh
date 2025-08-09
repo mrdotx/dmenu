@@ -2,8 +2,8 @@
 
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
-# github: https://github.com/mrdotx/dmenu
-# date:   2025-05-30T05:27:29+0200
+# url:    https://github.com/mrdotx/dmenu
+# date:   2025-08-09T06:03:56+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR:-$HOME/.password-store}"

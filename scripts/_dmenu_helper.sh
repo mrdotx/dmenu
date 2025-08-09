@@ -2,8 +2,8 @@
 
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/_dmenu_helper.sh
 # author: klassiker [mrdotx]
-# github: https://github.com/mrdotx/dmenu
-# date:   2025-03-07T06:52:14+0100
+# url:    https://github.com/mrdotx/dmenu
+# date:   2025-08-09T06:03:36+0200
 
 dmenu_notify() {
     # WORKAROUND: notifications are sometimes not displayed

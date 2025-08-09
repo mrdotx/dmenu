@@ -2,8 +2,8 @@
 
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_windows.sh
 # author: klassiker [mrdotx]
-# github: https://github.com/mrdotx/dmenu
-# date:   2025-05-27T05:33:04+0200
+# url:    https://github.com/mrdotx/dmenu
+# date:   2025-08-09T06:04:12+0200
 
 desktops=$(mktemp -t dmenu_windows.XXXXXX)
 windows=$(mktemp -t dmenu_windows.XXXXXX)

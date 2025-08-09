@@ -2,8 +2,8 @@
 
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
-# github: https://github.com/mrdotx/dmenu
-# date:   2025-05-28T05:05:12+0200
+# url:    https://github.com/mrdotx/dmenu
+# date:   2025-08-09T06:04:07+0200
 
 # source dmenu helper
 . _dmenu_helper.sh

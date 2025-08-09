@@ -2,8 +2,8 @@
 
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
-# github: https://github.com/mrdotx/dmenu
-# date:   2025-05-27T05:29:25+0200
+# url:    https://github.com/mrdotx/dmenu
+# date:   2025-08-09T06:03:48+0200
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"

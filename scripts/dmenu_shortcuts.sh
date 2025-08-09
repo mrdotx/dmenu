@@ -2,8 +2,8 @@
 
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_shortcuts.sh
 # author: klassiker [mrdotx]
-# github: https://github.com/mrdotx/dmenu
-# date:   2025-05-27T05:31:10+0200
+# url:    https://github.com/mrdotx/dmenu
+# date:   2025-08-09T06:04:04+0200
 
 shortcuts_file="$HOME/.local/share/repos/dmenu/scripts/data/shortcuts"
 

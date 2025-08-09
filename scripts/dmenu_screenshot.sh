@@ -2,8 +2,8 @@
 
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_screenshot.sh
 # author: klassiker [mrdotx]
-# github: https://github.com/mrdotx/dmenu
-# date:   2025-05-27T05:30:43+0200
+# url:    https://github.com/mrdotx/dmenu
+# date:   2025-08-09T06:04:00+0200
 
 # source dmenu helper
 . _dmenu_helper.sh

@@ -2,8 +2,8 @@
 
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
-# github: https://github.com/mrdotx/dmenu
-# date:   2025-05-27T05:33:20+0200
+# url:    https://github.com/mrdotx/dmenu
+# date:   2025-08-09T06:04:16+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
