@@ -25,7 +25,7 @@ See the man page for details.
 
 Version
 -------
-5.3
+5.4
 
 Patches
 -------
@@ -43,4 +43,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2025-03-15 18:53	XUngrabKeyboard() instead of XUngrabKey()	Adam Purkrt
+2025-08-09 12:33	bump version to 5.4	Hiltjo Posthuma
