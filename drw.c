@@ -9,6 +9,7 @@
 #include "util.h"
 
 #define UTF_INVALID 0xFFFD
+
 static int
 utf8decode(const char *s_in, long *u, int *err)
 {
