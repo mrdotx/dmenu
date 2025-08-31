@@ -42,7 +42,7 @@ super+'                      | i3,apps        | color picker
 super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
 super+/                      | i3,apps        | show shortcuts (dmenu)
-super+shift+/                | i3,apps        | show notes (i3 mode)
+super+shift+/                | i3,apps        | vimwiki (w3m)
 XF86Explorer                 | i3,multimedia  | ranger (tmux 12)
 XF86HomePage                 | i3,multimedia  | secondary browser (firefox)
 XF86Calculator               | i3,multimedia  | calculator (dmenu)
