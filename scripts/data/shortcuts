@@ -4,7 +4,7 @@ super+Shift+b                | i3,apps        | bookmarks sync
 super+c                      | i3,apps        | cmus (tmux 20)
 super+shift+c                | i3,apps        | popup with song information if cmus is running
 super+d                      | i3,apps        | darktable
-super+e                      | i3,apps        | editor (i3 mode)
+super+e                      | i3,apps        | neovim
 super+shift+e                | i3,apps        | vimwiki (neovim)
 super+g                      | i3,apps        | gimp
 super+h                      | i3,apps        | ssh (i3 mode)
