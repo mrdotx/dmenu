@@ -98,6 +98,12 @@
 🛄 baggage claim; 1F6C4
 🥖 baguette bread; 1F956
 ⚖️ balance scale; 2696 FE0F
+🧑‍🩰 ballet dancer; 1F9D1 200D 1FA70
+🧑🏿‍🩰 ballet dancer: dark skin tone; 1F9D1 1F3FF 200D 1FA70
+🧑🏻‍🩰 ballet dancer: light skin tone; 1F9D1 1F3FB 200D 1FA70
+🧑🏾‍🩰 ballet dancer: medium-dark skin tone; 1F9D1 1F3FE 200D 1FA70
+🧑🏼‍🩰 ballet dancer: medium-light skin tone; 1F9D1 1F3FC 200D 1FA70
+🧑🏽‍🩰 ballet dancer: medium skin tone; 1F9D1 1F3FD 200D 1FA70
 🩰 ballet shoes; 1FA70
 🎈 balloon; 1F388
 🗳️ ballot box with ballot; 1F5F3 FE0F
@@ -516,6 +522,7 @@
 🔅 dim button; 1F505
 😞 disappointed face; 1F61E
 🥸 disguised face; 1F978
+🫪 distorted face; 1FAEA
 ➗ divide; 2797
 🤿 diving mask; 1F93F
 🪔 diya lamp; 1FA94
@@ -684,6 +691,7 @@
 🎡 ferris wheel; 1F3A1
 ⛴️ ferry; 26F4 FE0F
 🏑 field hockey; 1F3D1
+🫯 fight cloud; 1FAEF
 🗄️ file cabinet; 1F5C4 FE0F
 📁 file folder; 1F4C1
 🎞️ film frames; 1F39E FE0F
@@ -1082,6 +1090,7 @@
 🦮 guide dog; 1F9AE
 🎸 guitar; 1F3B8
 🪮 hair pick; 1FAAE
+🫈 hairy creature; 1FAC8
 🍔 hamburger; 1F354
 🔨 hammer; 1F528
 ⚒️ hammer and pick; 2692 FE0F
@@ -1393,6 +1402,7 @@
 🥍 lacrosse; 1F94D
 🪜 ladder; 1FA9C
 🐞 lady beetle; 1F41E
+🛘 landslide; 1F6D8
 💻 laptop; 1F4BB
 🔷 large blue diamond; 1F537
 🔶 large orange diamond; 1F536
@@ -2002,7 +2012,57 @@
 🕎 menorah; 1F54E
 🚹 men’s room; 1F6B9
 👯‍♂️ men with bunny ears; 1F46F 200D 2642 FE0F
+👯🏿‍♂️ men with bunny ears: dark skin tone; 1F46F 1F3FF 200D 2642 FE0F
+👨🏿‍🐰‍👨🏻 men with bunny ears: dark skin tone, light skin tone; 1F468 1F3FF 200D 1F430 200D 1F468 1F3FB
+👨🏿‍🐰‍👨🏾 men with bunny ears: dark skin tone, medium-dark skin tone; 1F468 1F3FF 200D 1F430 200D 1F468 1F3FE
+👨🏿‍🐰‍👨🏼 men with bunny ears: dark skin tone, medium-light skin tone; 1F468 1F3FF 200D 1F430 200D 1F468 1F3FC
+👨🏿‍🐰‍👨🏽 men with bunny ears: dark skin tone, medium skin tone; 1F468 1F3FF 200D 1F430 200D 1F468 1F3FD
+👯🏻‍♂️ men with bunny ears: light skin tone; 1F46F 1F3FB 200D 2642 FE0F
+👨🏻‍🐰‍👨🏿 men with bunny ears: light skin tone, dark skin tone; 1F468 1F3FB 200D 1F430 200D 1F468 1F3FF
+👨🏻‍🐰‍👨🏾 men with bunny ears: light skin tone, medium-dark skin tone; 1F468 1F3FB 200D 1F430 200D 1F468 1F3FE
+👨🏻‍🐰‍👨🏼 men with bunny ears: light skin tone, medium-light skin tone; 1F468 1F3FB 200D 1F430 200D 1F468 1F3FC
+👨🏻‍🐰‍👨🏽 men with bunny ears: light skin tone, medium skin tone; 1F468 1F3FB 200D 1F430 200D 1F468 1F3FD
+👯🏾‍♂️ men with bunny ears: medium-dark skin tone; 1F46F 1F3FE 200D 2642 FE0F
+👨🏾‍🐰‍👨🏿 men with bunny ears: medium-dark skin tone, dark skin tone; 1F468 1F3FE 200D 1F430 200D 1F468 1F3FF
+👨🏾‍🐰‍👨🏻 men with bunny ears: medium-dark skin tone, light skin tone; 1F468 1F3FE 200D 1F430 200D 1F468 1F3FB
+👨🏾‍🐰‍👨🏼 men with bunny ears: medium-dark skin tone, medium-light skin tone; 1F468 1F3FE 200D 1F430 200D 1F468 1F3FC
+👨🏾‍🐰‍👨🏽 men with bunny ears: medium-dark skin tone, medium skin tone; 1F468 1F3FE 200D 1F430 200D 1F468 1F3FD
+👯🏼‍♂️ men with bunny ears: medium-light skin tone; 1F46F 1F3FC 200D 2642 FE0F
+👨🏼‍🐰‍👨🏿 men with bunny ears: medium-light skin tone, dark skin tone; 1F468 1F3FC 200D 1F430 200D 1F468 1F3FF
+👨🏼‍🐰‍👨🏻 men with bunny ears: medium-light skin tone, light skin tone; 1F468 1F3FC 200D 1F430 200D 1F468 1F3FB
+👨🏼‍🐰‍👨🏾 men with bunny ears: medium-light skin tone, medium-dark skin tone; 1F468 1F3FC 200D 1F430 200D 1F468 1F3FE
+👨🏼‍🐰‍👨🏽 men with bunny ears: medium-light skin tone, medium skin tone; 1F468 1F3FC 200D 1F430 200D 1F468 1F3FD
+👯🏽‍♂️ men with bunny ears: medium skin tone; 1F46F 1F3FD 200D 2642 FE0F
+👨🏽‍🐰‍👨🏿 men with bunny ears: medium skin tone, dark skin tone; 1F468 1F3FD 200D 1F430 200D 1F468 1F3FF
+👨🏽‍🐰‍👨🏻 men with bunny ears: medium skin tone, light skin tone; 1F468 1F3FD 200D 1F430 200D 1F468 1F3FB
+👨🏽‍🐰‍👨🏾 men with bunny ears: medium skin tone, medium-dark skin tone; 1F468 1F3FD 200D 1F430 200D 1F468 1F3FE
+👨🏽‍🐰‍👨🏼 men with bunny ears: medium skin tone, medium-light skin tone; 1F468 1F3FD 200D 1F430 200D 1F468 1F3FC
 🤼‍♂️ men wrestling; 1F93C 200D 2642 FE0F
+🤼🏿‍♂️ men wrestling: dark skin tone; 1F93C 1F3FF 200D 2642 FE0F
+👨🏿‍🫯‍👨🏻 men wrestling: dark skin tone, light skin tone; 1F468 1F3FF 200D 1FAEF 200D 1F468 1F3FB
+👨🏿‍🫯‍👨🏾 men wrestling: dark skin tone, medium-dark skin tone; 1F468 1F3FF 200D 1FAEF 200D 1F468 1F3FE
+👨🏿‍🫯‍👨🏼 men wrestling: dark skin tone, medium-light skin tone; 1F468 1F3FF 200D 1FAEF 200D 1F468 1F3FC
+👨🏿‍🫯‍👨🏽 men wrestling: dark skin tone, medium skin tone; 1F468 1F3FF 200D 1FAEF 200D 1F468 1F3FD
+🤼🏻‍♂️ men wrestling: light skin tone; 1F93C 1F3FB 200D 2642 FE0F
+👨🏻‍🫯‍👨🏿 men wrestling: light skin tone, dark skin tone; 1F468 1F3FB 200D 1FAEF 200D 1F468 1F3FF
+👨🏻‍🫯‍👨🏾 men wrestling: light skin tone, medium-dark skin tone; 1F468 1F3FB 200D 1FAEF 200D 1F468 1F3FE
+👨🏻‍🫯‍👨🏼 men wrestling: light skin tone, medium-light skin tone; 1F468 1F3FB 200D 1FAEF 200D 1F468 1F3FC
+👨🏻‍🫯‍👨🏽 men wrestling: light skin tone, medium skin tone; 1F468 1F3FB 200D 1FAEF 200D 1F468 1F3FD
+🤼🏾‍♂️ men wrestling: medium-dark skin tone; 1F93C 1F3FE 200D 2642 FE0F
+👨🏾‍🫯‍👨🏿 men wrestling: medium-dark skin tone, dark skin tone; 1F468 1F3FE 200D 1FAEF 200D 1F468 1F3FF
+👨🏾‍🫯‍👨🏻 men wrestling: medium-dark skin tone, light skin tone; 1F468 1F3FE 200D 1FAEF 200D 1F468 1F3FB
+👨🏾‍🫯‍👨🏼 men wrestling: medium-dark skin tone, medium-light skin tone; 1F468 1F3FE 200D 1FAEF 200D 1F468 1F3FC
+👨🏾‍🫯‍👨🏽 men wrestling: medium-dark skin tone, medium skin tone; 1F468 1F3FE 200D 1FAEF 200D 1F468 1F3FD
+🤼🏼‍♂️ men wrestling: medium-light skin tone; 1F93C 1F3FC 200D 2642 FE0F
+👨🏼‍🫯‍👨🏿 men wrestling: medium-light skin tone, dark skin tone; 1F468 1F3FC 200D 1FAEF 200D 1F468 1F3FF
+👨🏼‍🫯‍👨🏻 men wrestling: medium-light skin tone, light skin tone; 1F468 1F3FC 200D 1FAEF 200D 1F468 1F3FB
+👨🏼‍🫯‍👨🏾 men wrestling: medium-light skin tone, medium-dark skin tone; 1F468 1F3FC 200D 1FAEF 200D 1F468 1F3FE
+👨🏼‍🫯‍👨🏽 men wrestling: medium-light skin tone, medium skin tone; 1F468 1F3FC 200D 1FAEF 200D 1F468 1F3FD
+🤼🏽‍♂️ men wrestling: medium skin tone; 1F93C 1F3FD 200D 2642 FE0F
+👨🏽‍🫯‍👨🏿 men wrestling: medium skin tone, dark skin tone; 1F468 1F3FD 200D 1FAEF 200D 1F468 1F3FF
+👨🏽‍🫯‍👨🏻 men wrestling: medium skin tone, light skin tone; 1F468 1F3FD 200D 1FAEF 200D 1F468 1F3FB
+👨🏽‍🫯‍👨🏾 men wrestling: medium skin tone, medium-dark skin tone; 1F468 1F3FD 200D 1FAEF 200D 1F468 1F3FE
+👨🏽‍🫯‍👨🏼 men wrestling: medium skin tone, medium-light skin tone; 1F468 1F3FD 200D 1FAEF 200D 1F468 1F3FC
 🧜‍♀️ mermaid; 1F9DC 200D 2640 FE0F
 🧜🏿‍♀️ mermaid: dark skin tone; 1F9DC 1F3FF 200D 2640 FE0F
 🧜🏻‍♀️ mermaid: light skin tone; 1F9DC 1F3FB 200D 2640 FE0F
@@ -2205,6 +2265,7 @@
 🧡 orange heart; 1F9E1
 🟧 orange square; 1F7E7
 🦧 orangutan; 1F9A7
+🫍 orca; 1FACD
 ☦️ orthodox cross; 2626 FE0F
 🦦 otter; 1F9A6
 📤 outbox tray; 1F4E4
@@ -2286,7 +2347,57 @@
 🧑🏽‍🤝‍🧑🏼 people holding hands: medium skin tone, medium-light skin tone; 1F9D1 1F3FD 200D 1F91D 200D 1F9D1 1F3FC
 🫂 people hugging; 1FAC2
 👯 people with bunny ears; 1F46F
+👯🏿 people with bunny ears: dark skin tone; 1F46F 1F3FF
+🧑🏿‍🐰‍🧑🏻 people with bunny ears: dark skin tone, light skin tone; 1F9D1 1F3FF 200D 1F430 200D 1F9D1 1F3FB
+🧑🏿‍🐰‍🧑🏾 people with bunny ears: dark skin tone, medium-dark skin tone; 1F9D1 1F3FF 200D 1F430 200D 1F9D1 1F3FE
+🧑🏿‍🐰‍🧑🏼 people with bunny ears: dark skin tone, medium-light skin tone; 1F9D1 1F3FF 200D 1F430 200D 1F9D1 1F3FC
+🧑🏿‍🐰‍🧑🏽 people with bunny ears: dark skin tone, medium skin tone; 1F9D1 1F3FF 200D 1F430 200D 1F9D1 1F3FD
+👯🏻 people with bunny ears: light skin tone; 1F46F 1F3FB
+🧑🏻‍🐰‍🧑🏿 people with bunny ears: light skin tone, dark skin tone; 1F9D1 1F3FB 200D 1F430 200D 1F9D1 1F3FF
+🧑🏻‍🐰‍🧑🏾 people with bunny ears: light skin tone, medium-dark skin tone; 1F9D1 1F3FB 200D 1F430 200D 1F9D1 1F3FE
+🧑🏻‍🐰‍🧑🏼 people with bunny ears: light skin tone, medium-light skin tone; 1F9D1 1F3FB 200D 1F430 200D 1F9D1 1F3FC
+🧑🏻‍🐰‍🧑🏽 people with bunny ears: light skin tone, medium skin tone; 1F9D1 1F3FB 200D 1F430 200D 1F9D1 1F3FD
+👯🏾 people with bunny ears: medium-dark skin tone; 1F46F 1F3FE
+🧑🏾‍🐰‍🧑🏿 people with bunny ears: medium-dark skin tone, dark skin tone; 1F9D1 1F3FE 200D 1F430 200D 1F9D1 1F3FF
+🧑🏾‍🐰‍🧑🏻 people with bunny ears: medium-dark skin tone, light skin tone; 1F9D1 1F3FE 200D 1F430 200D 1F9D1 1F3FB
+🧑🏾‍🐰‍🧑🏼 people with bunny ears: medium-dark skin tone, medium-light skin tone; 1F9D1 1F3FE 200D 1F430 200D 1F9D1 1F3FC
+🧑🏾‍🐰‍🧑🏽 people with bunny ears: medium-dark skin tone, medium skin tone; 1F9D1 1F3FE 200D 1F430 200D 1F9D1 1F3FD
+👯🏼 people with bunny ears: medium-light skin tone; 1F46F 1F3FC
+🧑🏼‍🐰‍🧑🏿 people with bunny ears: medium-light skin tone, dark skin tone; 1F9D1 1F3FC 200D 1F430 200D 1F9D1 1F3FF
+🧑🏼‍🐰‍🧑🏻 people with bunny ears: medium-light skin tone, light skin tone; 1F9D1 1F3FC 200D 1F430 200D 1F9D1 1F3FB
+🧑🏼‍🐰‍🧑🏾 people with bunny ears: medium-light skin tone, medium-dark skin tone; 1F9D1 1F3FC 200D 1F430 200D 1F9D1 1F3FE
+🧑🏼‍🐰‍🧑🏽 people with bunny ears: medium-light skin tone, medium skin tone; 1F9D1 1F3FC 200D 1F430 200D 1F9D1 1F3FD
+👯🏽 people with bunny ears: medium skin tone; 1F46F 1F3FD
+🧑🏽‍🐰‍🧑🏿 people with bunny ears: medium skin tone, dark skin tone; 1F9D1 1F3FD 200D 1F430 200D 1F9D1 1F3FF
+🧑🏽‍🐰‍🧑🏻 people with bunny ears: medium skin tone, light skin tone; 1F9D1 1F3FD 200D 1F430 200D 1F9D1 1F3FB
+🧑🏽‍🐰‍🧑🏾 people with bunny ears: medium skin tone, medium-dark skin tone; 1F9D1 1F3FD 200D 1F430 200D 1F9D1 1F3FE
+🧑🏽‍🐰‍🧑🏼 people with bunny ears: medium skin tone, medium-light skin tone; 1F9D1 1F3FD 200D 1F430 200D 1F9D1 1F3FC
 🤼 people wrestling; 1F93C
+🤼🏿 people wrestling: dark skin tone; 1F93C 1F3FF
+🧑🏿‍🫯‍🧑🏻 people wrestling: dark skin tone, light skin tone; 1F9D1 1F3FF 200D 1FAEF 200D 1F9D1 1F3FB
+🧑🏿‍🫯‍🧑🏾 people wrestling: dark skin tone, medium-dark skin tone; 1F9D1 1F3FF 200D 1FAEF 200D 1F9D1 1F3FE
+🧑🏿‍🫯‍🧑🏼 people wrestling: dark skin tone, medium-light skin tone; 1F9D1 1F3FF 200D 1FAEF 200D 1F9D1 1F3FC
+🧑🏿‍🫯‍🧑🏽 people wrestling: dark skin tone, medium skin tone; 1F9D1 1F3FF 200D 1FAEF 200D 1F9D1 1F3FD
+🤼🏻 people wrestling: light skin tone; 1F93C 1F3FB
+🧑🏻‍🫯‍🧑🏿 people wrestling: light skin tone, dark skin tone; 1F9D1 1F3FB 200D 1FAEF 200D 1F9D1 1F3FF
+🧑🏻‍🫯‍🧑🏾 people wrestling: light skin tone, medium-dark skin tone; 1F9D1 1F3FB 200D 1FAEF 200D 1F9D1 1F3FE
+🧑🏻‍🫯‍🧑🏼 people wrestling: light skin tone, medium-light skin tone; 1F9D1 1F3FB 200D 1FAEF 200D 1F9D1 1F3FC
+🧑🏻‍🫯‍🧑🏽 people wrestling: light skin tone, medium skin tone; 1F9D1 1F3FB 200D 1FAEF 200D 1F9D1 1F3FD
+🤼🏾 people wrestling: medium-dark skin tone; 1F93C 1F3FE
+🧑🏾‍🫯‍🧑🏿 people wrestling: medium-dark skin tone, dark skin tone; 1F9D1 1F3FE 200D 1FAEF 200D 1F9D1 1F3FF
+🧑🏾‍🫯‍🧑🏻 people wrestling: medium-dark skin tone, light skin tone; 1F9D1 1F3FE 200D 1FAEF 200D 1F9D1 1F3FB
+🧑🏾‍🫯‍🧑🏼 people wrestling: medium-dark skin tone, medium-light skin tone; 1F9D1 1F3FE 200D 1FAEF 200D 1F9D1 1F3FC
+🧑🏾‍🫯‍🧑🏽 people wrestling: medium-dark skin tone, medium skin tone; 1F9D1 1F3FE 200D 1FAEF 200D 1F9D1 1F3FD
+🤼🏼 people wrestling: medium-light skin tone; 1F93C 1F3FC
+🧑🏼‍🫯‍🧑🏿 people wrestling: medium-light skin tone, dark skin tone; 1F9D1 1F3FC 200D 1FAEF 200D 1F9D1 1F3FF
+🧑🏼‍🫯‍🧑🏻 people wrestling: medium-light skin tone, light skin tone; 1F9D1 1F3FC 200D 1FAEF 200D 1F9D1 1F3FB
+🧑🏼‍🫯‍🧑🏾 people wrestling: medium-light skin tone, medium-dark skin tone; 1F9D1 1F3FC 200D 1FAEF 200D 1F9D1 1F3FE
+🧑🏼‍🫯‍🧑🏽 people wrestling: medium-light skin tone, medium skin tone; 1F9D1 1F3FC 200D 1FAEF 200D 1F9D1 1F3FD
+🤼🏽 people wrestling: medium skin tone; 1F93C 1F3FD
+🧑🏽‍🫯‍🧑🏿 people wrestling: medium skin tone, dark skin tone; 1F9D1 1F3FD 200D 1FAEF 200D 1F9D1 1F3FF
+🧑🏽‍🫯‍🧑🏻 people wrestling: medium skin tone, light skin tone; 1F9D1 1F3FD 200D 1FAEF 200D 1F9D1 1F3FB
+🧑🏽‍🫯‍🧑🏾 people wrestling: medium skin tone, medium-dark skin tone; 1F9D1 1F3FD 200D 1FAEF 200D 1F9D1 1F3FE
+🧑🏽‍🫯‍🧑🏼 people wrestling: medium skin tone, medium-light skin tone; 1F9D1 1F3FD 200D 1FAEF 200D 1F9D1 1F3FC
 🎭 performing arts; 1F3AD
 😣 persevering face; 1F623
 🧑 person; 1F9D1
@@ -3112,12 +3223,14 @@
 🚋 tram car; 1F68B
 🏳️‍⚧️ transgender flag; 1F3F3 FE0F 200D 26A7 FE0F
 ⚧️ transgender symbol; 26A7 FE0F
+🪎 treasure chest; 1FA8E
 🦖 T-Rex; 1F996
 🚩 triangular flag; 1F6A9
 📐 triangular ruler; 1F4D0
 🔱 trident emblem; 1F531
 🧌 troll; 1F9CC
 🚎 trolleybus; 1F68E
+🪊 trombone; 1FA8A
 🏆 trophy; 1F3C6
 🍹 tropical drink; 1F379
 🐠 tropical fish; 1F420
@@ -3751,7 +3864,57 @@
 👩🏽‍🤝‍👩🏼 women holding hands: medium skin tone, medium-light skin tone; 1F469 1F3FD 200D 1F91D 200D 1F469 1F3FC
 🚺 women’s room; 1F6BA
 👯‍♀️ women with bunny ears; 1F46F 200D 2640 FE0F
+👯🏿‍♀️ women with bunny ears: dark skin tone; 1F46F 1F3FF 200D 2640 FE0F
+👩🏿‍🐰‍👩🏻 women with bunny ears: dark skin tone, light skin tone; 1F469 1F3FF 200D 1F430 200D 1F469 1F3FB
+👩🏿‍🐰‍👩🏾 women with bunny ears: dark skin tone, medium-dark skin tone; 1F469 1F3FF 200D 1F430 200D 1F469 1F3FE
+👩🏿‍🐰‍👩🏼 women with bunny ears: dark skin tone, medium-light skin tone; 1F469 1F3FF 200D 1F430 200D 1F469 1F3FC
+👩🏿‍🐰‍👩🏽 women with bunny ears: dark skin tone, medium skin tone; 1F469 1F3FF 200D 1F430 200D 1F469 1F3FD
+👯🏻‍♀️ women with bunny ears: light skin tone; 1F46F 1F3FB 200D 2640 FE0F
+👩🏻‍🐰‍👩🏿 women with bunny ears: light skin tone, dark skin tone; 1F469 1F3FB 200D 1F430 200D 1F469 1F3FF
+👩🏻‍🐰‍👩🏾 women with bunny ears: light skin tone, medium-dark skin tone; 1F469 1F3FB 200D 1F430 200D 1F469 1F3FE
+👩🏻‍🐰‍👩🏼 women with bunny ears: light skin tone, medium-light skin tone; 1F469 1F3FB 200D 1F430 200D 1F469 1F3FC
+👩🏻‍🐰‍👩🏽 women with bunny ears: light skin tone, medium skin tone; 1F469 1F3FB 200D 1F430 200D 1F469 1F3FD
+👯🏾‍♀️ women with bunny ears: medium-dark skin tone; 1F46F 1F3FE 200D 2640 FE0F
+👩🏾‍🐰‍👩🏿 women with bunny ears: medium-dark skin tone, dark skin tone; 1F469 1F3FE 200D 1F430 200D 1F469 1F3FF
+👩🏾‍🐰‍👩🏻 women with bunny ears: medium-dark skin tone, light skin tone; 1F469 1F3FE 200D 1F430 200D 1F469 1F3FB
+👩🏾‍🐰‍👩🏼 women with bunny ears: medium-dark skin tone, medium-light skin tone; 1F469 1F3FE 200D 1F430 200D 1F469 1F3FC
+👩🏾‍🐰‍👩🏽 women with bunny ears: medium-dark skin tone, medium skin tone; 1F469 1F3FE 200D 1F430 200D 1F469 1F3FD
+👯🏼‍♀️ women with bunny ears: medium-light skin tone; 1F46F 1F3FC 200D 2640 FE0F
+👩🏼‍🐰‍👩🏿 women with bunny ears: medium-light skin tone, dark skin tone; 1F469 1F3FC 200D 1F430 200D 1F469 1F3FF
+👩🏼‍🐰‍👩🏻 women with bunny ears: medium-light skin tone, light skin tone; 1F469 1F3FC 200D 1F430 200D 1F469 1F3FB
+👩🏼‍🐰‍👩🏾 women with bunny ears: medium-light skin tone, medium-dark skin tone; 1F469 1F3FC 200D 1F430 200D 1F469 1F3FE
+👩🏼‍🐰‍👩🏽 women with bunny ears: medium-light skin tone, medium skin tone; 1F469 1F3FC 200D 1F430 200D 1F469 1F3FD
+👯🏽‍♀️ women with bunny ears: medium skin tone; 1F46F 1F3FD 200D 2640 FE0F
+👩🏽‍🐰‍👩🏿 women with bunny ears: medium skin tone, dark skin tone; 1F469 1F3FD 200D 1F430 200D 1F469 1F3FF
+👩🏽‍🐰‍👩🏻 women with bunny ears: medium skin tone, light skin tone; 1F469 1F3FD 200D 1F430 200D 1F469 1F3FB
+👩🏽‍🐰‍👩🏾 women with bunny ears: medium skin tone, medium-dark skin tone; 1F469 1F3FD 200D 1F430 200D 1F469 1F3FE
+👩🏽‍🐰‍👩🏼 women with bunny ears: medium skin tone, medium-light skin tone; 1F469 1F3FD 200D 1F430 200D 1F469 1F3FC
 🤼‍♀️ women wrestling; 1F93C 200D 2640 FE0F
+🤼🏿‍♀️ women wrestling: dark skin tone; 1F93C 1F3FF 200D 2640 FE0F
+👩🏿‍🫯‍👩🏻 women wrestling: dark skin tone, light skin tone; 1F469 1F3FF 200D 1FAEF 200D 1F469 1F3FB
+👩🏿‍🫯‍👩🏾 women wrestling: dark skin tone, medium-dark skin tone; 1F469 1F3FF 200D 1FAEF 200D 1F469 1F3FE
+👩🏿‍🫯‍👩🏼 women wrestling: dark skin tone, medium-light skin tone; 1F469 1F3FF 200D 1FAEF 200D 1F469 1F3FC
+👩🏿‍🫯‍👩🏽 women wrestling: dark skin tone, medium skin tone; 1F469 1F3FF 200D 1FAEF 200D 1F469 1F3FD
+🤼🏻‍♀️ women wrestling: light skin tone; 1F93C 1F3FB 200D 2640 FE0F
+👩🏻‍🫯‍👩🏿 women wrestling: light skin tone, dark skin tone; 1F469 1F3FB 200D 1FAEF 200D 1F469 1F3FF
+👩🏻‍🫯‍👩🏾 women wrestling: light skin tone, medium-dark skin tone; 1F469 1F3FB 200D 1FAEF 200D 1F469 1F3FE
+👩🏻‍🫯‍👩🏼 women wrestling: light skin tone, medium-light skin tone; 1F469 1F3FB 200D 1FAEF 200D 1F469 1F3FC
+👩🏻‍🫯‍👩🏽 women wrestling: light skin tone, medium skin tone; 1F469 1F3FB 200D 1FAEF 200D 1F469 1F3FD
+🤼🏾‍♀️ women wrestling: medium-dark skin tone; 1F93C 1F3FE 200D 2640 FE0F
+👩🏾‍🫯‍👩🏿 women wrestling: medium-dark skin tone, dark skin tone; 1F469 1F3FE 200D 1FAEF 200D 1F469 1F3FF
+👩🏾‍🫯‍👩🏻 women wrestling: medium-dark skin tone, light skin tone; 1F469 1F3FE 200D 1FAEF 200D 1F469 1F3FB
+👩🏾‍🫯‍👩🏼 women wrestling: medium-dark skin tone, medium-light skin tone; 1F469 1F3FE 200D 1FAEF 200D 1F469 1F3FC
+👩🏾‍🫯‍👩🏽 women wrestling: medium-dark skin tone, medium skin tone; 1F469 1F3FE 200D 1FAEF 200D 1F469 1F3FD
+🤼🏼‍♀️ women wrestling: medium-light skin tone; 1F93C 1F3FC 200D 2640 FE0F
+👩🏼‍🫯‍👩🏿 women wrestling: medium-light skin tone, dark skin tone; 1F469 1F3FC 200D 1FAEF 200D 1F469 1F3FF
+👩🏼‍🫯‍👩🏻 women wrestling: medium-light skin tone, light skin tone; 1F469 1F3FC 200D 1FAEF 200D 1F469 1F3FB
+👩🏼‍🫯‍👩🏾 women wrestling: medium-light skin tone, medium-dark skin tone; 1F469 1F3FC 200D 1FAEF 200D 1F469 1F3FE
+👩🏼‍🫯‍👩🏽 women wrestling: medium-light skin tone, medium skin tone; 1F469 1F3FC 200D 1FAEF 200D 1F469 1F3FD
+🤼🏽‍♀️ women wrestling: medium skin tone; 1F93C 1F3FD 200D 2640 FE0F
+👩🏽‍🫯‍👩🏿 women wrestling: medium skin tone, dark skin tone; 1F469 1F3FD 200D 1FAEF 200D 1F469 1F3FF
+👩🏽‍🫯‍👩🏻 women wrestling: medium skin tone, light skin tone; 1F469 1F3FD 200D 1FAEF 200D 1F469 1F3FB
+👩🏽‍🫯‍👩🏾 women wrestling: medium skin tone, medium-dark skin tone; 1F469 1F3FD 200D 1FAEF 200D 1F469 1F3FE
+👩🏽‍🫯‍👩🏼 women wrestling: medium skin tone, medium-light skin tone; 1F469 1F3FD 200D 1FAEF 200D 1F469 1F3FC
 🪵 wood; 1FAB5
 🥴 woozy face; 1F974
 🗺️ world map; 1F5FA FE0F
