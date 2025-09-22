@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:03:56+0200
+# date:   2025-09-22T05:36:42+0200
 
 # config
 password_store="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
@@ -105,9 +105,11 @@ case "$select" in
             case $(printf "%s\n" \
                 "» edit saved settings" \
                 "type [username] TAB [password] ENTER" \
+                "type [username] ENTER" \
+                "type [password] ENTER" \
                 "type [username]" \
                 "type [password]" \
-                | dmenu -b -l 4 -r -i -p "$select »" -w "$window_id" \
+                | dmenu -b -l 6 -r -i -p "$select »" -w "$window_id" \
                 ) in
                 "» edit saved settings")
                     $edit "$password_store/$select$file_type"
@@ -117,6 +119,15 @@ case "$select" in
                     type_string "$(get_gpg_entry --username)" \
                         && xdotool key Tab \
                         && type_string "$(get_gpg_entry --password)" \
+                        && xdotool key Return
+                    break
+                    ;;
+                "type [username] ENTER")
+                    type_string "$(get_gpg_entry --username)" \
+                        && xdotool key Return
+                    ;;
+                "type [password] ENTER")
+                    type_string "$(get_gpg_entry --password)" \
                         && xdotool key Return
                     break
                     ;;
