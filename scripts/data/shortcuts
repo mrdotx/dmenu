@@ -75,7 +75,7 @@ super+home                   | i3,windows     | toggle window tiling/floating
 super+end                    | i3,windows     | change focus between tiling/floating windows
 super+insert                 | i3,windows     | toggle sticky
 super+tab                    | i3,windows     | window switcher
-alt+space                    | i3,windows     | container (i3 mode)
+super+space                  | i3,windows     | container (i3 mode)
 super(release)               | i3,system      | primary program launcher (i3-dmenu-desktop)
 shift+super(release)         | i3,system      | secondary program launcher (dmenu)
 print                        | i3,system      | screenshot (dmenu)
@@ -90,7 +90,7 @@ ctrl+shift+q                 | i3,system      | kill all windows on focused work
 ctrl+alt+backspace           | i3,system      | reload i3 configuration file
 ctrl+alt+escape              | i3,system      | restart i3 inplace (preserves layout/session)
 ctrl+alt+delete              | i3,system      | exit (i3 mode)
-super+space                  | i3,system      | services (i3 mode)
+alt+space                    | i3,system      | services (i3 mode)
 super+\                      | i3,system      | autostart
 super+shift+\                | i3,system      | nfs (i3 mode)
 super+f1                     | i3,system      | change display settings (dmenu)
