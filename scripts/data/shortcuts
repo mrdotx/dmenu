@@ -39,6 +39,7 @@ super+shift+[                | i3,apps        | man pages (fzf)
 super+]                      | i3,apps        | package manager (tmux 18)
 super+shift+]                | i3,apps        | package manager (fzf)
 super+;                      | i3,apps        | disable/enable touchpad
+super+shift+;                | i3,apps        | disable/enable trackpoint
 super+'                      | i3,apps        | color picker
 super+,                      | i3,apps        | calculator (dmenu)
 super+.                      | i3,apps        | stopwatch
