@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:04:07+0200
+# date:   2025-11-12T06:10:41+0100
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -17,9 +17,7 @@ unicode_files="$data_dir/unicode-files"
 
 # data functions
 get_emoji() {
-    emoji_url="https://unicode.org/Public/emoji/latest/emoji-test.txt"
-
-    emoji=$(curl -fsS "$emoji_url" \
+    emoji=$(curl -fsS "https://unicode.org/Public/emoji/latest/emoji-test.txt" \
         | grep "; fully-qualified" \
         | awk -F "; fully-qualified     # " '{print $2 "; " $1}' \
         | sed 's/[ \t]*$//' \
@@ -30,14 +28,12 @@ get_emoji() {
 }
 
 get_nerdfont() {
-    nerdfonts_url="https://www.nerdfonts.com/cheat-sheet"
-
     # print unicode symbol from hex value
     get_char() {
         env printf '%b' "$(printf "\U%0*d%s" "$((8-${#1}))" "0" "$1")"
     }
 
-    data=$(curl -fsS "$nerdfonts_url" \
+    data=$(curl -fsS "https://www.nerdfonts.com/cheat-sheet" \
         | grep "^  \"nf" \
         | grep -v "nfold-" \
         | sed \
