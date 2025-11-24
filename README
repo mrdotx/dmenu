@@ -43,4 +43,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2025-09-27 10:10	cleanup schemes and colors	Hiltjo Posthuma
+2025-09-29 16:47	drw.c: drw_scm_free: call free inside	Hiltjo Posthuma
