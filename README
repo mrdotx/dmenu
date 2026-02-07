@@ -43,4 +43,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2025-09-29 16:47	drw.c: drw_scm_free: call free inside	Hiltjo Posthuma
+2026-01-28 14:57	add -of and -ob arguments for outline colors options for multi-selection	Julien Addé
