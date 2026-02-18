@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-11-12T06:10:41+0100
+# date:   2026-02-18T05:48:47+0100
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -82,7 +82,7 @@ select_symbols() {
     )
 
     # type at cursor
-    xdotool type "$symbol"
+    dmenu_xdotool type "$symbol"
     # copy symbol to clipboard
     printf "%s" "$symbol" \
         | xsel -i -b
