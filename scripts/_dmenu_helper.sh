@@ -3,7 +3,23 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/_dmenu_helper.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:03:36+0200
+# date:   2026-02-18T05:48:02+0100
+
+dmenu_xdotool() {
+    case "$1" in
+        type)
+            # WORKAROUND: xdotool mismatched keyboard layouts
+            setxkbmap -synch
+
+            shift
+            xdotool type --delay 0 --clearmodifiers "$@"
+            ;;
+        key)
+            shift
+            xdotool key --delay 15 --clearmodifiers "$@"
+            ;;
+    esac
+}
 
 dmenu_notify() {
     # WORKAROUND: notifications are sometimes not displayed
