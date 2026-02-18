@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:03:44+0200
+# date:   2026-02-18T05:48:19+0100
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -54,10 +54,7 @@ case $select in
         "$0" &
         ;;
     "insert result at cursor")
-        printf "%s" "$result" \
-            | xdotool type \
-                --clearmodifiers \
-                --file -
+        dmenu_xdotool type "$result"
         ;;
     "copy result to clipboard")
         printf "%s\n" "$result" \
