@@ -3,7 +3,10 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-09-22T05:36:42+0200
+# date:   2026-02-18T05:48:54+0100
+
+# source dmenu helper
+. _dmenu_helper.sh
 
 # config
 password_store="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
@@ -15,13 +18,6 @@ clipboard_timeout=45
 window_id=$(xdotool getactivewindow)
 
 # helper functions
-type_string() {
-    printf "%s" "$1" \
-        | xdotool type \
-            --clearmodifiers \
-            --file -
-}
-
 copy_string() {
     printf "%s" "$1" \
         | xsel \
@@ -93,7 +89,7 @@ case "$select" in
                 copy_string "$(generate_password 16 "!@#")"
                 ;;
             "type [password]")
-                type_string "$(generate_password 16 "!@#")"
+                dmenu_xdotool type "$(generate_password 16 "!@#")"
                 ;;
             *)
                 exit 0
@@ -116,26 +112,26 @@ case "$select" in
                     break
                     ;;
                 "type [username] TAB [password] ENTER")
-                    type_string "$(get_gpg_entry --username)" \
-                        && xdotool key Tab \
-                        && type_string "$(get_gpg_entry --password)" \
-                        && xdotool key Return
+                    dmenu_xdotool type "$(get_gpg_entry --username)" \
+                        && dmenu_xdotool key Tab \
+                        && dmenu_xdotool type "$(get_gpg_entry --password)" \
+                        && dmenu_xdotool key Return
                     break
                     ;;
                 "type [username] ENTER")
-                    type_string "$(get_gpg_entry --username)" \
-                        && xdotool key Return
+                    dmenu_xdotool type "$(get_gpg_entry --username)" \
+                        && dmenu_xdotool key Return
                     ;;
                 "type [password] ENTER")
-                    type_string "$(get_gpg_entry --password)" \
-                        && xdotool key Return
+                    dmenu_xdotool type "$(get_gpg_entry --password)" \
+                        && dmenu_xdotool key Return
                     break
                     ;;
                 "type [username]")
-                    type_string "$(get_gpg_entry --username)"
+                    dmenu_xdotool type "$(get_gpg_entry --username)"
                     ;;
                 "type [password]")
-                    type_string "$(get_gpg_entry --password)"
+                    dmenu_xdotool type "$(get_gpg_entry --password)"
                     ;;
                 *)
                     break
