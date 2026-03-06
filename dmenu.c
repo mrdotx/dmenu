@@ -993,7 +993,8 @@ setup(void)
 			mw = wa.width - (border_width * 2);
 		}
 	}
-	inputw = mw / 4; /* input width: 25% of monitor width */
+	/* input width: 25% of monitor width on wrong values */
+	inputw = input_width > 0 && input_width < mw ? input_width : mw / 4;
 	match();
 
 	/* create menu window */
@@ -1094,7 +1095,9 @@ main(int argc, char *argv[])
 		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
 			embed = argv[++i];
 		else if (!strcmp(argv[i], "-mw"))
-			min_width = atoi(argv[++i]);   /* minimum width when centered*/
+			min_width = atoi(argv[++i]);   /* minimum width when centered */
+		else if (!strcmp(argv[i], "-iw"))
+			input_width = atoi(argv[++i]);   /* input width when horizontal */
 		else if (!strcmp(argv[i], "-bw"))
 			border_width = atoi(argv[++i]); /* border width */
 		else
