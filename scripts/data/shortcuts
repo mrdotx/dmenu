@@ -104,7 +104,8 @@ super+escape                 | i3,system      | shutdown
 super+scroll_lock            | i3,system      | lock
 super+pause                  | i3,system      | sleep (lock + suspend)
 super+backspace              | i3,system      | reboot
-super+delete                 | i3,system      | trash (fzf)
+super+delete                 | i3,system      | trash (tmux 19)
+super+shift+delete           | i3,system      | trash (fzf)
 menu                         | i3,system      | start keyboard mouse (xkeymou)
 super+menu                   | i3,system      | move mouse (ne)
 :q                           | vim            | close
