@@ -3,13 +3,16 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/_dmenu_helper.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-02-18T05:48:02+0100
+# date:   2026-03-20T05:22:31+0100
 
 dmenu_xdotool() {
     case "$1" in
         type)
             # WORKAROUND: xdotool mismatched keyboard layouts
             setxkbmap -synch
+
+            # WORKAROUND: early start
+            sleep .2
 
             shift
             xdotool type --delay 0 --clearmodifiers "$@"
