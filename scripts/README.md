@@ -2,9 +2,9 @@
 
 shell scripts for dmenu
 
-| folder | comment              |
-| :----- | :------------------- |
-| data   | data for the scripts |
+| directory | comment              |
+| :-------- | :------------------- |
+| data      | data for the scripts |
 
 | file                     | comment                                                           |
 | :----------------------- | :---------------------------------------------------------------- |
