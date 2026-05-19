@@ -81,9 +81,9 @@ super(release)               | i3,system      | primary program launcher (i3-dme
 shift+super(release)         | i3,system      | secondary program launcher (dmenu)
 print                        | i3,system      | screenshot (dmenu)
 super+print                  | i3,system      | macros (i3 mode)
-super+return                 | i3,system      | terminal (urxvt)
+super+return                 | i3,system      | terminal (st)
 super+shift+return           | i3,system      | terminal (tmux 1)
-super+ctrl+return            | i3,system      | backup terminal (st)
+super+ctrl+return            | i3,system      | backup terminal (urxvt)
 super+f                      | i3,system      | toggle fullscreen mode for focused container
 super+shift+f                | i3,system      | toggle fullscreen mode global
 ctrl+q                       | i3,system      | kill focused window
