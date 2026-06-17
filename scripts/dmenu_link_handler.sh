@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_link_handler.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:03:52+0200
+# date:   2026-06-17T04:35:48+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -22,6 +22,7 @@ download() {
 
     case "$host" in
         '')
+            # REQUIRES: terminal_wrapper.sh (https://github.com/mrdotx/terminal-wrapper)
             $TERMINAL -e terminal_wrapper.sh eval "$*" &
             ;;
         *)
@@ -100,6 +101,7 @@ case "$select" in
         tsp mpv --terminal=no --vid=no --force-window "$urls" >/dev/null 2>&1
         ;;
     "select format")
+        # REQUIRES: terminal_wrapper.sh (https://github.com/mrdotx/terminal-wrapper)
         $TERMINAL -e terminal_wrapper.sh \
             yt-dlp --format - "$(clear_ytdl "$urls")" &
         ;;
