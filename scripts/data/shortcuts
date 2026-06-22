@@ -47,8 +47,10 @@ super+/                      | i3,apps        | show shortcuts (dmenu)
 super+shift+/                | i3,apps        | vimwiki (w3m)
 XF86Explorer                 | i3,multimedia  | ranger (tmux 12)
 XF86HomePage                 | i3,multimedia  | secondary browser (firefox)
+XF86Mail                     | i3,multimedia  | thunderbird
 XF86Calculator               | i3,multimedia  | calculator (dmenu)
 XF86Tools                    | i3,multimedia  | cmus (tmux 20)
+XF86Search                   | i3,multimedia  | primary program launcher (i3-dmenu-desktop)
 XF86AudioPrev                | i3,multimedia  | cmus previous
 XF86AudioNext                | i3,multimedia  | cmus next
 XF86AudioPlay                | i3,multimedia  | cmus toggle pause
