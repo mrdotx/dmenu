@@ -3,30 +3,30 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-02-18T05:48:19+0100
+# date:   2026-06-27T02:14:03+0200
+
+# use standard C locale to avoid locale-specific issues and improve performance
+export LC_ALL=C LANG=C
 
 # source dmenu helper
 . _dmenu_helper.sh
 
 title="calc"
 
-# get active window id
-window_id=$(xdotool getactivewindow)
+# get window id
+window_id=$(xdotool getwindowfocus)
 
 # get clipboard
 clipboard=$(xsel -n -o -b)
 
 # use bc for calculations
-result=$(printf "%s\n" "$@" \
-    | sed 's/,/./g' \
-    | bc -l
+result=$(printf "%s\n" "$*" \
+    | bc -l \
 )
 
 # format result and label
 [ -n "$result" ] \
-    && result=$(printf "%.4f\n" "$result" \
-        | sed 's/\./,/g' \
-    ) \
+    && result=$(printf "%.4f\n" "$result") \
     && label="$result ="
 
 menu() {
@@ -71,10 +71,10 @@ case $select in
             && "$0" &
         ;;
     "» electricity costs: price * (hours * days * months / 1000 * W)kWh")
-        "$0" "0,40*(24*7*52/1000*1)" &
+        "$0" "0.40*(24*7*52/1000*1)" &
         ;;
     "» charging costs: price * efficiency * (V / 1000000 * mAh)kWh")
-        "$0" "0,40*1,30*(3,85/1000000*5100)" &
+        "$0" "0.40*1.30*(3.85/1000000*5100)" &
         ;;
     [-+/*]*)
         "$0" "$result$select" &
