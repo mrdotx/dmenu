@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_screenshot.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:04:00+0200
+# date:   2026-07-08T04:57:48+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -38,7 +38,7 @@ case $select in
         execute "$select"
         ;;
     "window"*)
-        execute "$select --window=$(xdotool getactivewindow)"
+        execute "$select --window=$(xdotool getwindowfocus)"
         ;;
     "selection"*)
         dmenu_notify 2500 \
