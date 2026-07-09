@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-02-18T05:48:54+0100
+# date:   2026-07-10T00:56:27+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -14,8 +14,8 @@ file_type=".gpg"
 edit="$TERMINAL -e ranger"
 clipboard_timeout=45
 
-# get active window id
-window_id=$(xdotool getactivewindow)
+# get window id
+window_id=$(xdotool getwindowfocus)
 
 # helper functions
 copy_string() {
