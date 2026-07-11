@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_shortcuts.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:04:04+0200
+# date:   2026-07-11T03:53:20+0200
 
 shortcuts_file="$HOME/.local/share/repos/dmenu/scripts/data/shortcuts"
 
@@ -20,7 +20,7 @@ select=$(dmenu -b -bw 1 -l 15 -r -i -p "shortcut »" < "$shortcuts_file")
         "$(get_column 3 "$select")" \
         "$(get_column 2 "$select")" \
         "$(get_column 1 "$select")" \
-            | dmenu -b -bw 1 -l 3 -r -i -p "shortcut »" \
+            | dmenu -b -bw 1 -l 15 -r -i -p "shortcut »" \
             | sed -e "s/^ //" -e "s/\(\/\|\[\|\]\)/./g" \
     )
 

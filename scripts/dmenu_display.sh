@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:03:48+0200
+# date:   2026-07-11T03:52:58+0200
 
 # config
 saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
@@ -20,7 +20,7 @@ connected_displays=$(printf "%s" "$all_displays" \
 
 display() {
     primary=$(printf "%s" "$connected_displays" \
-        | dmenu -c -bw 1 -l 4 -r -i -p "$1" \
+        | dmenu -c -bw 1 -l 15 -r -i -p "$1" \
     )
     [ -z "$primary" ] \
         && exit 0
@@ -39,7 +39,7 @@ saved_settings() {
     }
 
     select=$(awk -F ';' '{print $1}' "$saved_settings_file" \
-        | dmenu -c -bw 1 -l 10 -i -p "$select »" \
+        | dmenu -c -bw 1 -l 15 -i -p "$select »" \
     )
     [ -n "$select" ] \
         && options=$(grep "^$select;" "$saved_settings_file") \
@@ -64,7 +64,7 @@ refresh_rate() {
         | tail -n1 \
         | awk '{for (i=2;i<=NF;i++) print $i}' \
         | sed "s/\+//; /^$/d" \
-        | dmenu -c -bw 1 -l 10 -r -i -p "rate »" \
+        | dmenu -c -bw 1 -l 15 -r -i -p "rate »" \
         | sed "s/\*//" \
     )
     [ -z "$rate" ] \
@@ -84,7 +84,7 @@ rotate() {
         "left" \
         "right" \
         "inverted" \
-        | dmenu -c -bw 1 -l 4 -i -p "direction »" \
+        | dmenu -c -bw 1 -l 15 -i -p "direction »" \
     )
     [ -z "$direction" ] \
         && exit 0
@@ -103,7 +103,7 @@ scale_dimensions() {
         "0.5x0.5" \
         "0.3x0.3" \
         "0.1x0.1" \
-        | dmenu -c -bw 1 -l 5 -i -p "scale »" \
+        | dmenu -c -bw 1 -l 15 -i -p "scale »" \
     )
     [ -z "$scale" ] \
         && exit 0
@@ -121,7 +121,7 @@ extend() {
         "right" \
         "below" \
         "left" \
-        | dmenu -c -bw 1 -l 4 -r -i -p "position of $secondary »" \
+        | dmenu -c -bw 1 -l 15 -r -i -p "position of $secondary »" \
         | sed "s/left/left-of/;s/right/right-of/" \
     )
     [ -z "$orientation" ] \
@@ -184,7 +184,7 @@ select=$(printf "%s\n" \
     "extend" \
     "mirror" \
     "$connected_displays" \
-    | dmenu -c -bw 1 -l 10 -r -i -p "display »"
+    | dmenu -c -bw 1 -l 15 -r -i -p "display »"
     ) && \
     case "$select" in
         "saved settings")

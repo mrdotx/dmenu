@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-06-27T02:14:03+0200
+# date:   2026-07-11T03:52:45+0200
 
 # use standard C locale to avoid locale-specific issues and improve performance
 export LC_ALL=C LANG=C
@@ -44,7 +44,7 @@ menu() {
 }
 
 select=$(printf "%s\n" "$(menu "$*")" \
-    | dmenu -b -l 7 -p "${label-"$title »"}" -w "$window_id" \
+    | dmenu -b -l 15 -p "${label-"$title »"}" -w "$window_id" \
 )
 
 case $select in

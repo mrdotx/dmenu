@@ -3,7 +3,7 @@
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-07-10T00:56:27+0200
+# date:   2026-07-11T03:53:06+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -83,7 +83,7 @@ case "$select" in
         case $(printf "%s\n" \
             "copy [password] to clipboard ($clipboard_timeout sec)" \
             "type [password]" \
-            | dmenu -b -l 2 -r -i -p "generate password »" -w "$window_id" \
+            | dmenu -b -l 15 -r -i -p "generate password »" -w "$window_id" \
             ) in
             "copy [password] to clipboard"*)
                 copy_string "$(generate_password 16 "!@#")"
@@ -105,7 +105,7 @@ case "$select" in
                 "type [password] ENTER" \
                 "type [username]" \
                 "type [password]" \
-                | dmenu -b -l 6 -r -i -p "$select »" -w "$window_id" \
+                | dmenu -b -l 15 -r -i -p "$select »" -w "$window_id" \
                 ) in
                 "» edit saved settings")
                     $edit "$password_store/$select$file_type"
