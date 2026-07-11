@@ -1,9 +1,13 @@
-#!/bin/sh
+#!/bin/bash
+# WORKAROUND: the dash shell encodes files in latin1 rather than utf-8
 
 # path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-02-18T05:48:47+0100
+# date:   2026-07-11T03:53:25+0200
+
+# use C.UTF-8 locale to avoid locale-specific issues and ensure consistent performance
+export LC_ALL=C.UTF-8 LANG=C.UTF-8
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -23,16 +27,12 @@ get_emoji() {
         | sed 's/[ \t]*$//' \
         | cut -d' ' -f2 --complement)
 
-    printf "%s\n" "$emoji"
-    printf "%s\n" "$emoji" | sort -u -k 2 > "$1"
+    printf "%s\n" "$emoji" \
+        | sort -u -d -f -k 2 \
+        | tee "$1"
 }
 
 get_nerdfont() {
-    # print unicode symbol from hex value
-    get_char() {
-        env printf '%b' "$(printf "\U%0*d%s" "$((8-${#1}))" "0" "$1")"
-    }
-
     data=$(curl -fsS "https://www.nerdfonts.com/cheat-sheet" \
         | grep "^  \"nf" \
         | grep -v "nfold-" \
@@ -42,27 +42,27 @@ get_nerdfont() {
             -e 's/\": \"/;/g' \
     )
 
+    # print unicode symbol from hex value
+    get_char() {
+        printf '%b' "$(printf "\\\U%0*d%s" "$((8-${#1}))" "0" "$1")"
+    }
+
     for line in $data; do
         class=$(printf "%s" "$line" | cut -d';' -f1)
         hex=$(printf "%s" "$line" | cut -d';' -f2)
-        output=$(printf "%s %s; %s" "$(get_char "$hex")" "$class" "$hex")
-        nerdfont=$(printf "%s\n%s\n" "$nerdfont" "$output")
+        symbol=$(printf "%s" "$(get_char "$hex")")
 
-        printf "%s\n" "$output"
+        printf "%b %s; %s\n" "$symbol" "$class" "$hex" \
+            | sort -u -d -f -k 2 \
+            | tee -a "$1"
     done
-
-    printf "%s\n" "$nerdfont" | sort -u -k 2 >> "$1"
 }
 
 get_files() {
     for f in "$unicode_files"/*.txt; do
-        output=$(sort -u -k 2 "$f")
-        files=$(printf "%s\n%s\n" "$files" "$output")
-
-        printf "%s\n" "$output"
+        sort -u -d -f -k 2 "$f" \
+            | tee -a "$1"
     done
-
-    printf "%s\n" "$files" | sort -u -k 2 >> "$1"
 }
 
 select_symbols() {
