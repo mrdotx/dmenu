@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_youtube.sh
+# path:   /home/klassiker/Projects/repos/dmenu/scripts/dmenu_youtube.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:04:16+0200
+# date:   2026-07-12T03:14:01+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -11,7 +11,7 @@
 title="youtube"
 
 # config
-history_file="$HOME/.local/share/repos/dmenu/scripts/data/$title"
+history_file="$HOME/Projects/repos/dmenu/scripts/data/$title"
 link_handler="dmenu_link_handler.sh"
 
 # search

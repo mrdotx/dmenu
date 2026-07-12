@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:   /home/klassiker/.local/share/repos/dmenu/scripts/_dmenu_helper.sh
+# path:   /home/klassiker/Projects/repos/dmenu/scripts/_dmenu_helper.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-03-20T05:22:31+0100
+# date:   2026-07-12T03:13:06+0200
 
 dmenu_xdotool() {
     case "$1" in

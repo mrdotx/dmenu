@@ -1,12 +1,12 @@
 #!/bin/sh
 
-# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_display.sh
+# path:   /home/klassiker/Projects/repos/dmenu/scripts/dmenu_display.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-07-11T03:52:58+0200
+# date:   2026-07-12T03:13:19+0200
 
 # config
-saved_settings_file="$HOME/.local/share/repos/dmenu/scripts/data/screen-layouts"
+saved_settings_file="$HOME/Projects/repos/dmenu/scripts/data/screen-layouts"
 edit="$TERMINAL -e $EDITOR"
 
 all_displays=$(xrandr \

@@ -1,7 +1,7 @@
-# path:   /home/klassiker/.local/share/repos/dmenu/.gitignore
+# path:   /home/klassiker/Projects/repos/dmenu/.gitignore
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:03:30+0200
+# date:   2026-07-12T03:12:59+0200
 
 /scripts/data/bookmarks
 /scripts/data/youtube

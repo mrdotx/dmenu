@@ -1,10 +1,10 @@
 #!/bin/bash
 # WORKAROUND: the dash shell encodes files in latin1 rather than utf-8
 
-# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_unicode_symbols.sh
+# path:   /home/klassiker/Projects/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-07-11T03:53:25+0200
+# date:   2026-07-12T03:13:49+0200
 
 # use C.UTF-8 locale to avoid locale-specific issues and ensure consistent performance
 export LC_ALL=C.UTF-8 LANG=C.UTF-8
@@ -15,7 +15,7 @@ export LC_ALL=C.UTF-8 LANG=C.UTF-8
 title="unicode-symbols"
 
 # config
-data_dir="$HOME/.local/share/repos/dmenu/scripts/data"
+data_dir="$HOME/Projects/repos/dmenu/scripts/data"
 unicode_symbols_file="$data_dir/$title"
 unicode_files="$data_dir/unicode-files"
 

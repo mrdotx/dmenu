@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_calc.sh
+# path:   /home/klassiker/Projects/repos/dmenu/scripts/dmenu_calc.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-07-11T03:52:45+0200
+# date:   2026-07-12T03:13:15+0200
 
 # use standard C locale to avoid locale-specific issues and improve performance
 export LC_ALL=C LANG=C

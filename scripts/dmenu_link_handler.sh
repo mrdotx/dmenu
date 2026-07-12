@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_link_handler.sh
+# path:   /home/klassiker/Projects/repos/dmenu/scripts/dmenu_link_handler.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-06-17T04:35:48+0200
+# date:   2026-07-12T03:13:23+0200
 
 # source dmenu helper
 . _dmenu_helper.sh

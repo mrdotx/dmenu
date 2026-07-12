@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_bookmarks.sh
+# path:   /home/klassiker/Projects/repos/dmenu/scripts/dmenu_bookmarks.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2025-08-09T06:03:41+0200
+# date:   2026-07-12T03:13:11+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -11,7 +11,7 @@
 title="bookmarks"
 
 # config
-bookmarks_file="$HOME/.local/share/repos/dmenu/scripts/data/$title"
+bookmarks_file="$HOME/Projects/repos/dmenu/scripts/data/$title"
 search_url="https://lite.duckduckgo.com/lite/?q="
 open_in_browser="link_handler.sh"
 

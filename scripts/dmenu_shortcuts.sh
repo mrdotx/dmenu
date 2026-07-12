@@ -1,11 +1,11 @@
 #!/bin/sh
 
-# path:   /home/klassiker/.local/share/repos/dmenu/scripts/dmenu_shortcuts.sh
+# path:   /home/klassiker/Projects/repos/dmenu/scripts/dmenu_shortcuts.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-07-11T03:53:20+0200
+# date:   2026-07-12T03:13:37+0200
 
-shortcuts_file="$HOME/.local/share/repos/dmenu/scripts/data/shortcuts"
+shortcuts_file="$HOME/Projects/repos/dmenu/scripts/data/shortcuts"
 
 get_column() {
     printf "%s" "$2" \
