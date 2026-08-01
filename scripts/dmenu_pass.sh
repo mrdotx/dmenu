@@ -3,7 +3,7 @@
 # path:   /home/klassiker/Projects/repos/dmenu/scripts/dmenu_pass.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-07-12T03:13:27+0200
+# date:   2026-08-01T04:03:41+0200
 
 # source dmenu helper
 . _dmenu_helper.sh
@@ -11,7 +11,7 @@
 # config
 password_store="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 file_type=".gpg"
-edit="$TERMINAL -e ranger"
+edit="$TERMINAL -e $EDITOR"
 clipboard_timeout=45
 
 # get window id
@@ -99,7 +99,7 @@ case "$select" in
     *)
         while true; do
             case $(printf "%s\n" \
-                "» edit saved settings" \
+                "» edit password file" \
                 "type [username] TAB [password] ENTER" \
                 "type [username] ENTER" \
                 "type [password] ENTER" \
@@ -107,9 +107,8 @@ case "$select" in
                 "type [password]" \
                 | dmenu -b -l 15 -r -i -p "$select »" -w "$window_id" \
                 ) in
-                "» edit saved settings")
+                "» edit password file")
                     $edit "$password_store/$select$file_type"
-                    break
                     ;;
                 "type [username] TAB [password] ENTER")
                     dmenu_xdotool type "$(get_gpg_entry --username)" \
