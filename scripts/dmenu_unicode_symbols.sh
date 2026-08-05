@@ -4,7 +4,7 @@
 # path:   /home/klassiker/Projects/repos/dmenu/scripts/dmenu_unicode_symbols.sh
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/dmenu
-# date:   2026-07-12T03:13:49+0200
+# date:   2026-08-05T02:14:56+0200
 
 # use C.UTF-8 locale to avoid locale-specific issues and ensure consistent performance
 export LC_ALL=C.UTF-8 LANG=C.UTF-8
@@ -66,8 +66,8 @@ get_files() {
 }
 
 select_symbols() {
-    # get active window id
-    window_id=$(xdotool getactivewindow)
+    # get window id
+    window_id=$(xdotool getwindowfocus)
 
     select=$(dmenu -b -l 15 -r -i -p "$title »" -w "$window_id" \
         < "$unicode_symbols_file" \
