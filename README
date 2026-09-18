@@ -43,4 +43,4 @@ dmenu-xresources-alt-5.0.diff
 
 Last implemented commit
 -----------------------
-2026-01-28 14:57	add -of and -ob arguments for outline colors options for multi-selection	Julien Addé
+2026-09-13 18:48	keypress, check if len > 0 just in case before reading buf	Hiltjo Posthuma
