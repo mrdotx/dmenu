@@ -449,6 +449,7 @@
 🐮 cow face; 1F42E
 🤠 cowboy hat face; 1F920
 🦀 crab; 1F980
+🫫 cracking face; 1FAEB
 🖍️ crayon; 1F58D FE0F
 💳 credit card; 1F4B3
 🌙 crescent moon; 1F319
@@ -594,6 +595,7 @@
 😡 enraged face; 1F621
 ✉️ envelope; 2709 FE0F
 📩 envelope with arrow; 1F4E9
+🪌 eraser; 1FA8C
 💶 euro banknote; 1F4B6
 🌲 evergreen tree; 1F332
 🐑 ewe; 1F411
@@ -801,7 +803,7 @@
 🇫🇷 flag: France; 1F1EB 1F1F7
 🇬🇫 flag: French Guiana; 1F1EC 1F1EB
 🇵🇫 flag: French Polynesia; 1F1F5 1F1EB
-🇹🇫 flag: French Southern Territories; 1F1F9 1F1EB
+🇹🇫 flag: French Southern and Antarctic Lands; 1F1F9 1F1EB
 🇬🇦 flag: Gabon; 1F1EC 1F1E6
 🇬🇲 flag: Gambia; 1F1EC 1F1F2
 🇬🇪 flag: Georgia; 1F1EC 1F1EA
@@ -819,7 +821,7 @@
 🇬🇼 flag: Guinea-Bissau; 1F1EC 1F1FC
 🇬🇾 flag: Guyana; 1F1EC 1F1FE
 🇭🇹 flag: Haiti; 1F1ED 1F1F9
-🇭🇲 flag: Heard & McDonald Islands; 1F1ED 1F1F2
+🇭🇲 flag: Heard Island & McDonald Islands; 1F1ED 1F1F2
 🇭🇳 flag: Honduras; 1F1ED 1F1F3
 🇭🇰 flag: Hong Kong SAR China; 1F1ED 1F1F0
 🇭🇺 flag: Hungary; 1F1ED 1F1FA
@@ -931,7 +933,7 @@
 🇪🇸 flag: Spain; 1F1EA 1F1F8
 🇱🇰 flag: Sri Lanka; 1F1F1 1F1F0
 🇧🇱 flag: St. Barthélemy; 1F1E7 1F1F1
-🇸🇭 flag: St. Helena; 1F1F8 1F1ED
+🇸🇭 flag: St. Helena, Ascension & Tristan da Cunha; 1F1F8 1F1ED
 🇰🇳 flag: St. Kitts & Nevis; 1F1F0 1F1F3
 🇱🇨 flag: St. Lucia; 1F1F1 1F1E8
 🇲🇫 flag: St. Martin; 1F1F2 1F1EB
@@ -1437,6 +1439,12 @@
 🫷🏽 leftwards pushing hand: medium skin tone; 1FAF7 1F3FD
 🫷🏾 leftwards pushing hand: medium-dark skin tone; 1FAF7 1F3FE
 🫷🏼 leftwards pushing hand: medium-light skin tone; 1FAF7 1F3FC
+🫹 leftwards thumb sign; 1FAF9
+🫹🏿 leftwards thumb sign: dark skin tone; 1FAF9 1F3FF
+🫹🏻 leftwards thumb sign: light skin tone; 1FAF9 1F3FB
+🫹🏽 leftwards thumb sign: medium skin tone; 1FAF9 1F3FD
+🫹🏾 leftwards thumb sign: medium-dark skin tone; 1FAF9 1F3FE
+🫹🏼 leftwards thumb sign: medium-light skin tone; 1FAF9 1F3FC
 🦵 leg; 1F9B5
 🦵🏿 leg: dark skin tone; 1F9B5 1F3FF
 🦵🏻 leg: light skin tone; 1F9B5 1F3FB
@@ -1451,6 +1459,7 @@
 🩵 light blue heart; 1FA75
 💡 light bulb; 1F4A1
 🚈 light rail; 1F688
+🛙 lighthouse; 1F6D9
 🍋‍🟩 lime; 1F34B 200D 1F7E9
 🔗 link; 1F517
 🖇️ linked paperclips; 1F587 FE0F
@@ -2081,6 +2090,7 @@
 🧜🏽 merperson: medium skin tone; 1F9DC 1F3FD
 🧜🏾 merperson: medium-dark skin tone; 1F9DC 1F3FE
 🧜🏼 merperson: medium-light skin tone; 1F9DC 1F3FC
+🪋 meteor; 1FA8B
 🚇 metro; 1F687
 🦠 microbe; 1F9A0
 🎤 microphone; 1F3A4
@@ -2102,6 +2112,7 @@
 📱 mobile phone; 1F4F1
 📴 mobile phone off; 1F4F4
 📲 mobile phone with arrow; 1F4F2
+🫌 monarch butterfly; 1FACC
 💰 money bag; 1F4B0
 💸 money with wings; 1F4B8
 🤑 money-mouth face; 1F911
@@ -2160,6 +2171,7 @@
 🤓 nerd face; 1F913
 🪺 nest with eggs; 1FABA
 🪆 nesting dolls; 1FA86
+🪍 net with handle; 1FA8D
 😐 neutral face; 1F610
 🆕 NEW button; 1F195
 🌑 new moon; 1F311
@@ -2735,6 +2747,7 @@
 🐦‍🔥 phoenix; 1F426 200D 1F525
 🪅 piñata; 1FA85
 ⛏️ pick; 26CF FE0F
+🫝 pickle; 1FADD
 🛻 pickup truck; 1F6FB
 🥧 pie; 1F967
 🐖 pig; 1F416
@@ -2925,6 +2938,12 @@
 🫸🏽 rightwards pushing hand: medium skin tone; 1FAF8 1F3FD
 🫸🏾 rightwards pushing hand: medium-dark skin tone; 1FAF8 1F3FE
 🫸🏼 rightwards pushing hand: medium-light skin tone; 1FAF8 1F3FC
+🫺 rightwards thumb sign; 1FAFA
+🫺🏿 rightwards thumb sign: dark skin tone; 1FAFA 1F3FF
+🫺🏻 rightwards thumb sign: light skin tone; 1FAFA 1F3FB
+🫺🏽 rightwards thumb sign: medium skin tone; 1FAFA 1F3FD
+🫺🏾 rightwards thumb sign: medium-dark skin tone; 1FAFA 1F3FE
+🫺🏼 rightwards thumb sign: medium-light skin tone; 1FAFA 1F3FC
 💍 ring; 1F48D
 🛟 ring buoy; 1F6DF
 🪐 ringed planet; 1FA90
